@@ -168,7 +168,7 @@
                                 </div>
                         </div>
                             <div class="cart_main_categories">
-                                 <div class="d-flex align-items-center flex-column text-around">
+                                 <div class="d-flex  flex-column text-around">
                                      <h2 class="fw-bold">Доставим даже на край города!</h2>
                                      <p class="">Только скажите куда </p>
                                  </div>

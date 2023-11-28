@@ -1,11 +1,9 @@
 
 <x-x-header />
     <section>
-        <div class="">
-                <div>
-                    
-                </div>
-                <h2>РЕГИСТРАЦИЯ</h2>
+        <div class="container">
+             
+                <h2 style="text-align:center;" >РЕГИСТРАЦИЯ</h2>
                 <form class="forma_auth d-flex justify-content-center flex-column">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Имя</label>
@@ -48,4 +46,4 @@
         </div>
     </section>
  
-    
+<x-footer/>
