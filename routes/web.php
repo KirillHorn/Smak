@@ -19,3 +19,5 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/registration', [AuthController::class, 'registration_page']);
 
+Route::get('/auth', [AuthController::class, 'auth_page']);
+

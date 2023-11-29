@@ -274,7 +274,63 @@ box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
    margin-bottom: 1rem;
 }
 /* Страница регистрации */
+.tumbler {
+   background-color: #A408A7;
+   border: 1px solid #A408A7; 
+   border-radius: 27px;
+   width: 400px;
+   font-size: 24px;
+   margin: 0 auto;
+}
+.tumbler a {
+   text-decoration: none;
+}
+.a_reg {
+   width: 50%;
+   text-align: center;
+   color:#ffffff ;
+   
+}
+.a_aut {
+   width: 50%;
+   text-align: center;
+   background-color: #ffffff;
+   border: 1px solid #A408A7;
+   color: #000000;
+   border-radius: 27px;
+ 
+}
+.h2_auth {
+   color: #A408A7;
+   text-align: center;
+}
 .forma_auth {
    width: 550px;
    margin: 0 auto;
+}
+.mb-3 label {
+   color: #A408A7 ;
+   font-size: 20px;
+}
+.mb-3 input {
+   border:1px solid #A408A7;
+   border-radius: 27px;
+   color: #A408A7;
+   width: 500px;
+}
+.mb-3 input:focus {
+   color: #A408A7;
+   
+}
+.forma_auth button {
+   margin-top: 20px;
+   background-color: #A408A7;
+   border: none;
+   width: 200px;
+   border-radius: 27px;
+
+}
+.forma_auth button:hover {
+   background-color: #ec56ee;
+   border: none;
 }
