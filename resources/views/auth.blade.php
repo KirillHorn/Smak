@@ -6,13 +6,13 @@
         <div class="container d-flex flex-column gap-3">
               <div class="d-flex tumbler">
                 <div class="a_reg">
-                <a href="/registration">Регистрация</a>
+                <a href="/registration" class="decoration-none">Регистрация</a>
                 </div>
                 <div class="a_aut">
-                <a >Вход</a>
+                <a class="decoration-none" >Вход</a>
                 </div>
               </div>
-                <h2 class="h2_auth fw-bold" >Вход</h2>
+                <h2 class="h2_auth fw-bold" >ВХОД</h2>
                 <form class="forma_auth d-flex justify-content-center flex-column align-items-center">
  
   <div class="mb-3">

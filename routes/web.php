@@ -17,6 +17,8 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [IndexController::class, 'index']);
 
+Route::get('/product' , [IndexController::class, 'product_blade']);
+
 Route::get('/registration', [AuthController::class, 'registration_page']);
 
 Route::get('/auth', [AuthController::class, 'auth_page']);

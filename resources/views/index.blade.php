@@ -84,7 +84,7 @@
         <div class="container">
             <div class="d-flex justify-content-between cafe_text">
                 <h2 class="fw-bold">Самые популярные блюда</h2>
-                <a>Перейти к заведениям <img src="/img/bxs_dish.png"></a>
+                <a href="/product">Перейти к заведениям <img src="/img/bxs_dish.png"></a>
             </div>
                 <div class="d-flex flex-wrap grid gap-4">
                     <div class="cart_cafe cart_product g-col-4">

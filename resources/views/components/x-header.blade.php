@@ -19,7 +19,9 @@
         <div class="section_header_one d-flex justify-content-around align-items-center">
             <div class="d-flex element_header align-items-center ">
                 <div>
+                    
                     <img src="img/icon.user.png" alt="иконка авторизация" class="icon_header">
+                    
                     <a href="">Вход</a>
                     <span>|</span>
                      <a href="/registration">Регистрация</a>
@@ -37,7 +39,9 @@
                     </div>
         </div>
         <div class="section_header_two d-flex  justify-content-around align-items-center">
+        <a href="/">
                 <img src="" alt="тут есть что-то">
+        </a>
                     <div class="nav">
                          <ul class="d-flex">
                             <li><a>О нас</a></li>
