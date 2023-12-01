@@ -13,7 +13,7 @@
         <div class="container">
             <div class="d-flex justify-content-between cafe_text">
                 <h2 class="fw-bold">Самые популярные заведения</h2>
-                <a>Перейти к заведениям <img src="/img/devices.png"></a>
+                <a href="cafe">Перейти к заведениям <img src="/img/devices.png"></a>
             </div>
                 <div class="d-flex flex-wrap grid gap-4">
                     <div class="cart_cafe g-col-4">
@@ -87,12 +87,16 @@
                 <a href="/product">Перейти к блюдам <img src="/img/bxs_dish.png"></a>
             </div>
                 <div class="d-flex flex-wrap grid gap-4">
+                
                     <div class="cart_cafe cart_product g-col-4">
+                    <a href="/goods">
                         <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
                         <p>Азиатска кухня • ₽</p>
                         <a>Рамен горящего города</a>
                         <p class="fw-bold">190 ₽•45 минут</p>
+                        </a>
                     </div>
+                 
                     <div class="cart_cafe cart_product g-col-4">
                         <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
                         <p>Азиатска кухня • ₽</p>

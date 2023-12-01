@@ -35,55 +35,102 @@
                 <a>Перейти к заведениям <img src="/img/bxs_dish.png"></a>
             </div> --}} -->
                 <div class="d-flex flex-wrap grid gap-4">
-                    <div class="cart_cafe cart_product g-col-4">
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
                         <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
                         <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
                         <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
+                        <button class="button_basket"></button>
+                        </div>
                     
+                    </div>
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
+                        <p>Азиатска кухня • ₽</p>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">190 ₽•45 минут</p>
+                        <button class="button_basket"></button>
+                        </div>
+                    
+                    </div>
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
+                        <p>Азиатска кухня • ₽</p>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">190 ₽•45 минут</p>
+                        <button class="button_basket"></button>
+                        </div>
+                    
+                    </div>
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
+                        <p>Азиатска кухня • ₽</p>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">190 ₽•45 минут</p>
+                        <button class="button_basket"></button>
+                        </div>
+                    
+                    </div>
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
+                        <p>Азиатска кухня • ₽</p>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">190 ₽•45 минут</p>
+                        <button class="button_basket"></button>
+                        </div>
+                    
+                    </div>
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
+                        <p>Азиатска кухня • ₽</p>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">190 ₽•45 минут</p>
+                        <button class="button_basket"></button>
+                        </div>
+                    
+                    </div>
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
+                        <p>Азиатска кухня • ₽</p>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">190 ₽•45 минут</p>
+                        <button class="button_basket"></button>
+                        </div>
+                    
+                    </div>
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                      
+                        <p>Азиатска кухня • ₽</p>
+                       
+                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">190 ₽•45 минут</p>
+                        <button class="button_basket"></button>
+                        </div>
+                    
+                    </div>
                     
                     
                 </div>

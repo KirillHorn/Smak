@@ -19,6 +19,10 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/product' , [IndexController::class, 'product_blade']);
 
+Route::get('/cafe' , [IndexController::class, 'cafe_blade']);
+
+Route::get('/goods' , [IndexController::class, 'goods_blade']);
+
 Route::get('/registration', [AuthController::class, 'registration_page']);
 
 Route::get('/auth', [AuthController::class, 'auth_page']);

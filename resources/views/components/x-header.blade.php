@@ -15,22 +15,19 @@
 
 </head>
 <body>
-    <header>
-        <div class="section_header_one d-flex justify-content-around align-items-center">
-            <div class="d-flex element_header align-items-center ">
-                <div>
-                    
-                    <img src="img/icon.user.png" alt="иконка авторизация" class="icon_header">
-                    
+    <header class="">
+        <div class="section_header_one d-flex justify-content-around align-items-center container">
+            <div class="d-flex element_header align-items-center">
+                <div>  
+                    <img src="img/icon.user.png" alt="иконка авторизация" class="icon_header">    
                     <a href="">Вход</a>
                     <span>|</span>
-                     <a href="/registration">Регистрация</a>
+                    <a href="/registration">Регистрация</a>
                     </div>
                     <form>
    <p><input type="search" name="q" placeholder="Поиск по сайту" class="search_string"> </p>
   </form>
             </div>
-               
                     <div class="d-flex align-items-center element_header_two">
                             <img src="img/iconEmail.png">
                                  <span>Email:Smak23@gmail.com</span>
@@ -38,7 +35,9 @@
                                 <span>Телефон какой-то</span>
                     </div>
         </div>
-        <div class="section_header_two d-flex  justify-content-around align-items-center">
+
+        <div class="section_header_two d-flex">
+            <div class="container d-flex justify-content-around align-items-center">
         <a href="/">
                 <img src="" alt="тут есть что-то">
         </a>
@@ -52,6 +51,7 @@
                             <a class="basket_input"> <img src="img/ph_basket-light.png">Корзина</a>
                          </ul> 
                                    
+                    </div>
                     </div>
         </div>
     </header>
