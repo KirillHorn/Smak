@@ -503,3 +503,42 @@ gap: 80px;
 .search_goods:focus {
    color: #A408A7;
 }
+.cafe_product_info {
+   color: #A408A7;
+   max-width: 235px;
+   gap: 10px;
+
+}
+.cafe_product_info a {
+   font-size: 20px;
+
+}
+.cafe_product_info img {
+ max-width: 235px;
+ max-height: 185px;
+}
+.information_cafe_product h2 {
+  margin: 15px 0px;
+  color: #A408A7;
+}
+.information_cafe_product {
+   gap: 200px   ;
+}
+.cafe_product_navigation {
+   max-width: 300px;
+   border-radius: 10px;
+width: 210px;
+  max-height: 500px;
+   background-color: #A408A7;
+   color: #ffffff;
+   margin-top: 68px;
+}
+.cafe_product_navigation ul {
+ text-decoration: none;
+ list-style-type:none;
+ font-size: 28px;
+ display: block;
+padding-right: 20px;
+margin-top: 20px;
+   
+}
