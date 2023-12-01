@@ -23,6 +23,8 @@ Route::get('/cafe' , [IndexController::class, 'cafe_blade']);
 
 Route::get('/goods' , [IndexController::class, 'goods_blade']);
 
+Route::get('/cafe_bl' , [IndexController::class, 'cafe_bl_blade']);
+
 Route::get('/registration', [AuthController::class, 'registration_page']);
 
 Route::get('/auth', [AuthController::class, 'auth_page']);

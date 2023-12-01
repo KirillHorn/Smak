@@ -103,11 +103,13 @@
    width: 100%;
    height: 562px;
    max-height: 562px;
-   background-image: url("/img/banner_fon.png"); 
+   background-image: url("/img/banner_fon.png");
+   background-repeat: no-repeat; 
+   background-position: 30% 100%;
 }
 .banner_text {
    padding-top: 10% ;
-   width: 435px;
+   width: 425px;
    height: 225px;
 }
 .banner_text h1 {
@@ -427,11 +429,77 @@ input::-webkit-search-results-decoration { display: none; }
 
 /* Страница товара */
 .img_goods {
-   max-width: 575px;
-   max-height: 475px;
+   max-width: 605px;
+   max-height: 500px;
    border-radius: 20px;
 }
 .main_goods {
-   max-width:72%;
+   max-width:62%;
    gap: 60px;
+   color: #A408A7;
+}
+.main_goods_cost {
+   font-size: 42px;
+}
+.main_goods_text p {
+   font-size: 20px;
+   margin-bottom: 0rem;
+}
+.main_goods_text span {
+   font-weight: bold;
+}
+.buy_buton {
+   border: 1px solid #A408A7;
+   border-radius: 20px;
+   color: #A408A7;
+   font-size: 24px;
+   padding: 10px 50px 10px 10px;
+   background-image: url("/img/ph_basket-light.png");
+   background-repeat: no-repeat;
+   background-position: 90%;
+}
+
+/* Страница заведения */
+.nav_goods {
+   background-color: #A408A7;
+  max-width: 100%;
+   height: 90px;
+   border-radius: 30px;
+   font-size: 44px;
+   color: #ffffff;
+}
+.nav_goods img {
+   width: 70px;
+   height: 70px;
+   margin-left: 20px;
+}
+.nav_goods p {
+display: block;
+margin-top: 10px;
+}
+.information_cafe_main {
+gap: 80px;
+}
+.information_cafe_main_one img {
+   width: 750px;
+   height: 300px;
+  max-width: 750px;
+  max-height: 320px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.iframe_goods {
+   width: 580px;
+   border-radius: 20px;
+   margin-top: 20px;
+}
+.search_goods {
+   background-color: #ffffff;
+   border: 1px solid #A408A7;
+   background-image: url('/img/icon.png');
+   color: #A408A7;
+
+}
+.search_goods:focus {
+   color: #A408A7;
 }

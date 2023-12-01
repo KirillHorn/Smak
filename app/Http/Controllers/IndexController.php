@@ -21,6 +21,10 @@ class IndexController extends Controller
     public function goods_blade () {
         return view ('goods');
     }
+
+    public function cafe_bl_blade () {
+        return view ('cafe_bl');
+    }
 //     public function boot(): void
 // {
 //     Blade::component('header-alert', Alert::class);
