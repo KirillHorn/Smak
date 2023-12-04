@@ -12,7 +12,14 @@
         <div class="container">
                 <div class="information_cafe_main d-flex "> 
                     <div class="information_cafe_main_one d-flex flex-column gap-3">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg">
+                      <div class="information_cafe_main_one_fon d-flex align-items-end gap-3">
+                          <p class="fs-1 fw-bold" >Суши Мигом</p>
+                          <button  class="heart">
+                            <!-- <div class="heart">
+
+                            </div> -->
+                          </button>
+                      </div>
                         <input type="search" class="search_content search_goods">
                         </div>
                         <iframe class="iframe_goods" src="https://yandex.ru/map-widget/v1/?um=constructor%3A11744030def0a8feaad6cce670b0946d4bca01fd6116e2522927cde0288642f7&amp;source=constructor"  frameborder="0"></iframe>
@@ -108,3 +115,4 @@
        
    
     <x-footer/>
+    <script src="script/script.js"></script>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ModerController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,17 @@ Route::get('/goods' , [IndexController::class, 'goods_blade']);
 
 Route::get('/cafe_bl' , [IndexController::class, 'cafe_bl_blade']);
 
-Route::get('/registration', [AuthController::class, 'registration_page']);
+Route::get('/users/personal_Area' , [IndexController::class, 'personal_blade']);
 
-Route::get('/auth', [AuthController::class, 'auth_page']);
+Route::get('/order',[OrderController::class, 'OrderController' ] );
+
+Route::get('/courier/personal_Area' , [IndexController::class, 'personal_courier_blade']);
+
+Route::get('/moder/serviceRedact' , [ModerController::class, 'serviceRedact_blade']);
+
+Route::get('/moder/serviceEdit' , [ModerController::class, 'serviceEdit_blade']);
+
+Route::get('/auth/registration', [AuthController::class, 'registration_page']);
+
+Route::get('/auth/auth', [AuthController::class, 'auth_page']);
 

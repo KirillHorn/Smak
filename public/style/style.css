@@ -434,7 +434,7 @@ input::-webkit-search-results-decoration { display: none; }
    border-radius: 20px;
 }
 .main_goods {
-   max-width:62%;
+   max-width:80%;
    gap: 60px;
    color: #A408A7;
 }
@@ -480,14 +480,25 @@ margin-top: 10px;
 .information_cafe_main {
 gap: 80px;
 }
-.information_cafe_main_one img {
+.information_cafe_main_one_fon {
    width: 750px;
    height: 300px;
   max-width: 750px;
   max-height: 320px;
   border-radius: 20px;
   margin-top: 20px;
+  border: 1px solid #000000;
+  background-image: url("/img/66e1608c038e458e7185685a45251707.jpg");
+  /* background-repeat: inherit; */
+  /* background-clip:content-box ; */
+  background-size: cover;
 }
+.information_cafe_main_one_fon p {
+ color: #ffffff;
+ margin-left: 20px;
+ 
+}
+
 .iframe_goods {
    width: 580px;
    border-radius: 20px;
@@ -542,3 +553,129 @@ padding-right: 20px;
 margin-top: 20px;
    
 }
+
+ .heart {
+   position: relative;
+   
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   background-color: #ffffff;
+   border: none;
+   margin-bottom: 24px;
+
+   
+ }
+ .heart:before,
+ .heart:after {
+   position: absolute;
+   content: "";
+   bottom: 5%;
+   width: 20px;
+   height: 30px;
+   left: 20px;
+   
+   background-color: rgb(255, 0, 0);
+   
+   border-radius: 100px 100px 0 0;
+   
+   transform: rotate(-45deg);
+   transform-origin: 0 100%;
+ }
+   &.paused {
+      background-color: #fc0000;
+   }
+
+   &:hover {
+ border-style: double;
+   }
+ 
+ .heart:after {
+   left: 0;
+   
+   transform-origin: 100% 100%;
+   transform: rotate(45deg);
+ }
+
+ /* Личный кабинет */
+ .user_name img {
+ border-radius: 50%;
+ width: 50px;
+ height: 50px;
+ }
+ .user_name h2 {
+   padding-top: 8px;
+ }
+ .nav_personal a {
+   background-color: #A408A7;
+   color: #ffffff;
+   border-radius: 20px;
+   width: 250px;
+   height: 40px;
+   text-align: center;
+   font-size: 24px;
+ }
+ .information_personal_text {
+   font-size: 24px;
+   color: #A408A7;
+   padding-top: 10px;
+ }
+ .button_change {
+   color: #ffffff;
+   background-color: #A408A7;
+   border-radius: 7px;
+   font-size: 24px;
+   border: none;
+   width: 180px;
+   height: 35px;
+   margin: 20px 110px;
+ }
+ 
+ /* Страница заказа пользователей */
+
+ .user_orders {
+   max-width: 100%;
+   background-color: #A408A7;
+ }
+ .user_orders_information {
+   max-width: 97%;
+   width: 97%;
+   background-color: #ffffff;
+   height: 100px;
+   margin: 10px auto;
+ }
+ .user_orders_information span {
+   font-size: 30px;
+   margin-left: 20px;
+ }
+
+ /* Страница историй заказа курьера */
+ .select {
+ width: 100px;
+ height: 30px;
+ border: 1px solid #A408A7;
+ border-radius: 20px ;
+ text-align: center;
+ }
+ 
+ 
+
+ .option {
+   width: 100px;
+   height: 30px;
+   border: 1px solid #A408A7;
+  ;
+   }
+   .data_orders_input input {
+      width: 150px;
+      border: 1px solid #A408A7;
+      border-radius: 20px;
+   }
+   .data_orders_input div {
+     width: 2px;
+     height: 80%;
+     background-color: #A408A7;
+   }
+
+   /* Страница заказа и корзины */
+   

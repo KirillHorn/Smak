@@ -25,6 +25,13 @@ class IndexController extends Controller
     public function cafe_bl_blade () {
         return view ('cafe_bl');
     }
+
+    public function personal_blade () {
+        return view ('users.personal_Area');
+    }
+    public function personal_courier_blade () {
+        return view ('courier.personal_Area');
+    }
 //     public function boot(): void
 // {
 //     Blade::component('header-alert', Alert::class);

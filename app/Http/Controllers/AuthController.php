@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
    public function registration_page() {
-    return view('registration');
+    return view('auth.registration');
    }
    public function auth_page() {
-      return view('auth');
+      return view('auth.auth');
    }
 }
