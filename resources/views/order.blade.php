@@ -19,8 +19,8 @@
                          <input class="input_commen" placeholder="Комментарий курьеру">
                              </div>
                                  <div>
-                                     <div class="d-flex">
-                                        <img src="/img/clock.svg"><h2 class="fw-bold">Время доставки</h2>
+                                     <div class="d-flex align-items-center gap-1">
+                                        <img src="/img/clock.svg"><h2 class="fw-bold" style="margin-top: 8px;">Время доставки</h2>
                                     </div>
                                         <p class="fw-bold">Доставка за 20-30 минут</p>
 
@@ -67,13 +67,23 @@
                 <div class="d-flex flex-column gap-2 Delivery_info">
                         <h2>Способ доставки</h2>
                         <div class="d-flex flex-column">
-                            <label>Наличные<input type="checkbox"></label>
-                            <label>Безналичные<input type="checkbox"></label>
+                                <div class="d-flex gap-4 align-items-center"> Наличные
+                                             <label class="switch">
+                                            <input type="radio" checked name="very">
+                                            <span class="slider round"></span>
+                                            </label>
+                                            </div>
+                                            <div class="d-flex gap-1 align-items-center"> Безналичные
+                                    <label class="switch">
+                                    <input type="radio" name="very">
+                                     <span class="slider round"></span>
+                                    </label>
+                                            </div>
                         </div>
-                        <hr>
-                            <div>
-                                <p>Итого</p>
-                                <p>Стоимость заказа: <span>500</span></p>
+                        <hr class="fw-bold">
+                            <div class="total">
+                                <p class="fw-bold">Итого</p>
+                                <p>Стоимость заказа: <span  id="sum" class="fw-bold">500</span></p>
                                 <button>Оформить заказ</button>
                             </div>
                         </div>
