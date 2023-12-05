@@ -3,8 +3,8 @@
 
 
     <section class="">
-        <div class="container">
-            <div class="d-flex flex-column">
+        <div class="container d-flex justify-content-around">
+            <div class="d-flex flex-column gap-5">
 
                 <div class="Delivery">
                                 <div class="d-flex flex-column gap-2 Delivery_info">
@@ -31,12 +31,12 @@
                   <div class="Delivery">  
                          <div class="basket">
                               <div>
-                                 <h2>Корзина</h2>           
+                                 <h2 class="fw-bold">Корзина</h2>           
                               </div>
                                     <div class="d-flex flex-column">
                                         <div class="basket_product d-flex gap-3 align-items-center justify-content-around">
                                             <img src="/img/66e1608c038e458e7185685a45251707.jpg"> <p class="fw-bold" >Рамен горящего города </p>  <p id="price">195</p>  
-                                            {{-- <div class="text-center">+ 1 - </div> --}}
+                                            <!-- {{-- <div class="text-center">+ 1 - </div> --}} -->
                                             <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
                                             <input id="down" type="button" class="input_count" value="-">
                                             <input id="numericUpDown" type="number" value="1" class="count"/>
@@ -45,13 +45,39 @@
                                             </div>
                                             
                                         </div>
-                                        <div class="d-flex  justify-content-between align-items-center "> <h2>Сумма корзины</h2> <p id="sum" class="text-center Sum_Button fw-bold">195 </p> </div>
 
-                                        
-                                    </div>
+                                    <div class="basket_product d-flex gap-3 align-items-center justify-content-around">
+                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg"> <p class="fw-bold" >Рамен горящего города </p>  <p id="price">195</p>  
+                                            <!-- {{-- <div class="text-center">+ 1 - </div> --}} -->
+                                        <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
+                                            <input id="down" type="button" class="input_count" value="-">
+                                            <input id="numericUpDown" type="number" value="1" class="count"/>
+                                            <input id="up" type="button" class="input_count" value="+">
+                                         </div> 
+                                     </div>
+                                <div class="d-flex  justify-content-between align-items-center "> <h2>Сумма корзины</h2> <p id="sum" class="text-center Sum_Button fw-bold">195 </p> </div>
+                            <div class="d-flex alight-items-center gap-2"> Промокод <input type="text" class="input_prom"><button class="button_prom">Применить</button></div>           
+                         </div>
+                     </div>
+                 </div>
+            </div>
+
+            <div>
+                <div class="Delivery order">
+                <div class="d-flex flex-column gap-2 Delivery_info">
+                        <h2>Способ доставки</h2>
+                        <div class="d-flex flex-column">
+                            <label>Наличные<input type="checkbox"></label>
+                            <label>Безналичные<input type="checkbox"></label>
                         </div>
-                  
-                    </div>
+                        <hr>
+                            <div>
+                                <p>Итого</p>
+                                <p>Стоимость заказа: <span>500</span></p>
+                                <button>Оформить заказ</button>
+                            </div>
+                        </div>
+                </div>
             </div>
         </div>
     </section>
