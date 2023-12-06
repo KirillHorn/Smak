@@ -26,9 +26,17 @@
             <div class="d-flex element_header align-items-center">
                 <div>  
                     <img src="/img/icon.user.png" alt="иконка авторизация" class="icon_header">    
+
+                    @guest
                     <a href="/auth/auth">Вход</a>
                     <span>|</span>
                     <a href="/auth/registration">Регистрация</a>
+                    @endguest
+
+                    @auth
+                    <a href="/personalcub">Кабинет</a>
+                    <a href="/  ">Выход</a>
+                    @endauth
                     </div>
                     <form>
    <p><input type="search" name="q" placeholder="Поиск по сайту" class="search_string"> </p>

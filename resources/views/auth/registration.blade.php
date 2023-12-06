@@ -9,45 +9,45 @@
                 <a>Регистрация</a>
                 </div>
                 <div class="a_aut">
-                <a href="/auth">Вход</a>
+                <a href="/auth/auth">Вход</a>
                 </div>
               </div>
+              @if (session("error"))
+                    {{session("error")}}
+        @endif
                 <h2 class="h2_auth fw-bold" >РЕГИСТРАЦИЯ</h2>
-                <form class="forma_auth d-flex justify-content-center flex-column align-items-center">
-  <div class="mb-3">
+                <form method="POST" action="/registration_valid" class="forma_auth d-flex justify-content-center flex-column align-items-center">
+                @csrf
+                <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label text_label">Имя</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="name" value="{{old('name')}}" placeholder=" @error('name') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Фамилия</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="surname"  value="{{old('surname')}}" placeholder=" @error('surname') {{$message}}  @enderror"   class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Отчество</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Номер телефона</label>
-    <input type="text" class="form-control" id="tel" aria-describedby="emailHelp" placeholder="+ _ (_ _ _) _ _ _ - _ _ - _ _">
+    <input type="text" name="patronymic"  value="{{old('patronymic')}}"  placeholder=" @error('patronymic') {{$message}}  @enderror"   class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    <input type="email" name="email" value="{{old('email')}}"  placeholder="  @error('email') {{$message}}  @enderror"    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Дата рождения</label>
-    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1" class="form-label">Номер телефона</label>
+    <input type="text" name="phone" value="{{old('phone')}}" placeholder="  @error('phone') {{$message}}  @enderror"  class="form-control" id="tel" aria-describedby="emailHelp" placeholder="+ _ (_ _ _) _ _ _ - _ _ - _ _">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Пароль</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" name="password" value="{{old('password')}}"  placeholder="  @error('password') {{$message}}  @enderror"  class="form-control" id="exampleInputPassword1">
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Повторите пароль</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <label for="exampleInputPassword1" name="confirm_password" class="form-label">Повторите пароль</label>
+    <input type="password" name="confirm_password"  value="{{old('confirm_password')}}" placeholder="  @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
   </div>
 
-  <button type="submit" class="btn btn-primary ">Регистрация</button>
+  <input type="submit" value="Регистрация" class="btn btn-primary ">
 </form>
         </div>
     </section>

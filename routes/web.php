@@ -39,5 +39,8 @@ Route::get('/moder/serviceEdit' , [ModerController::class, 'serviceEdit_blade'])
 
 Route::get('/auth/registration', [AuthController::class, 'registration_page']);
 
+Route::post('/registration_valid', [AuthController::class,'registration_valid']);
+
 Route::get('/auth/auth', [AuthController::class, 'auth_page']);
 
+Route::post('/auth_valid', [AuthController::class,'auth_valid']);
