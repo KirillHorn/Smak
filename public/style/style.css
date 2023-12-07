@@ -894,4 +894,6 @@ input::-webkit-inner-spin-button {
    margin-left: 30%;
 
  }
- 
+ .forma_register input {
+     width: 400px;
+ }

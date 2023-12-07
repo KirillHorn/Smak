@@ -34,8 +34,9 @@
                     @endguest
 
                     @auth
-                    <a href="/personalcub">Кабинет</a>
-                    <a href="/  ">Выход</a>
+                    <a href="/users/personal_Area">Кабинет</a>
+                    <span>|</span>
+                    <a href="/signout">Выход</a>
                     @endauth
                     </div>
                     <form>
