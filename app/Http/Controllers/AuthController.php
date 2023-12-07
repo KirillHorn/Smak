@@ -95,30 +95,30 @@ class AuthController extends Controller
   }
 
   public function registration_redact (Request $request, User $id) {
-   // $request->validate([
-   //   "name" => "required|alpha",
-   //   "surname" => "required|alpha",
-   //   "patronymic" => "required|alpha",
-   //   "email" =>"required|unique:users|email",
-   //   "phone"=> "required|numeric",   
-   //   "password"=> "required",
-   //   "confirm_password"=>"required|same:password"],
-   //   [
-   //      "email.required" => "Поле обязательно для заполнения!",
-   //      "email.email" => "Введите корректный email",
-   //      "email.unique" => "Данный email уже занят",
-   //      "name.required" => "Поле обязательно для заполнения!",
-   //      "name.alpha" => "Имя должно состоять только из букв!",
-   //      "surname.required" => "Поле обязательно для заполнения!",
-   //      "surname.alpha" => "Фамилия должно состоять только из букв!",
-   //      "patronymic.required" => "Поле обязательно для заполнения!",
-   //      "patronymic.alpha" => "Отчество должно состоять только из букв!",
-   //      "phone.required" => "Поле обязательно для заполнения!",
-   //      "phone.numeric" => "Номер только из цифр!",
-   //      "password.required" => "Поле обязательно для заполнения!",
+   $request->validate([
+     "name" => "required|alpha",
+     "surname" => "required|alpha",
+     "patronymic" => "required|alpha",
+     "email" =>"required|unique:users|email",
+     "phone"=> "required|numeric",   
+     "password"=> "required",
+     "confirm_password"=>"required|same:password"],
+     [
+        "email.required" => "Поле обязательно для заполнения!",
+        "email.email" => "Введите корректный email",
+        "email.unique" => "Данный email уже занят",
+        "name.required" => "Поле обязательно для заполнения!",
+        "name.alpha" => "Имя должно состоять только из букв!",
+        "surname.required" => "Поле обязательно для заполнения!",
+        "surname.alpha" => "Фамилия должно состоять только из букв!",
+        "patronymic.required" => "Поле обязательно для заполнения!",
+        "patronymic.alpha" => "Отчество должно состоять только из букв!",
+        "phone.required" => "Поле обязательно для заполнения!",
+        "phone.numeric" => "Номер только из цифр!",
+        "password.required" => "Поле обязательно для заполнения!",
        
-   //      "confirm_password.required" => "Поле обязательно для заполнения!",
-   //   ]);
+        "confirm_password.required" => "Поле обязательно для заполнения!",
+     ]);
      $userInfo=$request->all();
   
    $id->fill(
@@ -130,7 +130,7 @@ class AuthController extends Controller
            'phone'=>$userInfo['phone'],
            "password"=> Hash::make($userInfo['password']),
       ]);
-      $id->save;
+      $id->save();
       return redirect("/users/personal_Area")->with("success","Вы зарегались!");
      }
 }
