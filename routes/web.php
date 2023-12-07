@@ -47,4 +47,4 @@ Route::get('/signout', [AuthController::class, 'signout']);
 
 Route::post('/auth_valid', [AuthController::class,'auth_valid']);
 
-Route::patch('/{user}/registration_redact', [AuthController::class,'registration_redact'])->name('r.update');
+Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class,'registration_redact'])->name('r.update');

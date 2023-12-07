@@ -566,7 +566,7 @@ margin-top: 20px;
 
    
  }
- .heart:before,
+ /* .heart:before,
  .heart:after {
    position: absolute;
    content: "";
@@ -595,7 +595,7 @@ margin-top: 20px;
    
    transform-origin: 100% 100%;
    transform: rotate(45deg);
- }
+ } */
 
  /* Личный кабинет */
  .user_name img {

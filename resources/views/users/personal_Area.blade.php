@@ -42,7 +42,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                     </div>
                     <div class="modal-body">
-                    <form method="POST" action="{{ route('r.update', ['user' => Auth::user()->id]) }}" class=" forma_register d-flex justify-content-center flex-column align-items-center">
+                    <form method="POST" action="{{ route('r.update', ['id' => Auth::user()->id]) }}" class=" forma_register d-flex justify-content-center flex-column align-items-center">
                     @csrf
                      @method('PATCH')       
                     <div class="mb-3">
