@@ -349,15 +349,14 @@ box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
    color: #A408A7;
    
 }
-.forma_auth button {
+.input_auth {
    margin-top: 20px;
    background-color: #A408A7;
    border: none;
    width: 200px;
    border-radius: 27px;
-
 }
-.forma_auth button:hover {
+.input_auth:hover {
    background-color: #ec56ee;
    border: none;
 }

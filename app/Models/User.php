@@ -26,6 +26,9 @@ class User extends Authenticatable
         'id_role',
         'password',
     ];
+    // protected $table="users";
+
+    // protected $guarded= false;
 
     /**
      * The attributes that should be hidden for serialization.

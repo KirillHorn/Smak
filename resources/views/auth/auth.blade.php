@@ -1,8 +1,8 @@
 <x-x-header />
 
 
-<section>
-  <div class="container d-flex flex-column gap-3">
+<section style="margin-bottom: 150px ">
+  <div class="container d-flex flex-column gap-3" style="height: 100%">
     <div class="d-flex tumbler">
       <div class="a_reg">
         <a href="/auth/registration" class="decoration-none">Регистрация</a>
@@ -44,7 +44,7 @@
       </div>
      
 
-      <input type="submit" value="Войти" class="btn btn-primary ">
+      <input type="submit" value="Войти" class="btn btn-primary input_auth">
     </form>
 
   </div>

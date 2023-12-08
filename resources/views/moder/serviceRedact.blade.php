@@ -1,20 +1,29 @@
 @include('moder.inc.sidebar')
 <div class="wrapper">
+  
 <div class="container">
-  <form action="/addproduct" method="POST" enctype="multipart/form-data" class="addservice">
-    <h2 class="text-center">Добавить товар</h2>
+  <div>
+   @if (session ("addproduct"))
+   <div>
+      <span  id="message">{{session("addproduct")}}</span>
+</div>
+   @endif
+
+  
+  </div>
+  <form action="/edit_cafe" method="POST" enctype="multipart/form-data" class="addservice">
+    <h2 class="text-center">Добавить Заведение</h2>
     @csrf
-    <div class="mb-3"><input type="text" name="title" class="form-control" placeholder="Название товара" required></div>
+    <div class="mb-3"><input type="text" name="title" class="form-control" placeholder="Название заведения" required></div>
     <div class="mb-3">
-      <label for="imageFile" class="form-label">Фотография товара</label>
+      <label for="imageFile" class="form-label">Фотография заведения</label>
       <input class="form-control" name="img" type="file" id="imageFile" required>
       <img id="prevImage" src="#" alt=""/>
     </div>
-    <div class="mb-3"><textarea class="form-control" name="description" rows="8" placeholder="Описание" required></textarea></div>
-    <div class="mb-3"><input type="text" name="cost" class="form-control" placeholder="Цена" required></div>
-    <select name="categoru_id"> 
+    <div class="mb-3">
+      <input class="form-control" name="location" placeholder="Местоположение заведеняи" type="text" required>
+    </div>
     
-    <option value=""> </option>
   
 </select>
     <button type="submit" class="btn btn-primary">Добавить товар</button>
@@ -36,4 +45,10 @@ function readURL(input) { //
 $("#imageFile").change(function() { //change - Событие  происходит по окончании изменения значения элемента формы, когда это изменение зафиксировано.
  readURL(this);
 });
+
+setTimeout(function(){
+	document.getElementById('message').style.display = 'none';
+}, 5000);
+
+
 </script>

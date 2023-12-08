@@ -32,8 +32,10 @@
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-    <input type="email" name="email" value="{{old('email')}}"  placeholder="  @error('email') {{$message}}  @enderror"    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    <input type="email" name="email" value="{{old('email')}}"          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    <span> @error('email') {{$message}} @enderror</span>
   </div>
+  
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Номер телефона</label>
     <input type="text" name="phone" value="{{old('phone')}}" placeholder="  @error('phone') {{$message}}  @enderror"  class="form-control" id="tel" aria-describedby="emailHelp" placeholder="+ _ (_ _ _) _ _ _ - _ _ - _ _">
@@ -47,7 +49,7 @@
     <input type="password" name="confirm_password"  value="{{old('confirm_password')}}" placeholder="  @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
   </div>
 
-  <input type="submit" value="Регистрация" class="btn btn-primary ">
+  <input type="submit" value="Регистрация" class="btn btn-primary input_auth">
 </form>
         </div>
     </section>
