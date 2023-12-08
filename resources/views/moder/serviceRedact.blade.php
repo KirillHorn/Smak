@@ -21,6 +21,13 @@
       <img id="prevImage" src="#" alt=""/>
     </div>
     <div class="mb-3">
+    <select name="id_categoriesCafe"> 
+    @foreach ($categories as $item )
+    <option value="{{ $item->id_categories}}"> {{ $item->title_categories}}</option>
+    @endforeach
+</select>
+    </div>
+    <div class="mb-3">
       <input class="form-control" name="location" placeholder="Местоположение заведеняи" type="text" required>
     </div>
     

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_cafe');
             $table->string('title',100);
             $table->string('img',100);
+            $table->foreignId('id_categoriesCafe')->references('id_categories')->on('categories_cafe')->onDelete('cascade');
             $table->text('location');
             $table->timestamps();
         });

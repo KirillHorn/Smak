@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create("categories_cafe", function (Blueprint $table)) {
-                $table->increments("id");   
-             }
+        Schema::create("categories_cafe", function (Blueprint $table) {
+                $table->id('id_categories');   
+                $table->string('title_categories',100);
+                $table->timestamps();
+             });
         }
 
     /**
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('categories_cafe');
     }
 };
