@@ -24,6 +24,21 @@
     background-color: #A408A7; 
   
  }
+ .message {
+   max-width: 30%;
+   height: 40px;
+   display: block;
+   background-color: #ffffff;
+   color: #A408A7;
+   border: 1px solid #A408A7;
+   border-radius: 20px;
+   font-size: 24px;
+   margin: 0 auto;
+   text-align: center;
+ }
+ .message span {
+   margin-top: 2px;
+ }
  .section_header_one {
     background-color: #A408A7;
     height: 63px;
@@ -896,3 +911,4 @@ input::-webkit-inner-spin-button {
  .forma_register input {
      width: 400px;
  }
+ 

@@ -99,14 +99,14 @@ class AuthController extends Controller
      "name" => "required|alpha",
      "surname" => "required|alpha",
      "patronymic" => "required|alpha",
-     "email" =>"required|unique:users|email",
+     "email" =>"required",
      "phone"=> "required|numeric",   
      "password"=> "required",
      "confirm_password"=>"required|same:password"],
      [
         "email.required" => "Поле обязательно для заполнения!",
         "email.email" => "Введите корректный email",
-        "email.unique" => "Данный email уже занят",
+        
         "name.required" => "Поле обязательно для заполнения!",
         "name.alpha" => "Имя должно состоять только из букв!",
         "surname.required" => "Поле обязательно для заполнения!",
@@ -131,6 +131,6 @@ class AuthController extends Controller
            "password"=> Hash::make($userInfo['password']),
       ]);
       $id->save();
-      return redirect("/users/personal_Area")->with("success","Вы зарегались!");
+      return redirect("/users/personal_Area")->with("update","Редактирование данных прошло успешно!");
      }
 }

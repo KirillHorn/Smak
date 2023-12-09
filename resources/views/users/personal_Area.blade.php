@@ -1,7 +1,26 @@
 <x-x-header />
-
+@if (session ("success"))
+<div>
+    <div  id="message"  class="message">
+        
+<span class="fw-bold">{{session("success")}}</span>
+       
+    </div>
+</div>
+  @endif
+  
+  @if (session ("update"))
+ <div>
+    <div  id="message"  class="message">
+        
+<span class="fw-bold">{{session("update")}}</span>
+       
+    </div>
+</div>
+  @endif
 
 <section>
+
     <div class="container d-flex flex-column gap-5">
         <div class="d-flex gap-3 user_name align-items-center">
             <img alt="иконка пользователя" src="/img/user_cub.svg">
@@ -109,53 +128,24 @@
 <x-footer />
 
 <script>
-    //     setTimeout(function(){
-    // 	document.getElementById('message').style.display = 'none';
-    //    }, 5000);
-    //     let form = document.querySelector('.form_group');
-    //     let button = document.querySelector('.addButton');
-    //     console.log(button);
-    //     console.log(form);
-    //     button.addEventListener("click", (event) => {
-    //         if(form.classList.contains('hidden')) {
-    //             button.textContent = 'Скрыть панель';
-
-    //             forShow();
-    //         } else {
-    //             isHidden();
-    //             button.textContent = 'Добавить группу';
-    //         }
-
-    //     });
-
-    //     function isHidden() {
-    //         form.classList.add('hidden');
-    //     }
-
-    //     function forShow() {
-    //         form.classList.remove('hidden');
-    //     }
-
-
-    //     let list =document.querySelector('.list');
-    //     let redbutton=document.querySelector('.redbutton');
-    //    redbutton.addEventListener("click", (event) => {
-    //         if(list.classList.contains('hidden2')) {
-    //             redbutton.textContent = 'Редактировать группу';
-
-    //             forShow2();
-    //         } else {
-    //             isHidden2();
-    //             redbutton.textContent = 'Скрыть список';
-    //         }
-
-    //     });
-
-    //     function isHidden2() {
-    //         list.classList.add('hidden2');
-    //     }
-
-    //     function forShow2() {
-    //         list.classList.remove('hidden2');
-    //     }
+function readURL(input) { //
+    if (input.files && input.files[0]) {
+     var reader = new FileReader(); //позволяет читать асинхронно содержимое файлов, хранящийся на пк
+       
+     reader.onloadend = function(e) { //Срабатывает только после того как скрипт был загружен  и выполнен
+      $('#prevImage').attr('src', e.target.result); // attr - Название атрибута, которое нужно получить.
+     }
+       
+     reader.readAsDataURL(input.files[0]); //используется для чтения содержимого files
+    }
+   }
+   $("#imageFile").change(function() { //change - Событие  происходит по окончании изменения значения элемента формы, когда это изменение зафиксировано.
+    readURL(this);
+   });
+   
+   setTimeout(function(){
+    // div.classList.remove("d-flex");
+       document.getElementById('message').style.display = 'none';
+    //   ('message').classList.remove("d-flex");
+   }, 10000);
 </script>

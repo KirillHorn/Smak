@@ -18,7 +18,7 @@
     <div class="mb-3">
       <label for="imageFile" class="form-label">Фотография заведения</label>
       <input class="form-control" name="img" type="file" id="imageFile" required>
-      <img id="prevImage" src="#" alt=""/>
+      <img class="img_view" id="prevImage" src="#" alt=""/>
     </div>
     <div class="mb-3">
     <select name="id_categoriesCafe"> 

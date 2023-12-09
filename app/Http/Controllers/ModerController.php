@@ -40,9 +40,9 @@ class ModerController extends Controller
         ]);
 
         if ($cafeAdd) {
-            return redirect()->back()->with('addproduct' , 'Вы добавили товар ');
+            return redirect()->back()->with('addproduct' , 'Вы добавили Заведение ');
               } else {
-                return redirect('/')->with('error','Не удалось добавить товар ты лох');
+                return redirect('/')->with('error','Не удалось добавить заведение ');
               }
     }
 }

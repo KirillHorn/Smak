@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use app\Models\categories_cafes;
 
 class cafe extends Model
 {
@@ -16,4 +17,9 @@ class cafe extends Model
         "img",
        
     ];
+
+    public function categories_cafes()
+    {
+        return $this->hasMany(categories_cafes::class);
+    }
 }

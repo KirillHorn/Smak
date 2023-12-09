@@ -1,5 +1,7 @@
 
 <x-x-header />
+
+
     <section class="banner">
         <div class="container">
             <div class="banner_text d-flex flex-column "> 
@@ -16,13 +18,15 @@
                 <a href="cafe">Перейти к заведениям <img src="/img/devices.png"></a>
             </div>
                 <div class="d-flex flex-wrap grid gap-4">
+                    @foreach ($cafe as $cafe_info)
                     <div class="cart_cafe g-col-4">
-                        <a href="/cafe_bl">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
+                        <a href="{{$cafe_info->id_cafe}}/cafe_bl">
+                        <img src="/storage/img/{{$cafe_info->img}}" alt="картинка заведения"> 
+                        <p>{{$cafe_info->title_categories}} • ₽</p>
+                        <a>{{$cafe_info->title}}</a>
                         </a>
                     </div>
+                    @endforeach
                     <div class="cart_cafe g-col-4">
                         <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
                         <p>Азиатска кухня • ₽</p>
