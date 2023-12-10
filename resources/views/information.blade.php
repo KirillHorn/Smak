@@ -4,7 +4,7 @@
       <div class="container">
         <div class="d-flex nav_goods align-items-center gap-3">
             <img src="/img/mdi_food-ramen.svg" alt="Тут">
-            <p>Суши мигом откроются в 10:00</p>
+            <p>{{$cafe_id->title}} откроются в 10:00</p>
         </div>
       </div>
     </section>

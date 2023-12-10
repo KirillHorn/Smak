@@ -11,7 +11,7 @@ class Cafe extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "id_cafe",
+        "id",
         "title",
         "id_categoriesCafe",
         "location",

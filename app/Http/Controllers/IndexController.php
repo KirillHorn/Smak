@@ -28,8 +28,9 @@ class IndexController extends Controller
         return view ('goods');
     }
 
-    public function cafe_bl_blade () {
-        return view ('cafe_bl');
+    public function show ($id_cafe) {
+        $id_cafes=Cafe::find($id_cafe);
+        return view ('information',['cafe_id'=>$id_cafes]);
     }
 
     public function personal_blade () {

@@ -25,7 +25,11 @@ Route::get('/cafe' , [IndexController::class, 'cafe_blade']);
 
 Route::get('/goods' , [IndexController::class, 'goods_blade']);
 
-Route::get('/cafe_bl' , [IndexController::class, 'cafe_bl_blade']);
+Route::get('/information/{id_cafe}' , [IndexController::class, 'show'])->name('show.r');
+
+// Route::get('/information' , function () { return view('information');});
+
+// Route::get('/information' , [IndexController::class, 'show']);
 
 Route::get('/users/personal_Area' , [IndexController::class, 'personal_blade']);
 

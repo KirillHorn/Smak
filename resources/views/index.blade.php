@@ -20,7 +20,7 @@
                 <div class="d-flex flex-wrap grid gap-4">
                     @foreach ($cafe as $cafe_info)
                     <div class="cart_cafe g-col-4">
-                        <a href="{{$cafe_info->id_cafe}}/cafe_bl">
+                        <a href=" {{route('show.r', ['id_cafe'=>$cafe_info->id])}}">
                         <img src="/storage/img/{{$cafe_info->img}}" alt="картинка заведения"> 
                         <p>{{$cafe_info->categoriesCafe->title_categories}} • ₽</p>
                         <a>{{$cafe_info->title}}</a>
