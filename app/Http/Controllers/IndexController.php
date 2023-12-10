@@ -5,14 +5,16 @@ use Illuminate\Support\Facades\Blade;
 use App\Http\Controllers\Alert;
 
 use Illuminate\Http\Request;
-use App\Models\cafe;
-use App\Models\categories_cafes;
+use App\Models\Cafe;
+use App\Models\CategoriesCafes;
 
 
 class IndexController extends Controller
 {
     public function index () {
-        $cafe=cafe::all();
+        $cafe=Cafe::with("categoriesCafe")->get();
+        // dd($cafe);
+        // $cafe=cafe::all();
         return view('index',["cafe"=>$cafe]);
     }
     public function product_blade () {

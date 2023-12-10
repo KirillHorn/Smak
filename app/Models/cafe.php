@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\Models\categories_cafes;
+use App\Models\CategoriesCafes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class cafe extends Model
+class Cafe extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -18,8 +19,8 @@ class cafe extends Model
        
     ];
 
-    public function categories_cafes()
+    public function categoriesCafe()
     {
-        return $this->hasMany(categories_cafes::class);
+        return $this->belongsTo(CategoriesCafes::class, 'id_categoriesCafe', 'id_categories');
     }
 }

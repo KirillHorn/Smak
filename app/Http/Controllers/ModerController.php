@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cafe;
-use App\Models\categories_cafes;
+use App\Models\Cafe;
+use App\Models\CategoriesCafes;
 use Illuminate\Http\Request;
 
 class ModerController extends Controller
 {
     public function  serviceRedact_blade() {
-        $categories=categories_cafes::all();
+        $categories=CategoriesCafes::all();
         return view('moder.serviceRedact',["categories" => $categories]);
     }
     public function  serviceEdit_blade() {
@@ -31,7 +31,7 @@ class ModerController extends Controller
         $img_info=$request->file('img')->hashName();
         $path_img=$request->file('img')->store('/public/img');
 
-        $cafeAdd=cafe::create ([
+        $cafeAdd=Cafe::create ([
             'title' => $infocafe['title'],
             'img'=> $img_info,
             'id_categoriesCafe' => $infocafe['id_categoriesCafe'],

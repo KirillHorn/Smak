@@ -22,46 +22,12 @@
                     <div class="cart_cafe g-col-4">
                         <a href="{{$cafe_info->id_cafe}}/cafe_bl">
                         <img src="/storage/img/{{$cafe_info->img}}" alt="картинка заведения"> 
-                        <p>{{$cafe_info->title_categories}} • ₽</p>
+                        <p>{{$cafe_info->categoriesCafe->title_categories}} • ₽</p>
                         <a>{{$cafe_info->title}}</a>
                         </a>
                     </div>
                     @endforeach
-                    <div class="cart_cafe g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
-                    </div>
-                    <div class="cart_cafe g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
-                    </div>
-                    <div class="cart_cafe g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
-                    </div>
-                    <div class="cart_cafe g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
-                    </div>
-                    <div class="cart_cafe g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
-                    </div>
-                    <div class="cart_cafe g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
-                    </div>
-                    <div class="cart_cafe g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Суши Мигом</a>
-                    </div>
+                
                 </div>
                     
         </div>

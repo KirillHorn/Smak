@@ -28,7 +28,7 @@
 </select>
     </div>
     <div class="mb-3">
-      <input class="form-control" name="location" placeholder="Местоположение заведеняи" type="text" required>
+      <input class="form-control" name="location" placeholder="Местоположение заведения" type="text" required>
     </div>
     
   

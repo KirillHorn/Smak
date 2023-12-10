@@ -4,19 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\Models\cafe;
+use App\Models\Cafe;
 
-class categories_cafes extends Model
+class CategoriesCafes extends Model
 {
     use HasFactory;
 
-    public $table = "categories_cafe";
+    // public $table = "categories_cafe";
     protected $fillable = [
         'id_categories',
         'title_categories',
     ];
     public function cafe()
     {
-        return $this->hasMany(cafe::class);
+        return $this->hasMany(Cafe::class , 'id_categoriesCafe', 'id_categories');
     }
 }
