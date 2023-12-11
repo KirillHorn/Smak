@@ -13,12 +13,13 @@
                 <div class="information_cafe_main d-flex "> 
                     <div class="information_cafe_main_one d-flex flex-column gap-3">
                       <div class="information_cafe_main_one_fon d-flex align-items-end gap-3">
-                          <p class="fs-1 fw-bold" >Суши Мигом</p>
-                          <button  class="heart">
+                        <img src="/storage/img/{{$cafe_id->img}}" alt="изображение заведения">
+                          <p class="fs-1 fw-bold" >{{$cafe_id->title}}</p>
+                          {{-- <button  class="heart">
                             <!-- <div class="heart">
 
                             </div> -->
-                          </button>
+                          </button> --}}
                       </div>
                         <input type="search" class="search_content search_goods">
                         </div>

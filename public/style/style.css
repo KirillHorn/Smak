@@ -502,15 +502,31 @@ gap: 80px;
   border-radius: 20px;
   margin-top: 20px;
   border: 1px solid #000000;
-  background-image: url("/img/66e1608c038e458e7185685a45251707.jpg");
+ 
+
   /* background-repeat: inherit; */
   /* background-clip:content-box ; */
   background-size: cover;
 }
 .information_cafe_main_one_fon p {
- color: #ffffff;
+   color: #ffffff;
+   max-width: 400px;
+   padding: 0px 20px;
+   text-align: center;
+   border-radius: 20px;
+   background-color: #A408A7;
+   font-weight: 900;
+   text-shadow: 2px 3px 5px #000000;
  margin-left: 20px;
+ z-index: 1;
  
+}
+.information_cafe_main_one_fon img {
+   width: 750px;
+   height: 300px;
+   position: absolute;
+   border-radius: 20px;
+   z-index: 0.9;
 }
 
 .iframe_goods {

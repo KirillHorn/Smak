@@ -1,5 +1,5 @@
 @include('moder.inc.sidebar')
-<div class="wrapper">
+<div class="wrapper" >
   
 <div class="container">
   <div>
@@ -23,7 +23,7 @@
     <div class="mb-3">
     <select name="id_categoriesCafe"> 
     @foreach ($categories as $item )
-    <option value="{{ $item->id_categories}}"> {{ $item->title_categories}}</option>
+    <option value="{{ $item->id}}"> {{ $item->title_categories}}</option>
     @endforeach
 </select>
     </div>
@@ -33,7 +33,7 @@
     
   
 </select>
-    <button type="submit" class="btn btn-primary">Добавить товар</button>
+    <button type="submit" class="btn btn-primary">Добавить Заведение</button>
   </form>
 </div>
 </div>

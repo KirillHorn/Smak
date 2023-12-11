@@ -10,13 +10,13 @@ class CategoriesCafes extends Model
 {
     use HasFactory;
 
-    // public $table = "categories_cafe";
+    public $table = "categories_cafe";
     protected $fillable = [
-        'id_categories',
+        'id',
         'title_categories',
     ];
     public function cafe()
     {
-        return $this->hasMany(Cafe::class , 'id_categoriesCafe', 'id_categories');
+        return $this->hasMany(Cafe::class , 'id_categoriesCafe', 'id');
     }
 }

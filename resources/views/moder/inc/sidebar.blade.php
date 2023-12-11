@@ -33,7 +33,7 @@
         </button>
         <div class="collapse show" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="" class="link-dark rounded">Выйти из аккаунта</a></li>
+            <li><a href="/signout" class="link-dark rounded">Выйти из аккаунта</a></li>
           </ul>
         </div>
       </li>

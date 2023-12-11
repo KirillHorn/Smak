@@ -92,4 +92,12 @@ main {
 .img_view {
   max-width: 300px;
   max-height: 300px;
+  margin: 10px 40px;
+}
+.img_align {
+  max-width: 200px;
+  max-height: 200px;
+}
+.wrapper {
+  margin: 10px auto;
 }

@@ -41,6 +41,12 @@ Route::get('/moder/serviceRedact' , [ModerController::class, 'serviceRedact_blad
 
 Route::get('/moder/serviceEdit' , [ModerController::class, 'serviceEdit_blade']);
 
+Route::get('/moder/{id}/Edit' , [ModerController::class, 'Edit']);
+
+Route::post('/moder/{id}/update_cafe' , [ModerController::class, 'update_cafe'])->name('edit.update');
+
+Route::delete('/moder/{id}/delete_cafe' , [ModerController::class, 'delete_cafe'])->name('delete.cafes');
+
 Route::get('/auth/registration', [AuthController::class, 'registration_page']);
 
 Route::post('/registration_valid', [AuthController::class,'registration_valid']);

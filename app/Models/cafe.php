@@ -21,6 +21,6 @@ class Cafe extends Model
 
     public function categoriesCafe()
     {
-        return $this->belongsTo(CategoriesCafes::class, 'id_categoriesCafe', 'id_categories');
+        return $this->belongsTo(CategoriesCafes::class, 'id_categoriesCafe', 'id');
     }
 }
