@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cafe;
 use App\Models\CategoriesCafes;
+use App\Models\Products;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class ModerController extends Controller
@@ -91,4 +93,56 @@ class ModerController extends Controller
         return redirect()->back()->with("destroy", "удаление прошло успешно");
 
     }
-}
+
+    public function serviceRedactProduct_blade()
+    {
+        $categories = Categories::all();
+        $cafes=Cafe::all();
+        return view('moder.serviceRedactProduct', ["categories" => $categories, "cafe" => $cafes]);
+    }
+
+    public function edit_product(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'weight'=> 'required',
+            'cost'=> 'required|numeric',
+            'img' => 'required',
+            'id_cafe' => 'required',
+            'id_categories'=> 'required'
+        ], [
+            'title.required' => 'Это обязательное поле!',
+            'weight.required' => 'Это обязательное поле!',
+            'cost.required' => 'Это обязательное поле!',
+            'cost.numeric' => 'Это поле должно состоять только из чисел',
+            'img.required' => 'Это обязательное поле!',
+            'id_cafe.required' => 'Это обязательное поле!',
+            'id_categories.required' => 'Это обязательное поле!'
+        ]);
+        $infoproduct = $request->all();
+        $img_info = $request->file('img')->hashName();
+        $path_img = $request->file('img')->store('/public/img');
+
+        
+        $cafeAdd = Products::create([
+            'title' => $infoproduct['title'],
+            'description' => $infoproduct['description'],
+            'weight' => $infoproduct['weight'],
+            'cost' => $infoproduct['cost'],
+            'img' => $img_info,
+            'id_cafe'=>$infoproduct['id_cafe'],
+            'id_categories'=>$infoproduct['id_categories'],
+           
+
+        ]);
+
+        if ($cafeAdd) {
+            return redirect()->back()->with('addproduct', 'Вы добавили продукт ');
+        } else {
+            return redirect('/')->with('error', 'Не удалось добавить продукт ');
+        }
+
+        }
+    }
+

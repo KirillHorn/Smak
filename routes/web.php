@@ -30,14 +30,20 @@ Route::get('/information/{id_cafe}' , [IndexController::class, 'show'])->name('s
 // Route::get('/information' , function () { return view('information');});
 
 // Route::get('/information' , [IndexController::class, 'show']);
+// Route::middleware('CheckRole:Клиент')->group(function () {
 
+// });
 Route::get('/users/personal_Area' , [IndexController::class, 'personal_blade']);
+Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class,'registration_redact'])->name('r.update');
 
-Route::get('/order',[OrderController::class, 'OrderController' ] );
+// Route::middleware('CheckRole:Модератор')->group(function () {
 
-Route::get('/courier/personal_Area' , [IndexController::class, 'personal_courier_blade']);
-
+// });
 Route::get('/moder/serviceRedact' , [ModerController::class, 'serviceRedact_blade']);
+
+Route::get('/moder/serviceRedactProduct' , [ModerController::class, 'serviceRedactProduct_blade']);
+
+Route::post('/edit_product' , [ModerController::class, 'edit_product']);
 
 Route::get('/moder/serviceEdit' , [ModerController::class, 'serviceEdit_blade']);
 
@@ -46,6 +52,14 @@ Route::get('/moder/{id}/Edit' , [ModerController::class, 'Edit']);
 Route::post('/moder/{id}/update_cafe' , [ModerController::class, 'update_cafe'])->name('edit.update');
 
 Route::delete('/moder/{id}/delete_cafe' , [ModerController::class, 'delete_cafe'])->name('delete.cafes');
+
+Route::post('/edit_cafe', [ModerController::class,'edit_cafe']);
+
+Route::get('/order',[OrderController::class, 'OrderController' ] );
+
+Route::get('/courier/personal_Area' , [IndexController::class, 'personal_courier_blade']);
+
+Route::get('/moder/serviceRedactProduct' , [ModerController::class, 'serviceRedactProduct_blade']);
 
 Route::get('/auth/registration', [AuthController::class, 'registration_page']);
 
@@ -57,7 +71,7 @@ Route::get('/signout', [AuthController::class, 'signout']);
 
 Route::post('/auth_valid', [AuthController::class,'auth_valid']);
 
-Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class,'registration_redact'])->name('r.update');
 
-Route::post('/edit_cafe', [ModerController::class,'edit_cafe']);
+
+
 

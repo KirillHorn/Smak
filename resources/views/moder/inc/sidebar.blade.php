@@ -28,6 +28,18 @@
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#product-collapse" aria-expanded="true">
+          Продукты
+        </button>
+        <div class="collapse show" id="product-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="/moder/serviceRedactProduct" class="link-dark rounded">Добавить продукт</a></li>
+            <li><a href="/moder/serviceEdit" class="link-dark rounded">Редактирование продукт</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="true">
           Аккаунт
         </button>
