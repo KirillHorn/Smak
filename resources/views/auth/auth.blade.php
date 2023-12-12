@@ -36,11 +36,11 @@
       @csrf
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" name="email" placeholder=" @error('email') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Пароль</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        <input type="password" name="password" placeholder=" @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
       </div>
      
 

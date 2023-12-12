@@ -11,17 +11,18 @@
             <div class="mb-3">
                 <label for="formFile" class="form-label">Название Заведения</label>
                 <input type="title" class="form-control" name="title" value="{{ $cafes_info->title }}"
-                    placeholder="" >
+                    placeholder="@error('title') {{$message}}  @enderror" >
                     
             </div>
             <div class="mb-3">
                 <label for="imageFile" class="form-label">Фотография товара</label>
+                <p>@error('img') {{$message}}  @enderror</p>
                 <input class="form-control" name="img" value="{{ $cafes_info->img }}" type="file" id="imageFile">
                     <img class="img_view" id="prevImage" src="#" alt=""/>
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Местоположение</label>
-                <textarea class="form-control" name="location" value="" rows="8" placeholder="Местоположение" id="imageFile"
+                <textarea class="form-control" name="location" value="" rows="8" placeholder="@error('location') {{$message}}  @enderror" id="imageFile"
                     >{{ $cafes_info->location }}</textarea>
             </div>
             <div class="mb-3">

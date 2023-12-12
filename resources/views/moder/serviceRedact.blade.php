@@ -14,13 +14,17 @@
   <form action="/edit_cafe" method="POST" enctype="multipart/form-data" class="addservice">
     <h2 class="text-center">Добавить Заведение</h2>
     @csrf
-    <div class="mb-3"><input type="text" name="title" class="form-control" placeholder="Название заведения" required></div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label text_label">Название</label>
+      <input type="text" name="title" class="form-control" placeholder=" @error('title') {{$message}}  @enderror" ></div>
     <div class="mb-3">
       <label for="imageFile" class="form-label">Фотография заведения</label>
-      <input class="form-control" name="img" type="file" id="imageFile" required>
+      <p>@error('img') {{$message}}  @enderror</p>
+      <input class="form-control" name="img" type="file" id="imageFile" placeholder="@error('img') {{$message}}  @enderror" >
       <img class="img_view" id="prevImage" src="#" alt=""/>
     </div>
     <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label text_label">Категория</label>
     <select name="id_categoriesCafe"> 
     @foreach ($categories as $item )
     <option value="{{ $item->id}}"> {{ $item->title_categories}}</option>
@@ -28,7 +32,8 @@
 </select>
     </div>
     <div class="mb-3">
-      <input class="form-control" name="location" placeholder="Местоположение заведения" type="text" required>
+    <label for="exampleInputEmail1" class="form-label text_label">Местоположение</label>
+      <input class="form-control" name="location" placeholder=" @error('location') {{$message}}  @enderror" type="text" >
     </div>
     
   

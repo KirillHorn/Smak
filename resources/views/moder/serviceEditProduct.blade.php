@@ -1,11 +1,11 @@
 @include('moder.inc.sidebar')
 <div class="wrapper">
 <div class="container">
-  <h2 class="text-center">Заведения: удаление|редактирование</h2>
+  <h2 class="text-center">Продукты: удаление|редактирование</h2>
 
- @if (session ("kasdksakda"))
+ @if (session ("update"))
  <div>
-    <span  id="message">{{session("kasdksakda")}}</span>
+    <span  id="message">{{session("update")}}</span>
 </div>
  @endif
 
@@ -21,21 +21,28 @@
       <th scope="col">#</th>
       <th scope="col">Название</th>
       <th scope="col">Фото</th>
+      <th scope="col">Описание</th>
+      <th scope="col">Вес</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Заведение</th>
       <th scope="col">Категория</th>
-      <th scope="col">Местоположение</th>
+
     </tr>
   </thead>
   <tbody>
-    @foreach ($cafe as $cafes)
+    @foreach ($product as $products)
     <tr>
-      <td class="align-middle fw-bold">{{$cafes->id}}</td>
-      <td class="align-middle fw-bolder">{{$cafes->title}}</td>
-      <td class="align-middle"><img src="/storage/img/{{$cafes->img}}" alt="" class="img_align"></td>
-      <td class="align-middle">{{$cafes->categoriesCafe->title_categories}}</td>
-      <td class="align-middle">{{$cafes->location}}</td>
-      <td class="align-middle"><a href="/moder/{{$cafes->id}}/Edit"><button type="submit" class="btn btn-primary">Редактировать</button></a></td>
+      <td class="align-middle fw-bold">{{$products->id}}</td>
+      <td class="align-middle fw-bolder">{{$products->title}}</td>
+      <td class="align-middle"><img src="/storage/img/{{$products->img}}" alt="" class="img_align"></td>
+      <td class="align-middle">{{$products->description}}</td>
+      <td class="align-middle">{{$products->weight}}</td>
+      <td class="align-middle">{{$products->cost}}</td>
+      <td class="align-middle">{{$products->id_cafe}}</td>
+      <td class="align-middle">{{$products->id_categories}}</td>
+      <td class="align-middle"><a href="/moder/{{$products->id}}/EditProduct"><button type="submit" class="btn btn-primary">Редактировать</button></a></td>
       <td class="align-middle">
-      <form action="{{route ('delete.cafes' , ['id' => $cafes->id ])}}" method="POST">
+      <form action="{{route ('delete.product' , ['id' => $products->id])}}" method="POST">
                         @csrf
                          @method('DELETE')   
                         

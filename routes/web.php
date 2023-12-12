@@ -45,9 +45,21 @@ Route::get('/moder/serviceRedactProduct' , [ModerController::class, 'serviceReda
 
 Route::post('/edit_product' , [ModerController::class, 'edit_product']);
 
+Route::get('/moder/serviceEditProduct' , [ModerController::class, 'serviceProduct_blade']);
+
+Route::get('/moder/{id}/EditProduct' , [ModerController::class, 'serviceEditproduct_blade']);
+
+Route::post('/moder/{id}/updateProduct' , [ModerController::class, 'updateProduct'])->name('products.update');
+
+Route::delete('/moder/{id}/delete_product' , [ModerController::class, 'delete_product'])->name('delete.product');
+
 Route::get('/moder/serviceEdit' , [ModerController::class, 'serviceEdit_blade']);
 
 Route::get('/moder/{id}/Edit' , [ModerController::class, 'Edit']);
+
+
+
+Route::post('/edit_product' , [ModerController::class, 'edit_product']);
 
 Route::post('/moder/{id}/update_cafe' , [ModerController::class, 'update_cafe'])->name('edit.update');
 

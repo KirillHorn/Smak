@@ -1,38 +1,53 @@
 @include('moder.inc.sidebar')
 <div class="wrapper">
     <div class="container">
-        <h2 class="text-center">Заведение</h2>
-        <form action="{{route ('edit.update', ['id' => $cafes_info->id])}}" method="POST" enctype="multipart/form-data" class="addservice">
+        <h2 class="text-center">Продукт</h2>
+        <form action="{{route('products.update', ['id' => $product->id ])}}" method="POST" enctype="multipart/form-data" class="addservice">
             @csrf
+            <h2 class="text-center">Редактировать Продукт</h2>
+            <img src="/storage/img/{{ $product->img }}" class="img_view">
+            <div class="mb-3">
+                <label  class="form-label">Название продукта</label>
+                <input type="text" name="title" class="form-control" value="{{$product->title}}" placeholder="@error('title') {{$message}}  @enderror">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Описание продукта</label>
+                <textarea class="form-control" name="description" value="" rows="8" placeholder="@error('description') {{$message}}  @enderror">
+                {{$product->description}}
+            </textarea>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Вес продукта</label>
+                <input type="text" name="weight" class="form-control" value="{{$product->weight}}"  placeholder="@error('weight') {{$message}}  @enderror">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Цена товара</label>
+                <input type="text" name="cost" class="form-control" value="{{$product->cost}}" placeholder="@error('cost') {{$message}}  @enderror">
+            </div>
 
-            <h2 class="text-center">Редактировать Заведения</h2>
-            <img src="/storage/img/{{ $cafes_info->img }}" class="img_view">
-            <input type="hidden" value="" name="id">
+
             <div class="mb-3">
-                <label for="formFile" class="form-label">Название Заведения</label>
-                <input type="title" class="form-control" name="title" value="{{ $cafes_info->title }}"
-                    placeholder="" >
-                    
+                <label for="imageFile" class="form-label">Фотография Продукта</label>
+                <p>@error('img') {{$message}} @enderror</p>
+                <input class="form-control" name="img" type="file" id="imageFile" >
+                <img class="img_view" id="prevImage" src="#" alt="" />
             </div>
+
             <div class="mb-3">
-                <label for="imageFile" class="form-label">Фотография товара</label>
-                <input class="form-control" name="img" value="{{ $cafes_info->img }}" type="file" id="imageFile">
-                    <img class="img_view" id="prevImage" src="#" alt=""/>
+                <p>Заведение</p>
+                <select name="id_cafe">
+                    @foreach ($cafes as $item )
+                    <option value="{{$item->id}}"> {{ $item->title}}</option>
+                    @endforeach
+                </select>
             </div>
+
             <div class="mb-3">
-                <label for="formFile" class="form-label">Местоположение</label>
-                <textarea class="form-control" name="location" value="" rows="8" placeholder="Местоположение" id="imageFile"
-                    >{{ $cafes_info->location }}</textarea>
-            </div>
-            <div class="mb-3">
-                <label for="formFile" class="form-label">Категория</label>
-                <select name="categoria_id" class="form-control">
-                    <option value="{{ $cafes_info->id_categoriesCafe }}">
-                        {{ $cafes_info->categoriesCafe->title_categories }}</option>
-                        @foreach ($categoria_cafe as $categoria)
-                        <option value="{{ $categoria->id}}">
-                          {{ $categoria->title_categories }}</option>
-                        @endforeach
+                <p>Категория продукта</p>
+                <select name="id_categories">
+                    @foreach ($categories as $item )
+                    <option value="{{$item->id}}"> {{ $item->title}}</option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Редактировать</button>
@@ -41,24 +56,22 @@
     </div>
 </div>
 <script>
-  function readURL(input) { //
-   if (input.files && input.files[0]) {
-    var reader = new FileReader(); //позволяет читать асинхронно содержимое файлов, хранящийся на пк
-      
-    reader.onloadend = function(e) { //Срабатывает только после того как скрипт был загружен  и выполнен
-     $('#prevImage').attr('src', e.target.result); // attr - Название атрибута, которое нужно получить.
+    function readURL(input) { //
+        if (input.files && input.files[0]) {
+            var reader = new FileReader(); //позволяет читать асинхронно содержимое файлов, хранящийся на пк
+
+            reader.onloadend = function(e) { //Срабатывает только после того как скрипт был загружен  и выполнен
+                $('#prevImage').attr('src', e.target.result); // attr - Название атрибута, которое нужно получить.
+            }
+
+            reader.readAsDataURL(input.files[0]); //используется для чтения содержимого files
+        }
     }
-      
-    reader.readAsDataURL(input.files[0]); //используется для чтения содержимого files
-   }
-  }
-  $("#imageFile").change(function() { //change - Событие  происходит по окончании изменения значения элемента формы, когда это изменение зафиксировано.
-   readURL(this);
-  });
-  
-  setTimeout(function(){
-    document.getElementById('message').style.display = 'none';
-  }, 5000);
-  
-  
-  </script>
+    $("#imageFile").change(function() { //change - Событие  происходит по окончании изменения значения элемента формы, когда это изменение зафиксировано.
+        readURL(this);
+    });
+
+    setTimeout(function() {
+        document.getElementById('message').style.display = 'none';
+    }, 5000);
+</script>

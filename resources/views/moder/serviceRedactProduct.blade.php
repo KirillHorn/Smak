@@ -14,21 +14,27 @@
     <form action="/edit_product" method="POST" enctype="multipart/form-data" class="addservice">
       <h2 class="text-center">Добавить Продукт</h2>
       @csrf
-      <div class="mb-3"><input type="text" name="title" class="form-control" placeholder="Название продукта"></div>
       <div class="mb-3">
-        <textarea class="form-control" name="description" value="" rows="8" placeholder="Описание" id="imageFile">
+      <label  class="form-label">Название продукта</label>  
+      <input type="text" name="title" class="form-control" placeholder="@error('title') {{$message}}  @enderror"></div>
+      <div class="mb-3">
+      <label  class="form-label">Описание продукта</label> 
+        <textarea class="form-control" name="description" value="" rows="8" placeholder="@error('description') {{$message}}  @enderror">
 </textarea>
       </div>
       <div class="mb-3">
-        <input type="text" name="weight" class="form-control" placeholder="Вес продукта">
+      <label  class="form-label">Вес продукта</label> 
+        <input type="text" name="weight" class="form-control" placeholder="@error('weight') {{$message}}  @enderror">
       </div>
       <div class="mb-3">
-        <input type="text" name="cost" class="form-control" placeholder="Цена">
+      <label  class="form-label">Цена товара</label> 
+        <input type="text" name="cost" class="form-control" placeholder="@error('cost') {{$message}}  @enderror">
       </div>
 
 
       <div class="mb-3">
         <label for="imageFile" class="form-label">Фотография Продукта</label>
+        <p>@error('img') {{$message}}  @enderror</p>
         <input class="form-control" name="img" type="file" id="imageFile" required>
         <img class="img_view" id="prevImage" src="#" alt="" />
       </div>

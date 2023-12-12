@@ -34,7 +34,7 @@
         <div class="collapse show" id="product-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="/moder/serviceRedactProduct" class="link-dark rounded">Добавить продукт</a></li>
-            <li><a href="/moder/serviceEdit" class="link-dark rounded">Редактирование продукт</a></li>
+            <li><a href="/moder/serviceEditProduct" class="link-dark rounded">Редактирование продукт</a></li>
           </ul>
         </div>
       </li>

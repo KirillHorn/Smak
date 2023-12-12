@@ -94,6 +94,8 @@ class ModerController extends Controller
 
     }
 
+    // Модерская часть с кафе
+
     public function serviceRedactProduct_blade()
     {
         $categories = Categories::all();
@@ -143,6 +145,62 @@ class ModerController extends Controller
             return redirect('/')->with('error', 'Не удалось добавить продукт ');
         }
 
+        }
+
+        public function serviceProduct_blade()
+        {
+            $categories = Categories::all();
+            $products=Products::all();
+            return view('moder.serviceEditProduct', ["categories" => $categories, "product" => $products]);
+        }
+
+        public function serviceEditproduct_blade($id) {
+            $products=Products::find($id);
+            $categories =Categories::all();
+            $cafes=Cafe::all();
+            return view('moder.EditProduct', ["product" => $products,"categories" => $categories,"cafes"=>$cafes]);
+        }
+
+        public function updateProduct(Request $request, Products $id ) {
+            $request->validate([
+                'title' => 'required',
+                'description' => 'required',
+                'weight'=> 'required',
+                'cost'=> 'required|numeric',
+                'img' => 'required',
+                'id_cafe' => 'required',
+                'id_categories'=> 'required'
+            ], [
+                'title.required' => 'Это обязательное поле!',
+                'weight.required' => 'Это обязательное поле!',
+                'cost.required' => 'Это обязательное поле!',
+                'cost.numeric' => 'Это поле должно состоять только из чисел',
+                'img.required' => 'Это обязательное поле!',
+                'id_cafe.required' => 'Это обязательное поле!',
+                'id_categories.required' => 'Это обязательное поле!' 
+            ]);
+            $infoproduct = $request->all();
+            $img_info = $request->file('img')->hashName();
+            $path_img = $request->file('img')->store('/public/img');
+            $id->fill(
+                [
+                    'title' => $infoproduct['title'],
+                'description' => $infoproduct['description'],
+                'weight' => $infoproduct['weight'],
+                 'cost' => $infoproduct['cost'],
+                'img' => $img_info,
+                'id_cafe'=>$infoproduct['id_cafe'],
+                'id_categories'=>$infoproduct['id_categories'],
+                ]);
+            $id->save();
+            return redirect("/moder/serviceEditProduct")->with("update", "редактирование Продукта прошла успешна");
+        }
+
+        public function delete_product(Products $id)
+        {
+            $id->delete();
+            return redirect()->back()->with("destroy", "удаление прошло успешно");
+    
         }
     }
 
