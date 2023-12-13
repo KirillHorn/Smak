@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('patronymic');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->foreignId('id_role')->references('id_role')->on("roles");
+            $table->foreignId('id_role')->references('id')->on("roles");
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
