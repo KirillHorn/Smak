@@ -56,8 +56,9 @@
           @endforeach
         </select>
       </div>
-      </select>
-      <button type="submit" class="btn btn-primary">Добавить Заведение</button>
+     
+      <button type="submit" class="btn btn-primary btn_buttom"  >Добавить Продукт</button>
+    
     </form>
   </div>
 </div>

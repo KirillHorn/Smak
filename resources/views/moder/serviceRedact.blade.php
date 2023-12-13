@@ -38,7 +38,7 @@
     
   
 </select>
-    <button type="submit" class="btn btn-primary">Добавить Заведение</button>
+    <button type="submit" class="btn btn-primary btn_buttom">Добавить Заведение</button>
   </form>
 </div>
 </div>

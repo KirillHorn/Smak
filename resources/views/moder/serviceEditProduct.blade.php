@@ -40,7 +40,7 @@
       <td class="align-middle">{{$products->cost}}</td>
       <td class="align-middle">{{$products->id_cafe}}</td>
       <td class="align-middle">{{$products->id_categories}}</td>
-      <td class="align-middle"><a href="/moder/{{$products->id}}/EditProduct"><button type="submit" class="btn btn-primary">Редактировать</button></a></td>
+      <td class="align-middle"><a href="/moder/{{$products->id}}/EditProduct"><button type="submit" class="btn btn-primary button_redact">Редактировать</button></a></td>
       <td class="align-middle">
       <form action="{{route ('delete.product' , ['id' => $products->id])}}" method="POST">
                         @csrf

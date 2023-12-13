@@ -50,7 +50,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Редактировать</button>
+            <button type="submit" class="btn btn-primary btn_buttom">Редактировать</button>
         </form>
         <hr>
     </div>

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Categories;
+use App\Models\Cafe;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +19,16 @@ class Products extends Model
         'img',
         'id_cafe',
         'id_categories',
-
-
     ];
+
+    public function Categories()
+    {
+        return $this->belongsTo(Categories::class, 'id_categories', 'id');
+    }
+
+    public function Cafe()
+    {
+        return $this->belongsTo(Cafe::class, 'id_cafe', 'id');
+    }
+
 }

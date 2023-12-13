@@ -17,9 +17,17 @@
                     </div>
                         <div>
                         <ul class="navigation_footer">
-                            <li class="fw-bold">Войти</li>
-                            <li>Регистрация</li>
-                            <li>Личный кабинет</li>
+                            @guest
+                            <li class="fw-bold"><a href="/auth/auth">Вход</a></li>
+                            <li class="fw-bold"> <a href="/auth/registration">Регистрация</a></li>
+                            @endguest
+
+                            @auth
+                            <li><a href="/users/personal_Area">Кабинет</a></li> 
+                            <li><a href="/signout">Выход</a></li> 
+                            @endauth
+                       
+                            
                         </ul>
                         </div>
             </div>

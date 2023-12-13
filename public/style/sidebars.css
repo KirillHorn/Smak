@@ -51,8 +51,8 @@ main {
 }
 .btn-toggle:hover,
 .btn-toggle:focus {
-  color: rgba(0, 0, 0, .85);
-  background-color: #d2f4ea;
+  color: #A408A7;
+  background-color: #b3b3b3;
 }
 
 .btn-toggle::before {
@@ -64,7 +64,7 @@ main {
 }
 
 .btn-toggle[aria-expanded="true"] {
-  color: rgba(0, 0, 0, .85);
+  color: #A408A7;
 }
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
@@ -79,7 +79,7 @@ main {
 }
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
-  background-color: #d2f4ea;
+  background-color: #fc63ff;
 }
 
 .scrollarea {
@@ -100,4 +100,13 @@ main {
 }
 .wrapper {
   margin: 10px auto;
+}
+.btn_buttom {
+  width: 100%;
+  background-color:#A408A7 ;
+  border: 1px solid #A408A7;
+}
+.button_redact {
+  background-color:#A408A7 ;
+  border: 1px solid #A408A7;
 }

@@ -33,7 +33,7 @@
       <td class="align-middle"><img src="/storage/img/{{$cafes->img}}" alt="" class="img_align"></td>
       <td class="align-middle">{{$cafes->categoriesCafe->title_categories}}</td>
       <td class="align-middle">{{$cafes->location}}</td>
-      <td class="align-middle"><a href="/moder/{{$cafes->id}}/Edit"><button type="submit" class="btn btn-primary">Редактировать</button></a></td>
+      <td class="align-middle"><a href="/moder/{{$cafes->id}}/Edit"><button type="submit" class="btn btn-primary button_redact">Редактировать</button></a></td>
       <td class="align-middle">
       <form action="{{route ('delete.product' , ['id' => $cafes->id ])}}" method="POST">
                         @csrf

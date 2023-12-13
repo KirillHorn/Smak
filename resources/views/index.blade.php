@@ -59,61 +59,16 @@
                 <a href="/product">Перейти к блюдам <img src="/img/bxs_dish.png"></a>
             </div>
                 <div class="d-flex flex-wrap grid gap-4">
-                
+                    @foreach ($product as $products)
                     <div class="cart_cafe cart_product g-col-4">
-                    <a href="/goods">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
+                    <a href="{{route ('goods.r', ['id'=>$products->id])}}">
+                        <img src="/storage/img/{{$products->img}}" alt="картинка заведения"> 
+                        <p>{{$products->Categories->title}}</p>
+                        <a>{{$products->title}}</a>
+                        <p class="fw-bold">{{$products->cost}} ₽•45 минут</p>
                         </a>
                     </div>
-                 
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                        <p>Азиатска кухня • ₽</p>
-                        <a>Рамен горящего города</a>
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                    </div>
-                    
-                    
-                    
+                    @endforeach 
                 </div>
                     
         </div>

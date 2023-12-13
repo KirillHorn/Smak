@@ -23,23 +23,23 @@ Route::get('/product' , [IndexController::class, 'product_blade']);
 
 Route::get('/cafe' , [IndexController::class, 'cafe_blade']);
 
-Route::get('/goods' , [IndexController::class, 'goods_blade']);
+Route::get('/goods/{id}' , [IndexController::class, 'goods_blade'])->name('goods.r');
 
 Route::get('/information/{id_cafe}' , [IndexController::class, 'show'])->name('show.r');
 
 // Route::get('/information' , function () { return view('information');});
 
 // Route::get('/information' , [IndexController::class, 'show']);
-// Route::middleware('CheckRole:Клиент')->group(function () {
+Route::middleware('checkRole:Клиент')->group(function () {
 
-// });
-Route::get('/users/personal_Area' , [IndexController::class, 'personal_blade']);
+    Route::get('/users/personal_Area' , [IndexController::class, 'personal_blade']);
 Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class,'registration_redact'])->name('r.update');
+});
 
-// Route::middleware('CheckRole:Модератор')->group(function () {
 
-// });
-Route::get('/moder/serviceRedact' , [ModerController::class, 'serviceRedact_blade']);
+Route::middleware('checkRole:Модератор')->group(function () {
+
+    Route::get('/moder/serviceRedact' , [ModerController::class, 'serviceRedact_blade']);
 
 Route::get('/moder/serviceRedactProduct' , [ModerController::class, 'serviceRedactProduct_blade']);
 
@@ -58,7 +58,6 @@ Route::get('/moder/serviceEdit' , [ModerController::class, 'serviceEdit_blade'])
 Route::get('/moder/{id}/Edit' , [ModerController::class, 'Edit']);
 
 
-
 Route::post('/edit_product' , [ModerController::class, 'edit_product']);
 
 Route::post('/moder/{id}/update_cafe' , [ModerController::class, 'update_cafe'])->name('edit.update');
@@ -67,11 +66,15 @@ Route::delete('/moder/{id}/delete_cafe' , [ModerController::class, 'delete_cafe'
 
 Route::post('/edit_cafe', [ModerController::class,'edit_cafe']);
 
+Route::get('/moder/serviceRedactProduct' , [ModerController::class, 'serviceRedactProduct_blade']);
+
+});
+
+
 Route::get('/order',[OrderController::class, 'OrderController' ] );
 
-Route::get('/courier/personal_Area' , [IndexController::class, 'personal_courier_blade']);
 
-Route::get('/moder/serviceRedactProduct' , [ModerController::class, 'serviceRedactProduct_blade']);
+
 
 Route::get('/auth/registration', [AuthController::class, 'registration_page']);
 

@@ -4,16 +4,17 @@
 
     <section class="">
         <div class="container d-flex main_goods ">
-            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="" class="img_goods">
+            <img src="/storage/img/{{$product->img}}" alt="" class="img_goods">
             <div class="main_goods_text">
-              <h2 class="fw-bold">Рамен Горящего города</h2>
-              <p style="font-size: 40px;">190.50₽</p>
-              <p>Заведение: <a> <span> Суши Мигом</span></a></p>
+              <h2 class="fw-bold">{{$product->title}}</h2>
+              <p style="font-size: 40px;">{{$product->cost}}₽</p>
+              <p>Заведение: <a href="{{route('show.r', ['id_cafe'=>$product->Cafe->id])}}"> <span style=" color: #A408A7;">{{$product->Cafe->title}}</span></a></p>
                 <div>
                   <hr>
-                  <p><span>Описание:</span> чень распространенный в Юго-Восточной Азии вид лапши. Чрезвычайно популярна в Китае, Японии и Корее. Ее родина - Китай. Внешне это тонкая плоская лапша светло-желтого цвета. В большинстве своем в состав лапши входят четыре компонента – пшеничная мука, соль, вода и щелочная минеральная вода (в Японии ее называют каммидзу). </p>
-                  <p><span>Состав:</span> куриный бульон, курица, яйцо маринованное варёное, лапша удон, нори, кунжутное масло, кунжут. Содержит следы имбиря.</p>
-                  <p><span>Вес:</span> 387</p>
+                  <p><span>Категория:</span> {{$product->Categories->title}} </p>
+                  <p><span>Описание:</span> {{$product->description}} </p>
+                
+                  <p><span>Вес:</span> {{$product->weight}}</p>
                   <hr>
                 </div>
                 <a class="buy_buton text-end">Купить</a>

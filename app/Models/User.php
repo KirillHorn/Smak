@@ -27,11 +27,16 @@ class User extends Authenticatable
         'id_role',
         'password',
     ];
-    public function hasRole()
-    {
-        // return $this->role === $role;
-        return $this->belongsTo(Role::class);
-    }
+    // public function hasRole($role)
+    // {
+    //     return $this->role === $role;
+    //     // return $this->belongsTo(Role::class);
+    // }
+
+    public function role()
+{
+    return $this->belongsTo(Role::class,'id_role');
+}
     // protected $table="users";
 
     // protected $guarded= false;

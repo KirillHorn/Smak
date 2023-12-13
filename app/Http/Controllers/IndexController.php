@@ -6,6 +6,7 @@ use App\Http\Controllers\Alert;
 
 use Illuminate\Http\Request;
 use App\Models\Cafe;
+use App\Models\Products;
 use App\Models\CategoriesCafes;
 
 
@@ -13,19 +14,22 @@ class IndexController extends Controller
 {
     public function index () {
         $cafe=Cafe::with("categoriesCafe")->get();
+        $product=Products::with("Categories")->get();
         // dd($cafe);
         // $cafe=cafe::all();
-        return view('index',["cafe"=>$cafe]);
+        return view('index',["cafe"=>$cafe, "product" => $product]);
     }
     public function product_blade () {
+        
         return view ('product');
     }
     public function cafe_blade () {
         return view ('cafe');
     }
     
-    public function goods_blade () {
-        return view ('goods');
+    public function goods_blade ($id) {
+        $product=Products::find($id);
+        return view ('goods' , ['product' =>$product]);
     }
 
     public function show ($id_cafe) {

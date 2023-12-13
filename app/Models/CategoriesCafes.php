@@ -19,4 +19,6 @@ class CategoriesCafes extends Model
     {
         return $this->hasMany(Cafe::class , 'id_categoriesCafe', 'id');
     }
+
+   
 }
