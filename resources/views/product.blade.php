@@ -15,13 +15,9 @@
                             <div class="d-flex flex-column gap-4">
                                 <input type="search" class="search_content">
                                     <div class="d-flex flex-wrap gap-4  a_content_categories">
-                                    <a>Бургеры</a> <a>Суши и роллы</a> <a>Пицца</a>
-                                    <a>Бургеры</a> <a>Суши и роллы</a> <a>Пицца</a>
-                                    <a>Бургеры</a> <a>Суши и роллы</a> <a>Пицца</a>
-                                    <a>Бургеры</a> <a>Суши и роллы</a> <a>Пицца</a>
-                                    <a>Бургеры</a> <a>Суши и роллы</a> <a>Пицца</a>
-                                    <a>Бургеры</a> <a>Суши и роллы</a> <a>Пицца</a>
-                                    <a>Бургеры</a> <a>Суши и роллы</a> 
+                                   @foreach ($categories as $categories_product)
+                                    <a>{{$categories_product->title}}</a>
+                                   @endforeach
                                      </div>
                              </div>
                      </div>
@@ -35,104 +31,26 @@
                 <a>Перейти к заведениям <img src="/img/bxs_dish.png"></a>
             </div> --}} -->
                 <div class="d-flex flex-wrap grid gap-4">
+                @foreach ($product as $products)
                     <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
+                    <a href="{{route ('goods.r', ['id'=>$products->id])}}">
+                        <img src="/storage/img/{{$products->img}}" alt="картинка заведения"> 
                       
-                        <p>Азиатска кухня • ₽</p>
+                        <p >{{$products->Categories->title}}</p>
                        
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
+                        <a style="padding-top: 0px;  color: #A408A7;" class="fw-bolder">{{$products->title}}</a>
                         <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
+                        <p class="fw-bold">{{$products->cost}}</p>
+                        </a>
                         </div>
                     
                     </div>
-                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                      
-                        <p>Азиатска кухня • ₽</p>
-                       
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
-                        <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
-                        </div>
-                    
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                      
-                        <p>Азиатска кухня • ₽</p>
-                       
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
-                        <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
-                        </div>
-                    
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                      
-                        <p>Азиатска кухня • ₽</p>
-                       
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
-                        <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
-                        </div>
-                    
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                      
-                        <p>Азиатска кухня • ₽</p>
-                       
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
-                        <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
-                        </div>
-                    
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                      
-                        <p>Азиатска кухня • ₽</p>
-                       
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
-                        <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
-                        </div>
-                    
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                      
-                        <p>Азиатска кухня • ₽</p>
-                       
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
-                        <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
-                        </div>
-                    
-                    </div>
-                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
-                        <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                      
-                        <p>Азиатска кухня • ₽</p>
-                       
-                        <a style="padding-top: 0px;">Рамен горящего города</a>
-                        <div class="d-flex gap-5">
-                        <p class="fw-bold">190 ₽•45 минут</p>
-                        <button class="button_basket"></button>
-                        </div>
-                    
-                    </div>
-                    
-                    
+                   
+                    @endforeach       
+                    <div>
+         
+                </div>
+              {{ $product->withQueryString()->links('pagination::bootstrap-5') }}
                 </div>
                     
         </div>

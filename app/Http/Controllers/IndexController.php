@@ -8,23 +8,29 @@ use Illuminate\Http\Request;
 use App\Models\Cafe;
 use App\Models\Products;
 use App\Models\CategoriesCafes;
+use App\Models\Categories;
 
 
 class IndexController extends Controller
 {
     public function index () {
-        $cafe=Cafe::with("categoriesCafe")->get();
-        $product=Products::with("Categories")->get();
+        $cafe=Cafe::with("categoriesCafe")->take(8)->get();
+        $product=Products::with("Categories")->take(8)->get();
         // dd($cafe);
         // $cafe=cafe::all();
         return view('index',["cafe"=>$cafe, "product" => $product]);
     }
     public function product_blade () {
+        // $product=Products::with("Categories")->get();
         
-        return view ('product');
+        $product=Products::with("Categories")->paginate(8);
+        $categories=Categories::all();
+        return view ('product',compact('product'), ["categories" => $categories ]);
     }
     public function cafe_blade () {
-        return view ('cafe');
+        $cafe=Cafe::with("categoriesCafe")->paginate(8);
+        $categoriesCafe=CategoriesCafes::all();
+        return view ('cafe',compact('cafe'), [ 'categorcafe'=>$categoriesCafe]);
     }
     
     public function goods_blade ($id) {

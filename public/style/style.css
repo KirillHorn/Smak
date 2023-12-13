@@ -154,7 +154,7 @@
    font-size: 24px;
    background: linear-gradient( #A408A7, #0040BC);
    color: rgb(255, 255, 255);
-  margin: 0 auto;
+  margin: 0 140px;
    height: 45px;
   
    text-align: center   ;
@@ -437,7 +437,14 @@ input::-webkit-search-results-decoration { display: none; }
    border-radius: 50%;
    border: 1px solid #A408A7;
 }
+.capitalize {
+   text-transform: Capitalize;
+   }
+  
 .cart_product_text {
+   color: #A408A7;
+}
+.cart_product_text p {
    color: #A408A7;
 }
 

@@ -22,7 +22,7 @@
                     <div class="cart_cafe g-col-4">
                         <a href=" {{route('show.r', ['id_cafe'=>$cafe_info->id])}}">
                         <img src="/storage/img/{{$cafe_info->img}}" alt="картинка заведения"> 
-                        <p>{{$cafe_info->categoriesCafe->title_categories}} • ₽</p>
+                        <p class="capitalize">{{$cafe_info->categoriesCafe->title_categories}} • ₽</p>
                         <a>{{$cafe_info->title}}</a>
                         </a>
                     </div>
