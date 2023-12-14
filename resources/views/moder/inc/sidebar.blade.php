@@ -9,7 +9,7 @@
 <section class="sidebar ">
     <div class="flex-shrink-0 p-3 bg-white sidebar_bacg" style="width: 280px;">
     <div class="d-flex align-items-center pb-1 mb-1 link-dark text-decoration-none">
-      <span class="fs-5 fw-semibold">Добро пожаловать </span>
+      <span class="fs-5 fw-semibold">Добро пожаловать    <span style="color: #A408A7;">{{Auth::user()->name}}<span> </span>
     </div>
     <!-- <div class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom" >
       <span class="fs-7 ">tITLE</span>

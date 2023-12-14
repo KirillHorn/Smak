@@ -4,17 +4,17 @@
       <div class="container">
         <div class="d-flex nav_goods align-items-center gap-3">
             <img src="/img/mdi_food-ramen.svg" alt="Тут">
-            <p>{{$cafe_id->title}} откроются в 10:00</p>
+            <p>{{$cafes->title}} откроются в 10:00</p>
         </div>
       </div>
     </section>
     <section class=" ">
         <div class="container">
-                <div class="information_cafe_main d-flex "> 
+                <div class="information_cafe_main d-flex ">
                     <div class="information_cafe_main_one d-flex flex-column gap-3">
                       <div class="information_cafe_main_one_fon d-flex align-items-end gap-3">
-                        <img src="/storage/img/{{$cafe_id->img}}" alt="изображение заведения">
-                          <p class="fs-1 fw-bold" >{{$cafe_id->title}}</p>
+                        <img src="/storage/img/{{$cafes->img}}" alt="изображение заведения">
+                          <p class="fs-1 fw-bold" >{{$cafes->title}}</p>
                           {{-- <button  class="heart">
                             <!-- <div class="heart">
 
@@ -29,91 +29,43 @@
                 <div class="information_cafe_product d-flex">
                     <div class="cafe_product">
                                 <div class="">
-                                    <h2 class="fw-bold">Популярное</h2>
+                                    {{-- @if(isset($category))
+                                    <h2 class="fw-bold">{{$category->title}}</h2>
+                                    @endif --}}
+
+                                    @foreach ($categoriesproduct as $category )
+                                    <h2> {{$category->title}}</h2>
                                     <div class="d-flex flex-wrap grid gap-4 ">
+                                        @foreach ($products as $product)
                                          <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
+                                            <img src="/storage/img/{{$product->img}}" alt="картинка заведения">
+                                             <p>{{$product->title}}</p>
+
+                                        <p class="fw-bold">{{$product->cost}} ₽•45 минут</p>
                                       </div>
-                                      <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
-                                      <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
+                                      @endforeach
+
                                     </div>
+                                    @endforeach
                                 </div>
 
-                                <div class="">
-                                    <h2 class="fw-bold">Завтрак</h2>
-                                    <div class="d-flex flex-wrap grid gap-4 ">
-                                         <div class="cafe_product_info cart_cafe g-col-4" id="part1">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
-                                      <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
-                                      <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
-                                    </div>
-                                </div>
 
-                                <div class="">
-                                    <h2 class="fw-bold">Обед</h2>
-                                    <div class="d-flex flex-wrap grid gap-4 ">
-                                         <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
-                                      <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
-                                      <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg" alt="картинка заведения"> 
-                                             <p>Азиатска кухня • ₽</p>
-                                            <a>Рамен горящего города</a>
-                                        <p class="fw-bold">190 ₽•45 минут</p>
-                                      </div>
-                                    </div>
+
                                 </div>
 
                         </div>
-                        <div class="cafe_product_navigation ">
+                        {{-- <div class="cafe_product_navigation ">
                           <ul class="">
-                          <a href="#part1"><li>Популярные</li></a>
-                            <li>Завтрак</li>
-                            <li> Обед</li>
-                            <li>Напитки</li>
-                            <li>Горячие блюда</li>
-                            <li>Салат</li>
+                            @foreach ($categoriesproduct as $category )
+                            <a href="#part1"><li>{{$category->title}}</li></a>
+                            @endforeach
+
+
                           </ul>
-                        </div>
+                        </div> --}}
         </div>
     </section>
-       
-   
+
+
     <x-footer/>
     <script src="script/script.js"></script>

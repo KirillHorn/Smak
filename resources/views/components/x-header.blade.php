@@ -24,19 +24,29 @@
     <header class="">
         <div class="section_header_one d-flex justify-content-between align-items-center container">
             <div class="d-flex element_header align-items-center">
-                <div>  
-                    <img src="/img/icon.user.png" alt="иконка авторизация" class="icon_header">    
+                <div>
+                    <img src="/img/icon.user.png" alt="иконка авторизация" class="icon_header">
 
                     @guest
+
                     <a href="/auth/auth">Вход</a>
                     <span>|</span>
                     <a href="/auth/registration">Регистрация</a>
                     @endguest
 
                     @auth
+                    @if (Auth::user()->id_role == 2)
+
+                    <a href="/moder/serviceEdit">Панель Модератора</a>
+                    <span>|</span>
+                    <a href="/signout">Выход</a>
+                    @else
                     <a href="/users/personal_Area">Кабинет</a>
                     <span>|</span>
                     <a href="/signout">Выход</a>
+                    @endif
+
+
                     @endauth
                     </div>
                     <form>
@@ -61,14 +71,11 @@
                             <li><a>О нас</a></li>
                             <li><a>Меню</a></li>
                             <li><a>Заведения</a></li>
-                            <li><a>Доставка</a></li>
-                            <li><a>Стать курьером</a></li>
                             <a class="basket_input" href="/order"> <img src="/img/ph_basket-light.png">Корзина</a>
-                         </ul> 
-                                   
+                         </ul>
+
                     </div>
                     </div>
         </div>
     </header>
-    @yield('content')   
-  
+    @yield('content')
