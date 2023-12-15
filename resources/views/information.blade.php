@@ -4,7 +4,7 @@
       <div class="container">
         <div class="d-flex nav_goods align-items-center gap-3">
             <img src="/img/mdi_food-ramen.svg" alt="Тут">
-            <p>{{$cafes->title}} откроются в 10:00</p>
+            <p>{{$cafes->title}} откроeтся в 10:00</p>
         </div>
       </div>
     </section>
@@ -15,13 +15,9 @@
                       <div class="information_cafe_main_one_fon d-flex align-items-end gap-3">
                         <img src="/storage/img/{{$cafes->img}}" alt="изображение заведения">
                           <p class="fs-1 fw-bold" >{{$cafes->title}}</p>
-                          {{-- <button  class="heart">
-                            <!-- <div class="heart">
-
-                            </div> -->
-                          </button> --}}
+                
                       </div>
-                        <input type="search" class="search_content search_goods">
+                        <!-- <input type="search" class="search_content search_goods"> -->
                         </div>
                         <iframe class="iframe_goods" src="https://yandex.ru/map-widget/v1/?um=constructor%3A11744030def0a8feaad6cce670b0946d4bca01fd6116e2522927cde0288642f7&amp;source=constructor"  frameborder="0"></iframe>
                 </div>

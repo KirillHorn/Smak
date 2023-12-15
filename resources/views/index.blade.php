@@ -84,17 +84,17 @@
                             <h2 class="fw-bold">Доставим за час</h2>
                             <p>Привезем блюда из кафе и ресторанов</p>
                                 <div class="content_main_categories d-flex flex-column grid">
+                                   
                                     <div class="d-flex a_content_categories">
-                                    <a>Бургеры</a> <a>Суши и роллы</a> <a>Пицца</a>
+                                    @foreach ($categoria as $categorias)
+                                    <a>{{$categorias->title}}</a>
+                                    @endforeach
                                     </div>
-                                        <div class="d-flex a_content_categories">
-                                          <a>Японская кухня</a> <a>Итальянская кухня</a>
-                                            </div>
-                                                 <div class="d-flex a_content_categories">
-                                                    <a>Китайская кухня</a>
-                                                 </div>
+                                  
+                                        
+                                                 
                                                     <div >
-                                                        <a class="categories_a ">Все категории</a>
+                                                        <a class="categories_a "href="/product" >Все категории</a>
                                                     </div>  
                                 </div>
                         </div>

@@ -15,8 +15,9 @@
                             <div class="d-flex flex-column gap-4">
                                 <!-- <input type="search" class="search_content"> -->
                                     <div class="d-flex flex-wrap gap-4  a_content_categories">
+                                        <a href="/cafe"  style="color: #A408A7;">Все категории </a>
                                         @foreach ($categorcafe as $categorcafes)
-                                    <a class="capitalize" style="color: #A408A7;" href= "{{route ('cafes.r',['id' => $categorcafes->id ]) }}" >{{$categorcafes->title_categories}}</a>
+                                    <a class="capitalize" style="color: #A408A7;" href= "{{route ('cafes.r',['id' => $categorcafes->id ]) }}">{{$categorcafes->title_categories}}</a>
                                     @endforeach
                                      </div>
                              </div>
@@ -37,7 +38,7 @@
                     </div>
                     @endforeach
                 </div>
-                {{ $cafe->withQueryString()->links('pagination::bootstrap-5') }}
+             
         </div>
     </section>
        

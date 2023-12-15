@@ -49,9 +49,9 @@
 
                     @endauth
                     </div>
-                    <form>
+                    <!-- <form>
    <p><input type="search" name="q" placeholder="Поиск по сайту" class="search_string"> </p>
-  </form>
+  </form> -->
             </div>
                     <div class="d-flex align-items-center element_header_two">
                             <img src="/img/iconEmail.png">
@@ -68,9 +68,9 @@
         </a>
                     <div class="nav">
                          <ul class="d-flex">
-                            <li><a>О нас</a></li>
-                            <li><a>Меню</a></li>
-                            <li><a>Заведения</a></li>
+                            <li><a href="/">О нас</a></li>
+                            <li><a href="/product">Меню</a></li>
+                            <li><a href="/cafe">Заведения</a></li>
                             <a class="basket_input" href="/order"> <img src="/img/ph_basket-light.png">Корзина</a>
                          </ul>
 

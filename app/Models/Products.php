@@ -24,6 +24,8 @@ class Products extends Model
     public function Categories()
     {
         return $this->belongsTo(Categories::class, 'id_categories', 'id');
+
+        // return $this->hasMany(Categories::class, 'id_categories', 'id');
     }
 
     public function Cafe()

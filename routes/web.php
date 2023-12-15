@@ -19,9 +19,15 @@ use App\Http\Controllers\OrderController;
 
 Route::get('/', [IndexController::class, 'index']);
 
-Route::get('/product' , [IndexController::class, 'product_blade']);
+Route::get('/product' , [IndexController::class, 'product_blade'])->name('products.index');
+
+// Route::get('/products/{selectedCategories}', [IndexController::class, 'product_blade'])  ->name('products.index.filter');
+
+Route::get("/{id}/productCategory", [IndexController::class, "categories"])->name('productCategory.r');
 
 Route::get('/cafe' , [IndexController::class, 'cafe_blade']);
+
+Route::get('/{id}/cafeCategory' , [IndexController::class, 'categoriesCafe'])->name('cafes.r');
 
 Route::get('/goods/{id}' , [IndexController::class, 'goods_blade'])->name('goods.r');
 

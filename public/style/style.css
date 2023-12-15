@@ -100,6 +100,9 @@
     gap: 30px;
     font-size: 20px;
 }
+.nav a {
+   color: #A408A7;
+}
 .basket_input {
     color: #A408A7;
     text-decoration: none;
