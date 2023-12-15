@@ -55,8 +55,7 @@
                                             <input id="up" type="button" class="input_count" value="+">
                                          </div> 
                                      </div>
-                                <div class="d-flex  justify-content-between align-items-center "> <h2>Сумма корзины</h2> <p id="sum" class="text-center Sum_Button fw-bold">195 </p> </div>
-                            <div class="d-flex alight-items-center gap-2"> Промокод <input type="text" class="input_prom"><button class="button_prom">Применить</button></div>           
+                                         
                          </div>
                      </div>
                  </div>

@@ -71,7 +71,7 @@
                             <li><a href="/">О нас</a></li>
                             <li><a href="/product">Меню</a></li>
                             <li><a href="/cafe">Заведения</a></li>
-                            <a class="basket_input" href="/order"> <img src="/img/ph_basket-light.png">Корзина</a>
+                            <a class="basket_input" href="/baskets"> <img src="/img/ph_basket-light.png">Корзина</a>
                          </ul>
 
                     </div>

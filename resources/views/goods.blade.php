@@ -17,7 +17,7 @@
                   <p><span>Вес:</span> {{$product->weight}}</p>
                   <hr>
                 </div>
-                <a class="buy_buton text-end">В корзину</a>
+                <a href="{{ route('basket.r' , ['id' => $product->id])}}" class="buy_buton text-end">В корзину</a>
             </div>
         </div>
     </section>

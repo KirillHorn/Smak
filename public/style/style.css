@@ -430,6 +430,15 @@ input::-webkit-search-results-decoration { display: none; }
 .product_section {
    margin: 70px 0px;
 }
+.button_basket_a {
+   background-color: #A408A7;
+   color: #ffffff;
+   height: 40px;
+   padding-top: 10px;
+   padding-left: 10px;
+   padding-right: 10px;
+   border-radius: 20px ;
+}
 .button_basket {
    width: 45px;
    height: 45px;
