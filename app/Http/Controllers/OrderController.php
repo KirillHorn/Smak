@@ -9,4 +9,5 @@ class OrderController extends Controller
    public function OrderController () {
     return view('order');
    }
+   
 }

@@ -17,7 +17,7 @@
                   <p><span>Вес:</span> {{$product->weight}}</p>
                   <hr>
                 </div>
-                <a class="buy_buton text-end">Купить</a>
+                <a class="buy_buton text-end">В корзину</a>
             </div>
         </div>
     </section>
