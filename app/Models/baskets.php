@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class baskets extends Model
 {
     use HasFactory;
-    protected $fillable = 
-    ['id_users','id_product'];
+    protected $fillable =
+    ['id','id_users','id_product'];
 }

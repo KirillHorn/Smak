@@ -19,9 +19,9 @@ class IndexController extends Controller
         $cafe=Cafe::with("categoriesCafe")->take(8)->get();
         $product=Products::with("Categories")->take(8)->get();
         $categoria=Categories::all();
-        
+
         return view('index',["cafe"=>$cafe, "product" => $product, "categoria" => $categoria]);
-    }   
+    }
     public function product_blade () {
       $product=Products::with("Categories")->paginate(8);
         $Allcategories=Categories::all();
@@ -59,6 +59,7 @@ class IndexController extends Controller
     }
 
     public function personal_blade () {
+        
         return view ('users.personal_Area');
     }
     public function personal_courier_blade () {

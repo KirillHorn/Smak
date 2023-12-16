@@ -5,18 +5,19 @@
     <section class="">
         <div class="container d-flex justify-content-around">
             <div class="d-flex flex-column gap-5">
-
+ <form method="POST" action='order_create'>
+    @csrf
                 <div class="Delivery">
                                 <div class="d-flex flex-column gap-2 Delivery_info">
 
                           <h2 class="fw-bold">Условия доставки</h2>
                           <div class="Delivery_conditions" > <p>200руб</p> </div>
                                 <div class="d-flex flex-column gap-2">
-                                    <div class="d-flex gap-1"> 
+                                    <div class="d-flex gap-1">
                                         <img src="/img/home.svg">
-                         <input placeholder="Что-что" class="input_adress">
+                         <input placeholder="Что-что" class="input_adress" name="location">
                                  </div>
-                         <input class="input_commen" placeholder="Комментарий курьеру">
+                         <input class="input_commen" placeholder="Комментарий курьеру" type="text" name="comment">
                              </div>
                                  <div>
                                      <div class="d-flex align-items-center gap-1">
@@ -28,40 +29,7 @@
                         </div>
                 </div>
 
-                  <div class="Delivery">  
-                         <div class="basket">
-                              <div>
-                                 <h2 class="fw-bold">Корзина</h2>           
-                              </div>
-                                    <div class="d-flex flex-column">
-                                        <div class="basket_product d-flex gap-3 align-items-center justify-content-around">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg"> <p class="fw-bold" >Рамен горящего города </p>  <p id="price">195</p>  
-                                            <!-- {{-- <div class="text-center">+ 1 - </div> --}} -->
-                                            <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
-                                            <input id="down" type="button" class="input_count" value="-">
-                                            <input id="numericUpDown" type="number" value="1" class="count"/>
-                                      
-                                            <input id="up" type="button" class="input_count" value="+">
-                                            </div>
-                                            
-                                        </div>
 
-                                    <div class="basket_product d-flex gap-3 align-items-center justify-content-around">
-                                            <img src="/img/66e1608c038e458e7185685a45251707.jpg"> <p class="fw-bold" >Рамен горящего города </p>  <p id="price">195</p>  
-                                            <!-- {{-- <div class="text-center">+ 1 - </div> --}} -->
-                                        <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
-                                            <input id="down" type="button" class="input_count" value="-">
-                                            <input id="numericUpDown" type="number" value="1" class="count"/>
-                                            <input id="up" type="button" class="input_count" value="+">
-                                         </div> 
-                                     </div>
-                                         
-                         </div>
-                     </div>
-                 </div>
-            </div>
-
-            <div>
                 <div class="Delivery order">
                 <div class="d-flex flex-column gap-2 Delivery_info">
                         <h2>Способ доставки</h2>
@@ -82,15 +50,16 @@
                         <hr class="fw-bold">
                             <div class="total">
                                 <p class="fw-bold">Итого</p>
-                                <p>Стоимость заказа: <span  id="sum" class="fw-bold">500</span></p>
-                                <button>Оформить заказ</button>
+                                <p>Стоимость заказа: <input type="text" class="cost_order" name="amount"></p>
+                                <input type="submit" class="order_button" value="Оформить заказ">
                             </div>
                         </div>
                 </div>
             </div>
         </div>
+    </form>
     </section>
- 
+
     <script>
         let price = document.getElementById("price");
         let sum = document.getElementById("sum");
@@ -105,9 +74,9 @@
             numericUpDown.value = (numericUpDown.value) > 0 ? +numericUpDown.value - 1 : 0;
             setSum();
         }
- 
+
         numericUpDown.oninput = setSum;
- 
+
         function setSum() {
             sum.innerText = (price.innerText * numericUpDown.value)
         }

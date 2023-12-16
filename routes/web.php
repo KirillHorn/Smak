@@ -35,13 +35,16 @@ Route::get('/information/{id_cafe}/{categoryId?}' , [IndexController::class, 'sh
 
 Route::get('/baskets/{id}', [OrderController::class, 'baskets' ] )->name('basket.r');
 
+Route::get('/{id}/baskets_delete', [OrderController::class, 'baskets_delete' ] )->name('delete_basket.r');
+
+Route::post('/order_create', [OrderController::class, 'orderCreate']);
 // Route::get('/information' , function () { return view('information');});
 
 // Route::get('/information' , [IndexController::class, 'show']);
 Route::middleware('checkRole:Клиент')->group(function () {
 
     Route::get('/users/personal_Area' , [IndexController::class, 'personal_blade']);
-    
+
 Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class,'registration_redact'])->name('r.update');
 });
 

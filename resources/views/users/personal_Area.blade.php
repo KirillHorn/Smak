@@ -2,19 +2,19 @@
 @if (session ("success"))
 <div>
     <div  id="message"  class="message">
-        
+
 <span class="fw-bold">{{session("success")}}</span>
-       
+
     </div>
 </div>
   @endif
-  
+
   @if (session ("update"))
  <div>
     <div  id="message"  class="message">
-        
+
 <span class="fw-bold">{{session("update")}}</span>
-       
+
     </div>
 </div>
   @endif
@@ -63,7 +63,7 @@
                     <div class="modal-body">
                     <form method="POST" action="{{ route('r.update', ['id' => Auth::user()->id]) }}" class=" forma_register d-flex justify-content-center flex-column align-items-center">
                     @csrf
-                     @method('PATCH')       
+                     @method('PATCH')
                     <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label text_label">Имя</label>
                                 <input type="text" name="name" value="{{Auth::user()->name}}" placeholder=" @error('name') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -92,7 +92,7 @@
                                 <label for="exampleInputPassword1" name="confirm_password" class="form-label">Повторите пароль</label>
                                 <input type="password" name="confirm_password" value="{{old('confirm_password')}}" placeholder="  @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
                             </div>
-                       
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -111,16 +111,7 @@
                 <span>Продукты</span>
 
             </div>
-            <div class="d-flex user_orders_information">
-
-                <span>1</span>
-
-            </div>
-            <div class="d-flex user_orders_information">
-
-                <span>1</span>
-
-            </div>
+            
         </div>
     </div>
 </section>
@@ -131,18 +122,18 @@
 function readURL(input) { //
     if (input.files && input.files[0]) {
      var reader = new FileReader(); //позволяет читать асинхронно содержимое файлов, хранящийся на пк
-       
+
      reader.onloadend = function(e) { //Срабатывает только после того как скрипт был загружен  и выполнен
       $('#prevImage').attr('src', e.target.result); // attr - Название атрибута, которое нужно получить.
      }
-       
+
      reader.readAsDataURL(input.files[0]); //используется для чтения содержимого files
     }
    }
    $("#imageFile").change(function() { //change - Событие  происходит по окончании изменения значения элемента формы, когда это изменение зафиксировано.
     readURL(this);
    });
-   
+
    setTimeout(function(){
     // div.classList.remove("d-flex");
        document.getElementById('message').style.display = 'none';
