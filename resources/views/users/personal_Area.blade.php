@@ -105,12 +105,17 @@
 
 
         <div class="d-flex flex-column user_orders">
+            @foreach ($orders as $order)
             <div class="d-flex user_orders_information align-items-center ">
 
-                <span>1</span>
+                <span>{{$order->id}}</span>
                 <span>Продукты</span>
+                <span>{{$order->comment}}</span>
+                <span>{{$order->location}}</span>
+                <span>{{$order->amount}}</span>
 
             </div>
+            @endforeach
             
         </div>
     </div>

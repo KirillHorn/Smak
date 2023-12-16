@@ -6,10 +6,12 @@ use App\Http\Controllers\Alert;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Cafe;
 use App\Models\Products;
 use App\Models\CategoriesCafes;
 use App\Models\Categories;
+use App\Models\orders;
 
 
 
@@ -59,11 +61,10 @@ class IndexController extends Controller
     }
 
     public function personal_blade () {
-        
-        return view ('users.personal_Area');
-    }
-    public function personal_courier_blade () {
-        return view ('courier.personal_Area');
+        $userid=Auth::id();
+        $orders=orders::find($userid);
+        return view ('users.personal_Area', ['orders' => $orders]);
     }
 
+ 
 }

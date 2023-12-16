@@ -35,10 +35,9 @@
       <td class="align-middle">{{$cafes->location}}</td>
       <td class="align-middle"><a href="/moder/{{$cafes->id}}/Edit"><button type="submit" class="btn btn-primary button_redact">Редактировать</button></a></td>
       <td class="align-middle">
-      <form action="{{route ('delete.product' , ['id' => $cafes->id ])}}" method="POST">
+      <form action="{{route ('delete.cafes' , ['id' => $cafes->id ])}}" method="POST">
                         @csrf
-                         @method('DELETE')   
-                        
+                         @method('DELETE')            
       <button type="submit" class="btn btn-danger" style="margin-top: 16px">Удалить</button>
       </form>
     </td>

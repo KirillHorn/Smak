@@ -25,7 +25,7 @@
 
                                             <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
                                             <input id="down" type="button" class="input_count" value="-">
-                                            <input id="numericUpDown" type="number" value="1" class="count"/>
+                                            <input id="numericUpDown" type="number" value="{{$item->count}}" class="count"/>
 
                                             <input id="up" type="button" class="input_count" value="+">
 
