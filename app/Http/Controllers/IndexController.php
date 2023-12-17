@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\baskets;
 use App\Models\Cafe;
 use App\Models\Products;
 use App\Models\CategoriesCafes;
@@ -62,8 +63,9 @@ class IndexController extends Controller
 
     public function personal_blade () {
         $userid=Auth::id();
-        $orders=orders::find($userid);
-        return view ('users.personal_Area', ['orders' => $orders]);
+        $orders = orders::where('id_users', $userid)->get();
+        $basket= baskets::where('id_users', $userid)->get();
+        return view ('users.personal_Area', ['orders' => $orders , 'basket' =>$basket]);
     }
 
  

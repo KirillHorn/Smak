@@ -54,9 +54,9 @@
   </form> -->
             </div>
                     <div class="d-flex align-items-center element_header_two">
-                            <img src="/img/iconEmail.png">
+                            <img src="/img/iconEmail.png" alt="иконка почты">
                                  <span>Email:Smak23@gmail.com</span>
-                            <img src="/img/iconPhone.png ">
+                            <img src="/img/iconPhone.png " alt="иконка телефона">
                                 <span>Телефон какой-то</span>
                     </div>
         </div>
@@ -64,7 +64,7 @@
         <div class="section_header_two d-flex">
             <div class="container d-flex justify-content-between align-items-center">
         <a href="/">
-                <img src="" alt="тут есть что-то">
+                <img src="/img/logo.jpg" alt="тут есть что-то" class="logo">
         </a>
                     <div class="nav">
                          <ul class="d-flex">

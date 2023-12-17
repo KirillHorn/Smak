@@ -14,30 +14,30 @@
                                  <h2 class="fw-bold">Корзина</h2>
                               </div>
                                     <div class="d-flex flex-column">
-
+    
 
             @foreach ($basket as $item)
                                         <div class="basket_product d-flex gap-3 align-items-center justify-content-around">
 
                                             <img src="/storage/img/{{$item->img}}"> <p class="fw-bold" >{{ $item->title}} </p>
-                                            <!-- {{-- <div class="text-center">+ 1 - </div> --}} -->
                                             <p class="text-center Sum_Button fw-bold" id="price"> {{ $item ->cost}} </p>
-
                                             <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
-                                            <input id="down" type="button" class="input_count" value="-">
                                             <input id="numericUpDown" type="number" value="{{$item->count}}" class="count"/>
-
-                                            <input id="up" type="button" class="input_count" value="+">
-
-
                                             </div>
                                             <div>   <a href="/{{$item->id}}/baskets_delete">Удалить</a>   </div>
-
                                         </div>
-
                          @endforeach
-                                <div class="d-flex  justify-content-between align-items-center "> <h2>Сумма корзины</h2>  </div>
+
+                         <div class="d-flex  justify-content-between align-items-center "> <h2>Сумма корзины</h2>  </div>
                             <div class="d-flex alight-items-center justify-content-center"> <a class="button_basket_a" href="/order"> Оформление заказа</a></div>
+                           
+                           
+                            <!-- <div class="d-flex flex-column align-items-center justify-content-center basket_empty">
+                            <h2>КОРЗИНА ПУСТА</h2>
+                                <a href="/product">Меню</a>
+            
+                            </div> -->
+                         
                          </div>
 
                      </div>
@@ -46,7 +46,7 @@
 
 
     </section>
-
+<!-- 
     <script>
         let price = document.getElementById("price");
         let sum = document.getElementById("sum");
@@ -67,5 +67,5 @@
         function setSum() {
             sum.innerText = (price.innerText * numericUpDown.value)
         }
-    </script>
+    </script> -->
 <x-footer/>

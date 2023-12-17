@@ -3,6 +3,7 @@
 namespace App\Models;
 use App\Models\Categories;
 use App\Models\Cafe;
+use App\Models\baskets;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,6 +32,10 @@ class Products extends Model
     public function Cafe()
     {
         return $this->belongsTo(Cafe::class, 'id_cafe', 'id');
+    }
+
+    public function product() {
+        return $this->belongsTo(baskets::class, 'id');
     }
 
 }

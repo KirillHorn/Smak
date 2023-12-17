@@ -85,6 +85,12 @@
     background-position:  10px;
     background-repeat: no-repeat;
  }
+ .logo {
+   max-height: 100px ;
+   max-width: 200px;
+   /* width: 130px;
+   height:100px; */
+ }
  .search_string:focus {
     width: 300px;
     outline: none;
@@ -449,6 +455,17 @@ input::-webkit-search-results-decoration { display: none; }
    border-radius: 50%;
    border: 1px solid #A408A7;
 }
+.basket_empty {
+   margin-top: 30px;
+   width: 100%;
+   color: #A408A7;
+}
+.basket_empty a {
+   background-color: #A408A7;
+   color: #ffffff;
+   border-radius: 20px;
+   padding: 5px 20px;
+}
 .capitalize {
    text-transform: Capitalize;
    }
@@ -735,7 +752,9 @@ margin-top: 20px;
       border: 1px solid #A408A7;
    }
    .Deliver_Basket {
+      /* height: 220px; */
     max-height: 800px;
+   
    }
    .button_delete {
     background-color: #ffffff;

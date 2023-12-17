@@ -105,11 +105,15 @@
 
 
         <div class="d-flex flex-column user_orders">
+            <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
             @foreach ($orders as $order)
             <div class="d-flex user_orders_information align-items-center ">
 
                 <span>{{$order->id}}</span>
-                <span>Продукты</span>
+                <span>@foreach ($basket as $baskets)
+                {{$baskets->id_product}}
+                @endforeach
+                </span>
                 <span>{{$order->comment}}</span>
                 <span>{{$order->location}}</span>
                 <span>{{$order->amount}}</span>
