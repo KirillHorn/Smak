@@ -86,11 +86,19 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                                <input type="password" name="password" value="" placeholder="  @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
+                                <input type="password" name="password" value="" placeholder="  " class="form-control" id="exampleInputPassword1">
+                                @error('password') 
+                                <p> Пароли не совподают
+                                {{$message}} 
+                                </p>
+                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" name="confirm_password" class="form-label">Повторите пароль</label>
-                                <input type="password" name="confirm_password" value="{{old('confirm_password')}}" placeholder="  @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
+                                <input type="password" name="confirm_password" value="{{old('confirm_password')}}" placeholder="  " class="form-control" id="exampleInputPassword1">
+                                @error('password') 
+                                {{$message}} 
+                                 @enderror
                             </div>
 
                     </div>

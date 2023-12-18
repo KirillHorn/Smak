@@ -32,21 +32,21 @@
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-    <input type="email" name="email" value="{{old('email')}}"          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
     <span> @error('email') {{$message}} @enderror</span>
   </div>
   
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Номер телефона</label>
-    <input type="text" name="phone" value="{{old('phone')}}" placeholder="  @error('phone') {{$message}}  @enderror"  class="form-control" id="tel" aria-describedby="emailHelp" placeholder="+ _ (_ _ _) _ _ _ - _ _ - _ _">
+    <input type="text" name="phone" value="{{old('phone')}}" placeholder="  @error('phone') {{$message}}  @enderror"  class="form-control" id="tel" aria-describedby="emailHelp" >
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Пароль</label>
-    <input type="password" name="password" value="{{old('password')}}"  placeholder="  @error('password') {{$message}}  @enderror"  class="form-control" id="exampleInputPassword1">
+    <input type="password" name="password" value="{{old('password')}}"  placeholder=" @error('password') {{$message}}  @enderror"  class="form-control" id="exampleInputPassword1">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" name="confirm_password" class="form-label">Повторите пароль</label>
-    <input type="password" name="confirm_password"  value="{{old('confirm_password')}}" placeholder="  @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
+    <input type="password" name="confirm_password"  value="{{old('confirm_password')}}" placeholder=" @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
   </div>
 
   <input type="submit" value="Регистрация" class="btn btn-primary input_auth">

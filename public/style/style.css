@@ -888,6 +888,7 @@ input::-webkit-inner-spin-button {
 .order {
    max-width: 700px;
    width: 500px;
+   margin-top: 40px;
 }
 .order hr {
    color: #A408A7;

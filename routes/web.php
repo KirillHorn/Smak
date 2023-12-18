@@ -6,22 +6,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModerController;
 use App\Http\Controllers\OrderController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [IndexController::class, 'index']);
 
-Route::get('/product', [IndexController::class, 'product_blade'])->name('products.index');
+Route::get('/sitemap', function(){
+    return view('sitemap');
+});
 
-// Route::get('/products/{selectedCategories}', [IndexController::class, 'product_blade'])  ->name('products.index.filter');
+Route::get('/product', [IndexController::class, 'product_blade'])->name('products.index');
 
 Route::get("/{id}/productCategory", [IndexController::class, "categories"])->name('productCategory.r');
 
@@ -40,9 +31,7 @@ Route::get('/baskets/{id}', [OrderController::class, 'baskets'])->name('basket.r
 Route::get('/{id}/baskets_delete', [OrderController::class, 'baskets_delete'])->name('delete_basket.r');
 
 Route::post('/order_create', [OrderController::class, 'orderCreate']);
-// Route::get('/information' , function () { return view('information');});
 
-// Route::get('/information' , [IndexController::class, 'show']);
 Route::middleware('checkRole:Клиент')->group(function () {
 
     Route::get('/users/personal_Area', [IndexController::class, 'personal_blade']);
