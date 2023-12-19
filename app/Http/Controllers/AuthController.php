@@ -82,7 +82,7 @@ class AuthController extends Controller
          if (Auth::user()->id_role == 2) {
             return redirect("/moder/serviceEdit")->with("success", "Вы вошли модер!");
          } else {
-            return redirect("/users/personal_Area")->with("success", "Вы вошли!");
+            return redirect("/users/personal_Area")->with("auth", "Вы вошли!");
          }
 
       } else {

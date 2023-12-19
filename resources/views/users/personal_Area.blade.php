@@ -9,6 +9,16 @@
 </div>
   @endif
 
+  @if (session ("auth"))
+<div>
+    <div  id="message"  class="message">
+
+<span class="fw-bold">{{session("auth")}}</span>
+
+    </div>
+</div>
+  @endif
+
   @if (session ("update"))
  <div>
     <div  id="message"  class="message">
@@ -18,6 +28,7 @@
     </div>
 </div>
   @endif
+
 
 <section>
 

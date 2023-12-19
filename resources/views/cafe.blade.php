@@ -13,7 +13,6 @@
                             <h2> Доставка еды из заведений Уфы</h2>
                         </div>
                             <div class="d-flex flex-column gap-4">
-                                <!-- <input type="search" class="search_content"> -->
                                     <div class="d-flex flex-wrap gap-4  a_content_categories">
                                         @foreach ($categorcafe as $categorcafes)
                                     <a class="capitalize" style="color: #A408A7;" href= "{{route ('cafes.r',['id' => $categorcafes->id ]) }}" >{{$categorcafes->title_categories}}</a>

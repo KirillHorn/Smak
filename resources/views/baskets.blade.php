@@ -31,13 +31,6 @@
                          <div class="d-flex  justify-content-between align-items-center "> <h2>Сумма корзины</h2>  </div>
                             <div class="d-flex alight-items-center justify-content-center"> <a class="button_basket_a" href="/order"> Оформление заказа</a></div>
                            
-                           
-                            <!-- <div class="d-flex flex-column align-items-center justify-content-center basket_empty">
-                            <h2>КОРЗИНА ПУСТА</h2>
-                                <a href="/product">Меню</a>
-            
-                            </div> -->
-                         
                          </div>
 
                      </div>

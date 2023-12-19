@@ -29,26 +29,26 @@ class OrderController extends Controller
 
     public function baskets($id)
     {
-        $id_users = Auth::id();
-        $b_u = Auth::user()->basket_products;
-        $isInBasket = false;
-        foreach ($b_u as $item) {
-            if ($item->id_product == $id){
-                $productInBasket = baskets::find($item->id);
-                $productInBasket->count += 1;
-                $productInBasket->save();
-                $isInBasket = true;
-                return redirect()->back();
+            $id_users = Auth::id();
+            $b_u = Auth::user()->basket_products;
+            $isInBasket = false;
+            foreach ($b_u as $item) {
+                if ($item->id_product == $id){
+                    $productInBasket = baskets::find($item->id);
+                    $productInBasket->count += 1;
+                    $productInBasket->save();
+                    $isInBasket = true;
+                    return redirect()->back();
+                }
             }
-        }
-        baskets::create([
-            'id_product' => $id,
-            'id_users' => $id_users,
-            'count' => 1,
-        ]);
+            baskets::create([
+                'id_product' => $id,
+                'id_users' => $id_users,
+                'count' => 1,
+            ]);
 
-        return redirect()->back();
-    }
+            return redirect()->back();
+        }
 
 
     public function baskets_delete($id)
