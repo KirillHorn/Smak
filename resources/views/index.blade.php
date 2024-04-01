@@ -5,7 +5,7 @@
     <section class="banner">
         <div class="container">
             <div class="banner_text d-flex flex-column "> 
-            <h1>АППЕТИТНЫЕ ЦЕНЫ ЖДУТ ВАС!  <span>И не только!</span></h1>
+            <h1>АППЕТИТНЫЕ ЦЕНЫ ЖДУТ ВАС!<span>И не только!</span></h1>
           
             <a class="aaaa">Поподробнее</a>
             </div>
@@ -75,39 +75,34 @@
     </section>
     <section>
         <div class="container">
-                <div class="d-flex align-items-center flex-column text-around">
-                    <h2 class="fw-bold">По всей Уфе!</h2>
-                    <p class="fw-bold">Круглосуточная доставка в любой район </p>
-                </div>
-                    <div class="d-flex justify-content-around">
-                        <div class="cart_main_categories d-flex flex-column">
-                            <h2 class="fw-bold">Доставим за час</h2>
-                            <p>Привезем блюда из кафе и ресторанов</p>
-                                <div class="content_main_categories d-flex flex-column grid">
-                                   
-                                    <div class="d-flex a_content_categories">
-                                    @foreach ($categoria as $categorias)
-                                    <a>{{$categorias->title}}</a>
-                                    @endforeach
-                                    </div>
-                                  
-                                        
-                                                 
-                                                    <div >
-                                                        <a class="categories_a "href="/product" >Все категории</a>
-                                                    </div>  
-                                </div>
-                        </div>
-                            <div class="cart_main_categories">
-                                 <div class="d-flex  flex-column text-around">
-                                     <h2 class="fw-bold">Доставим даже на край города!</h2>
-                                     <p class="">Только скажите куда </p>
-                                 </div>
-                                 <div class="d-flex justify-content-center">
-                                 <iframe class="iframe" src="https://yandex.ru/map-widget/v1/?um=constructor%3A11744030def0a8feaad6cce670b0946d4bca01fd6116e2522927cde0288642f7&amp;source=constructor"  frameborder="0"></iframe>
-                                 </div>
+                <div class="d-flex align-items-center justify-content-between text-around mt-5">
+                    <div class="categories_block p-5 d-flex flex-column ">
+                        <h3>Любые категории блюд</h3>
+                        <p>Привезём блюда из кафе и ресторанов</p>
+                            <div class="categories_link d-flex flex-wrap gap-3 mb-3">
+                                <a href="" class="">Бургеры</a>
+                                <a href="" class="">Суши и роллы</a>
+                                <a href="" class="">Пицца</a>
+                                <a href="" class="">Бургеры</a>
+                                <a href="" class="">Суши и роллы</a>
+                                <a href="" class="">Пицца</a>   
                             </div>
+                            <a href="" class="mt-1" style="width:24%;" >Все блюда</a>
                     </div>
+                    <div  class="categories_block p-5 d-flex flex-column">
+                        <h3>Многообразие вкусов</h3>
+                        <p>Выберите свою любимую кухню!</p>
+                            <div class="categories_link d-flex flex-wrap gap-3 mb-3">
+                                <a href="" class="">Японская кухня</a>
+                                <a href="" class="">Итальянская кухня</a>
+                                <a href="" class="">Китайская кухня</a>
+                                <a href="" class="">Грузинская кухня</a>
+                                <a href="" class="">Французская кухня</a>
+                            </div>
+                            <a href="" class="mt-1" style="width:24%;"  >Все кухня</a>
+                    </div>
+                </div>
+                
 
         </div>
     </section>

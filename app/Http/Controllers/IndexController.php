@@ -30,23 +30,29 @@ class IndexController extends Controller
         $Allcategories=Categories::all();
         return view ('product',compact('product'), ["categories" => $Allcategories ]);
     }
-      public function categories($id)
+      public function categories(Request $request)
     {
-        $product = Products::where("id_categories" , $id)->get();
+        $sortOrder = $request->get('sort_order');
+        if ($sortOrder == 0) {
+            $product = Products::all()->paginate(8);
+        } else {
+            $product=Products::where('Categories',$sortOrder)->paginate(8);
+        }
         $Allcategories=Categories::all();
-        return view('productCategory', ['categories' =>  $Allcategories, 'product' =>    $product ]);
+        return view('product', ['categories' =>  $Allcategories, 'product' =>    $product ]);
     }
-    public function cafe_blade () {
+    public function cafe_blade (Request $request) {
+        $sortOrder = $request->get('sort_order');
+        if ($sortOrder == 0) {
         $cafe=Cafe::with("categoriesCafe")->paginate(8);
+        } else {
+            $cafe=Cafe::where('id_categoriesCafe',$sortOrder)->paginate(8);
+        }
         $categoriesCafe=CategoriesCafes::all();
-        return view ('cafe',compact('cafe'), [ 'categorcafe'=>$categoriesCafe]);
+
+        return view('cafe',compact('cafe'),['categorcafe'=>$categoriesCafe]);
     }
-    public function categoriesCafe($id)
-    {
-        $cafe = Cafe::where("id_categoriesCafe" , $id)->get();
-        $Allcategories=CategoriesCafes::all();
-        return view('cafeCategory', ['categorcafe' =>  $Allcategories, 'cafe' => $cafe ]);
-    }
+
 
     public function goods_blade ($id) {
         $product=Products::find($id);

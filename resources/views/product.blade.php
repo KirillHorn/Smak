@@ -15,8 +15,9 @@
                             <div class="d-flex flex-column gap-4">
                                 <!-- <input type="search" class="search_content"> -->
                                     <div class="d-flex flex-wrap gap-4  a_content_categories">
+                                    <a href="{{ route ('products',  ['sort_order' => '0']) }}" style=" color:#A408A7;"
                                    @foreach ($categories as $categories_product)
-                                    <a href="{{ route ('productCategory.r', ['id' =>$categories_product->id]) }}" style=" color:#A408A7;"
+                                    <a href="{{ route ('products',  ['sort_order' => $categories_product->id]) }}" style=" color:#A408A7;"
                                 
                                     >
                                     {{$categories_product->title}}</a>

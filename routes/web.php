@@ -12,13 +12,12 @@ Route::get('/sitemap', function(){
     return view('sitemap');
 });
 
-Route::get('/product', [IndexController::class, 'product_blade'])->name('products.index');
+Route::get('/product', [IndexController::class, 'product_blade'])->name('products');
 
-Route::get("/{id}/productCategory", [IndexController::class, "categories"])->name('productCategory.r');
 
-Route::get('/cafe', [IndexController::class, 'cafe_blade']);
 
-Route::get('/{id}/cafeCategory', [IndexController::class, 'categoriesCafe'])->name('cafes.r');
+Route::get('/cafe', [IndexController::class, 'cafe_blade'])->name("cafe");
+
 
 Route::get('/goods/{id}', [IndexController::class, 'goods_blade'])->name('goods.r');
 
