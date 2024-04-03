@@ -27,9 +27,10 @@
       <img src="/img/" alt="тут есть что-то" class="logo">
       </a>
       <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-        <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+        <input type="search" class="form-control search_input" placeholder="Поиск..." aria-label="Search">
       </form>
-      <a class="basket_input" href="/baskets"> <img src="/img/ph_basket-light.svg">Корзина</a>
+      <a class="basket_input" href="/baskets">   <span class="icon-button"></span>
+  Корзина</a>
     </div>
   </header>
 <nav class="py-2 ">
@@ -42,14 +43,14 @@
       </ul>
       <ul class="nav">
         @guest
-        <li class="nav-item"><a href="#" class="nav-link px-2">Вход</a></li>
+        <li class="nav-item"><a href="/auth/auth" class="nav-link px-2">Вход</a></li>
         <span>|</span>
-        <li class="nav-item"><a href="#" class="nav-link px-2">Регистрация</a></li>
+        <li class="nav-item"><a href="/auth/registration" class="nav-link px-2">Регистрация</a></li>
         @endguest
         @auth
-        <li class="nav-item"><a href="#" class="nav-link px-2">Личный кабинет</a></li>
+        <li class="nav-item"><a href="/users/personal_Area" class="nav-link px-2">Личный кабинет</a></li>
         <span>|</span>
-        <li class="nav-item"><a href="#" class="nav-link px-2">Выход</a></li>
+        <li class="nav-item"><a href="/signout" class="nav-link px-2">Выход</a></li>
         @endauth
       </ul>
     </div>

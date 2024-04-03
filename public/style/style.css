@@ -185,22 +185,30 @@ body {
    border-radius: 20px;
    
 }
+.search_input {
+   height:40px;
+}
 .basket_input {
-   color: #ffffff;
-   text-decoration: none;
-   width: 118px;
-   padding-top: 2px;
-   font-weight: 600;
-   height: 35px;
-  
-   border: 1px solid #ffffff;
-   border-radius: 8px ;
+   padding: 5px 15px ; /* Расстояние от текста до края */
+   padding-top: 8px;
+   background-color: #A408A7; /* Цвет фона */
+   color: #fff; /* Белый цвет текста */
+   border: 1px solid #ffffff; /* Убираем рамку */
+   border-radius: 3em; /* Кнопка в виде пилюли */
+   font-size: 14px; /* Размер шрифта */
+   text-transform: uppercase; /* Все буквы заглавные */
 }
-.basket_input img {
-   width: 35px;
-   height: 34px;
-   margin-left: 4px;
-}
+.icon-button {
+   content: ''; /* Выводим псевдоэлемент */
+   display: inline-block; /* Строчно-блочный элемент */
+   vertical-align: middle; /* Выравнивание по вертикали */
+   width: 24px; height: 26px; /* Размеры иконки */
+   margin-right: 5px; /* Расстояние справа */
+
+   background: 0/cover url(../img/ph_basket-light.svg); /* Иконка для кнопки Submit */
+  }
+
+
 .categories_link a {
 color: #A408A7;
 background-color: #ffffff;
@@ -630,9 +638,79 @@ margin-top: 20px;
    }
 
    /* Страница заказа и корзины */
+   .basket_main {
+      width: 70%;
+      height: 50%;
+      border: 1px solid #A408A7;
+      border-radius: 25px;
+   }
+   .basket_title {
+      padding: 20px 20px;
+      padding-bottom: 10px;
+   }
+   .basket_title h3 {
+      font-weight: 600;
+   }
+   .button_delete_all {
+      background-image: url(../img/ph_trash.svg);
+      background-repeat: no-repeat;
+      width: 30px;
+      border: none;
+      background-color: #fff;
+   }
+   .table_product {
+      width: 98%;
+      margin: 10px auto;
+   }
+   .table_product th, .table_product td {
+      border-top: none; /* Убираем верхние границы у ячеек */
+    }
+    .product_basket_one td {
+
+   }
+   .button_add {
+      margin: 0 auto;
+      border-radius: 50%;
+      padding: 5px 10px;
+      color: #ffffff;
+      font-size: 20px;
+      background-color: #A408A7;
+      border: 1px solid #fff;
+   }
+   .product_delete {
+      background-image: url(../img/bitcoin-icons_cross-outline.svg);
+      background-repeat: no-repeat;
+      padding: 20px;
+   }
+   .order_product {
+      border: 1px solid #A408A7;
+      border-radius: 20px;
+      width: 25%;
+      height: 70%;
+      font-size: 20px;
+
+   }
+   .order_product a {
+      background-color: #A408A7;
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 5px;
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+   }
+   .order_product p {
+     margin-top: 20px;
+   }
+   .order_product span {
+      font-weight: 500;
+   }
+
    .Delivery {
-      max-width: 700px;
-      width: 600px;
+      max-width: 100%;
+      width: 40%;
       max-height: 400px ;
       border-radius: 24px;
       border: 1px solid #A408A7;
@@ -649,13 +727,13 @@ margin-top: 20px;
     border-radius: 10px;
    }
    .Delivery_info {
-      margin:20px 20px;
+      margin:20px ;
    }
    .Delivery_conditions {
   font-size: 20px;
   background-color: #A408A7;
   width: 20%;
-  height: 30px;
+      height: 30px;
   text-align: center;
   border-radius: 20px;
   color: #ffffff;
@@ -693,11 +771,10 @@ margin-top: 20px;
    .basket {
       margin: 10px 20px;
    }
+  
    .basket_product {
       width: 100%;
-      height: 70px;
-      border: 1px solid #A408A7;
-      border-radius: 20px;
+      height: 80px;
       font-size: 16px;
       margin-bottom: 20px;
    }
@@ -705,17 +782,21 @@ margin-top: 20px;
    .basket_product img {
       height: 90%;
       width: 60px;
-      border-radius: 10px;
    }
    .basket_product p {
       margin-top: 17px;
    }
    .counter {
-      width: 80px;
-      height: 50%;
+      width: 100%;
+      height: 30px;
       background-color: #A408A7;
       border-radius: 8px;
       font-size: 16px;
+   }
+   .counter button {
+      border: none;
+      background-color: #A408A7;
+      color: #fff;
    }
    .count {
       width: 30px;
@@ -785,7 +866,9 @@ input::-webkit-inner-spin-button {
     background-color: #A408A7;
     color: #ffffff;
     border-radius: 20px;
+    padding: 1px 10px;
     border: 1px solid #ffffff;
+    margin: 0 auto;
 }
 .switch {
    position: relative;

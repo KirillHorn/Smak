@@ -1,45 +1,54 @@
-
 <x-x-header />
 
 
-    <section class="">
-        <div class="container d-flex justify-content-around">
-            <div class="d-flex flex-column gap-5">
-
-
-
-                  <div class="Delivery Deliver_Basket">
-                         <div class="basket">
-                              <div>
-                                 <h2 class="fw-bold">Корзина</h2>
-                              </div>
-                                    <div class="d-flex flex-column">
-    
-
-            @foreach ($basket as $item)
-                                        <div class="basket_product d-flex gap-3 align-items-center justify-content-around">
-
-                                            <img src="/storage/img/{{$item->img}}"> <p class="fw-bold" >{{ $item->title}} </p>
-                                            <p class="text-center Sum_Button fw-bold" id="price"> {{ $item ->cost}} </p>
-                                            <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
-                                            <input id="numericUpDown" type="number" value="{{$item->count}}" class="count"/>
-                                            </div>
-                                            <div>   <a href="/{{$item->id}}/baskets_delete">Удалить</a>   </div>
-                                        </div>
-                         @endforeach
-
-                         <div class="d-flex  justify-content-between align-items-center "> <h2>Сумма корзины</h2>  </div>
-                            <div class="d-flex alight-items-center justify-content-center"> <a class="button_basket_a" href="/order"> Оформление заказа</a></div>
-                           
-                         </div>
-
-                     </div>
-                 </div>
+<section class="">
+    <div class="container d-flex justify-content-around">
+        <div class="d-flex flex-column basket_main">
+            <div class="d-flex justify-content-between flex-align-center basket_title">
+                <h3>Корзина</h3><button class="button_delete_all"></button>
+            </div>
+            <table class="table table-borderless table_product">
+                <thead style="border-bottom: 1px solid #A408A7;">
+                    <tr>
+                        <th scope="col" class="border-0" style="width: 8%;"></th>
+                        <th scope="col" class="border-0" style="width: 50%;">Наименование</th>
+                        <th scope="col" class="border-0" style="width: 32%;">Цена</th>
+                        <th scope="col" class="border-0" style="width: 10%;">Количество</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="product_basket_one">
+                        <td style="vertical-align: middle; text-align: center;"><img src="https://via.placeholder.com/50" alt="Фото товара"></td>
+                        <td style="vertical-align: middle;">Товар 1</td>
+                        <td style="vertical-align: middle; font-size:16px;">185</td>
+                        <td style="vertical-align: middle; text-align: center;">
+                            <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
+                                <button>-</button>
+                                <input id="numericUpDown" type="number" value="1" class="count" />
+                                <button>+</button>
+                            </div>
+                        
+                        </td>
+                        <td style="vertical-align: middle; text-align: center;">  <a href="/baskets_delete" class="product_delete">a</a>  </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin: 10px auto;">
+                <a class="button_add">+</a>
             </div>
 
+            @foreach ($basket as $item)
 
-    </section>
-<!-- 
+            @endforeach
+        </div>
+        <div class="d-flex flex-column order_product ">
+            <p class="d-flex gap-5 justify-content-center" >В корзине 1 товар<span>195₽</span></p>
+            <a href="/order">Перейти к оформлению</a>
+        </div>
+    </div>
+
+</section>
+
     <script>
         let price = document.getElementById("price");
         let sum = document.getElementById("sum");
@@ -60,5 +69,5 @@
         function setSum() {
             sum.innerText = (price.innerText * numericUpDown.value)
         }
-    </script> -->
-<x-footer/>
+    </script>
+<x-footer />

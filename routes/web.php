@@ -14,8 +14,6 @@ Route::get('/sitemap', function(){
 
 Route::get('/product', [IndexController::class, 'product_blade'])->name('products');
 
-
-
 Route::get('/cafe', [IndexController::class, 'cafe_blade'])->name("cafe");
 
 

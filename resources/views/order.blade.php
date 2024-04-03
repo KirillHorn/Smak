@@ -3,9 +3,8 @@
 
 
     <section class="">
-        <div class="container d-flex justify-content-around">
-            <div class="d-flex flex-column gap-5">
- <form method="POST" action='order_create'>
+        <div class="container" style="margin-top: 30px;">
+ <form method="POST" action='order_create ' class="d-flex justify-content-around">
     @csrf
                 <div class="Delivery">
                                 <div class="d-flex flex-column gap-2 Delivery_info">
@@ -30,7 +29,7 @@
                 </div>
 
 
-                <div class="Delivery order">
+                <div class="Delivery">
                 <div class="d-flex flex-column gap-2 Delivery_info">
                         <h2>Способ доставки</h2>
                         <div class="d-flex flex-column">
@@ -48,7 +47,7 @@
                                             </div>
                         </div>
                         <hr class="fw-bold">
-                            <div class="total">
+                            <div class="total d-flex flex-column gap-1">
                                 <p class="fw-bold">Итого</p>
                                 <p>Стоимость заказа: <input type="text" class="cost_order" name="amount"></p>
                                 <input type="submit" class="order_button" value="Оформить заказ">
@@ -61,24 +60,24 @@
     </section>
 
     <script>
-        let price = document.getElementById("price");
-        let sum = document.getElementById("sum");
-        let numericUpDown = document.getElementById("numericUpDown");
-        let up = document.getElementById("up");
-        let down = document.getElementById("down");
-        up.onclick = () => {
-            numericUpDown.value = (isNaN(numericUpDown.value)) ? 1 : +numericUpDown.value + 1;
-            setSum();
-        };
-        down.onclick = () =>{
-            numericUpDown.value = (numericUpDown.value) > 0 ? +numericUpDown.value - 1 : 0;
-            setSum();
-        }
+        // let price = document.getElementById("price");
+        // let sum = document.getElementById("sum");
+        // let numericUpDown = document.getElementById("numericUpDown");
+        // let up = document.getElementById("up");
+        // let down = document.getElementById("down");
+        // up.onclick = () => {
+        //     numericUpDown.value = (isNaN(numericUpDown.value)) ? 1 : +numericUpDown.value + 1;
+        //     setSum();
+        // };
+        // down.onclick = () =>{
+        //     numericUpDown.value = (numericUpDown.value) > 0 ? +numericUpDown.value - 1 : 0;
+        //     setSum();
+        // }
 
-        numericUpDown.oninput = setSum;
+        // numericUpDown.oninput = setSum;
 
-        function setSum() {
-            sum.innerText = (price.innerText * numericUpDown.value)
-        }
+        // function setSum() {
+        //     sum.innerText = (price.innerText * numericUpDown.value)
+        // }
     </script>
 <x-footer/>
