@@ -12,7 +12,7 @@ class baskets extends Model
     protected $fillable =
     ['id','id_users','id_product','count'];
 
-    public function product() {
-        return $this->hasMany(Products::class, 'id');
+    public function products() {
+        return $this->belongsTo(Products::class, 'id_product','id');
     }
 }

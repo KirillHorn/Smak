@@ -665,7 +665,9 @@ margin-top: 20px;
    .table_product th, .table_product td {
       border-top: none; /* Убираем верхние границы у ячеек */
     }
-    .product_basket_one td {
+    .product_basket_one img {
+      max-width: 50px;
+      max-height: 50px;
 
    }
    .button_add {

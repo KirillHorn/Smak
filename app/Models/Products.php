@@ -34,7 +34,7 @@ class Products extends Model
         return $this->belongsTo(Cafe::class, 'id_cafe', 'id');
     }
 
-    public function product() {
+    public function basket() {
         return $this->belongsTo(baskets::class, 'id');
     }
 

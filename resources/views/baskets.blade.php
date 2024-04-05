@@ -7,6 +7,8 @@
             <div class="d-flex justify-content-between flex-align-center basket_title">
                 <h3>Корзина</h3><button class="button_delete_all"></button>
             </div>
+            
+         
             <table class="table table-borderless table_product">
                 <thead style="border-bottom: 1px solid #A408A7;">
                     <tr>
@@ -16,33 +18,54 @@
                         <th scope="col" class="border-0" style="width: 10%;">Количество</th>
                     </tr>
                 </thead>
+              
+               
                 <tbody>
+                @forelse ($basket as $item)
+                @php 
+                $count_sum=0;
+                $count_sum++;
+                @endphp
                     <tr class="product_basket_one">
-                        <td style="vertical-align: middle; text-align: center;"><img src="https://via.placeholder.com/50" alt="Фото товара"></td>
-                        <td style="vertical-align: middle;">Товар 1</td>
-                        <td style="vertical-align: middle; font-size:16px;">185</td>
+                        <td style="vertical-align: middle; text-align: center;"><img src="/storage/img/{{$item->img}}" alt="Фото товара"></td>
+                        <td style="vertical-align: middle;">{{$item->title}}</td>
+                        <td style="vertical-align: middle; font-size:16px;" class="hidden_cost d-none">
+                      {{$item->cost}}
+                        </td>
+                        <td class="secret_cost">{{$item->cost}}</td>
+                  
+                     
+                  
                         <td style="vertical-align: middle; text-align: center;">
                             <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
-                                <button>-</button>
+                                <button id="down">-</button>
                                 <input id="numericUpDown" type="number" value="1" class="count" />
-                                <button>+</button>
+                                <button id="up">+</button>
                             </div>
                         
                         </td>
-                        <td style="vertical-align: middle; text-align: center;">  <a href="/baskets_delete" class="product_delete">a</a>  </td>
+                        <td style="vertical-align: middle; text-align: center;">  <a href="/baskets_delete" class="product_delete"></a>  </td>
                     </tr>
+                    @empty
+                <tr>
+                    <td>Корзина пуста</td></tr>
+                @endforelse
                 </tbody>
+
             </table>
+        
+  
+           
             <div style="margin: 10px auto;">
-                <a class="button_add">+</a>
+                <a class="button_add" href="/product">+</a>
             </div>
 
-            @foreach ($basket as $item)
+      
 
-            @endforeach
+       
         </div>
         <div class="d-flex flex-column order_product ">
-            <p class="d-flex gap-5 justify-content-center" >В корзине 1 товар<span>195₽</span></p>
+            <p class="d-flex gap-5 justify-content-center" >В корзине 1 товар<span id="sum"></span></p>
             <a href="/order">Перейти к оформлению</a>
         </div>
     </div>
@@ -50,6 +73,7 @@
 </section>
 
     <script>
+        /*
         let price = document.getElementById("price");
         let sum = document.getElementById("sum");
         let numericUpDown = document.getElementById("numericUpDown");
@@ -68,6 +92,37 @@
 
         function setSum() {
             sum.innerText = (price.innerText * numericUpDown.value)
+        } */
+        const numberInputs = document.querySelectorAll('.secret_cost');
+            const resultElement = document.getElementById('sum');
+            function updateSum() {
+            let sum = 0;
+            numberInputs.forEach(function(element) {
+                    const value = parseFloat(element.textContent);
+                    if (!isNaN(value)) {
+                        sum += value;
+                    }
+                });
+            resultElement.textContent = sum;
         }
+        updateSum();
+        document.querySelectorAll('.count').forEach(input => {
+            input.addEventListener('change', function() {
+                const productDiv = this.closest('.product_basket_one');
+                const priceCount = productDiv.querySelector('.secret_cost');
+                const priceElement = productDiv.querySelector('.hidden_cost');
+                const price = parseFloat(priceElement.textContent);
+                const quantity = parseInt(this.value);
+
+                const totalPrice = price * quantity;
+                
+                priceCount.textContent = totalPrice;
+                updateSum();
+            });
+        });
+    
+    
+ 
+        
     </script>
 <x-footer />
