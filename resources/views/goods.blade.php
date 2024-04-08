@@ -2,7 +2,7 @@
 <x-x-header />
 
 
-    <section class="">
+
         <div class="container d-flex main_goods ">
             <img src="/storage/img/{{$product->img}}" alt="фотография товара" class="img_goods">
             <div class="main_goods_text">
@@ -20,6 +20,5 @@
                 <a href="{{ route('basket.r' , ['id' => $product->id])}}" class="buy_buton text-end">В корзину</a>
             </div>
         </div>
-    </section>
- 
+
 <x-footer/>

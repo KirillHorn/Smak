@@ -8,7 +8,7 @@
         <a href="/auth/registration" class="decoration-none">Регистрация</a>
       </div>
       <div class="a_aut">
-        <a class="decoration-none">Вход</a>
+        <a href="/auth/auth" class="decoration-none">Вход</a>
       </div>
     </div>
     @if (session("error"))

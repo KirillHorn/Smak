@@ -1,4 +1,4 @@
-<section class="footer">
+<footer class="footer mt-auto">
     <div class="container footer_container">
     <hr>
             <div class="d-flex justify-content-around ">
@@ -33,4 +33,4 @@
             </div>
     </div>
    
-</section>
+</footer>

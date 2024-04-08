@@ -11,12 +11,14 @@
          
             <table class="table table-borderless table_product">
                 <thead style="border-bottom: 1px solid #A408A7;">
+                @if(!$basket)
                     <tr>
                         <th scope="col" class="border-0" style="width: 8%;"></th>
                         <th scope="col" class="border-0" style="width: 50%;">Наименование</th>
                         <th scope="col" class="border-0" style="width: 32%;">Цена</th>
                         <th scope="col" class="border-0" style="width: 10%;">Количество</th>
                     </tr>
+                    @endif
                 </thead>
               
                
@@ -48,7 +50,7 @@
                     </tr>
                     @empty
                 <tr>
-                    <td>Корзина пуста</td></tr>
+                    <div class="text-center basket_null">Корзина пуста</div></tr>
                 @endforelse
                 </tbody>
 

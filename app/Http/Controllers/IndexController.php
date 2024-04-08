@@ -21,9 +21,10 @@ class IndexController extends Controller
     public function index () {
         $cafe=Cafe::with("categoriesCafe")->take(8)->get();
         $product=Products::with("Categories")->take(8)->get();
-        $categoria=Categories::all();
+        $categoria=Categories::all()->take(8);
+        $categoria_cafe=CategoriesCafes::all()->take(6);
 
-        return view('index',["cafe"=>$cafe, "product" => $product, "categoria" => $categoria]);
+        return view('index',["cafe"=>$cafe,"categorcafe" => $categoria_cafe, "product" => $product, "categoria" => $categoria]);
     }
     public function product_blade () {
       $product=Products::with("Categories")->paginate(8);

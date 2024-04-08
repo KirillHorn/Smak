@@ -80,26 +80,21 @@
                         <h3>Любые категории блюд</h3>
                         <p>Привезём блюда из кафе и ресторанов</p>
                             <div class="categories_link d-flex flex-wrap gap-3 mb-3">
-                                <a href="" class="">Бургеры</a>
-                                <a href="" class="">Суши и роллы</a>
-                                <a href="" class="">Пицца</a>
-                                <a href="" class="">Бургеры</a>
-                                <a href="" class="">Суши и роллы</a>
-                                <a href="" class="">Пицца</a>   
+                                @foreach($categoria as $categories_product)
+                                <a href="{{ route ('products',  ['sort_order' => $categories_product->id]) }}" >{{$categories_product->title}}</a>   
+                                @endforeach
                             </div>
-                            <a href="" class="mt-1" style="width:24%;" >Все блюда</a>
+                            <a href="{{ route('products', ['sort_order' => '0']) }}" class="mt-1 all_categories" style="width:24%;" >Все блюда</a>
                     </div>
                     <div  class="categories_block p-5 d-flex flex-column">
                         <h3>Многообразие вкусов</h3>
                         <p>Выберите свою любимую кухню!</p>
                             <div class="categories_link d-flex flex-wrap gap-3 mb-3">
-                                <a href="" class="">Японская кухня</a>
-                                <a href="" class="">Итальянская кухня</a>
-                                <a href="" class="">Китайская кухня</a>
-                                <a href="" class="">Грузинская кухня</a>
-                                <a href="" class="">Французская кухня</a>
+                            @foreach ($categorcafe as $categorcafes)
+    <a href= "{{route ('cafe',['sort_order' => $categorcafes->id ]) }}" class="">{{$categorcafes->title_categories}}</a>
+@endforeach
                             </div>
-                            <a href="" class="mt-1" style="width:24%;"  >Все кухня</a>
+                            <a href="{{ route('cafe', ['sort_order' => '0']) }}" class="mt-1 all_categories" style="width:24%;"  >Все кухня</a>
                     </div>
                 </div>
                 

@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body style="min-height: 102vh;" class="d-flex flex-column">
 <header class="py-3  border-bottom">
     <div class="container d-flex flex-wrap justify-content-center gap-3">
       <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">

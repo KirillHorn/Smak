@@ -14,9 +14,9 @@
                         </div>
                             <div class="d-flex flex-column gap-4">
                                     <div class="d-flex flex-wrap gap-4  a_content_categories">
-                                    <a href="{{ route('cafe', ['sort_order' => '0']) }}" class="capitalize" style="color: #A408A7;">Все категории</a>
+                                    <a href="{{ route('cafe', ['sort_order' => '0']) }}" >Все категории</a>
                                         @foreach ($categorcafe as $categorcafes)
-                                    <a class="capitalize" style="color: #A408A7;" href= "{{route ('cafe',['sort_order' => $categorcafes->id ]) }}" >{{$categorcafes->title_categories}}</a>
+                                    <a  href= "{{route ('cafe',['sort_order' => $categorcafes->id ]) }}" >{{$categorcafes->title_categories}}</a>
                                     @endforeach
                                      </div>
                              </div>
