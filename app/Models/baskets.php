@@ -10,7 +10,7 @@ class baskets extends Model
 {
     use HasFactory;
     protected $fillable =
-    ['id','id_users','id_product','count'];
+    ['id','id_users','id_product'];
 
     public function products() {
         return $this->belongsTo(Products::class, 'id_product','id');

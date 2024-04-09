@@ -611,6 +611,11 @@ margin-top: 20px;
  .user_orders {
    max-width: 100%;
    background-color: #A408A7;
+   margin-bottom: 30px;
+ }
+ .user_orders h2 {
+   margin-top:20px;
+
  }
  .user_orders_information {
    max-width: 97%;
@@ -618,39 +623,26 @@ margin-top: 20px;
    background-color: #ffffff;
    height: 100px;
    margin: 10px auto;
+ } 
+ .user_orders_information a {
+   color: #A408A7;
  }
  .user_orders_information span {
-   font-size: 30px;
-   margin-left: 20px;
+   font-size: 20px;
  }
-
- /* Страница историй заказа курьера */
- .select {
- width: 100px;
- height: 30px;
- border: 1px solid #A408A7;
- border-radius: 20px ;
- text-align: center;
+ .table_product_tr {
+   text-align: center;
  }
-
-
-
- .option {
-   width: 100px;
-   height: 30px;
-   border: 1px solid #A408A7;
-  ;
-   }
-   .data_orders_input input {
-      width: 150px;
-      border: 1px solid #A408A7;
-      border-radius: 20px;
-   }
-   .data_orders_input div {
-     width: 2px;
-     height: 80%;
-     background-color: #A408A7;
-   }
+ .table_product_tr a {
+   color: #A408A7;
+   transition: 0.3s ease-in-out;
+ }
+ .table_product_tr a:hover {
+   color: #b300ff;
+   font-size: 17px;
+   transition: 0.3s ease-in-out;
+ }
+ 
 
    /* Страница заказа и корзины */
    .basket_main {
@@ -700,10 +692,12 @@ margin-top: 20px;
       background-color: #A408A7;
       border: 1px solid #fff;
    }
+   
    .product_delete {
       background-image: url(../img/bitcoin-icons_cross-outline.svg);
       background-repeat: no-repeat;
       padding: 20px;
+ 
    }
    .order_product {
       border: 1px solid #A408A7;
@@ -713,7 +707,18 @@ margin-top: 20px;
       font-size: 20px;
 
    }
-   .order_product a {
+   .order_product a  {
+      background-color: #A408A7;
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 5px;
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+   }
+   .order_product button  {
       background-color: #A408A7;
       color: #ffffff;
       border-radius: 20px;
@@ -762,15 +767,18 @@ margin-top: 20px;
   color: #ffffff;
    }
    .input_adress {
-      max-width: 160px ;
+   width: 30%;
       background-color: #ffffff;
       color: #000000;
       border: none;
       border-bottom: 1px solid #000000;
+      transition: width 2s, height 4s;
 
    }
    .input_adress:focus {
       outline:none;
+     width: 80%;
+     transition: width 2s, height 4s;
    }
    .input_commen {
       max-width: 90%;
@@ -780,14 +788,18 @@ margin-top: 20px;
       border-radius: 20px;
       color: #ffffff;
       padding-left: 10px;
+      transition: width 2s, height 4s;
    }
-   .input_commen:focus {
+   .input_commen:focus,
+   .input_commen:active {
    padding-left: 10px;
    color: #ffffff;
    border: 1px solid #ffffff;
    outline:none;
+   transition: width 2s, height 4s;
    background-color: #A408A7;
    }
+   
    .input_commen::placeholder {
       color: #ffffff;
    }
@@ -816,9 +828,9 @@ margin-top: 20px;
       border-radius: 8px;
       font-size: 16px;
    }
-   .counter button {
+   .counter p {
       border: none;
-      background-color: #A408A7;
+      margin-top: 14px;
       color: #fff;
    }
    .count {

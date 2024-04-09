@@ -27,11 +27,15 @@ Route::get('/baskets/{id}', [OrderController::class, 'baskets'])->name('basket.r
 
 Route::get('/{id}/baskets_delete', [OrderController::class, 'baskets_delete'])->name('delete_basket.r');
 
+Route::post('/baskets_order', [OrderController::class, 'baskets_order']);
+
 Route::post('/order_create', [OrderController::class, 'orderCreate']);
 
 Route::middleware('checkRole:Клиент')->group(function () {
 
     Route::get('/users/personal_Area', [IndexController::class, 'personal_blade']);
+
+    Route::get('/users/order_user/{id}', [IndexController::class, 'personal_orders']);
 
     Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class, 'registration_redact'])->name('r.update');
 });

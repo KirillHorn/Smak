@@ -38,4 +38,8 @@ class Products extends Model
         return $this->belongsTo(baskets::class, 'id');
     }
 
+    public function order() {
+        return $this->hasOne(orderCustoms::class);
+    }
+
 }

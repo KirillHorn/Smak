@@ -10,7 +10,7 @@ class orders_products extends Model
     use HasFactory;
 
     protected  $fillable = [
-        'id_basket', 'id_order' , 'count',	
+        'id_basket', 'count',	
     ];
 
  

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('baskets', function (Blueprint $table) {
+        Schema::create('orders_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_users')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('id_product')->references('id')->on('products')->onDelete('cascade');
+            $table->foreignId('id_basket')->references('id')->on('baskets');
+            $table->integer('count');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('baskets');
+        Schema::dropIfExists('orders_products');
     }
 };

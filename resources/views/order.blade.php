@@ -3,20 +3,20 @@
 
 
     <section class="">
-        <div class="container" style="margin-top: 30px;">
+        <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
  <form method="POST" action='order_create ' class="d-flex justify-content-around">
     @csrf
                 <div class="Delivery">
-                                <div class="d-flex flex-column gap-2 Delivery_info">
+                                <div class="d-flex flex-column gap-3 Delivery_info">
 
                           <h2 class="fw-bold">Условия доставки</h2>
-                          <div class="Delivery_conditions" > <p>200руб</p> </div>
-                                <div class="d-flex flex-column gap-2">
+                     
+                                <div class="d-flex flex-column gap-3">
                                     <div class="d-flex gap-1">
                                         <img src="/img/home.svg">
-                         <input placeholder="Что-что" class="input_adress" name="location">
+                         <input type="text" placeholder="Адрес" class="input_adress" name="location">
                                  </div>
-                         <input class="input_commen" placeholder="Комментарий курьеру" type="text" name="comment">
+                         <input type="text" class="input_commen" placeholder="Комментарий курьеру" type="text" name="comment">
                              </div>
                                  <div>
                                      <div class="d-flex align-items-center gap-1">
@@ -31,25 +31,25 @@
 
                 <div class="Delivery">
                 <div class="d-flex flex-column gap-2 Delivery_info">
-                        <h2>Способ доставки</h2>
+                        <h2>Способ оплаты</h2>
                         <div class="d-flex flex-column">
                                 <div class="d-flex gap-4 align-items-center"> Наличные
                                              <label class="switch">
-                                            <input type="radio" checked name="very">
+                                            <input type="radio" checked name="very" value="Наличные">
                                             <span class="slider round"></span>
                                             </label>
                                             </div>
                                             <div class="d-flex gap-1 align-items-center"> Безналичные
                                     <label class="switch">
-                                    <input type="radio" name="very">
+                                    <input type="radio" name="very" value="Безналичные">
                                      <span class="slider round"></span>
                                     </label>
                                             </div>
                         </div>
                         <hr class="fw-bold">
-                            <div class="total d-flex flex-column gap-1">
-                                <p class="fw-bold">Итого</p>
-                                <p>Стоимость заказа: <input type="text" class="cost_order" name="amount"></p>
+                            <div class="total d-flex flex-column gap-4">
+                                <p class="fw-bold">Итого: {{ $totalSum }}₽</p>
+                                <input type="hidden" value="{{ $totalSum }}" name="amount">
                                 <input type="submit" class="order_button" value="Оформить заказ">
                             </div>
                         </div>

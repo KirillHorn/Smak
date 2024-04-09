@@ -12,6 +12,7 @@ use App\Models\Cafe;
 use App\Models\Products;
 use App\Models\CategoriesCafes;
 use App\Models\Categories;
+use App\Models\orderCustoms;
 use App\Models\orders;
 
 
@@ -73,6 +74,11 @@ class IndexController extends Controller
         $orders = orders::where('id_users', $userid)->get();
         $basket= baskets::where('id_users', $userid)->get();
         return view ('users.personal_Area', ['orders' => $orders , 'basket' =>$basket]);
+    }
+    public function personal_orders($id) {
+        $orders_personal=orders::find($id);
+        $orders_products=orderCustoms::where('order',$id)->with('product_order')->get();
+        return view('users.order_user',['orders_user' => $orders_personal, 'orders_products' => $orders_products]);
     }
 
  

@@ -126,18 +126,31 @@
         <div class="d-flex flex-column user_orders">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
             @foreach ($orders as $order)
-            <div class="d-flex user_orders_information align-items-center ">
-
-                <span>{{$order->id}}</span>
-                <span>@foreach ($basket as $baskets)
-                {{$baskets->id_product}}
-                @endforeach
-                </span>
-                <span>{{$order->comment}}</span>
-                <span>{{$order->location}}</span>
-                <span>{{$order->amount}}</span>
-
-            </div>
+           
+            <table class="table table-borderless table_product table_">
+  <thead style="border-bottom: 1px solid #A408A7;">
+    <tr class="table_product_tr">
+      <th scope="col">Номер</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Комментарий</th>
+      <th scope="col">Дата</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($orders as $orderss)
+    <tr class="table_product_tr">
+      <th scope="row">{{$orderss->id}}</th>
+      <td>100$</td>
+      <td>ул. Пушкина, д. 12</td>
+      <td>Квартира просторная и светлая</td>
+      <td>2023-02-16</td>
+      <td><a href="order_user/{{$orderss->id}}">Поподробнее</a></td>
+    </tr>
+    @endforeach
+</table>
+         
             @endforeach
             
         </div>
