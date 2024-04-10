@@ -1,20 +1,8 @@
 @include('moder.inc.sidebar')
+<x-alerts/>
 <div class="wrapper">
 <div class="container">
   <h2 class="text-center">Продукты: удаление|редактирование</h2>
-
- @if (session ("update"))
- <div>
-    <span  id="message">{{session("update")}}</span>
-</div>
- @endif
-
- @if (session ("destroy"))
- <div>
-    <span  id="message">{{session("destroy")}}</span>
-</div>
- @endif
-
   <table class="table table-striped">
   <thead>
     <tr>

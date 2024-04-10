@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('amount');
             $table->foreignId('id_users')->references('id')->on('users');
-            $table->string('comment');
-            $table->string('location');
+            $table->string('comment', 100);
+            $table->string('location', 100);
             $table->timestamps();
         });
     }

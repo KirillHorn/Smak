@@ -1,15 +1,8 @@
 @include('moder.inc.sidebar')
+<x-alerts/>
 <div class="wrapper" >
-  
 <div class="container">
   <div>
-   @if (session ("addproduct"))
-   <div>
-      <span  id="message">{{session("addproduct")}}</span>
-</div>
-   @endif
-
-  
   </div>
   <form action="/edit_cafe" method="POST" enctype="multipart/form-data" class="addservice">
     <h2 class="text-center">Добавить Заведение</h2>
@@ -35,8 +28,6 @@
     <label for="exampleInputEmail1" class="form-label text_label">Местоположение</label>
       <input class="form-control" name="location" placeholder=" @error('location') {{$message}}  @enderror" type="text" >
     </div>
-    
-  
 </select>
     <button type="submit" class="btn btn-primary btn_buttom">Добавить Заведение</button>
   </form>

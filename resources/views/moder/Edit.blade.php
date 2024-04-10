@@ -1,8 +1,10 @@
 @include('moder.inc.sidebar')
+<x-alerts/>
 <div class="wrapper">
     <div class="container">
         <h2 class="text-center">Заведение</h2>
         <form action="{{route ('edit.update', ['id' => $cafes_info->id])}}" method="POST" enctype="multipart/form-data" class="addservice">
+           
             @csrf
 
             <h2 class="text-center">Редактировать Заведения</h2>

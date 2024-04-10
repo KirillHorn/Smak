@@ -23,12 +23,9 @@
 <body style="min-height: 102vh;" class="d-flex flex-column">
 <header class="py-3  border-bottom">
     <div class="container d-flex flex-wrap justify-content-center gap-3">
-      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
-      <img src="/img/" alt="тут есть что-то" class="logo">
+      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-decoration-none" style="color: aliceblue; font-size:30px; margin-left:60px;">
+      SMAK
       </a>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-        <input type="search" class="form-control search_input" placeholder="Поиск..." aria-label="Search">
-      </form>
       <a class="basket_input" href="/baskets">   <span class="icon-button"></span>
   Корзина</a>
     </div>
@@ -36,10 +33,9 @@
 <nav class="py-2 ">
     <div class="container d-flex flex-wrap">
       <ul class="nav me-auto">
-        <li class="nav-item"><a href="#" class="nav-link px-2" aria-current="page">О нас</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2">Меню</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2">Заведение</a></li>
-        <li class="nav-item"><a href="#" class="nav-link  px-2">Стать курьером</a></li>
+        <li class="nav-item"><a href="/" class="nav-link px-2" aria-current="page">О нас</a></li>
+        <li class="nav-item"><a href="/product" class="nav-link px-2">Меню</a></li>
+        <li class="nav-item"><a href="/cafe" class="nav-link px-2">Заведение</a></li>
       </ul>
       <ul class="nav">
         @guest

@@ -11,9 +11,7 @@
         <a href="/auth/auth" class="decoration-none">Вход</a>
       </div>
     </div>
-    @if (session("error"))
-    {{session("error")}}
-    @endif
+    <x-alerts/>
     <h2 class="h2_auth fw-bold">ВХОД</h2>
     <form method="POST" action="/auth_valid" class="forma_auth d-flex justify-content-center flex-column align-items-center">
       @csrf

@@ -1,32 +1,32 @@
 <x-x-header />
 @if (session ("success"))
-<div>
-    <div  id="message"  class="message">
-
-<span class="fw-bold">{{session("success")}}</span>
-
+<div id="message"  class="alert alert-success alert-dismissible mt-3 position-absolute bottom-0 end-0" role="alert"
+        style="max-width:20 rem;">
+        <div class="alert-text">
+            {{ session('success') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-</div>
   @endif
-
   @if (session ("auth"))
-<div>
-    <div  id="message"  class="message">
-
-<span class="fw-bold">{{session("auth")}}</span>
-
+  <div id="message"  class="alert alert-success alert-dismissible mt-3 position-absolute bottom-0 end-0" role="alert"
+        style="max-width:20 rem;">
+        <div class="alert-text">
+               {{session("auth")}}
+            </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-</div>
   @endif
 
   @if (session ("update"))
- <div>
-    <div  id="message"  class="message">
 
-<span class="fw-bold">{{session("update")}}</span>
-
+  <div id="message"  class="alert alert-success alert-dismissible mt-3 position-absolute bottom-0 end-0" role="alert"
+        style="max-width:20 rem;">
+        <div class="alert-text">
+            {{session("update")}}
+            </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-</div>
   @endif
 
 
@@ -39,8 +39,6 @@
         </div>
         <div class="d-flex justify-content-between  nav_personal">
             <a style="color: aliceblue;" id="get">Личная информация</a>
-
-            <a style="color: aliceblue;">Ваши заказы</a>
         </div>
         <div class="d-flex flex-column ">
             <div class="d-flex gap-5 information_personal_text">
@@ -125,7 +123,7 @@
 
         <div class="d-flex flex-column user_orders">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
-            @foreach ($orders as $order)
+           
            
             <table class="table table-borderless table_product table_">
   <thead style="border-bottom: 1px solid #A408A7;">
@@ -142,16 +140,15 @@
     @foreach ($orders as $orderss)
     <tr class="table_product_tr">
       <th scope="row">{{$orderss->id}}</th>
-      <td>100$</td>
-      <td>ул. Пушкина, д. 12</td>
-      <td>Квартира просторная и светлая</td>
-      <td>2023-02-16</td>
+      <td>{{$orderss->amount}}</td>
+      <td>{{$orderss->location}}</td>
+      <td>{{$orderss->comment}}</td>
+      <td>{{$orderss->created_at}}</td>
       <td><a href="order_user/{{$orderss->id}}">Поподробнее</a></td>
     </tr>
     @endforeach
 </table>
          
-            @endforeach
             
         </div>
     </div>

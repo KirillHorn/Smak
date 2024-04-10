@@ -46,7 +46,7 @@ class ModerController extends Controller
         ]);
 
         if ($cafeAdd) {
-            return redirect()->back()->with('addproduct', 'Вы добавили Заведение ');
+            return redirect()->back()->with('success', 'Вы добавили Заведение ');
         } else {
             return redirect('/')->with('error', 'Не удалось добавить заведение ');
         }
@@ -83,14 +83,14 @@ class ModerController extends Controller
                 'location' => $cafeInfo['location'],
             ]);
         $id->save();
-        return redirect("/moder/serviceEdit")->with("kasdksakda", "редактирование заведения прошла успешна");
+        return redirect("/moder/serviceEdit")->with("success", "редактирование заведения прошла успешна");
 
     }
 
     public function delete_cafe(Cafe $id)
     {
         $id->delete();
-        return redirect()->back()->with("destroy", "удаление прошло успешно");
+        return redirect()->back()->with("success", "удаление прошло успешно");
 
     }
 
@@ -140,7 +140,7 @@ class ModerController extends Controller
         ]);
 
         if ($cafeAdd) {
-            return redirect()->back()->with('addproduct', 'Вы добавили продукт ');
+            return redirect()->back()->with('success', 'Вы добавили продукт ');
         } else {
             return redirect('/')->with('error', 'Не удалось добавить продукт ');
         }
@@ -193,13 +193,13 @@ class ModerController extends Controller
                 'id_categories'=>$infoproduct['id_categories'],
                 ]);
             $id->save();
-            return redirect("/moder/serviceEditProduct")->with("update", "редактирование Продукта прошла успешна");
+            return redirect("/moder/serviceEditProduct")->with("success", "редактирование Продукта прошла успешна");
         }
 
         public function delete_product(Products $id)
         {
             $id->delete();
-            return redirect()->back()->with("destroy", "удаление прошло успешно");
+            return redirect()->back()->with("success", "удаление прошло успешно");
     
         }
     }

@@ -33,25 +33,25 @@ class OrderController extends Controller
 
     public function baskets($id)
     {
-            $id_users = Auth::id();
-            $b_u = Auth::user()->basket_products;
-            $isInBasket = false;
-            foreach ($b_u as $item) {
-                if ($item->id_product == $id){
-                    $productInBasket = baskets::find($item->id);
-                    $productInBasket->count += 1;
-                    $productInBasket->save();
-                    $isInBasket = true;
-                    return redirect()->back();
-                }
+        $id_users = Auth::id();
+        $b_u = Auth::user()->basket_products;
+        $isInBasket = false;
+        foreach ($b_u as $item) {
+            if ($item->id_product == $id) {
+                $productInBasket = baskets::find($item->id);
+                $productInBasket->count += 1;
+                $productInBasket->save();
+                $isInBasket = true;
+                return redirect()->back();
             }
-            baskets::create([
-                'id_product' => $id,
-                'id_users' => $id_users,
-            ]);
-
-            return redirect()->back();
         }
+        baskets::create([
+            'id_product' => $id,
+            'id_users' => $id_users,
+        ]);
+
+        return redirect()->back();
+    }
 
     public function baskets_delete($id)
     {
@@ -70,26 +70,20 @@ class OrderController extends Controller
                     "id_users" => Auth::id(),
                     "id" => $item->id
                 ])->delete();
-                
-        return redirect()->back();
+
+                return redirect()->back();
             }
         }
     }
-    public function baskets_order(Request $request) {
+    public function baskets_order(Request $request)
+    {
         $infoProduct = $request->all();
         $request->session()->put('total_sum', $infoProduct['total_sum']);
-        $products = $infoProduct['products'];
-        foreach ($products as $product) {
-             orders_products::create([
-                'id_basket' => $product['id'],
-                'count' => $product['count'],
-            ]);
-        }
-       return redirect('/order');
+        return redirect('/order');
     }
     public function orderCreate(Request $request)
     {
-        
+
         $userID = Auth::id();
         $request->validate([
             'location' => 'required',
@@ -107,13 +101,29 @@ class OrderController extends Controller
             'location' => $infoOrder['location'],
             'paymant' => $infoOrder['very']
         ]);
+
+
+        $to  =  Auth::user()->email;
+  
+        $subject = "Чек по заказу:" . $orderAdd['id'];
+        
+        $message = '
+        Чек по заказу
+   Цена заказа:' . $orderAdd['amount'] . '
+Комментарий заказа: ' . $orderAdd['comment'] . '
+   Адрес доставки:' . $orderAdd['location'] . '
+        ';
+
+        mail($to, $subject, $message);
         if ($orderAdd) {
-            $productUser=baskets::where('id_users', $userID)->get();
-            foreach($productUser as $product) {
+            $productUser = baskets::where('id_users', $userID)->get();
+
+            foreach ($productUser as $product) {
                 orderCustoms::create([
-                    'order'=> $orderAdd['id'],
-                    'product'=> $product['id']
-                ]); 
+                    'order' => $orderAdd['id'],
+                    'product' => $product['id_product'],
+                    
+                ]);
             }
             DB::transaction(function () use ($userID) {
                 $basketIds = baskets::where('id_users', $userID)->pluck('id');

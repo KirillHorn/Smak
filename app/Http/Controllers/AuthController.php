@@ -53,7 +53,7 @@ class AuthController extends Controller
          Auth::login($userCreate);
          return redirect("/")->with("success", "Вы зарегались!");
       } else {
-         return redirect("/auth/registration")->with("error", "Вы зарегались!");
+         return redirect("/auth/registration")->with("error", "Ошибка регистрации!");
       }
    }
    public function auth_page()

@@ -1,6 +1,6 @@
 @include('moder.inc.sidebar')
+<x-alerts/>
 <div class="wrapper">
-
   <div class="container">
     <div>
       @if (session ("addproduct"))
@@ -8,8 +8,6 @@
         <span id="message">{{session("addproduct")}}</span>
       </div>
       @endif
-
-
     </div>
     <form action="/edit_product" method="POST" enctype="multipart/form-data" class="addservice">
       <h2 class="text-center">Добавить Продукт</h2>

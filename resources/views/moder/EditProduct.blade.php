@@ -1,4 +1,5 @@
 @include('moder.inc.sidebar')
+<x-alerts/>
 <div class="wrapper">
     <div class="container">
         <h2 class="text-center">Продукт</h2>
