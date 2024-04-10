@@ -23,7 +23,7 @@ class OrderController extends Controller
     function getBaskets()
     {
         $basket = DB::table('baskets')
-            ->select('products.title', 'products.cost', 'products.img', 'baskets.id')
+            ->select('products.title', 'products.cost', 'products.img', 'baskets.id', 'count')
             ->join('products', 'baskets.id_product', '=', 'products.id')
             ->where('id_users', '=', Auth::id())
             ->get();
@@ -48,6 +48,7 @@ class OrderController extends Controller
         baskets::create([
             'id_product' => $id,
             'id_users' => $id_users,
+            'count' => 1,
         ]);
 
         return redirect()->back();
@@ -77,8 +78,22 @@ class OrderController extends Controller
     }
     public function baskets_order(Request $request)
     {
-        $infoProduct = $request->all();
+        $infoProduct = $request->all();    
         $request->session()->put('total_sum', $infoProduct['total_sum']);
+        $id_users = Auth::id();
+        $isInBasket = false;
+        $productUser = baskets::where('id_users', $id_users)->get(); 
+        $productCount=$infoProduct['products'];
+        foreach ($productUser as $item) {
+            foreach ($productCount as $count) {
+                if ($item->id_product == $count['id']) {
+                        $item->count = $count['count'];
+                        $item->save();
+                } else {
+                    $false=false;
+                }
+            }
+        }
         return redirect('/order');
     }
     public function orderCreate(Request $request)
@@ -104,32 +119,29 @@ class OrderController extends Controller
 
 
         $to  =  Auth::user()->email;
-  
-        $subject = "Чек по заказу:" . $orderAdd['id'];
-        
+
+        $subject = "Чек по заказу№" . $orderAdd['id'];
+
         $message = '
         Чек по заказу
-   Цена заказа:' . $orderAdd['amount'] . '
-Комментарий заказа: ' . $orderAdd['comment'] . '
-   Адрес доставки:' . $orderAdd['location'] . '
+        Цена заказа:' . $orderAdd['amount'] . '
+        Комментарий заказа: ' . $orderAdd['comment'] . '
+        Адрес доставки:' . $orderAdd['location'] . '
         ';
 
         mail($to, $subject, $message);
         if ($orderAdd) {
             $productUser = baskets::where('id_users', $userID)->get();
-
+       
             foreach ($productUser as $product) {
                 orderCustoms::create([
                     'order' => $orderAdd['id'],
                     'product' => $product['id_product'],
-                    
+                    'count'=>$product['count']
+
                 ]);
             }
-            DB::transaction(function () use ($userID) {
-                $basketIds = baskets::where('id_users', $userID)->pluck('id');
-                orders_products::whereIn('id_basket', $basketIds)->delete();
-                baskets::where('id_users', $userID)->delete();
-            });
+            DB::table('baskets')->delete();
             return redirect('/users/personal_Area');
         } else {
             return redirect('/orders');

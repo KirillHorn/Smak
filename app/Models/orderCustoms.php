@@ -12,6 +12,7 @@ class orderCustoms extends Model
     protected $fillable = [
         'order',
         'product',
+        'count'
     ];
 
     public function product_order() 

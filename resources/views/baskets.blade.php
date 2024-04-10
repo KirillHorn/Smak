@@ -11,7 +11,7 @@
                     <tr>
                         <th scope="col" class="border-0" style="width: 8%;"></th>
                         <th scope="col" class="border-0" style="width: 50%;">Наименование</th>
-                        <th scope="col" class="border-0" style="width: 32%;">Цена</th>
+                        <th scope="col" class="border-0" style="width: 32%;">Цена₽</th>
                         <th scope="col" class="border-0" style="width: 10%;">Количество</th>
                         <th scope="col" class="border-0" style="width: 8%;"></th>
                     </tr>
@@ -38,7 +38,7 @@
                             <input type="hidden" name="products[{{ $loop->index }}][id]" value="{{ $item->id }}">
                             <div class="counter d-flex gap-1 justify-content-evenly align-items-center">
                                 <p id="down" class="minus" style="display: block;">-</p>
-                                <input id="numericUpDown" type="number" name="products[{{ $loop->index }}][count]" value="1" class="count" />
+                                <input id="numericUpDown" type="number" name="products[{{ $loop->index }}][count]" value="{{$item->count}}" class="count" />
                                 <p id="up" class="plus" style="display: block;">+</p>
                             </div>
                         </td>

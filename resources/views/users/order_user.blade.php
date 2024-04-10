@@ -16,6 +16,7 @@
                     <th>Изображение</th>
                     <th>Название</th>
                     <th>Цена</th>
+                    <th>Количество</th>
                     <th></th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td><img src="/storage/img/{{$products->product_order->img}}" alt="Image" width="60" height="60"></td>
                     <td>{{$products->product_order->title}}</td>
                     <td>{{$products->product_order->cost}}₽</td>
+                    <td>{{$products->count}}</td>
                     <td><a href="/goods/{{$products->product}}">Подробнее</a></td>
                 </tr>
                 @endforeach
