@@ -17,7 +17,12 @@
                   <p><span>Вес:</span> {{$product->weight}}</p>
                   <hr>
                 </div>
+                @auth
                 <a href="{{ route('basket.r' , ['id' => $product->id])}}" class="buy_buton text-end">В корзину</a>
+                @endauth
+                @guest
+                <a href="/auth/auth" class="buy_buton buy_buton_no text-end">Войти в аккаунт</a>
+                @endguest
             </div>
         </div>
 

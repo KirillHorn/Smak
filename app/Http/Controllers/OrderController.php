@@ -19,7 +19,6 @@ class OrderController extends Controller
         $totalSum = Session::get('total_sum', 0);
         return view('order', ['totalSum' => $totalSum]);
     }
-
     function getBaskets()
     {
         $basket = DB::table('baskets')
@@ -30,7 +29,6 @@ class OrderController extends Controller
 
         return view('baskets', ['basket' => $basket])->with('baskets', 'Корзина пуста');
     }
-
     public function baskets($id)
     {
         $id_users = Auth::id();
@@ -53,7 +51,6 @@ class OrderController extends Controller
 
         return redirect()->back();
     }
-
     public function baskets_delete($id)
     {
         $id_users = Auth::id();
@@ -116,19 +113,14 @@ class OrderController extends Controller
             'location' => $infoOrder['location'],
             'paymant' => $infoOrder['very']
         ]);
-
-
         $to  =  Auth::user()->email;
-
         $subject = "Чек по заказу№" . $orderAdd['id'];
-
         $message = '
         Чек по заказу
         Цена заказа:' . $orderAdd['amount'] . '
         Комментарий заказа: ' . $orderAdd['comment'] . '
         Адрес доставки:' . $orderAdd['location'] . '
         ';
-
         mail($to, $subject, $message);
         if ($orderAdd) {
             $productUser = baskets::where('id_users', $userID)->get();
