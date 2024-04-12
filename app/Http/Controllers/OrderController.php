@@ -95,7 +95,6 @@ class OrderController extends Controller
     }
     public function orderCreate(Request $request)
     {
-
         $userID = Auth::id();
         $request->validate([
             'location' => 'required',
@@ -116,15 +115,14 @@ class OrderController extends Controller
         $to  =  Auth::user()->email;
         $subject = "Чек по заказу№" . $orderAdd['id'];
         $message = '
-        Чек по заказу
-        Цена заказа:' . $orderAdd['amount'] . '
+        Чек по заказу:
+        Цена заказа:' . $orderAdd['amount'] . 'руб '.'
         Комментарий заказа: ' . $orderAdd['comment'] . '
         Адрес доставки:' . $orderAdd['location'] . '
         ';
         mail($to, $subject, $message);
         if ($orderAdd) {
             $productUser = baskets::where('id_users', $userID)->get();
-       
             foreach ($productUser as $product) {
                 orderCustoms::create([
                     'order' => $orderAdd['id'],

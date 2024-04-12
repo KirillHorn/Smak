@@ -165,7 +165,7 @@ class ModerController extends Controller
             $request->validate([
                 'title' => 'required',
                 'description' => 'required',
-                'weight'=> 'required',
+                'weight'=> 'required|numeric',
                 'cost'=> 'required|numeric',
                 'img' => 'required',
                 'id_cafe' => 'required',
@@ -173,6 +173,7 @@ class ModerController extends Controller
             ], [
                 'title.required' => 'Это обязательное поле!',
                 'weight.required' => 'Это обязательное поле!',
+                'weight.numeric' => 'Это поле должно состоять только из чисел',
                 'cost.required' => 'Это обязательное поле!',
                 'cost.numeric' => 'Это поле должно состоять только из чисел',
                 'img.required' => 'Это обязательное поле!',
@@ -189,11 +190,16 @@ class ModerController extends Controller
                 'weight' => $infoproduct['weight'],
                  'cost' => $infoproduct['cost'],
                 'img' => $img_info,
-                'id_cafe'=>$infoproduct['id_cafe'],
+                'id_cafe' =>$infoproduct['id_cafe'],
                 'id_categories'=>$infoproduct['id_categories'],
                 ]);
             $id->save();
-            return redirect("/moder/serviceEditProduct")->with("success", "редактирование Продукта прошла успешна");
+            if ($id->save()) {
+                return redirect("/moder/serviceEditProduct")->with("success", "редактирование Продукта прошла успешна");
+            } else {
+                return redirect()->back()->with("error", "редактирование Продукта прошла успешна");
+            }
+          
         }
 
         public function delete_product(Products $id)

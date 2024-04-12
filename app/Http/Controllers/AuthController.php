@@ -51,7 +51,7 @@ class AuthController extends Controller
       ]);
       if ($userCreate) {
          Auth::login($userCreate);
-         return redirect("/")->with("success", "Вы зарегались!");
+         return redirect("/users/personal_Area")->with("success", "Вы зарегались!");
       } else {
          return redirect("/auth/registration")->with("error", "Ошибка регистрации!");
       }
@@ -120,8 +120,8 @@ class AuthController extends Controller
             "phone.required" => "Поле обязательно для заполнения!",
             "phone.numeric" => "Номер только из цифр!",
             "password.required" => "Поле обязательно для заполнения!",
-
             "confirm_password.required" => "Поле обязательно для заполнения!",
+            "confirm_password.same" => "Пароли не совподают",
          ]);
       $userInfo = $request->all();
 
@@ -135,6 +135,11 @@ class AuthController extends Controller
             "password" => Hash::make($userInfo['password']),
          ]);
       $id->save();
-      return redirect("/users/personal_Area")->with("update", "Редактирование данных прошло успешно!");
+      if ($id->save()) {
+         return redirect("/users/personal_Area")->with("update", "Редактирование данных прошло успешно!");
+      } else {
+         return redirect()->back()->with("error", "Проверьте данные!");
+      }
+    
    }
 }

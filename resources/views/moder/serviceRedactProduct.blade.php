@@ -21,11 +21,11 @@
 </textarea>
       </div>
       <div class="mb-3">
-      <label  class="form-label">Вес продукта</label> 
+      <label  class="form-label">Вес продукта/Грам</label> 
         <input type="text" name="weight" class="form-control" placeholder="@error('weight') {{$message}}  @enderror">
       </div>
       <div class="mb-3">
-      <label  class="form-label">Цена товара</label> 
+      <label  class="form-label">Цена товара/Руб</label> 
         <input type="text" name="cost" class="form-control" placeholder="@error('cost') {{$message}}  @enderror">
       </div>
 

@@ -56,7 +56,7 @@
         <div class="container">
             <div class="d-flex justify-content-between cafe_text">
                 <h2 class="fw-bold">Самые популярные блюда</h2>
-                <a href="/product">Перейти к блюдам <img src="/img/bxs_dish.png"></a>
+                <a href="{{ route('products', ['sort_order' => '0']) }}">Перейти к блюдам <img src="/img/bxs_dish.png"></a>
             </div>
                 <div class="d-flex flex-wrap grid gap-4">
                     @foreach ($product as $products)

@@ -76,22 +76,27 @@
                     <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label text_label">Имя</label>
                                 <input type="text" name="name" value="{{Auth::user()->name}}" placeholder=" @error('name') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <span> @error('name') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Фамилия</label>
                                 <input type="text" name="surname" value="{{Auth::user()->surname}}" placeholder=" @error('surname') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <span> @error('surname') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Отчество</label>
                                 <input type="text" name="patronymic" value="{{Auth::user()->patronymic}}" placeholder=" @error('patronymic') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <span> @error('patronymic') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
                                 <input type="email" name="email" value="{{Auth::user()->email}}" placeholder="  @error('email') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <span> @error('email') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Номер телефона</label>
                                 <input type="text" name="phone" value="{{Auth::user()->phone}}" placeholder="  @error('phone') {{$message}}  @enderror" class="form-control" id="tel" aria-describedby="emailHelp" placeholder="+ _ (_ _ _) _ _ _ - _ _ - _ _">
+                                <span> @error('phone') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Пароль</label>
@@ -105,7 +110,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" name="confirm_password" class="form-label">Повторите пароль</label>
                                 <input type="password" name="confirm_password" value="{{old('confirm_password')}}" placeholder="  " class="form-control" id="exampleInputPassword1">
-                                @error('password') 
+                                @error('confirm_password') 
                                 {{$message}} 
                                  @enderror
                             </div>

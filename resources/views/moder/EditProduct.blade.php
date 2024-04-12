@@ -10,20 +10,24 @@
             <div class="mb-3">
                 <label  class="form-label">Название продукта</label>
                 <input type="text" name="title" class="form-control" value="{{$product->title}}" placeholder="@error('title') {{$message}}  @enderror">
+                <span>@error('title') {{$message}}  @enderror</span>
             </div>
             <div class="mb-3">
                 <label  class="form-label">Описание продукта</label>
                 <textarea class="form-control" name="description" value="" rows="8" placeholder="@error('description') {{$message}}  @enderror">
                 {{$product->description}}
             </textarea>
+            <span>@error('description') {{$message}}  @enderror</span>
             </div>
             <div class="mb-3">
-                <label  class="form-label">Вес продукта</label>
+                <label  class="form-label">Вес продукта/Грам</label>
                 <input type="text" name="weight" class="form-control" value="{{$product->weight}}"  placeholder="@error('weight') {{$message}}  @enderror">
+                <span>@error('weight') {{$message}}  @enderror</span>
             </div>
             <div class="mb-3">
-                <label  class="form-label">Цена товара</label>
+                <label  class="form-label">Цена товара/Руб</label>
                 <input type="text" name="cost" class="form-control" value="{{$product->cost}}" placeholder="@error('cost') {{$message}}  @enderror">
+                <span>@error('cost') {{$message}}  @enderror</span>
             </div>
 
 

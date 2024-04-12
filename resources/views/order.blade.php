@@ -15,8 +15,10 @@
                                     <div class="d-flex gap-1">
                                         <img src="/img/home.svg">
                          <input type="text" placeholder="Адрес" class="input_adress" name="location">
+                         @error('location') {{$message}}  @enderror
                                  </div>
                          <input type="text" class="input_commen" placeholder="Комментарий курьеру" type="text" name="comment">
+                         @error('comment') {{$message}}  @enderror
                              </div>
                                  <div>
                                      <div class="d-flex align-items-center gap-1">
