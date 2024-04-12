@@ -51,7 +51,7 @@ class AuthController extends Controller
       ]);
       if ($userCreate) {
          Auth::login($userCreate);
-         return redirect("/users/personal_Area")->with("success", "Вы зарегались!");
+         return redirect("/users/personal_Area")->with("success", "Вы зарегистрировались!!");
       } else {
          return redirect("/auth/registration")->with("error", "Ошибка регистрации!");
       }

@@ -131,7 +131,7 @@ class OrderController extends Controller
 
                 ]);
             }
-            DB::table('baskets')->delete();
+            DB::table('baskets')->where('id_users', $userID)->delete();
             return redirect('/users/personal_Area');
         } else {
             return redirect('/orders');

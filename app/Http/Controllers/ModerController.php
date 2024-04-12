@@ -195,7 +195,7 @@ class ModerController extends Controller
                 ]);
             $id->save();
             if ($id->save()) {
-                return redirect("/moder/serviceEditProduct")->with("success", "редактирование Продукта прошла успешна");
+                return redirect("/moder/serviceEditProduct")->with("success", "редактирование продукта прошло успешно");
             } else {
                 return redirect()->back()->with("error", "редактирование Продукта прошла успешна");
             }
