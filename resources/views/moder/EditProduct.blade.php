@@ -41,6 +41,7 @@
             <div class="mb-3">
                 <p>Заведение</p>
                 <select name="id_cafe">
+                <option value="{{$product->id_cafe}}"> {{  $product->Cafe->title}}</option>
                     @foreach ($cafes as $item )
                     <option value="{{$item->id}}"> {{ $item->title}}</option>
                     @endforeach
@@ -50,6 +51,7 @@
             <div class="mb-3">
                 <p>Категория продукта</p>
                 <select name="id_categories">
+                <option value="{{$product->id_categories}}"> {{$product->Categories->title}}</option>
                     @foreach ($categories as $item )
                     <option value="{{$item->id}}"> {{ $item->title}}</option>
                     @endforeach

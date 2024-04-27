@@ -23,10 +23,10 @@ body {
 }
 /*
  Стили шапки */
- header {
+.header {
     width: 100%;
     background-color: #A408A7;
-
+    margin-bottom: 40px;
  }
  
  .section_header_one {
@@ -37,17 +37,53 @@ body {
 
  }
 .nav {
-   font-size: 20px;
+   font-size: 16px;
    font-weight: 400;
 }
-.nav-link {
-   color: #000000;
+.nav-item a {
+   color: #fff;
 }
-.nav-link:hover {
-   color: #A408A7;
+.nav-item a:hover {
+   color: #cecece ;
+}  
+.nav-item a:active {
+   color: #c800ff;
+}
+.nav-item a:focus {
+   color: #c800ff;
+}
+.nav-link-dropdown:focus {
+   color: #c800ff !important;
+}
+.nav-link-dropdown:hover {
+   color: #c800ff !important;
 }
 .nav span {
    font-size: 28px;
+}
+.dropdown-menu li a {
+   color: #A408A7 !important;
+}
+.dropdown-menu {
+   border: 1px solid #A408A7;
+}
+.dropdown-divide {
+   border-color: #A408A7; /* Или background-color: #your-color; */
+}
+.btn-seach {
+   background-color: #A408A7;
+   border: 1px solid #ffffff;
+   color: #fff;
+}
+.search {
+   border-radius: 20px;
+}
+.search_input_header {
+   border-radius: 20px;
+   margin-right: 20px;
+}
+.dropdown-item:active {
+   background-color: #d3d3d3;
 }
 /* Стили баннера */
 .banner {
@@ -191,13 +227,14 @@ body {
 }
 .basket_input {
    padding: 5px 15px ; /* Расстояние от текста до края */
-   padding-top: 8px;
+   padding-top: 3px;
    background-color: #A408A7; /* Цвет фона */
    color: #fff; /* Белый цвет текста */
    border: 1px solid #ffffff; /* Убираем рамку */
    border-radius: 3em; /* Кнопка в виде пилюли */
-   font-size: 14px; /* Размер шрифта */
+   font-size: 16px; /* Размер шрифта */
    text-transform: uppercase; /* Все буквы заглавные */
+   margin-right: 10px;
 }
 .icon-button {
    content: ''; /* Выводим псевдоэлемент */
@@ -208,6 +245,8 @@ body {
 
    background: 0/cover url(../img/ph_basket-light.svg); /* Иконка для кнопки Submit */
   }
+
+
 
 
 .categories_link a {
@@ -257,12 +296,14 @@ transition: 0.2s;
 .navigation_footer li {
    margin-bottom: 1rem;
 }
+
+
 /* Страница регистрации */
 .tumbler {
    background-color: #A408A7;
    border: 1px solid #A408A7;
    border-radius: 27px;
-   width: 400px;
+   width: 40%;
    font-size: 24px;
    margin: 0 auto;
 }
@@ -275,7 +316,6 @@ transition: 0.2s;
    color:#ffffff ;
 
 }
-
 .a_aut {
    width: 50%;
    text-align: center;
@@ -293,7 +333,7 @@ transition: 0.2s;
    text-align: center;
 }
 .forma_auth {
-   width: 550px;
+   width: 40%;
    margin: 0 auto;
 }
 .mb-3 label {
@@ -304,23 +344,42 @@ transition: 0.2s;
    border:1px solid #A408A7;
    border-radius: 27px;
    color: #A408A7;
-   width: 500px;
+
 }
 .mb-3 input:focus {
    color: #A408A7;
-
 }
 .input_auth {
-   margin-top: 20px;
+margin: 0 auto;
    background-color: #A408A7;
    border: none;
-   width: 200px;
+   width: 40%;
    border-radius: 27px;
+   color: #fff;
 }
 .input_auth:hover {
    background-color: #ec56ee;
    border: none;
 }
+
+@media (max-width: 746px) {
+   .tumbler  {
+      width: 70%;
+   }
+}
+
+.select_categories {
+   border: 1px solid #A408A7;
+   transition: #A408A7 15c;
+}
+.select_categories:focus {
+   border: 1px solid #A408A7;
+}
+.option_categories:hover {
+   background-color: #A408A7;
+   color: #fff;
+}
+
 /* Секция заведения и кафе */
 .section_product_nav {
    background-color: #A408A7;

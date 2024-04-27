@@ -41,7 +41,7 @@
                        
                         <a style="padding-top: 0px;  color: #A408A7;" class="fw-bolder">{{$products->title}}</a>
                         <div class="d-flex gap-5">
-                        <p class="fw-bold">{{$products->cost}}</p>
+                        <p class="fw-bold">{{$products->cost}}₽</p>
                         </a>
                         </div>
                     

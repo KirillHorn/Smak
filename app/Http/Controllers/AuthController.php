@@ -21,7 +21,7 @@ class AuthController extends Controller
          "surname" => "required|alpha",
          "patronymic" => "required|alpha",
          "email" => "required|unique:users|email",
-         "phone" => "required|numeric",
+         "phone" => "required|numeric|min:11",
          "password" => "required",
          "confirm_password" => "required|same:password"],
          [
@@ -81,8 +81,10 @@ class AuthController extends Controller
       ) {
          if (Auth::user()->id_role == 2) {
             return redirect("/moder/serviceEdit")->with("success", "Вы вошли модер!");
-         } else {
+         } elseif(Auth::user()->id_role == 1) {
             return redirect("/users/personal_Area")->with("auth", "Вы вошли!");
+         } else {
+            return redirect("/users/personal_Area")->with("auth", "Вы вошли как администратор!");
          }
 
       } else {

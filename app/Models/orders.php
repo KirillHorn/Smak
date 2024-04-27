@@ -16,6 +16,7 @@ class orders extends Model
         'comment',
         'paymant',
         'location',
+        'created_at',
     ];
     
 }

@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('cafes', function (Blueprint $table) { 
             $table->id();
-            $table->integer('amount');
-            $table->foreignId('id_users')->references('id')->on('users');
-            $table->string('comment', 100);
-            $table->string('location', 100);
-            $table->foreignId('id_status')->references('id')->on('statuses');
+            $table->string('title',100);
+            $table->string('img',100);
+            $table->foreignId('id_categoriesCafe')->references('id')->on('categories_cafe')->onDelete('cascade');
+            $table->foreignId('id_moder')->references('id')->on('users');
+            $table->text('location');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('cafes');
     }
 };

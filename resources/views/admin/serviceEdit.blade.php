@@ -34,6 +34,7 @@
    
   </tbody>
   </table>
+  {{ $cafe->withQueryString()->links('pagination::bootstrap-5') }}
   <hr>
 </div>
 </div>

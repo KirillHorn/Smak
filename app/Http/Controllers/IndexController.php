@@ -26,11 +26,16 @@ class IndexController extends Controller
         $categoria_cafe=CategoriesCafes::all()->take(6);
         return view('index',["cafe"=>$cafe,"categorcafe" => $categoria_cafe, "product" => $product, "categoria" => $categoria]);
     }
-    // public function product_blade () {
-    //   $product=Products::with("Categories")->paginate(8);
-    //     $Allcategories=Categories::all();
-    //     return view ('product',compact('product'), ["categories" => $Allcategories ]);
-    // }
+    public function product_blade_cate () {
+      $product=Products::with("Categories")->paginate(8);
+        $Allcategories=Categories::all();
+        return view ('product',compact('product'), ["categories" => $Allcategories ]);
+    }
+    public function show($id_cafe) {
+        $cafe=Cafe::find($id_cafe);
+        $product_cafe=Products::where('id_cafe',$id_cafe)->get();
+        return view('information',['cafes' => $cafe,'product_cafe' => $product_cafe]);
+    }
       public function product_blade(Request $request)
     {
         $sortOrder = $request->get('sort_order');

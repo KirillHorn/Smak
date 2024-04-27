@@ -18,19 +18,19 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($product as $products)
+    @foreach ($products as $product)
     <tr>
-      <td class="align-middle fw-bold">{{$products->id}}</td>
-      <td class="align-middle fw-bolder">{{$products->title}}</td>
-      <td class="align-middle"><img src="/storage/img/{{$products->img}}" alt="" class="img_align"></td>
-      <td class="align-middle">{{$products->description}}</td>
-      <td class="align-middle">{{$products->weight}}</td>
-      <td class="align-middle">{{$products->cost}}</td>
-      <td class="align-middle" style="text-transform:capitalize;">{{$products->Cafe->title}}</td>
-      <td class="align-middle">{{$products->Categories->title}}</td>
-      <td class="align-middle"><a href="/moder/{{$products->id}}/EditProduct"><button type="submit" class="btn btn-primary button_redact">Редактировать</button></a></td>
+      <td class="align-middle fw-bold">{{$product->id}}</td>
+      <td class="align-middle fw-bolder">{{$product->title}}</td>
+      <td class="align-middle"><img src="/storage/img/{{$product->img}}" alt="" class="img_align"></td>
+      <td class="align-middle">{{$product->description}}</td>
+      <td class="align-middle">{{$product->weight}}</td>
+      <td class="align-middle">{{$product->cost}}</td>
+      <td class="align-middle" style="text-transform:capitalize;">{{$product->Cafe->title}}</td>
+      <td class="align-middle">{{$product->Categories->title}}</td>
+      <td class="align-middle"><a href="/moder/{{$product->id}}/EditProduct"><button type="submit" class="btn btn-primary button_redact">Редактировать</button></a></td>
       <td class="align-middle">
-      <form action="{{route ('delete.product' , ['id' => $products->id])}}" method="POST">
+      <form action="{{route ('delete.product' , ['id' => $product->id])}}" method="POST">
                         @csrf
                          @method('DELETE')   
                         
@@ -42,6 +42,7 @@
    
   </tbody>
   </table>
+  {{ $products->withQueryString()->links('pagination::bootstrap-5') }}
   <hr>
 </div>
 </div>

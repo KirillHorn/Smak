@@ -21,8 +21,7 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/moder/serviceRedact" class="link-dark rounded">Добавить Заведение</a></li>
-            <li><a href="/moder/serviceEdit" class="link-dark rounded">Редактирование Заведения</a></li>
+            <li><a href="/moder/serviceRedact" class="link-dark rounded">Информация о заведении</a></li>
           </ul>
         </div>
       </li>

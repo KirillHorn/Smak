@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\adminController;
 
 Route::get('/', [IndexController::class, 'index']);
 
@@ -27,6 +28,11 @@ Route::get('/baskets/{id}', [OrderController::class, 'baskets'])->name('basket.r
 
 Route::get('/{id}/baskets_delete', [OrderController::class, 'baskets_delete'])->name('delete_basket.r');
 
+Route::get('/application', [ModerController::class, 'application_add']);
+
+Route::post('/application_add_validate', [ModerController::class, 'application_add_validate']);
+
+
 
 
 Route::middleware('checkRole:Клиент')->group(function () {
@@ -47,7 +53,7 @@ Route::get('/order', [OrderController::class, 'OrderController']);
 
 Route::middleware('checkRole:Модератор')->group(function () {
 
-    Route::get('/moder/serviceRedact', [ModerController::class, 'serviceRedact_blade']);
+
 
     Route::get('/moder/serviceRedactProduct', [ModerController::class, 'serviceRedactProduct_blade']);
 
@@ -61,22 +67,32 @@ Route::middleware('checkRole:Модератор')->group(function () {
 
     Route::delete('/moder/{id}/delete_product', [ModerController::class, 'delete_product'])->name('delete.product');
 
-    Route::get('/moder/serviceEdit', [ModerController::class, 'serviceEdit_blade']);
 
-    Route::get('/moder/{id}/Edit', [ModerController::class, 'Edit']);
+
+  
 
 
     Route::post('/edit_product', [ModerController::class, 'edit_product']);
 
-    Route::post('/moder/{id}/update_cafe', [ModerController::class, 'update_cafe'])->name('edit.update');
-
-    Route::delete('/moder/{id}/delete_cafe', [ModerController::class, 'delete_cafe'])->name('delete.cafes');
-
-    Route::post('/edit_cafe', [ModerController::class, 'edit_cafe']);
+ 
 
     Route::get('/moder/serviceRedactProduct', [ModerController::class, 'serviceRedactProduct_blade']);
 
 });
+
+Route::get('/admin/serviceRedact', [adminController::class, 'serviceRedact_blade']);
+
+Route::get('/admin/serviceEdit', [adminController::class, 'serviceEdit_blade']);
+
+Route::get('/admin/{id}/Edit', [adminController::class, 'Edit']);
+
+Route::post('/admin/{id}/update_cafe', [adminController::class, 'update_cafe'])->name('edit.update');
+
+Route::delete('/admin/{id}/delete_cafe', [adminController::class, 'delete_cafe'])->name('delete.cafes');
+
+Route::post('/edit_cafe', [adminController::class, 'edit_cafe']);
+
+
 
 Route::get('/auth/registration', [AuthController::class, 'registration_page']);
 

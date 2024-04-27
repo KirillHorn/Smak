@@ -29,20 +29,21 @@
                                     <h2 class="fw-bold">{{$category->title}}</h2>
                                     @endif --}}
 
-                                    @foreach ($categoriesproduct as $category )
-                                    <h2> {{$category->title}}</h2>
+                         
+                                    <h2>Блюда заведений</h2>
                                     <div class="d-flex flex-wrap grid gap-4 ">
-                                        @foreach ($products as $product)
+                                        @foreach ($product_cafe as $product)
+                                        <a href="{{route ('goods.r', ['id'=>$product->id])}}">
                                          <div class="cafe_product_info cart_cafe g-col-4">
-                                            <img src="/storage/img/{{$product->img}}" alt="картинка заведения">
+                                            <img src="/storage/img/{{$product->img}}" alt="картинка блюда">
                                              <p>{{$product->title}}</p>
 
                                         <p class="fw-bold">{{$product->cost}} ₽•45 минут</p>
                                       </div>
+                                    </a>
                                       @endforeach
 
                                     </div>
-                                    @endforeach
                                 </div>
 
 

@@ -145,7 +145,7 @@
     @foreach ($orders as $orderss)
     <tr class="table_product_tr">
       <th scope="row">{{$orderss->id}}</th>
-      <td>{{$orderss->amount}}</td>
+      <td>{{$orderss->amount}}₽</td>
       <td>{{$orderss->location}}</td>
       <td>{{$orderss->comment}}</td>
       <td>{{$orderss->created_at}}</td>

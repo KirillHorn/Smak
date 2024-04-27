@@ -13,7 +13,7 @@
     </div>
     <x-alerts/>
     <h2 class="h2_auth fw-bold">ВХОД</h2>
-    <form method="POST" action="/auth_valid" class="forma_auth d-flex justify-content-center flex-column align-items-center">
+    <form method="POST" action="/auth_valid" class="forma_auth d-flex justify-content-center flex-column ">
       @csrf
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Электронная почта</label>

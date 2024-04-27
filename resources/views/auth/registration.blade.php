@@ -15,7 +15,7 @@
     {{session("error")}}
     @endif
     <h2 class="h2_auth fw-bold">РЕГИСТРАЦИЯ</h2>
-    <form method="POST" action="/registration_valid" class="forma_auth d-flex justify-content-center flex-column align-items-center" style="margin-bottom: 40px;">
+    <form method="POST" action="/registration_valid" class="forma_auth d-flex justify-content-center flex-column" style="margin-bottom: 40px;">
       @csrf
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label text_label">Имя</label>

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('applestatuses', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount');
-            $table->foreignId('id_users')->references('id')->on('users');
-            $table->string('comment', 100);
-            $table->string('location', 100);
-            $table->foreignId('id_status')->references('id')->on('statuses');
+            $table->string('title_status');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('applestatuses');
     }
 };

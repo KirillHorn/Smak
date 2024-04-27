@@ -13,15 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cafes', function (Blueprint $table) { 
+        Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('surname', 100);
+            $table->string('patronymic', 100);
+            $table->string('email', 100)->unique();
+            $table->string('phone', 100);
+            $table->string('password', 100);
             $table->string('title',100);
             $table->string('img',100);
             $table->foreignId('id_categoriesCafe')->references('id')->on('categories_cafe')->onDelete('cascade');
             $table->text('location');
+            $table->foreignId('id_status')->references('id')->on('applestatuses');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cafes');
+        Schema::dropIfExists('applications');
     }
 };
