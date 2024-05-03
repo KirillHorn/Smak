@@ -22,6 +22,8 @@ class Roles extends Seeder
        DB::table('roles')->insert([
         ['title'=>'Клиент', 'created_at'=>$date,'updated_at'=>$date],
         ['title'=>'Модератор', 'created_at'=>$date,'updated_at'=>$date],
+        ['title'=>'Курьер', 'created_at'=>$date,'updated_at'=>$date],
+        ['title'=>'Администратор', 'created_at'=>$date,'updated_at'=>$date],
        ]);
     }
 }

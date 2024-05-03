@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="/style/bootstrap.min.css" rel="stylesheet">
     <link href="/style/style.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+
+    <script src="/script/bootstrap.min.js"></script>
+    <script src="/script/bootstrap.bundle.min.js"></script>
+    <script src="/script/bootstrap.esm.min.js"></script>
     <script src="/script/script.js"></script>
 
 
@@ -65,7 +69,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/application">Регистрация заведения</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Стать курьером</a></li>
+            <li><a class="dropdown-item" href="/application_courier">Стать курьером</a></li>
           </ul>
         </li>
       </ul>
@@ -83,7 +87,11 @@
         <li class="nav-item"><a href="/auth/registration" class="nav-link px-2">Регистрация</a></li>
         @endguest
         @auth
+        @if (Auth::user()->id_role == 1)
         <li class="nav-item"><a href="/users/personal_Area" class="nav-link px-2">Личный кабинет</a></li>
+        @elseif (Auth::user()->id_role == 3)
+        <li class="nav-item"><a href="/courier/personal_Area" class="nav-link px-2">Личный кабинет</a></li>
+        @endif
         <span>|</span>
         <li class="nav-item"><a href="/signout" class="nav-link px-2">Выход</a></li>
         @endauth

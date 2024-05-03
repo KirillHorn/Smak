@@ -26,7 +26,6 @@ class OrderController extends Controller
             ->join('products', 'baskets.id_product', '=', 'products.id')
             ->where('id_users', '=', Auth::id())
             ->get();
-
         return view('baskets', ['basket' => $basket])->with('baskets', 'Корзина пуста');
     }
     public function baskets($id)
@@ -40,16 +39,17 @@ class OrderController extends Controller
                 $productInBasket->count += 1;
                 $productInBasket->save();
                 $isInBasket = true;
-                return redirect()->back();
+                break; 
             }
         }
-        baskets::create([
-            'id_product' => $id,
-            'id_users' => $id_users,
-            'count' => 1,
-        ]);
-
-        return redirect()->back();
+        if (!$isInBasket) {
+            baskets::create([
+                'id_users' => $id_users,
+                'id_product' => $id,
+                'count' => 1,
+            ]);
+        }
+        return redirect()->back()->with('success', 'вы добавили товар');
     }
     public function baskets_delete($id)
     {
@@ -110,6 +110,8 @@ class OrderController extends Controller
             'id_users' => $userID,
             'comment' => $infoOrder['comment'],
             'location' => $infoOrder['location'],
+            'id_courier' => null,
+            'id_status' => 1,
             'paymant' => $infoOrder['very']
         ]);
         $to  =  Auth::user()->email;

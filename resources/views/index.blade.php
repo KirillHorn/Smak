@@ -1,5 +1,5 @@
 
-<x-x-header />
+<x-x-header/>
 
 
     <section class="banner">

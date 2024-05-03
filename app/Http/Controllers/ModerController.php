@@ -16,6 +16,15 @@ class ModerController extends Controller
         $categories=CategoriesCafes::all();
         return view('application',['categories' => $categories]);
     }
+    public function cafesModer() {
+        $cafes=Cafe::where('id_moder', Auth::user()->id)->first();
+
+        $products = $cafes->product;
+
+        $productsCount = $products->count();
+
+        return view('moder.cafesModer',['cafes' => $cafes, 'count' => $productsCount]);
+    }
     public function application_add_validate(Request $request) {
         $request->validate([
             "name" => "required|alpha",
@@ -43,6 +52,7 @@ class ModerController extends Controller
             'location.required' => 'Это обязательное поле!',
         ]);
         $application=$request->all();
+       
         $img_info = $request->file('img')->hashName();
         $path_img = $request->file('img')->store('/public/img');
         $applicationAdd=applications::create([
@@ -78,7 +88,6 @@ class ModerController extends Controller
             'weight'=> 'required',
             'cost'=> 'required|numeric',
             'img' => 'required',
-            'id_cafe' => 'required',
             'id_categories'=> 'required'
         ], [
             'title.required' => 'Это обязательное поле!',
@@ -86,10 +95,10 @@ class ModerController extends Controller
             'cost.required' => 'Это обязательное поле!',
             'cost.numeric' => 'Это поле должно состоять только из чисел',
             'img.required' => 'Это обязательное поле!',
-            'id_cafe.required' => 'Это обязательное поле!',
             'id_categories.required' => 'Это обязательное поле!'
         ]);
         $infoproduct = $request->all();
+        $cafes=Cafe::where('id_moder', Auth::user()->id)->first();
         $img_info = $request->file('img')->hashName();
         $path_img = $request->file('img')->store('/public/img');
 
@@ -100,7 +109,7 @@ class ModerController extends Controller
             'weight' => $infoproduct['weight'],
             'cost' => $infoproduct['cost'],
             'img' => $img_info,
-            'id_cafe'=>$infoproduct['id_cafe'],
+            'id_cafe'=>$cafes['id'],
             'id_categories'=>$infoproduct['id_categories'],
            
 
@@ -117,7 +126,8 @@ class ModerController extends Controller
         public function serviceProduct_blade()
         {
             $categories = Categories::all();
-            $products=Products::paginate(4);
+            $cafes=Cafe::where('id_moder', Auth::user()->id)->first();
+            $products=Products::where('id_cafe', $cafes['id'])->paginate(4);
             return view('moder.serviceEditProduct', compact('products'), ["categories" => $categories]);
         }
 

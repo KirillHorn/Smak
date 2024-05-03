@@ -36,16 +36,6 @@
         <input class="form-control" name="img" type="file" id="imageFile" required>
         <img class="img_view" id="prevImage" src="#" alt="" />
       </div>
-
-      <div class="mb-3">
-        <p>Заведение</p>
-        <select name="id_cafe">
-          @foreach ($cafe as $item )
-          <option value="{{$item->id}}"> {{ $item->title}}</option>
-          @endforeach
-        </select>
-      </div>
-
       <div class="mb-3">
         <p>Категория продукта</p>
         <select name="id_categories">

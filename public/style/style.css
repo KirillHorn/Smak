@@ -701,6 +701,17 @@ margin-top: 20px;
    transition: 0.3s ease-in-out;
    color: #A408A7;
 }
+.courier_button {
+   background-color: #A408A7;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
  /* Страница заказа пользователей */
 
  .user_orders {

@@ -1,5 +1,6 @@
 
 <x-x-header />
+<x-alerts/>
 
 
 

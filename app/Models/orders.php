@@ -14,7 +14,9 @@ class orders extends Model
         'amount',
         'id_users',
         'comment',
+        'id_courier',
         'paymant',
+        'id_status',
         'location',
         'created_at',
     ];

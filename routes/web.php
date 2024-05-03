@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\courierController;
 
 Route::get('/', [IndexController::class, 'index']);
 
@@ -32,7 +33,17 @@ Route::get('/application', [ModerController::class, 'application_add']);
 
 Route::post('/application_add_validate', [ModerController::class, 'application_add_validate']);
 
+Route::get('/admin/{id}/applicationsUser', [adminController::class, 'applicationModer']);
 
+Route::get('/{id}/applicationAccepted', [adminController::class, 'applicationAccepted']);
+
+Route::get('/{id}/applicationDeviation', [adminController::class, 'applicationDeviation']);
+
+Route::get('/admin/{id}/applicationsCourier', [adminController::class, 'allCourier_blade']);
+
+Route::get('/{id}/applicationAcceptedCourier', [adminController::class, 'applicationAcceptedCourier']);
+
+Route::get('/{id}/applicationDeviationCourier', [adminController::class, 'applicationDeviationCourier']);
 
 
 Route::middleware('checkRole:Клиент')->group(function () {
@@ -60,6 +71,8 @@ Route::middleware('checkRole:Модератор')->group(function () {
     Route::post('/edit_product', [ModerController::class, 'edit_product']);
 
     Route::get('/moder/serviceEditProduct', [ModerController::class, 'serviceProduct_blade']);
+
+    Route::get('/moder/cafesModer', [ModerController::class, 'cafesModer']);
 
     Route::get('/moder/{id}/EditProduct', [ModerController::class, 'serviceEditproduct_blade']);
 
@@ -104,7 +117,12 @@ Route::get('/signout', [AuthController::class, 'signout']);
 
 Route::post('/auth_valid', [AuthController::class, 'auth_valid']);
 
+Route::get('/application_courier', [courierController::class, 'courier_blade']);
 
+Route::post('/registration_courier', [courierController::class, 'registration_courier']);
 
+Route::get('/courier/personal_Area', [courierController::class, 'personal_courier']);
+
+Route::get('/courier/orders_for_courier', [courierController::class, 'orders_courier']);
 
 

@@ -80,11 +80,13 @@ class AuthController extends Controller
          ])
       ) {
          if (Auth::user()->id_role == 2) {
-            return redirect("/moder/serviceEdit")->with("success", "Вы вошли модер!");
+            return redirect("/moder/serviceEditProduct")->with("success", "Вы вошли модер! ");
          } elseif(Auth::user()->id_role == 1) {
-            return redirect("/users/personal_Area")->with("auth", "Вы вошли!");
+            return redirect("/users/personal_Area")->with("success", "Вы вошли " . Auth::user()->name . "!");
+         } elseif (Auth::user()->id_role == 4) {
+            return redirect("/admin/1/applicationsUser")->with("success", "Вы вошли как администратор!");
          } else {
-            return redirect("/users/personal_Area")->with("auth", "Вы вошли как администратор!");
+            return redirect("/courier/personal_Area")->with("success", "Вы вошли как курьер " . Auth::user()->name . "!");
          }
 
       } else {

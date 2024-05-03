@@ -22,7 +22,15 @@
     @foreach ($categories as $item )
     <option value="{{ $item->id}}"> {{ $item->title_categories}}</option>
     @endforeach
-</select>
+    </select>
+    </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label text_label">Модератор</label>
+    <select name="moder"> 
+    @foreach ($moder as $moders )
+    <option value="{{ $moders->id}}"> {{ $moders->name  }}</option>
+    @endforeach
+    </select>
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label text_label">Местоположение</label>

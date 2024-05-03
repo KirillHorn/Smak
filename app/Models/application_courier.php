@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class statuses extends Model
+class application_courier extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'id',
-        'title'
+        'name',
+        'surname',
+        'patronymic',
+        'email',
+        'phone',
+        'id_status',
     ];
 }

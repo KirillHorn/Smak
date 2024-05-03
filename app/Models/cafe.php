@@ -17,6 +17,7 @@ class Cafe extends Model
         "id_categoriesCafe",
         "location",
         "img",
+        'id_moder'
        
     ];
 

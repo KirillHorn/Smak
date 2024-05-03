@@ -17,23 +17,24 @@
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Заведения
+        Заявки
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/moder/cafesModer" class="link-dark rounded">Информация о заведении</a></li>
+            <li><a href="/admin/1/applicationsUser" class="link-dark rounded">Заявки модератора</a></li>
+            <li><a href="/admin/1/applicationsCourier" class="link-dark rounded">Заявки курьера</a></li>
           </ul>
         </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#product-collapse" aria-expanded="true">
-          Продукты
+          Заведения
         </button>
         <div class="collapse show" id="product-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/moder/serviceRedactProduct" class="link-dark rounded">Добавить продукт</a></li>
-            <li><a href="/moder/serviceEditProduct" class="link-dark rounded">Редактирование продукт</a></li>
+            <li><a href="/admin/serviceRedact" class="link-dark rounded">Добавить заведения</a></li>
+            <li><a href="/admin/serviceEdit" class="link-dark rounded">Редактирование заведения</a></li>
           </ul>
         </div>
       </li>
