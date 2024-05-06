@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\application_courier;
+use App\Models\courier_orders;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\orderCustoms;
+use App\Models\orders;
+use Illuminate\Support\Facades\Auth;
 
 class courierController extends Controller
 {
@@ -57,10 +61,44 @@ class courierController extends Controller
 
     public function personal_courier()
     {
-       return view('courier.personal_Area');
+      $orders=courier_orders::where('id_courier', Auth::id())->get();
+       return view('courier.personal_Area',['orders' => $orders]);
     }
     public function orders_courier()
     {
-       return view('courier.orders_for_courier');
+      $orders=orders::where('id_status',1)->paginate(8);
+       return view('courier.orders_for_courier',compact('orders'));
+    }
+
+    public function specific_order($id)
+    {
+      $orders_personal=orders::find($id); 
+      $orders_products=orderCustoms::where('order',$id)->with('product_order')->get();
+       return view('courier.specific_order',['order' => $orders_personal, 'orders_products' => $orders_products]);
+    }
+
+    public function courier_order ($id) {
+      $orders_personal=orders::find($id);
+         $orders_personal->id_status = 2;
+         if ($orders_personal->save()) {
+         $order_courier=courier_orders::create([
+            'id_orders' => $orders_personal['id'],
+            'id_courier' => Auth::id(),
+         ]);
+      }
+      return redirect()->back()->with('success','Вы приняли заказ!');
+     
+    }
+
+    public function courier_order_completed ($id) {
+      $orders_personal=orders::find($id);
+         $orders_personal->id_status = 3;
+         if ($orders_personal->save()) {
+            return redirect('/courier/personal_Area')->with('success','Вы завершили заказ!');
+         } else {
+            return redirect()->back()->with('error','Вы не завершили заказ!');
+         }
+    
+     
     }
 }

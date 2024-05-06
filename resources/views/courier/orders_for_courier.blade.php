@@ -41,7 +41,7 @@
             <a style="color: aliceblue;" id="get" href="/courier/personal_Area">Личная информация</a>
             <a style="color: aliceblue;" id="get" href="/courier/orders_for_courier">Доступные заказы</a>
         </div>
-        <table class="table table-bordered table-striped">
+        <table class="table  table_courier">
             <thead>
                 <tr>
                     <th scope="col">Номер заказа</th>
@@ -53,22 +53,23 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse ($orders as $order_user)
                 <tr>
-                    <td>1</td>
-                    <td>Иван Иванов</td>
-                    <td>ул. Пушкина, д. 12, кв. 34</td>
-                    <td>Кафе "Уголок вкуса"</td>
-                    <td>Наличными при получении</td>
-                    <td><a href="" class="courier_button    ">Принять</a></td>
+                    <td>{{$order_user->id}}</td>
+                    <td>{{$order_user->user->name}}.{{$order_user->user->name}}</td>
+                    <td>{{$order_user->location}}</td>
+                    <td></td>
+                    <td>{{$order_user->paymant}}</td>
+                    <td><a href="{{ route('courier.order', ['id' => $order_user->id]) }}" class="courier_button    ">Принять</a></td>
                 </tr>
+                @empty
                 <tr>
-                    <td>2</td>
-                    <td>Петр Петров</td>
-                    <td>ул. Лермонтова, д. 25, кв. 67</td>
-                    <td>Ресторан "Гурман"</td>
-                    <td>Онлайн-оплата картой</td>
-                    <td><a href="">Принять</a></td>
-                </tr>
+                <td>
+                    Заказов пока нету:(     
+                        </td>    
+                    </tr>
+                @endforelse
+                {{ $orders->links() }}
                 <!-- Добавьте более строк, если требуется -->
             </tbody>
         </table>

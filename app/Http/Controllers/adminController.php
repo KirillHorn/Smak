@@ -53,6 +53,7 @@ class adminController extends Controller
             'id_categoriesCafe' => $applicationAccepted['id_categoriesCafe'],
             'location' => $applicationAccepted['location'],
             'id_moder' => $userAdd['id'],
+            'rating_cafe' => 0,
         ]);
         if ($userAdd) {
             $to  =  $userAdd['email'];

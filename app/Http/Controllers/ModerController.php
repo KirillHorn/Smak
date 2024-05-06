@@ -68,9 +68,9 @@ class ModerController extends Controller
             'id_status' => 1,
         ]);
         if ($applicationAdd) {
-            return redirect()->back()->with('success', 'Вы добавили Заведение ');
+            return redirect()->back()->with('success', 'Вы отправили заявку!');
         } else {
-            return redirect('/')->with('error', 'Вы отправили заявку ');
+            return redirect('/')->with('error', 'Заявка не была отправлена ');
         }
     }
     public function serviceRedactProduct_blade()

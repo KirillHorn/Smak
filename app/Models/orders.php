@@ -14,11 +14,21 @@ class orders extends Model
         'amount',
         'id_users',
         'comment',
-        'id_courier',
         'paymant',
         'id_status',
         'location',
         'created_at',
     ];
+
+    function user() {
+        return $this->belongsTo(User::class,"id_users","id");
+    }
+    function order_product() {
+        return $this->belongsTo(orderCustoms::class,"id");
+    }
+    public function order_courier_user() {
+
+        return $this->hasMany(courier_orders::class,'id');
+    }
     
 }

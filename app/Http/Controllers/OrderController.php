@@ -110,7 +110,6 @@ class OrderController extends Controller
             'id_users' => $userID,
             'comment' => $infoOrder['comment'],
             'location' => $infoOrder['location'],
-            'id_courier' => null,
             'id_status' => 1,
             'paymant' => $infoOrder['very']
         ]);

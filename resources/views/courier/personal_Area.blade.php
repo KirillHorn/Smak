@@ -138,12 +138,23 @@
       <th scope="col">Цена</th>
       <th scope="col">Адрес</th>
       <th scope="col">Комментарий</th>
+      <th scope="col">Клиент</th>
       <th scope="col">Дата</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-
+  @foreach ($orders as $orderss)
+    <tr class="table_product_tr">
+      <th scope="row">{{$orderss->order_user->id}}</th>
+      <td>{{$orderss->order_user->amount}}₽</td>
+      <td>{{$orderss->order_user->location}}</td>
+      <td>{{$orderss->order_user->comment}}</td>
+      <td>{{$orderss->order_user->user->name}}</td>
+      <td>{{$orderss->order_user->created_at}}</td>
+      <td><a href="order_user/{{$orderss->order_user->id}}">Поподробнее</a></td>
+    </tr>
+    @endforeach
 </table>
          
             

@@ -125,4 +125,10 @@ Route::get('/courier/personal_Area', [courierController::class, 'personal_courie
 
 Route::get('/courier/orders_for_courier', [courierController::class, 'orders_courier']);
 
+Route::get('/{id}/specific_order', [courierController::class, 'specific_order'])->name('courier.order');
+
+Route::get('/{id}/courier_order', [courierController::class, 'courier_order'])->name('courier');
+
+Route::get('/{id}/courier_order_completed', [courierController::class, 'courier_order_completed'])->name('courier.completed');
+
 

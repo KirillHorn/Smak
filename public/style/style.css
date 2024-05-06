@@ -712,6 +712,40 @@ margin-top: 20px;
     width: fit-content;
     margin: 0 auto;
 }
+.table_courier {
+   border: 2px solid purple;
+   border-collapse: collapse;
+   border-radius: 10px; /* Добавляем закругленные края таблицы */
+   overflow: hidden; /* Обрезаем выступающие за границы таблицы ячейки */
+ }
+ 
+ .table_courier th,
+ .table_courier td {
+   border: 2px solid purple;
+ }
+ .table_courier th {
+   background-color: #A408A7;
+   color: #fff;
+ }
+ 
+ /* Добавляем закругленные края для ячеек в углах таблицы */
+ .table_courier th:first-child,
+ .table_courier td:first-child {
+   border-radius: 10px 0 0 0; /* Верхний левый угол */
+ }
+ 
+ .table_courier th:last-child,
+ .table_courier td:last-child {
+   border-radius: 0 10px 0 0; /* Верхний правый угол */
+ }
+ 
+ .table_courier tr:last-child td:first-child {
+   border-radius: 0 0 0 10px; /* Нижний левый угол */
+ }
+ 
+ .table_courier tr:last-child td:last-child {
+   border-radius: 0 0 10px 0; /* Нижний правый угол */
+ }
  /* Страница заказа пользователей */
 
  .user_orders {

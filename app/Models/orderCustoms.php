@@ -19,4 +19,7 @@ class orderCustoms extends Model
     {
         return $this->belongsTo(Products::class, 'product');
     }
+    function orders() {
+        return $this->belongsTo(orders::class,'id');
+    }
 }
