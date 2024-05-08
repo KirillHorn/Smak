@@ -21,7 +21,9 @@ Route::get('/cafe', [IndexController::class, 'cafe_blade'])->name("cafe");
 
 Route::get('/goods/{id}', [IndexController::class, 'goods_blade'])->name('goods.r');
 
-Route::get('/information/{id_cafe}/{categoryId?}', [IndexController::class, 'show'])->name('show.r');
+Route::get('/information/{id_cafe}', [IndexController::class, 'show'])->name('show.r');
+
+Route::post('/{id}/comment_cafes', [IndexController::class, 'comment_cafes']);
 
 Route::get('/baskets',[OrderController::class, 'getBaskets']);
 

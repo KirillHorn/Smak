@@ -12,6 +12,7 @@ use App\Models\Cafe;
 use App\Models\Products;
 use App\Models\CategoriesCafes;
 use App\Models\Categories;
+use App\Models\comments;
 use App\Models\orderCustoms;
 use App\Models\orders;
 
@@ -35,6 +36,22 @@ class IndexController extends Controller
         $cafe=Cafe::find($id_cafe);
         $product_cafe=Products::where('id_cafe',$id_cafe)->get();
         return view('information',['cafes' => $cafe,'product_cafe' => $product_cafe]);
+    }
+
+    public function comment_cafes (Request $request,$id) {
+        $request->validate([
+            "comment" => "required",
+        ],[
+            "comment.required" => "Поле обязательно для заполнения!",
+        ]);
+        $comment=$request->all();
+        $comment_add = comments::create([
+            'comments_text' => $comment['comment'],
+            'id_cafe' => $id,
+            'id_user' => Auth::id(),
+            'rating' => $comment['rating'],
+        ]); 
+        return redirect()->back()->with('success', 'Вы оставили комментарий!');
     }
       public function product_blade(Request $request)
     {
