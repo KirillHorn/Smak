@@ -58,7 +58,7 @@
 <section class="container">
 
   <h1 class="text-center mb-4">Оставьте свой отзыв</h1>
-  <form method="post" action="/{{$cafes->id}}/comment_cafes">
+  <form method="post" action="/{{$cafes->id}}/comment_cafes" id="comment-form">
     @csrf
     <div class="rating-area">
       <input type="radio" id="star-5" name="rating" value="5">
@@ -80,19 +80,41 @@
   </form>
   </div>
 
-  <div class="container mt-5">
+  <div id="comments-container"  class="container mt-5">
     <h2 class="text-center mb-4">Отзывы</h2>
+      <script type="text/template" id="comment-template">
     <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">Иван Иванов</h5>
+        <h5 class="card-title">__USERNAME__</h5>
         <div class="star-rating">
-          ⭐⭐⭐⭐⭐
+          __RATING__
         </div>
         <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          __COMMENT__
         </p>
       </div>
     </div>
+</script>
+@foreach ( $comments as $comment )
+<div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{$comment->user_comment->name}}</h5>
+        <div class="star-rating">
+        @for ($i = 1; $i <= 5; $i++)
+            @if ($i <= $comment->rating)
+              ⭐
+            @else
+              ☆
+            @endif
+          @endfor
+        </div>
+        <p class="card-text">
+        {{ $comment->comments_text }}
+        </p>
+      </div>
+    </div>
+@endforeach
+
 
 </section>
 
@@ -119,4 +141,50 @@
       }
     }
   });
+
+  document.getElementById('comment-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var form = this;
+    var url = form.action;
+    var data = new FormData(form);
+
+    fetch(url, {
+        method: 'POST',
+        body: data,
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            addCommentToPage(data.comment);
+            form.reset();
+        }
+    })
+    .catch(error => console.error(error));
+  });
+
+  function addCommentToPage(comment) {
+  var template = document.getElementById('comment-template').innerHTML;
+  var ratingStars = '';
+
+  for (var i = 1; i <= 5; i++) {
+    if (i <= comment.rating) {
+      ratingStars += '⭐';
+    } else {
+      ratingStars += '☆';
+    }
+  }
+
+  var commentHtml = template
+    .replace('__USERNAME__', comment.username)
+    .replace('__RATING__', ratingStars)
+    .replace('__COMMENT__', comment.comment);
+
+  var commentsContainer = document.getElementById('comments-container');
+  commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
+}
+
 </script>

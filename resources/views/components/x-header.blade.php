@@ -19,7 +19,7 @@
     <script src="/script/bootstrap.bundle.min.js"></script>
     <script src="/script/bootstrap.esm.min.js"></script>
     <script src="/script/script.js"></script>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
 </head>

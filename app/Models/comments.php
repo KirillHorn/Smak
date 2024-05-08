@@ -16,4 +16,8 @@ class comments extends Model
         'comments_text',
         'rating',
     ];
+
+    function user_comment() {
+        return $this->belongsTo(User::class,"id_user",'id');
+    }
 }

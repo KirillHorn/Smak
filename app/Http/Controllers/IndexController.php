@@ -35,7 +35,8 @@ class IndexController extends Controller
     public function show($id_cafe) {
         $cafe=Cafe::find($id_cafe);
         $product_cafe=Products::where('id_cafe',$id_cafe)->get();
-        return view('information',['cafes' => $cafe,'product_cafe' => $product_cafe]);
+        $comment=comments::where('id_cafe', $id_cafe)->get();
+        return view('information',['cafes' => $cafe,'product_cafe' => $product_cafe,'comments' => $comment]);
     }
 
     public function comment_cafes (Request $request,$id) {
@@ -51,7 +52,16 @@ class IndexController extends Controller
             'id_user' => Auth::id(),
             'rating' => $comment['rating'],
         ]); 
-        return redirect()->back()->with('success', 'Вы оставили комментарий!');
+        $username = Auth::user()->name; // Добавьте это, если хотите получить имя пользователя, оставившего комментарий
+
+        return response()->json([
+            'success' => true,
+            'comment' => [
+                'username' => $username,
+                'rating' => $comment['rating'],
+                'comment' => $comment['comment']
+            ]
+        ]);
     }
       public function product_blade(Request $request)
     {
