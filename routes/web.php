@@ -18,6 +18,7 @@ Route::get('/product', [IndexController::class, 'product_blade'])->name('product
 
 Route::get('/cafe', [IndexController::class, 'cafe_blade'])->name("cafe");
 
+Route::get('/search', [IndexController::class, 'search']);
 
 Route::get('/goods/{id}', [IndexController::class, 'goods_blade'])->name('goods.r');
 
@@ -54,7 +55,7 @@ Route::middleware('checkRole:Клиент')->group(function () {
 
     Route::get('/users/order_user/{id}', [IndexController::class, 'personal_orders']);
 
-    Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class, 'registration_redact'])->name('r.update');
+
 
     Route::post('/baskets_order', [OrderController::class, 'baskets_order']);
 
@@ -62,6 +63,8 @@ Route::post('/order_create', [OrderController::class, 'orderCreate']);
 
 Route::get('/order', [OrderController::class, 'OrderController']);
 });
+
+Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class, 'registration_redact'])->name('r.update');
 
 
 Route::middleware('checkRole:Модератор')->group(function () {

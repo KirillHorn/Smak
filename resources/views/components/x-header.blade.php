@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,37 +12,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="/script/bootstrap.min.js"></script>
     <script src="/script/bootstrap.bundle.min.js"></script>
     <script src="/script/bootstrap.esm.min.js"></script>
     <script src="/script/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+  
+  
 
 </head>
-
 <body style="min-height: 102vh;" class="d-flex flex-column">
-<!-- <header class="py-3  border-bottom">
-    <div class="container d-flex flex-wrap justify-content-center gap-3">
-      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-decoration-none" style="color: aliceblue; font-size:30px; margin-left:60px;">
-      SMAK
-      </a>
-     
-  </header>
-<nav class="py-2 ">
-    <div class="container d-flex flex-wrap">
-      <ul class="nav me-auto">
-        <li class="nav-item"><a href="/" class="nav-link px-2" aria-current="page">О нас</a></li>
-        <li class="nav-item"><a href="" class="nav-link px-2">Меню</a></li>
-        <li class="nav-item"><a href="" class="nav-link px-2">Заведение</a></li>
-        <li class="nav-item"><a href="" class="nav-link px-2">Добавить заведение</a></li>
-      </ul>
-      
-    </div>
-  </nav> -->
-
   <nav class="navbar navbar-expand-lg header">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">SMAK</a>
@@ -73,9 +55,8 @@
           </ul>
         </li>
       </ul>
- 
-      <form class="d-flex" role="search">
-        <input class="form-control me-2 search" type="search" placeholder="Поиск..." aria-label="Search">
+      <form class="d-flex" role="search" method="GET" action="/search">
+        <input class="form-control me-2 search" type="search" name="search" placeholder="Поиск..." aria-label="Search">
         <button class="btn btn-seach search_input_header" type="submit">Поиск</button>
       </form>
       <a class="basket_input" href="/baskets">   <span class="icon-button"></span>
@@ -97,7 +78,6 @@
         @endauth
       </ul>
     </div>
-     
     </div>
   </div>
 </nav>

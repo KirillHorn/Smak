@@ -7,31 +7,43 @@
     @csrf
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Имя</label>
-    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <span class="invalid-feedback"> @error('name') {{$message}} @enderror</span>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Фамилия</label>
-    <input type="text" name="surname" class="form-control" id="exampleInputPassword1">
+    <input type="text" name="surname" value="{{ old('surname') }}" class="form-control @error('surname') is-invalid @enderror" id="exampleInputPassword1">
+    <span  class="invalid-feedback"> @error('surname') {{$message}} @enderror</span>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Отчество</label>
-    <input type="text" name="patronymic" class="form-control" id="exampleInputPassword1">
+    <input type="text" name="patronymic" value="{{ old('patronymic') }}" class="form-control @error('surname') is-invalid @enderror" id="exampleInputPassword1">
+    <span class="invalid-feedback"> @error('patronymic') {{$message}} @enderror</span>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Email</label>
-    <input type="text" name="email" class="form-control" id="exampleInputPassword1">
+    <input type="text" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="exampleInputPassword1" >
+    <span class="invalid-feedback"> @error('email') {{$message}} @enderror</span>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Номер телефона</label>
-    <input type="text" name="phone" class="form-control" id="exampleInputPassword1">
+    <input type="text" name="phone" value="{{ old('phone') }}" class="form-control @error('phone') is-invalid @enderror" id="exampleInputPassword1">
+    <span class="invalid-feedback"> @error('phone') {{$message}} @enderror</span>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Документ заведения</label>
+    <input type="file" name="document" class="form-control @error('document') is-invalid @enderror" id="exampleInputPassword1">
+    <span class="invalid-feedback"> @error('document') {{$message}} @enderror</span>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Название заведения</label>
-    <input type="text" name="title" class="form-control" id="exampleInputPassword1">
+    <input type="text" name="title"  value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" id="exampleInputPassword1">
+    <span class="invalid-feedback"> @error('title') {{$message}} @enderror</span>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Фото заведения</label>
-    <input type="file" name="img" class="form-control" id="exampleInputPassword1">
+    <input type="file" name="img" class="form-control @error('img') is-invalid @enderror" id="exampleInputPassword1">
+    <span class="invalid-feedback"> @error('img') {{$message}} @enderror</span>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Категория заведения</label>
@@ -43,7 +55,8 @@
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Местоположение</label>
-      <input class="form-control" name="location" placeholder=" @error('location') {{$message}}  @enderror" type="text" >
+      <input class="form-control @error('location') is-invalid @enderror" value="{{ old('location') }}" name="location"  type="text" >
+      <span class="invalid-feedback"> @error('location') {{$message}} @enderror</span>
     </div>
   <button type="submit" class="btn input_auth">Подать заявку</button>
 </form>

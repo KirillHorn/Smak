@@ -6,14 +6,18 @@ use Illuminate\View\Component;
 
 class x-header extends Component
 {
+    public $cafeJson;
+    public $productJson;
     /**
      * Create a new component instance.
+     * 
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($cafeJson, $productJson)
     {
-        //
+        $this->cafeJson = $cafeJson;
+        $this->productJson = $productJson;
     }
 
     /**

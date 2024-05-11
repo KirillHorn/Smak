@@ -18,6 +18,7 @@
       <th scope="col">ФИО</th>
       <th scope="col">Телефон</th>
       <th scope="col">Название</th>
+      <th scope="col">Лицензия</th>
       <th scope="col">Категория</th>
       <th scope="col">Местоположение</th>
       <th scope="col"></th>
@@ -31,6 +32,11 @@
       <td class="align-middle fw-bolder">{{$application->name}}.{{$application->surname}}.{{$application->patronymic}}</td>
       <td class="align-middle">{{$application->phone}}</td>
       <td class="align-middle">{{$application->title}}</td>
+      <td class="align-middle">
+      @if($application->document)
+            <a href="{{ asset('storage/img/' . $application->document) }}" class="btn btn-primary" download>Скачать документ</a>
+        @endif  
+    </td>
       <td class="align-middle">{{$application->id_categoriesCafe}}</td>
       <td class="align-middle">{{$application->location}}</td>
       @if ($application->id_status == 1)

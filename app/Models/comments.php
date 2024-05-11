@@ -20,4 +20,8 @@ class comments extends Model
     function user_comment() {
         return $this->belongsTo(User::class,"id_user",'id');
     }
+    public function cafe()
+{
+    return $this->belongsTo(Cafe::class, 'id_cafe');
+}
 }

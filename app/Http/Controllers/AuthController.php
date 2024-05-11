@@ -142,7 +142,7 @@ class AuthController extends Controller
       if ($id->save()) {
          return redirect("/users/personal_Area")->with("update", "Редактирование данных прошло успешно!");
       } else {
-         return redirect()->back()->with("error", "Проверьте данные!");
+         return redirect()->back()->with("error_signIn", "Проверьте данные!");
       }
     
    }

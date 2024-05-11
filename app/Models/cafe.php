@@ -30,4 +30,9 @@ class Cafe extends Model
     {
         return $this->hasMany(Products::class , 'id_cafe', 'id');
     }
+    public function comments()
+{
+    return $this->hasMany(comments::class, 'id_cafe');
+}
+
 }

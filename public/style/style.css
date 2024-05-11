@@ -701,6 +701,14 @@ margin-top: 20px;
 
 
  /* Личный кабинет */
+ .content-container {
+   display: none;
+}
+
+.content-container.active {
+   display: block;
+}
+
  .user_name img {
  border-radius: 50%;
  width: 50px;

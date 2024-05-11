@@ -41,13 +41,13 @@
         <div class="w-40" style="width: 36%;">
           <h2>Общая оценка заведения</h2>
           <div>
-            <p>4.7</p>
-            <div class="rating-result" data-rating="{{ $cafes->rating_cafe }}">
-              <span class="active"></span>
-              <span class="active"></span>
-              <span class="active"></span>
-              <span></span>
-              <span></span>
+            <p>{{ $averageRating }}</p>
+            <div class="rating-result" data-rating="{{ $averageRating }}">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
             </div>
 
           </div>
@@ -58,6 +58,7 @@
 <section class="container">
 
   <h1 class="text-center mb-4">Оставьте свой отзыв</h1>
+  @auth
   <form method="post" action="/{{$cafes->id}}/comment_cafes" id="comment-form">
     @csrf
     <div class="rating-area">
@@ -72,18 +73,24 @@
       <input type="radio" id="star-1" name="rating" value="1">
       <label for="star-1" title="Оценка «1»"></label>
     </div>
+    <div class="invalid-feedback"></div>
     <div class="form-group mb-3">
       <label for="comment">Ваш отзыв</label>
-      <textarea class="form-control" id="comment" rows="3" name="comment"></textarea>
+      <textarea class="form-control" id="comment" rows="3" name="comment" required></textarea>
+      <div class="invalid-feedback"></div>
     </div>
     <button type="submit" class="btn btn-primary">Отправить</button>
   </form>
+  @endauth
+  @guest
+  <p style="color: #A408A7; font-size:20px; text-align:center;">Авторизируйтесь для того, чтобы оставить отзыв!</p>
+  @endguest
   </div>
 
-  <div id="comments-container"  class="container mt-5">
+  <div id="comments-container" class="container mt-5">
     <h2 class="text-center mb-4">Отзывы</h2>
-      <script type="text/template" id="comment-template">
-    <div class="card mb-3">
+    <script type="text/template" id="comment-template">
+      <div class="card mb-3">
       <div class="card-body">
         <h5 class="card-title">__USERNAME__</h5>
         <div class="star-rating">
@@ -95,25 +102,24 @@
       </div>
     </div>
 </script>
-@foreach ( $comments as $comment )
-<div class="card mb-3">
+    @foreach ( $comments as $comment )
+    <div class="card mb-3">
       <div class="card-body">
         <h5 class="card-title">{{$comment->user_comment->name}}</h5>
         <div class="star-rating">
-        @for ($i = 1; $i <= 5; $i++)
-            @if ($i <= $comment->rating)
-              ⭐
+          @for ($i = 1; $i <= 5; $i++) @if ($i <=$comment->rating)
+            ⭐
             @else
-              ☆
+            ☆
             @endif
-          @endfor
+            @endfor
         </div>
         <p class="card-text">
-        {{ $comment->comments_text }}
+          {{ $comment->comments_text }}
         </p>
       </div>
     </div>
-@endforeach
+    @endforeach
 
 
 </section>
@@ -142,6 +148,7 @@
     }
   });
 
+
   document.getElementById('comment-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -153,38 +160,38 @@
         method: 'POST',
         body: data,
         headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
-    })
-    .then(response => response.json())
-    .then(data => {
+      })
+      .then(response => response.json())
+      .then(data => {
         if (data.success) {
-            addCommentToPage(data.comment);
-            form.reset();
+          addCommentToPage(data.comment);
+          form.reset();
         }
-    })
-    .catch(error => console.error(error));
+      })
+      .catch(error => console.error(error));
   });
 
   function addCommentToPage(comment) {
-  var template = document.getElementById('comment-template').innerHTML;
-  var ratingStars = '';
+    var template = document.getElementById('comment-template').innerHTML;
+    var ratingStars = '';
 
-  for (var i = 1; i <= 5; i++) {
-    if (i <= comment.rating) {
-      ratingStars += '⭐';
-    } else {
-      ratingStars += '☆';
+    for (var i = 1; i <= 5; i++) {
+      if (i <= comment.rating) {
+        ratingStars += '⭐';
+      } else {
+        ratingStars += '☆';
+      }
     }
+
+    var commentHtml = template
+      .replace('__USERNAME__', comment.username)
+      .replace('__RATING__', ratingStars)
+      .replace('__COMMENT__', comment.comment);
+
+    var commentsContainer = document.getElementById('comments-container');
+    commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
   }
-
-  var commentHtml = template
-    .replace('__USERNAME__', comment.username)
-    .replace('__RATING__', ratingStars)
-    .replace('__COMMENT__', comment.comment);
-
-  var commentsContainer = document.getElementById('comments-container');
-  commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
-}
 
 </script>

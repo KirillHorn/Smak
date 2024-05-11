@@ -32,8 +32,9 @@ class ModerController extends Controller
             "patronymic" => "required|alpha",
             "email" => "required|unique:users|email",
             "phone" => "required|numeric|min:11",
+            'document' => 'required|mimes:jpeg,jpg,pdf',
             'title' => 'required',
-            'img' => 'required',
+            'img' => 'required|mimes:jpeg,jpg,png',
             'location' => 'required',
         ],[
             "email.required" => "Поле обязательно для заполнения!",
@@ -48,21 +49,29 @@ class ModerController extends Controller
             "phone.required" => "Поле обязательно для заполнения!",
             "phone.numeric" => "Номер только из цифр!",
             'title.required' => 'Это обязательное поле!',
+            'document.required' => 'Это обязательное поле!',
+            'document.mimes' => 'Только форматы: jpeg,pdf!',
             'img.required' => 'Это обязательное поле!',
+            'img.mimes' => 'Только форматы: jpeg,jpg,png!',
             'location.required' => 'Это обязательное поле!',
         ]);
         $application=$request->all();
        
         $img_info = $request->file('img')->hashName();
         $path_img = $request->file('img')->store('/public/img');
+
+        $document_info = $request->file('document')->hashName();
+        $document_path = $request->file('document')->store('/public/img');
+        
         $applicationAdd=applications::create([
             'name' => $application['name'],
             'surname' => $application['surname'],
             'patronymic' => $application['patronymic'],
             'email' => $application['email'],
             'phone' => $application['phone'],
-            'title' => $application['title'],
             'img' => $img_info,
+            'title' => $application['title'],
+            'document' => $document_info,
             'id_categoriesCafe' => $application['id_categoriesCafe'],
             'location' => $application['location'],
             'id_status' => 1,

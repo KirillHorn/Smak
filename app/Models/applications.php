@@ -16,6 +16,7 @@ class applications extends Model
         'phone',
         "title",
         "id_categoriesCafe",
+        "document",
         "location",
         "img",
         'id_status'

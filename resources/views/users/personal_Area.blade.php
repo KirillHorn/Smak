@@ -57,19 +57,19 @@
                     <span>{{Auth::user()->email}}</span>
                 </div>
             </div>
-            <button type="button" class="button_change" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Изменить</button>
-        </div>
+            <button type="button" class="button_change" data-bs-toggle="modal" data-bs-target="#signUp" data-bs-whatever="@mdo">Изменить</button>
+            </div>
 
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fw-bold" style="color: #A408A7;" id="exampleModalLabel">Редактировать данные</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                    </div>
-                    <div class="modal-body">
+            <div class="modal fade" id="signUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title fw-bold" style="color: #A408A7;" id="exampleModalLabel">Редактировать данные</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                        </div>
+                        <div class="modal-body">
                     <form method="POST" action="{{ route('r.update', ['id' => Auth::user()->id]) }}" class=" forma_register d-flex justify-content-center flex-column align-items-center">
                     @csrf
                      @method('PATCH')
@@ -125,7 +125,6 @@
             </div>
         </div>
 
-
         <div class="d-flex flex-column user_orders">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
            
@@ -160,6 +159,26 @@
 </section>
 
 <x-footer />
+
+@if (session('error_signUp'))
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const modal = new bootstrap.Modal(document.getElementById('signUp'));
+            modal.show();
+        });
+    </script>
+@endif
+
+@if ($errors->has('login')||$errors->has('email')||$errors->has('phone')||$errors->has('password')||$errors->has('confirm_password'))
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const modal = new bootstrap.Modal(document.getElementById('signUp'));
+            modal.show();
+        });
+    </script>
+@endif
+
+
 
 <script>
 function readURL(input) { //

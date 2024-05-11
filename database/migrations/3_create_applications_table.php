@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('phone', 100);
             $table->string('password', 100);
+            $table->string('document',100);
             $table->string('title',100);
             $table->string('img',100);
             $table->foreignId('id_categoriesCafe')->references('id')->on('categories_cafe')->onDelete('cascade');

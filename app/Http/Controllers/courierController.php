@@ -12,12 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class courierController extends Controller
 {
-
     public function courier_blade()
     {
        return view('application_courier');
     }
-   
     public function registration_courier(Request $request)
     {
        $request->validate([
@@ -58,7 +56,6 @@ class courierController extends Controller
        }
      
     }
-
     public function personal_courier()
     {
       $orders=courier_orders::where('id_courier', Auth::id())->get();
@@ -69,14 +66,12 @@ class courierController extends Controller
       $orders=orders::where('id_status',1)->paginate(8);
        return view('courier.orders_for_courier',compact('orders'));
     }
-
     public function specific_order($id)
     {
       $orders_personal=orders::find($id); 
       $orders_products=orderCustoms::where('order',$id)->with('product_order')->get();
        return view('courier.specific_order',['order' => $orders_personal, 'orders_products' => $orders_products]);
     }
-
     public function courier_order ($id) {
       $orders_personal=orders::find($id);
          $orders_personal->id_status = 2;
@@ -87,9 +82,7 @@ class courierController extends Controller
          ]);
       }
       return redirect()->back()->with('success','Вы приняли заказ!');
-     
     }
-
     public function courier_order_completed ($id) {
       $orders_personal=orders::find($id);
          $orders_personal->id_status = 3;
