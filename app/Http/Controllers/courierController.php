@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\orderCustoms;
 use App\Models\orders;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class courierController extends Controller
 {
@@ -60,6 +61,12 @@ class courierController extends Controller
     {
       $orders=courier_orders::where('id_courier', Auth::id())->get();
        return view('courier.personal_Area',['orders' => $orders]);
+    }
+    public function orders_pdf() {
+      $orders = courier_orders::where('id_courier', Auth::id())->get();
+      $pdf = PDF::loadView('components.pdf', compact('orders'))->setPaper('a4')->setOptions(['defaultFont' => 'Arial'])->setOption('charset', 'utf-8');
+      $pdf->save(storage_path('app/pdf'));
+      return $pdf->download('orders.pdf');
     }
     public function orders_courier()
     {

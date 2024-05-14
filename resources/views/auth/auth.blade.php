@@ -1,7 +1,5 @@
 <x-x-header />
-
-
-<section style="margin-bottom: 150px ">
+<section>
   <div class="container d-flex flex-column gap-3" style="height: 100%">
     <div class="d-flex tumbler">
       <div class="a_reg">
@@ -23,12 +21,8 @@
         <label for="exampleInputPassword1" class="form-label">Пароль</label>
         <input type="password" name="password" placeholder=" @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
       </div>
-     
-
       <input type="submit" value="Войти" class="btn btn-primary input_auth">
     </form>
-
   </div>
 </section>
-
 <x-footer />

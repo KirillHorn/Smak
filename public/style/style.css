@@ -13,6 +13,7 @@
    text-decoration: none;
    color: #ffffff;
  }
+
 body {
    font-family: Bitter;
    text-decoration: none;
@@ -20,71 +21,112 @@ body {
    font-optical-sizing: auto;
    font-weight:weight;
    font-style: normal;
+
 }
 /*
  Стили шапки */
-.header {
-    width: 100%;
-    background-color: #A408A7;
-    margin-bottom: 40px;
+ .header {
+   width: 100%;
+   background-color: #A408A7;
+   margin-bottom: 20px;
  }
- 
- .section_header_one {
-    background-color: #A408A7;
-    height: 63px;
-    color: aliceblue;
-    font-weight: 400;
 
+ .section_header_one {
+   background-color: #A408A7;
+   height: 63px;
+   color: aliceblue;
+   font-weight: 400;
  }
-.nav {
+
+ .nav {
    font-size: 16px;
    font-weight: 400;
-}
-.nav-item a {
+ }
+
+ .nav-item a {
    color: #fff;
-}
-.nav-item a:hover {
+ }
+
+ .nav-item a:hover {
    color: #cecece ;
-}  
-.nav-item a:active {
+ }  
+
+ .nav-item a:active {
    color: #c800ff;
-}
-.nav-item a:focus {
+ }
+
+ .nav-item a:focus {
    color: #c800ff;
-}
-.nav-link-dropdown:focus {
+ }
+
+ .nav-link-dropdown:focus {
    color: #c800ff !important;
-}
-.nav-link-dropdown:hover {
+ }
+
+ .nav-link-dropdown:hover {
    color: #c800ff !important;
-}
-.nav span {
+ }
+
+ .nav span {
    font-size: 28px;
-}
-.dropdown-menu li a {
+ }
+
+ .dropdown-menu li a {
    color: #A408A7 !important;
-}
-.dropdown-menu {
+ }
+
+ .dropdown-menu {
    border: 1px solid #A408A7;
-}
-.dropdown-divide {
+ }
+
+ .dropdown-divide {
    border-color: #A408A7; /* Или background-color: #your-color; */
-}
-.btn-seach {
+ }
+
+ .btn-seach {
    background-color: #A408A7;
    border: 1px solid #ffffff;
    color: #fff;
+ }
+.search_form {
+   font-size: 12px;
 }
-.search {
+ .search_input {
+   height:40px;
+}
+.basket_input {
+   padding: 5px 15px ; /* Расстояние от текста до края */
+   padding-top: 3px;
+   background-color: #A408A7; /* Цвет фона */
+   color: #fff; /* Белый цвет текста */
+   border: 1px solid #ffffff; /* Убираем рамку */
+   border-radius: 3em; /* Кнопка в виде пилюли */
+   font-size: 16px; /* Размер шрифта */
+   text-transform: uppercase; /* Все буквы заглавные */
+   margin-right: 10px;
+}
+.icon-button {
+   content: ''; /* Выводим псевдоэлемент */
+   display: inline-block; /* Строчно-блочный элемент */
+   vertical-align: middle; /* Выравнивание по вертикали */
+   width: 24px; height: 26px; /* Размеры иконки */
+   margin-right: 5px; /* Расстояние справа */
+
+   background: 0/cover url(../img/ph_basket-light.svg); /* Иконка для кнопки Submit */
+  }
+
+ .search {
    border-radius: 20px;
-}
-.search_input_header {
+ }
+
+ .search_input_header {
    border-radius: 20px;
    margin-right: 20px;
-}
-.dropdown-item:active {
+ }
+
+ .dropdown-item:active {
    background-color: #d3d3d3;
-}
+ }
 /* Стили баннера */
 .banner {
    width: 100%;
@@ -222,29 +264,7 @@ body {
    border-radius: 20px;
    
 }
-.search_input {
-   height:40px;
-}
-.basket_input {
-   padding: 5px 15px ; /* Расстояние от текста до края */
-   padding-top: 3px;
-   background-color: #A408A7; /* Цвет фона */
-   color: #fff; /* Белый цвет текста */
-   border: 1px solid #ffffff; /* Убираем рамку */
-   border-radius: 3em; /* Кнопка в виде пилюли */
-   font-size: 16px; /* Размер шрифта */
-   text-transform: uppercase; /* Все буквы заглавные */
-   margin-right: 10px;
-}
-.icon-button {
-   content: ''; /* Выводим псевдоэлемент */
-   display: inline-block; /* Строчно-блочный элемент */
-   vertical-align: middle; /* Выравнивание по вертикали */
-   width: 24px; height: 26px; /* Размеры иконки */
-   margin-right: 5px; /* Расстояние справа */
 
-   background: 0/cover url(../img/ph_basket-light.svg); /* Иконка для кнопки Submit */
-  }
 
 
 
@@ -277,25 +297,11 @@ transition: 0.2s;
    color: #ffffff;
    margin-top: 4rem;
    padding: 2rem 0rem;
+}
+.color_footer {
+   color: #ffffff;
+}
 
-}
-.footer_container {
-   background-color: #A408A7;
-
-}
-.information_footer {
-   width: 360px;
-}
-.information_footer p {
-   font-size: 18px;
-}
-.navigation_footer {
-   list-style-type:  none;
-   font-size: 18px;
-}
-.navigation_footer li {
-   margin-bottom: 1rem;
-}
 
 
 /* Страница регистрации */
@@ -305,7 +311,7 @@ transition: 0.2s;
    border-radius: 27px;
    width: 40%;
    font-size: 24px;
-   margin: 0 auto;
+   margin: 20px auto 0px auto;
 }
 .tumbler a {
    text-decoration: none;
@@ -362,11 +368,7 @@ margin: 0 auto;
    border: none;
 }
 
-@media (max-width: 746px) {
-   .tumbler  {
-      width: 70%;
-   }
-}
+
 
 .select_categories {
    border: 1px solid #A408A7;
@@ -731,15 +733,31 @@ margin-top: 20px;
    color: #A408A7;
    padding-top: 10px;
  }
+ .button_update {
+   background-color: #A408A7;
+   width: 20%;
+   height: 30px;
+   margin: 10px 110px;
+   border-radius: 7px;
+   color: #ffffff;
+   border: none;
+   padding: 0px 20px;
+ }
  .button_change {
    color: #ffffff;
    background-color: #A408A7;
    border-radius: 7px;
    font-size: 24px;
-   border: none;
-   width: 180px;
-   height: 35px;
    margin: 20px 110px;
+ }
+ .button_update_modal {
+   background-color: #A408A7;
+   color: #ffffff;
+ }
+ .button_update_modal:hover {
+   background-color: #ffffff;
+   color: #A408A7 ;
+   border:1px solid #A408A7;
  }
  .order_info h3 {
    color: #A408A7;
@@ -755,6 +773,17 @@ margin-top: 20px;
  .order_info_one p span {
    color: #A408A7 ;
    font-weight: 600;
+ }
+ .pdf_button {
+   border: 1px solid #ffffff;
+   color: #ffffff;
+   width: 200px;
+   margin: 0 auto;
+ }
+ .pdf_button:hover {
+   background-color: #ffffff;
+
+   color: #A408A7;
  }
 .order_info_product {
    width: 45%;
@@ -853,6 +882,7 @@ margin-top: 20px;
    font-size: 17px;
    transition: 0.3s ease-in-out;
  }
+ 
  
 
    /* Страница заказа и корзины */
@@ -1195,4 +1225,68 @@ input::-webkit-inner-spin-button {
  .forma_register input {
      width: 400px;
  }
-
+ @media (max-width: 500px) {
+   .search_form {
+      margin-bottom: 10px  !important;
+    }
+   .footer {
+      padding-top: 0rem !important; 
+       padding-bottom: 0rem !important;
+   }
+   .tumbler  {
+      width: 70%;
+   }
+   .tumbler a {
+      font-size: 20px;
+   }
+   .forma_auth   {
+      width: 70%;
+   }
+   .input_application {
+      width: 60%;
+   }
+   .option_categories {
+     width: 20px;
+   }
+   .user_name img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      }
+   .user_name h2 {
+      font-size: 14px;
+   }
+     
+    .nav_personal a  {
+      background-color: #A408A7;
+   color: #ffffff;
+   border-radius: 20px;
+   width: 150px;
+   height: 20px;
+   padding-top: 0px;
+   text-align: center;
+   font-size: 14px;
+    }
+    .button_update {
+      background-color: #A408A7;
+      width: 25%;
+      height: 20px;
+      margin: 0 auto;
+      border-radius: 7px;
+      color: #ffffff;
+      font-size: 14px;
+      border: none;
+      padding: 0px 20px;
+    }
+   .information_personal_text {
+      font-size: 16px;
+      color: #A408A7;
+      padding-top: 5px;
+    }
+    .forma_register div {
+         width: 80%;
+    }
+    .forma_register div input {
+      width: 100%;
+    }
+}

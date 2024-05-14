@@ -11,8 +11,10 @@
         @if ($order->id_status == 1)
         
         <a class="courier_button" href="{{ route('courier', ['id' => $order->id]) }}">Принять</a>
-        @else
+        @elseif ($order->id_status == 2)
         <a class="courier_button" href="{{ route('courier.completed', ['id' => $order->id]) }}">Завершить</a>
+        @elseif ($order->id_status == 3)
+        <p style="margin: 0 auto; font-size:24px;"><span>Вы завершили заказ!</span></p>
         @endif
         </div>
         <div class="order_info_product">
@@ -22,7 +24,6 @@
                 <tr>
                     <th>Изображение</th>
                     <th>Название</th>
-                    <th>Цена</th>
                     <th>Количество</th>
                     <th></th>
                 </tr>
@@ -32,7 +33,6 @@
                 <tr>
                     <td><img src="/storage/img/{{$products->product_order->img}}" alt="Image" width="60" height="60"></td>
                     <td>{{$products->product_order->title}}</td>
-                    <td>{{$products->product_order->cost}}₽</td>
                     <td>{{$products->count}}</td>
                 </tr>
                 @endforeach

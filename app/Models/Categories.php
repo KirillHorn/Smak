@@ -18,4 +18,7 @@ class Categories extends Model
     {
         return $this->hasMany(Products::class,'id', 'id_categories' );
     }
+    public function count_product() {
+        return $this->product()->count();
+    }
 }

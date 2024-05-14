@@ -35,4 +35,8 @@ class Cafe extends Model
     return $this->hasMany(comments::class, 'id_cafe');
 }
 
+public function count_product() {
+    return $this->product()->count();
+}
+
 }

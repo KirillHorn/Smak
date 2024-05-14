@@ -80,7 +80,7 @@ class AuthController extends Controller
          ])
       ) {
          if (Auth::user()->id_role == 2) {
-            return redirect("/moder/serviceEditProduct")->with("success", "Вы вошли модер! ");
+            return redirect("/moder/cafesModer")->with("success", "Вы вошли модер! ");
          } elseif(Auth::user()->id_role == 1) {
             return redirect("/users/personal_Area")->with("success", "Вы вошли " . Auth::user()->name . "!");
          } elseif (Auth::user()->id_role == 4) {
@@ -109,8 +109,8 @@ class AuthController extends Controller
          "patronymic" => "required|alpha",
          "email" => "required",
          "phone" => "required|numeric",
-         "password" => "required",
-         "confirm_password" => "required|same:password"],
+         "password" => "required|min:8",
+         "password_old" => "required"],
          [
             "email.required" => "Поле обязательно для заполнения!",
             "email.email" => "Введите корректный email",
@@ -124,10 +124,16 @@ class AuthController extends Controller
             "phone.required" => "Поле обязательно для заполнения!",
             "phone.numeric" => "Номер только из цифр!",
             "password.required" => "Поле обязательно для заполнения!",
-            "confirm_password.required" => "Поле обязательно для заполнения!",
-            "confirm_password.same" => "Пароли не совподают",
+            "password.min" => "Новый пароль должен быть не короче 8 символов!",
+            "password_old.required" => "Поле обязательно для заполнения!",
+          
          ]);
       $userInfo = $request->all();
+      $user = Auth::user();
+      if (!Hash::check($userInfo['password_old'], $user->password)) {
+         return redirect()->back()->withErrors(['password_old' => 'Старый пароль введен неправильно']);
+     }
+
 
       $id->fill(
          [

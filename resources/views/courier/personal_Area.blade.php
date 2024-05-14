@@ -126,12 +126,11 @@
                 </div>
             </div>
         </div>
-
-
+      
+        
         <div class="d-flex flex-column user_orders">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
-           
-           
+            <a href="/orders_pdf" class="btn pdf_button" >Сформировать отчёт</a>
             <table class="table table-borderless table_product table_">
   <thead style="border-bottom: 1px solid #A408A7;">
     <tr class="table_product_tr">
@@ -153,7 +152,7 @@
       <td>{{$orderss->order_user->comment}}</td>
       <td>{{$orderss->order_user->user->name}}</td>
       <td>{{$orderss->order_user->created_at}}</td>
-      <td><a href="order_user/{{$orderss->order_user->id}}">Поподробнее</a></td>
+      <td><a href="{{ route('courier.order', ['id' => $orderss->id]) }}">Поподробнее</a></td>
     </tr>
     @endforeach
 </table>

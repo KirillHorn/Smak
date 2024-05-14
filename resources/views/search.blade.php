@@ -33,7 +33,7 @@
     <ul class="list-group">
     <div id="search-results" class="search-results"></div>
 
-@foreach ($results as $result )
+@forelse ($results as $result )
 @if ($result instanceof App\Models\Cafe)
         <div class="cart_cafe g-col-4 cart_product_text">
      
@@ -48,10 +48,13 @@
                 <img src="/storage/img/{{ $result->img }}" alt="картинка блюда">
                 <p class="capitalize">{{ $result->categories->title_categories }} • {{ $result->cost }} ₽</p>
                 <a style="color: #A408A7;">{{ $result->title }}</a>
-          
+       
         </div>
+        
     @endif
-@endforeach
+    @empty
+    <div>Ничего нету(</div>
+@endforelse
 </div>
                 </div>
        

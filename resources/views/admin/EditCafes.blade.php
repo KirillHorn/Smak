@@ -1,4 +1,4 @@
-@include('moder.inc.sidebar')
+@include('admin.inc.sidebar')
 <x-alerts/>
 <div class="wrapper">
     <div class="container">

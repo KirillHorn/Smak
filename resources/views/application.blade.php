@@ -48,6 +48,7 @@
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Категория заведения</label>
     <select class="form-select select_categories" name="id_categoriesCafe" > 
+    <option class="option_categories">Выбор категории</option>
     @foreach ($categories as $item )
     <option class="option_categories" value="{{ $item->id}}"> {{ $item->title_categories}}</option>
     @endforeach
@@ -58,7 +59,8 @@
       <input class="form-control @error('location') is-invalid @enderror" value="{{ old('location') }}" name="location"  type="text" >
       <span class="invalid-feedback"> @error('location') {{$message}} @enderror</span>
     </div>
-  <button type="submit" class="btn input_auth">Подать заявку</button>
+  <button type="submit" class="btn input_auth input_application">Подать заявку</button>
 </form>
 </div>
 <x-footer/>
+

@@ -1,10 +1,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="/style/style1.css" rel="stylesheet">
+        <link href="/style/style1.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <meta name="csrf-token" content="{{ csrf_token() }}">
+     <meta name="edit-update-categories-url-base" content="{{ route('edit.update.categories', ['id' => ':id']) }}">
 <link href="/style/sidebars.css" rel="stylesheet">
 <section class="sidebar ">
     <div class="flex-shrink-0 p-3 bg-white sidebar_bacg" style="width: 280px;">
@@ -33,8 +35,23 @@
         </button>
         <div class="collapse show" id="product-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/admin/serviceRedact" class="link-dark rounded">Добавить заведения</a></li>
             <li><a href="/admin/serviceEdit" class="link-dark rounded">Редактирование заведения</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#categories-collapse" aria-expanded="true">
+          Категории продукции
+        </button>
+        <div class="collapse show" id="categories-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="/admin/EditCategories" class="link-dark rounded">Добавить категорию</a></li>
+          </ul>
+        </div>
+        <div class="collapse show" id="categories-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="/admin/CategoriesEdit" class="link-dark rounded">Редактирование категории</a></li>
           </ul>
         </div>
       </li>

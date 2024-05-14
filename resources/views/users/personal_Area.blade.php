@@ -32,22 +32,23 @@
 
 <section>
 
-    <div class="container d-flex flex-column gap-5">
+    <div class="container d-flex flex-column gap-3">
         <div class="d-flex gap-3 user_name align-items-center">
             <img alt="иконка пользователя" src="/img/user_cub.svg">
-            <h2 class="">Привет, Пользователь</h2>
+            <h2 class="">Привет {{Auth::user()->name}}</h2>
         </div>
         <div class="d-flex justify-content-between  nav_personal">
             <a style="color: aliceblue;" id="get">Личная информация</a>
         </div>
         <div class="d-flex flex-column ">
-            <div class="d-flex gap-5 information_personal_text">
+            <div class="d-flex gap-4 information_personal_text">
                 <div class="d-flex flex-column fw-bold">
                     <span>Имя</span>
                     <span>Фамилия</span>
                     <span>Отчество</span>
                     <span>Номер телефона</span>
                     <span>Электронная почта</span>
+                    
                 </div>
                 <div class="d-flex flex-column">
                     <span>{{Auth::user()->name}}</span>
@@ -55,9 +56,11 @@
                     <span>{{Auth::user()->patronymic}}</span>
                     <span>{{Auth::user()->phone}}</span>
                     <span>{{Auth::user()->email}}</span>
+                    
                 </div>
             </div>
-            <button type="button" class="button_change" data-bs-toggle="modal" data-bs-target="#signUp" data-bs-whatever="@mdo">Изменить</button>
+            <button type="button" class="button_update" data-bs-toggle="modal" data-bs-target="#signUp" data-bs-whatever="@mdo">Изменить</button>
+           
             </div>
 
 
@@ -99,18 +102,18 @@
                                 <span> @error('phone') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                                <input type="password" name="password" value="" placeholder="  " class="form-control" id="exampleInputPassword1">
-                                @error('password') 
-                                <p> Пароли не совподают
+                                <label for="exampleInputPassword1" class="form-label">Старый пароль</label>
+                                <input type="password" name="password_old" value="" placeholder="  " class="form-control" id="exampleInputPassword1">
+                                @error('password_old') 
+                                <p>
                                 {{$message}} 
                                 </p>
                                  @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" name="confirm_password" class="form-label">Повторите пароль</label>
-                                <input type="password" name="confirm_password" value="{{old('confirm_password')}}" placeholder="  " class="form-control" id="exampleInputPassword1">
-                                @error('confirm_password') 
+                                <label for="exampleInputPassword1" name="confirm_password" class="form-label">Новый пароль</label>
+                                <input type="password" name="password" value="{{old('password')}}" placeholder="" class="form-control" id="exampleInputPassword1">
+                                @error('password') 
                                 {{$message}} 
                                  @enderror
                             </div>
@@ -118,7 +121,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <input type="submit" value="Изменить данные" class="btn btn-primary ">
+                        <input type="submit" value="Изменить данные" class="btn button_update_modal">
                     </div>
                     </form>
                 </div>
@@ -148,7 +151,7 @@
       <td>{{$orderss->location}}</td>
       <td>{{$orderss->comment}}</td>
       <td>{{$orderss->created_at}}</td>
-      <td><a href="order_user/{{$orderss->id}}">Поподробнее</a></td>
+      <td><a href="order_user/{{$orderss->id}}">Подробнее</a></td>
     </tr>
     @endforeach
 </table>
@@ -159,7 +162,6 @@
 </section>
 
 <x-footer />
-
 @if (session('error_signUp'))
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
@@ -169,13 +171,14 @@
     </script>
 @endif
 
-@if ($errors->has('login')||$errors->has('email')||$errors->has('phone')||$errors->has('password')||$errors->has('confirm_password'))
+@if ($errors->has('login')||$errors->has('email')||$errors->has('phone')||$errors->has('password')||$errors->has('password_old'))
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             const modal = new bootstrap.Modal(document.getElementById('signUp'));
             modal.show();
         });
     </script>
+@endifcript>
 @endif
 
 

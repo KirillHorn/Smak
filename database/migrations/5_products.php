@@ -20,7 +20,7 @@ return new class extends Migration
  $table->float('weight');
  $table->float('cost');
  $table->string('img',100 );
- $table->foreignId('id_cafe')->references('id')->on('cafes');
+ $table->foreignId('id_cafe')->references('id')->on('cafes')->onDelete('cascade');
  $table->foreignId('id_categories')->references('id')->on('categories');
  $table->timestamps();
 

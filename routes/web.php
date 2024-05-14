@@ -102,7 +102,7 @@ Route::get('/admin/serviceRedact', [adminController::class, 'serviceRedact_blade
 
 Route::get('/admin/serviceEdit', [adminController::class, 'serviceEdit_blade']);
 
-Route::get('/admin/{id}/Edit', [adminController::class, 'Edit']);
+Route::get('/admin/{id}/EditCafes', [adminController::class, 'Edit']);
 
 Route::post('/admin/{id}/update_cafe', [adminController::class, 'update_cafe'])->name('edit.update');
 
@@ -110,11 +110,23 @@ Route::delete('/admin/{id}/delete_cafe', [adminController::class, 'delete_cafe']
 
 Route::post('/edit_cafe', [adminController::class, 'edit_cafe']);
 
+Route::get('/admin/EditCategories', [adminController::class, 'EditCategories']);
 
+Route::post('/categories_Add', [adminController::class, 'categories_Add']);
+
+Route::get('/admin/CategoriesEdit', [adminController::class, 'Categories']);
+
+Route::get('/admin/CategoriesEdit_redact', [adminController::class, 'Categories_one']);
+
+Route::post('/admin/{id}/update_cafe', [adminController::class, 'update_cafe'])->name('edit.update');
 
 Route::get('/auth/registration', [AuthController::class, 'registration_page']);
 
+
 Route::post('/registration_valid', [AuthController::class, 'registration_valid']);
+
+Route::PATCH('/admin/categories_update/{id}', [adminController::class, 'categories_update'])->name('edit.update.categories');
+
 
 Route::get('/auth/auth', [AuthController::class, 'auth_page']);
 
@@ -135,5 +147,9 @@ Route::get('/{id}/specific_order', [courierController::class, 'specific_order'])
 Route::get('/{id}/courier_order', [courierController::class, 'courier_order'])->name('courier');
 
 Route::get('/{id}/courier_order_completed', [courierController::class, 'courier_order_completed'])->name('courier.completed');
+
+Route::get('/orders_pdf', [courierController::class, 'orders_pdf'])->name('courier.orders_pdf');
+
+
 
 

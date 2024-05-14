@@ -123,42 +123,11 @@ class adminController extends Controller
         $cafe = Cafe::paginate(4);
         return view('admin.serviceEdit', compact('cafe'));
     }
-    public function edit_cafe(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'img' => 'required',
-            'location' => 'required',
-        ], [
-            'title.required' => 'Это обязательное поле!',
-            'img.required' => 'Это обязательное поле!',
-            'location.required' => 'Это обязательное поле!'
-        ]);
-
-        $infocafe = $request->all();
-        // dd($infocafe);
-        $img_info = $request->file('img')->hashName();
-        $path_img = $request->file('img')->store('/public/img');
-
-        $cafeAdd = Cafe::create([
-            'title' => $infocafe['title'],
-            'img' => $img_info,
-            'id_categoriesCafe' => $infocafe['id_categoriesCafe'],
-            'location' => $infocafe['location'],
-            'id_moder' => $infocafe['moder'],
-        ]);
-
-        if ($cafeAdd) {
-            return redirect()->back()->with('success', 'Вы добавили Заведение ');
-        } else {
-            return redirect('/')->with('error', 'Не удалось добавить заведение ');
-        }
-    }
     public function Edit($id)
     {
         $cafes_Edit = Cafe::find($id);
         $categoria_cafe = CategoriesCafes::where('id', '!=', $cafes_Edit['id_categoriesCafe'])->get();
-        return view('moder.Edit', ['cafes_info' => $cafes_Edit, 'categoria_cafe' => $categoria_cafe]);
+        return view('admin.EditCafes', ['cafes_info' => $cafes_Edit, 'categoria_cafe' => $categoria_cafe]);
     }
     public function update_cafe(Request $request, Cafe $id)
     {
@@ -195,5 +164,57 @@ class adminController extends Controller
         $id->delete();
         return redirect()->back()->with("success", "удаление прошло успешно");
 
+    }
+    
+    public function EditCategories()
+    {
+        return view('admin.EditCategories');
+    }
+    public function categories_Add(Request $request) {
+        $request->validate([
+            'title' => 'required',
+        ], [
+            'title.required' => 'Это обязательное поле!',
+        ]);
+        $infocategories=$request->all();
+        $cafeAdd = Categories::create([
+            'title' => $infocategories['title'],
+        ]);
+
+        if ($cafeAdd) {
+            return redirect()->back()->with('success', 'Вы добавили категорию');
+        } else {
+            return redirect('/')->with('error', 'Не удалось добавить категорию ');
+        }
+      
+    }
+    public function Categories()
+    {
+        $Categories = Categories::paginate(6);
+        return view('admin.CategoriesEdit', compact('Categories'));
+    }
+    public function Categories_one($id)
+    {
+        $Categories = Categories::find($id);
+        return view('admin.CategoriesEdit_redact', ['categories' => $Categories]);
+    }
+    public function categories_update(Request $request,Categories $id) {
+        $request->validate([
+            'title' => 'required',
+        ], [
+            'title.required' => 'Это обязательное поле!',
+        ]);
+        $infocategories=$request->all();
+        $id->fill(
+            [
+                'title' => $infocategories['title'],
+            ]);
+        $id->save();
+        if ($id->save()) {
+            return redirect()->back()->with('sussecc','Вы изменили категорию!');
+        } else {
+            return redirect()->back()->with('error','Вы не смогли изменить категорию!');
+        }
+      
     }
 }

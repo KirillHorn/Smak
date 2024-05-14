@@ -37,7 +37,7 @@
         <span> @error('phone') {{$message}} @enderror</span>
       </div>
 
-      <input type="submit" value="Подать заявку" class="btn btn-primary input_auth">
+      <input type="submit" value="Подать заявку" class="btn btn-primary input_auth input_application">
     </form>
   </div>
 </section>

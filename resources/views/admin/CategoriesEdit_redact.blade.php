@@ -1,22 +1,23 @@
-@include('moder.inc.sidebar')
+@include('admin.inc.sidebar')
 <x-alerts/>
 <div class="wrapper">
+    <div class="container">
+        <h2 class="text-center">Категории продукты</h2>
+        <form action="/{{$categories->id}}/categories_update" method="POST" class="addservice">
+           
+            @csrf
 
-      <div class="container">
-        <div class="d-flex nav_goods align-items-center flex-column gap-3">
-            <p>{{$cafes->title}}</p>
-            <div class="d-flex">
-            <img src="/storage/img/{{$cafes->img}}" alt="изображение заведения">
-              <div>
-                <p>Местопожение: {{$cafes->location}}</p>
-                <p>Категория: {{$cafes->categoriesCafe->title_categories}}</p>
-                <p>Количество блюд: {{$cafes->count_product()}}</p>
-                <p>Прибыль: {{$cafes->count_product()}}</p>
-              </div>
+            <h2 class="text-center">Редактировать категорию продукта</h2>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Название категории</label>
+                <input type="title" class="form-control" name="title" 
+                    placeholder="@error('title') {{$message}}  @enderror" value="{{$categories->title}}" >
+                    
             </div>
-        </div>
-      </div>
-    </section>
+            <button type="submit" class="btn btn-primary btn_buttom">Редактировать категорию</button>
+        </form>
+        <hr>
+    </div>
 </div>
 <script>
   function readURL(input) { //

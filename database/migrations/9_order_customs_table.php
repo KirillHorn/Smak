@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('order_customs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order')->references('id')->on('orders');
-            $table->foreignId('product')->references('id')->on('products');
+            $table->foreignId('product')->references('id')->on('products')->onDelete('cascade');
             $table->integer('count');
             $table->timestamps();
         });

@@ -19,11 +19,13 @@ class ModerController extends Controller
     public function cafesModer() {
         $cafes=Cafe::where('id_moder', Auth::user()->id)->first();
 
-        $products = $cafes->product;
+        // $products = $cafes->product;
 
-        $productsCount = $products->count();
+        // $productsCount = $products->count();
 
-        return view('moder.cafesModer',['cafes' => $cafes, 'count' => $productsCount]);
+        // 'count' => $productsCount
+
+        return view('moder.cafesModer',['cafes' => $cafes ]);
     }
     public function application_add_validate(Request $request) {
         $request->validate([

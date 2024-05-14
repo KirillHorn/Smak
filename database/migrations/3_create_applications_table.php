@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('patronymic', 100);
             $table->string('email', 100)->unique();
             $table->string('phone', 100);
-            $table->string('password', 100);
             $table->string('document',100);
             $table->string('title',100);
             $table->string('img',100);

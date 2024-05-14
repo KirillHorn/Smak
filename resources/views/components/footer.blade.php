@@ -1,38 +1,16 @@
-<footer class="footer mt-auto">
-    <div class="container footer_container">
-    <hr>
-            <div class="d-flex justify-content-around ">
-                <div class="information_footer">
-                    <p class="fw-bold">Заказать еду по всей уфе</p>
-                    <p>Еда в Уфе с доставкой на дом при заказе от 500р. Суши, роллы, пицца, бургеры, пироги, шашлыки и другая готовая еда. Оплата картой. Реальные отзывы. Еда за баллы.</p>
-                    <div class="d-flex grid gap-5 "><img src="/img/socials1.svg"> <img src="/img/socials2.svg"> <img src="/img/socials3.svg"> </div>
-                </div>
-                    <div>
-                        <ul class="navigation_footer">
-                            <li class="fw-bold">О нас</li>
-                            <li>Блюда</li>
-                            <li>Заведения</li>
-                            <li>Условия использования и политика конфиденциальности</li>
-                        </ul>
-                    </div>
-                        <div>
-                        <ul class="navigation_footer">
-                            @guest
-                            <li class="fw-bold"><a href="/auth/auth">Вход</a></li>
-                            <li class="fw-bold"> <a href="/auth/registration">Регистрация</a></li>
-                            @endguest
 
-                            @auth
-                            <li><a href="/users/personal_Area">Кабинет</a></li> 
-                            <li><a href="/signout">Выход</a></li> 
-                            @endauth
-                       
-                            
-                        </ul>
-                        </div>
-            </div>
-    </div>
-   
+<footer class="footer mt-auto py-3">
+  <div class="container">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2  color_footer">О нас</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2  color_footer">Меню</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2  color_footer">Заведение</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2  color_footer">Регистрация заведения</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 color_footer" >Стать курьером</a></li>
+    </ul>
+    <p class="text-center  color_footer">© 2024 Smak</p>
+  </div>
 </footer>
 </body>
+
 </html>
