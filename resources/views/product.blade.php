@@ -1,9 +1,9 @@
 
 <x-x-header />
     <section class="section_product_nav">
-        <div class="container d-flex flex-column gap-3" style="padding-bottom: 60px;">
+        <div class="container d-flex flex-column gap-3">
             <div class="directory_nav">
-                <a>Уфа</a>
+                <a>О нас</a>
                 <span>→</span>
                 <a>Блюда</a>
             </div>
@@ -39,6 +39,22 @@
                       
                         <p >{{$products->Categories->title}}</p>
                        
+                        <a style="color: #A408A7;" class="fw-bolder">{{$products->title}}</a>
+                        <div class="d-flex gap-5">
+                        <p class="fw-bold">{{$products->cost}}₽</p>
+                        </a>
+                        </div>
+                    
+                    </div>
+                   
+                    @endforeach   
+                    @foreach ($product as $products)
+                    <div class="cart_cafe cart_product g-col-4 cart_product_text ">
+                    <a href="{{route ('goods.r', ['id'=>$products->id])}}">
+                        <img src="/storage/img/{{$products->img}}" alt="картинка заведения"> 
+                      
+                        <p >{{$products->Categories->title}}</p>
+                       
                         <a style="padding-top: 0px;  color: #A408A7;" class="fw-bolder">{{$products->title}}</a>
                         <div class="d-flex gap-5">
                         <p class="fw-bold">{{$products->cost}}₽</p>
@@ -47,7 +63,7 @@
                     
                     </div>
                    
-                    @endforeach       
+                    @endforeach      
                     <div>
          
                 </div>

@@ -1,14 +1,11 @@
 
 <x-x-header />
 <x-alerts/>
-
-
-
         <div class="container d-flex main_goods ">
             <img src="/storage/img/{{$product->img}}" alt="фотография товара" class="img_goods">
             <div class="main_goods_text">
               <h2 class="fw-bold">{{$product->title}}</h2>
-              <p style="font-size: 40px;">{{$product->cost}}₽</p>
+              <p class="cost_goods">{{$product->cost}}₽</p>
               <p>Заведение: <a href="{{route('show.r', ['id_cafe'=>$product->Cafe->id])}}"> <span style=" color: #A408A7;">{{$product->Cafe->title}}</span></a></p>
                 <div>
                   <hr>
@@ -26,5 +23,4 @@
                 @endguest
             </div>
         </div>
-
 <x-footer/>

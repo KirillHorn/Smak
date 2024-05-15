@@ -32,24 +32,24 @@
 
 <section>
 
-    <div class="container d-flex flex-column gap-5">
+    <div class="container d-flex flex-column gap-3">
         <div class="d-flex gap-3 user_name align-items-center">
             <img alt="иконка пользователя" src="/img/user_cub.svg">
-            <h2 class="">Привет, Пользователь</h2>
+            <h2 class="">Привет {{Auth::user()->name}}</h2>
         </div>
         <div class="d-flex justify-content-between  nav_personal">
              <a style="color: aliceblue;" id="personal-info" href="/courier/personal_Area">Личная информация</a>
             <a style="color: aliceblue;" id="available-orders" href="/courier/orders_for_courier">Доступные заказы</a>
         </div>
-        <div id="available-orders-content" class="content-container"></div>
         <div class="d-flex flex-column ">
-            <div class="d-flex gap-5 information_personal_text">
+            <div class="d-flex gap-4 information_personal_text">
                 <div class="d-flex flex-column fw-bold">
                     <span>Имя</span>
                     <span>Фамилия</span>
                     <span>Отчество</span>
                     <span>Номер телефона</span>
                     <span>Электронная почта</span>
+                    
                 </div>
                 <div class="d-flex flex-column">
                     <span>{{Auth::user()->name}}</span>
@@ -57,9 +57,10 @@
                     <span>{{Auth::user()->patronymic}}</span>
                     <span>{{Auth::user()->phone}}</span>
                     <span>{{Auth::user()->email}}</span>
+                    
                 </div>
-                </div>
-                <button type="button" class="button_change" data-bs-toggle="modal" data-bs-target="#signUp" data-bs-whatever="@mdo">Изменить</button>
+            </div>
+               <button type="button" class="button_update" data-bs-toggle="modal" data-bs-target="#signUp" data-bs-whatever="@mdo">Изменить</button>
             </div>
 
 
@@ -126,7 +127,40 @@
                 </div>
             </div>
         </div>
-      
+        @if ($orders_current)
+
+        <div class="d-flex flex-column user_orders">
+            <h2 style="text-align: center; color:aliceblue">Текущий заказ</h2>
+            <table class="table table-borderless table_product table_">
+  <thead style="border-bottom: 1px solid #A408A7;">
+    <tr class="table_product_tr">
+      <th scope="col">Номер</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Комментарий</th>
+      <th scope="col">Клиент</th>
+      <th scope="col">Дата</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+        <tr class="table_product_tr">
+      <th scope="row">{{$orders_current->order_user->id}}</th>
+      <td>100₽</td>
+      <td>{{$orders_current->order_user->location}}</td>
+      <td>{{$orders_current->order_user->comment}}</td>
+      <td>{{$orders_current->order_user->user->name}}</td>
+      <td>{{$orders_current->created_at}}</td>
+      <td><a href="{{ route('courier.order', ['id' => $orders_current->id]) }}">Завершить заказ</a></td>
+    </tr>
+</table>
+         
+            
+        </div>
+    </div>
+    @endif
+
         
         <div class="d-flex flex-column user_orders">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>

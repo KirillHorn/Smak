@@ -13,7 +13,6 @@
    text-decoration: none;
    color: #ffffff;
  }
-
 body {
    font-family: Bitter;
    text-decoration: none;
@@ -23,12 +22,20 @@ body {
    font-style: normal;
 
 }
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+   -moz-appearance: textfield;
+}
 /*
  Стили шапки */
  .header {
    width: 100%;
    background-color: #A408A7;
-   margin-bottom: 20px;
+   margin-bottom: 10px;
  }
 
  .section_header_one {
@@ -202,12 +209,12 @@ body {
    color: aliceblue;
 }
 .cart_cafe {
-   width: 306px;
-   height: 280px;
+   width: 30%;
+   height: 40%;
 
 }
 .cart_cafe img {
-   width: 300px;
+   width: 80%;
    height: 215px;
    border-radius: 25px;
 
@@ -297,6 +304,8 @@ transition: 0.2s;
    color: #ffffff;
    margin-top: 4rem;
    padding: 2rem 0rem;
+   padding: 10px;
+   text-align: center;
 }
 .color_footer {
    color: #ffffff;
@@ -370,17 +379,17 @@ margin: 0 auto;
 
 
 
-.select_categories {
+/* .select_categories {
    border: 1px solid #A408A7;
    transition: #A408A7 15c;
 }
 .select_categories:focus {
    border: 1px solid #A408A7;
-}
-.option_categories:hover {
+} */
+/* .option_categories:hover {
    background-color: #A408A7;
    color: #fff;
-}
+} */
 
 /* Секция заведения и кафе */
 .section_product_nav {
@@ -394,6 +403,9 @@ margin: 0 auto;
 }
 .directory_nav a {
    font-size: 14px;
+}
+.navigation {
+   padding-bottom: 60px;
 }
 .navigation h2 {
  font-size: 32px;
@@ -432,7 +444,7 @@ input::-webkit-search-results-decoration { display: none; }
 
 } */
 .product_section {
-   margin: 70px 0px;
+   margin: 40px 0px;
 }
 .a_content_categories  a{
    padding: 5px 10px;
@@ -473,10 +485,6 @@ input::-webkit-search-results-decoration { display: none; }
 .capitalize {
    text-transform: Capitalize;
    }
-
-.cart_product_text {
-   color: #A408A7;
-}
 .cart_product_text p {
    color: #A408A7;
 }
@@ -488,18 +496,22 @@ input::-webkit-search-results-decoration { display: none; }
    border-radius: 20px;
 }
 .main_goods {
-   max-width:80%;
-   gap: 60px;
+   width:80%;
+   gap: 300px;
    color: #A408A7;
   margin-bottom: 40px;
 }
 .main_goods_cost {
    font-size: 42px;
 }
+.cost_goods {
+   font-size: 30px;
+}
 .main_goods_text p {
    font-size: 20px;
    margin-bottom: 0rem;
 }
+
 .main_goods_text span {
    font-weight: bold;
 }
@@ -639,7 +651,22 @@ margin-top: 20px;
 
 
  }
-
+ .btn_comment {
+   background-color: #A408A7;
+   border: 1px solid #A408A7;
+ }
+ .btn_comment:hover {
+   background-color: #f423f8;
+   border: 1px solid #f423f8;
+ }
+ .rating_block  {
+   margin-left: 80px;
+ }
+.rating_block p {
+   font-size: 24px;
+ 
+   color: #A408A7;
+}
  .rating-area {
 	overflow: hidden;
 	width: 265px;
@@ -683,7 +710,6 @@ margin-top: 20px;
 
 .rating-result {
 	width: 265px;
-	margin: 0 auto;
 }
 .rating-result span {
 	padding: 0;
@@ -726,7 +752,8 @@ margin-top: 20px;
    width: 250px;
    height: 40px;
    text-align: center;
-   font-size: 24px;
+   padding-top: 5px;
+   font-size: 20px;
  }
  .information_personal_text {
    font-size: 24px;
@@ -813,7 +840,6 @@ margin-top: 20px;
     margin: 0 auto;
 }
 .table_courier {
-   border: 2px solid purple;
    border-collapse: collapse;
    border-radius: 10px; /* Добавляем закругленные края таблицы */
    overflow: hidden; /* Обрезаем выступающие за границы таблицы ячейки */
@@ -821,7 +847,7 @@ margin-top: 20px;
  
  .table_courier th,
  .table_courier td {
-   border: 2px solid purple;
+   /* border: 2px solid purple; */
  }
  .table_courier th {
    background-color: #A408A7;
@@ -855,6 +881,7 @@ margin-top: 20px;
  }
  .user_orders h2 {
    margin-top:20px;
+   color: #ffffff;
 
  }
  .user_orders_information {
@@ -907,17 +934,17 @@ margin-top: 20px;
       background-color: #fff;
    }
    .table_product {
-      width: 98%;
-      margin: 10px auto;
+     margin-top: 5px;
    }
    .table_product th, .table_product td {
       border-top: none; /* Убираем верхние границы у ячеек */
     }
     .product_basket_one img {
-      max-width: 50px;
-      max-height: 50px;
+      width: 80px;
+      height: 80px;
 
    }
+
    .basket_null {
      margin: 0 auto;
      font-size: 32px;
@@ -938,7 +965,7 @@ margin-top: 20px;
       background-image: url(../img/bitcoin-icons_cross-outline.svg);
       background-repeat: no-repeat;
       padding: 20px;
- 
+      margin-top: 26px;
    }
    .order_product {
       border: 1px solid #A408A7;
@@ -1225,6 +1252,7 @@ input::-webkit-inner-spin-button {
  .forma_register input {
      width: 400px;
  }
+
  @media (max-width: 500px) {
    .search_form {
       margin-bottom: 10px  !important;
@@ -1241,6 +1269,9 @@ input::-webkit-inner-spin-button {
    }
    .forma_auth   {
       width: 70%;
+   }
+   .input_auth {
+      width: 50%;
    }
    .input_application {
       width: 60%;
@@ -1261,9 +1292,9 @@ input::-webkit-inner-spin-button {
       background-color: #A408A7;
    color: #ffffff;
    border-radius: 20px;
-   width: 150px;
-   height: 20px;
-   padding-top: 0px;
+   width: 180px;
+   height: 25px;
+   padding-top: 2px;
    text-align: center;
    font-size: 14px;
     }
@@ -1271,12 +1302,12 @@ input::-webkit-inner-spin-button {
       background-color: #A408A7;
       width: 25%;
       height: 20px;
-      margin: 0 auto;
+      margin: 10px auto 0px auto;
       border-radius: 7px;
       color: #ffffff;
       font-size: 14px;
       border: none;
-      padding: 0px 20px;
+      padding: 0px 10px;
     }
    .information_personal_text {
       font-size: 16px;
@@ -1289,4 +1320,150 @@ input::-webkit-inner-spin-button {
     .forma_register div input {
       width: 100%;
     }
+    .user_orders {
+      max-width: 100%;
+      background-color: #A408A7;
+      margin-bottom: 10px;
+    }
+    .user_orders h2 {
+     font-size: 16px;
+     margin-top:10px;
+    }
+    .table_product {
+      margin: 5px auto;
+    }
+    .order_info_one h3 {
+      margin-bottom: 10px;
+    }
+    h2.text-aliceblue {
+      font-size: 1.5rem; /* Уменьшаем размер шрифта заголовка на малых экранах */
+  }
+  .table_product_tr th, .table_product_tr td {
+      font-size: 0.8rem; /* Уменьшаем размер шрифта ячеек таблицы на малых экранах */
+  }
+
+
+  .order_info {
+   flex-direction: column;
+   width: 100%;
+}
+.order_info_product {
+   width: 90%;
+}
+.order_info_one  {   
+   font-size: 0.9rem;
+}
+   .order_info_product table th, .order_info_product table td {
+   font-size: 0.9rem;
+}
+.order_info_product table {
+   width: 60%;
+}
+.container {
+   flex-direction: column;
+   align-items: center;
+}
+.order_product {
+   width: 100%;
+   text-align: center;
+}
+.basket_main {
+   width: 100%;
+}
+.table thead {
+   display: none;
+}
+.table tbody tr {
+   flex-direction: column;
+   margin-bottom: 20px;
+   border-bottom: 1px solid #A408A7;
+}
+.table tbody tr td {
+   display: block;
+   text-align: center;
+   border: none;
+}
+  .responsive-img {
+    max-width: 400px; /* Увеличиваем максимальную ширину изображения для больших экранов */
+  }
+.counter {
+   justify-content: center;
+   width: 30%;
+   margin: 0 auto;
+}
+.product_basket_one img {
+  max-width: 100px;
+  max-height: 100px;
+}
+.product_delete {
+   margin-left: 20px;
+   margin-top: 10px;
+}
+.order_product {
+   margin-top: 20px;
+}
+.Delivery {
+   width: 100%;
+   margin-bottom: 20px;
+}
+.img_goods {
+   width: 100%;
+   height: 200px;
+   border-radius: 20px;
+}
+.main_goods {
+   gap: 40px;
+}
+.cost_goods {
+   font-size: 30px;
+}
+.main_goods_text p {
+   font-size: 14px;
+   margin-bottom: 0rem;
+}
+.a_content_categories  a{
+   padding: 5px 10px;
+   color: #A408A7;
+   background-color: #fff;
+   font-size: 14px;
+   border-radius: 20px;
+}
+
+
+.buy_buton {
+   border: 1px solid #A408A7;
+   border-radius: 20px;
+   color: #A408A7;
+   font-size: 16px;
+   padding: 10px 40px 10px 10px;
+   background-image: url("/img/ph_basket-light.png");
+   background-repeat: no-repeat;
+   background-position: 95%;
+}
+.cart_cafe {
+   width: 46%;
+   height: 30%;
+}
+.cart_cafe_product {
+   width: 100%;
+   height: 30%;
+}
+.cart_cafe_product p {
+
+}
+.navigation h2 {
+   font-size: 1.5rem;
+  }
+.navigation {
+   padding-bottom: 30px;
+}
+.cart_cafe img {
+   width: 100%;
+   height: 20%;
+   border-radius: 25px;
+}
+.cart_cafe a {
+   font-size: 1.3rem;
+}
+
 }

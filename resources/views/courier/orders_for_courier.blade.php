@@ -63,11 +63,6 @@
                     <td><a href="{{ route('courier.order', ['id' => $order_user->id]) }}" class="courier_button    ">Принять</a></td>
                 </tr>
                 @empty
-                <tr>
-                <td>
-                    Заказов пока нету:(     
-                        </td>    
-                    </tr>
                 @endforelse
                 {{ $orders->links() }}
                 <!-- Добавьте более строк, если требуется -->
@@ -75,7 +70,7 @@
         </table>
     </div>
 
-    
+    </section>
 
 <x-footer />
 

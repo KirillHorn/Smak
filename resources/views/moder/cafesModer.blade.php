@@ -2,21 +2,21 @@
 <x-alerts/>
 <div class="wrapper">
 
-      <div class="container">
-        <div class="d-flex nav_goods align-items-center flex-column gap-3">
-            <p>{{$cafes->title}}</p>
-            <div class="d-flex">
-            <img src="/storage/img/{{$cafes->img}}" alt="изображение заведения">
-              <div>
-                <p>Местопожение: {{$cafes->location}}</p>
-                <p>Категория: {{$cafes->categoriesCafe->title_categories}}</p>
-                <p>Количество блюд: {{$cafes->count_product()}}</p>
-                <p>Прибыль: {{$cafes->count_product()}}</p>
-              </div>
-            </div>
-        </div>
+<div class="container">
+  <div class="d-flex nav_goods align-items-center flex-column gap-3">
+    <p>{{$cafes->title}}</p>
+    <div class="d-flex flex-column flex-md-row align-items-center gap-3 ">
+      <img src="/storage/img/{{$cafes->img}}" alt="изображение заведения" class="img-fluid">
+      <div class="information_cafe_moder">
+        <p>Местоположение: {{$cafes->location}}</p>
+        <p>Категория: {{$cafes->categoriesCafe->title_categories}}</p>
+        <p>Количество блюд: {{$cafes->count_product()}}</p>
+        <p>Прибыль: {{$cafes->count_product()}}</p>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+
 </div>
 <script>
   function readURL(input) { //

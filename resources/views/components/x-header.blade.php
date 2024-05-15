@@ -19,9 +19,6 @@
   <script src="/script/bootstrap.min.js" ></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
-
-
-
 </head>
 <body style="min-height: 100vh;" class="d-flex flex-column">
   <nav class="navbar navbar-expand-lg header">
@@ -31,7 +28,7 @@
   <span class="navbar-toggler-icon"></span>
 </button>
  
-<div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
+<div class="navbar-collapse collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link"  href="/">О нас</a>

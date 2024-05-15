@@ -47,7 +47,7 @@
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Категория заведения</label>
-    <select class="form-select select_categories" name="id_categoriesCafe" > 
+    <select class="form-select select_categories form-control-lg" name="id_categoriesCafe" > 
     <option class="option_categories">Выбор категории</option>
     @foreach ($categories as $item )
     <option class="option_categories" value="{{ $item->id}}"> {{ $item->title_categories}}</option>

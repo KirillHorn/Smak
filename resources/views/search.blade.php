@@ -30,8 +30,8 @@
                 <div class="d-flex flex-wrap grid gap-4">
                 <div class="container">
     <h1>Результаты поиска</h1>
-    <ul class="list-group">
-    <div id="search-results" class="search-results"></div>
+    <ul class="list-group d-flex flex-wrap">
+    <div id="search-results" class="search-results d-flex ">
 
 @forelse ($results as $result )
 @if ($result instanceof App\Models\Cafe)
@@ -43,19 +43,21 @@
 
         </div>
     @elseif ($result instanceof App\Models\Products)
-        <div class="cart_cafe g-col-4 cart_product_text">
-        
-                <img src="/storage/img/{{ $result->img }}" alt="картинка блюда">
-                <p class="capitalize">{{ $result->categories->title_categories }} • {{ $result->cost }} ₽</p>
-                <a style="color: #A408A7;">{{ $result->title }}</a>
-       
-        </div>
+
+    <div class="cart_cafe g-col-4 cart_product_text">
+                    <a href=" {{route('show.r', ['id_cafe'=>$result->id])}}">
+                        <img src="/storage/img/{{$result->img}}" alt="картинка заведения"> 
+                        <p class="capitalize">{{$result->Categories->title}} • ₽</p>
+                        <a style="color: #A408A7;">{{$result->title}}</a>
+                        </a>
+                    </div>
         
     @endif
     @empty
     <div>Ничего нету(</div>
 @endforelse
 </div>
+                </div>
                 </div>
        
         </div>

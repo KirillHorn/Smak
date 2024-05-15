@@ -2,9 +2,9 @@
 <x-x-header />
 
 
-    <section class="">
+
         <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
- <form method="POST" action='order_create ' class="d-flex justify-content-around">
+ <form method="POST" action='order_create ' class="d-flex justify-content-around flex-wrap">
     @csrf
                 <div class="Delivery">
                                 <div class="d-flex flex-column gap-3 Delivery_info">
@@ -36,11 +36,11 @@
                         <h2>Способ оплаты</h2>
                         <div class="d-flex flex-column">
                                 <div class="d-flex gap-4 align-items-center"> Наличные
-                                             <label class="switch">
-                                            <input type="radio" checked name="very" value="Наличные">
-                                            <span class="slider round"></span>
-                                            </label>
-                                            </div>
+                                    <label class="switch" style="margin-left: 3px;">
+                                      <input type="radio" checked name="very"  value="Наличные">
+                                    <span class="slider round"></span>
+                                    </label>
+                                </div>
                                             <div class="d-flex gap-1 align-items-center"> Безналичные
                                     <label class="switch">
                                     <input type="radio" name="very" value="Безналичные">
@@ -59,7 +59,7 @@
             </div>
         </div>
     </form>
-    </section>
+
 
     <script>
         // let price = document.getElementById("price");

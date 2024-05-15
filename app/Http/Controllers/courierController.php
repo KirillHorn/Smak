@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\orderCustoms;
 use App\Models\orders;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class courierController extends Controller
@@ -59,8 +60,22 @@ class courierController extends Controller
     }
     public function personal_courier()
     {
-      $orders=courier_orders::where('id_courier', Auth::id())->get();
-       return view('courier.personal_Area',['orders' => $orders]);
+      $orders_current = courier_orders::where('id_courier', Auth::id())
+      ->whereHas('order_user.status', function ($query) {
+          $query->where('id', '2');
+      })
+      ->with(['order_user.status'])
+      ->with('order_user')
+      ->first();
+      // $orders=courier_orders::where('id_courier', Auth::id())->get();
+      $orders=courier_orders::where('id_courier', Auth::id())
+      ->whereHas('order_user.status', function ($query) {
+          $query->where('id', '3');
+      })
+      ->with(['order_user.status'])
+      ->with('order_user')
+      ->get();
+       return view('courier.personal_Area',['orders' => $orders,'orders_current' => $orders_current]);
     }
     public function orders_pdf() {
       $orders = courier_orders::where('id_courier', Auth::id())->get();

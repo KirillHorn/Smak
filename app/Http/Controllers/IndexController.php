@@ -136,9 +136,6 @@ class IndexController extends Controller
         $product = Products::with("Categories")->get();
         $cafeJson = json_encode($cafe->pluck('title')->toArray());
         $productJson = json_encode($product->pluck('title')->toArray());
-        if(empty($query)) {
-            $results = $cafe->merge($product)->unique('title')->values()->all();
-        } else {
             $products = Products::where('title', 'like', "%{$query}%")
                 ->orWhere('description', 'like', "%{$query}%")
                 ->limit(10)
@@ -150,7 +147,7 @@ class IndexController extends Controller
                 ->get();
         
             $results = $cafes->merge($products)->unique('title')->values()->all();
-        }
+   
         return view('search', compact('results'), [
             "cafeJson" => $cafeJson,
             "productJson" => $productJson,

@@ -1,11 +1,11 @@
 
 <x-x-header />
     <section class="section_product_nav">
-        <div class="container d-flex flex-column gap-3" style="padding-bottom: 60px;">
+        <div class="container d-flex flex-column gap-3">
             <div class="directory_nav">
-                <a>Уфа</a>
+                <a>О нас</a>
                 <span>→</span>
-                <a>Блюда</a>
+                <a>Заведения</a>
             </div>
                 <div class="navigation d-flex flex-column gap-3">
                         <div>

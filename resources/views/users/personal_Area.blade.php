@@ -128,37 +128,34 @@
             </div>
         </div>
 
-        <div class="d-flex flex-column user_orders">
-            <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
-           
-           
-            <table class="table table-borderless table_product table_">
-  <thead style="border-bottom: 1px solid #A408A7;">
-    <tr class="table_product_tr">
-      <th scope="col">Номер</th>
-      <th scope="col">Цена</th>
-      <th scope="col">Адрес</th>
-      <th scope="col">Комментарий</th>
-      <th scope="col">Дата</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($orders as $orderss)
-    <tr class="table_product_tr">
-      <th scope="row">{{$orderss->id}}</th>
-      <td>{{$orderss->amount}}₽</td>
-      <td>{{$orderss->location}}</td>
-      <td>{{$orderss->comment}}</td>
-      <td>{{$orderss->created_at}}</td>
-      <td><a href="order_user/{{$orderss->id}}">Подробнее</a></td>
-    </tr>
-    @endforeach
-</table>
-         
-            
-        </div>
+        <div class="container-fluid mb-5 user_orders">
+    <h2 class="text-center">Ваши заказы</h2>
+
+    <div class="table-responsive">
+        <table class="table table-borderless table_product table_">
+            <thead style="border-bottom: 1px solid #A408A7;">
+                <tr class="table_product_tr">
+                    <th scope="col">Номер</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Адрес</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orders as $orderss)
+                <tr class="table_product_tr">
+                    <th scope="row">{{$orderss->id}}</th>
+                    <td>{{$orderss->amount}}₽</td>
+                    <td>{{$orderss->location}}</td>
+                    <td>{{ $orderss->created_at->format('d.m.Y') }}</td>
+                    <td><a href="order_user/{{$orderss->id}}">Подробнее</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+</div>
 </section>
 
 <x-footer />

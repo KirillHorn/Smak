@@ -13,4 +13,10 @@ class statuses extends Model
         'id',
         'title'
     ];
+
+    public function order_status() {
+
+        return $this->hasMany(orders::class,'id');
+    }
+    
 }

@@ -30,5 +30,9 @@ class orders extends Model
 
         return $this->hasMany(courier_orders::class,'id');
     }
+    public function status()
+    {
+        return $this->belongsTo(statuses::class, 'id_status');
+    }
     
 }

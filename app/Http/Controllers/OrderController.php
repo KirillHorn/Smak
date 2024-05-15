@@ -54,25 +54,13 @@ class OrderController extends Controller
     public function baskets_delete($id)
     {
         $id_users = Auth::id();
-        $b_u = Auth::user()->basket_products;
         $isInBasket = false;
-        foreach ($b_u as $item) {
-            if ($item->id_product == $id) {
-                $productInBasket = baskets::find($item->id);
-                $productInBasket->count -= 1;
-                $productInBasket->save();
-                $isInBasket = true;
-                return redirect()->back();
-            } else {
-                $b = baskets::where([
-                    "id_users" => Auth::id(),
-                    "id" => $item->id
-                ])->delete();
-
-                return redirect()->back();
-            }
+        $basket=baskets::where('id_users',$id_users);
+        $basket->delete();
+        return response()->json(['success' => true]);
+            
         }
-    }
+    
     public function baskets_order(Request $request)
     {
         $infoProduct = $request->all();    

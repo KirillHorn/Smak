@@ -3,7 +3,7 @@
   <div class="container">
     <div class="d-flex nav_goods align-items-center gap-3">
       <img src="/img/mdi_food-ramen.svg" alt="Тут">
-      <p>{{$cafes->title}} откроeтся в 10:00</p>
+      <p>Заведение {{$cafes->title}}</p>
     </div>
   </div>
 </section>
@@ -23,14 +23,14 @@
 
     <div class="information_cafe_product d-flex ">
       <div class="cafe_product d-flex " style="width: 100%;">
-        <div class="w-60" style="width: 64%;">
+        <div class="w-60" style="width: 66%;">
           <h2>Блюда заведений</h2>
           <div class="d-flex flex-wrap grid gap-4 ">
             @foreach ($product_cafe as $product)
             <a href="{{route ('goods.r', ['id'=>$product->id])}}">
-              <div class="cafe_product_info cart_cafe g-col-4">
+              <div class="cafe_product_info cart_cafe_product g-col-4">
                 <img src="/storage/img/{{$product->img}}" alt="картинка блюда">
-                <p>{{$product->title}}</p>
+                <p style="margin-bottom: 0rem;">{{$product->title}}</p>
                 <p class="fw-bold">{{$product->cost}} ₽•45 минут</p>
               </div>
             </a>
@@ -38,10 +38,10 @@
           </div>
         </div>
 
-        <div class="w-40" style="width: 36%;">
+        <div style="width: 34%;" class="d-flex flex-column align-items-center">
           <h2>Общая оценка заведения</h2>
-          <div>
-            <p>{{ $averageRating }}</p>
+          <div class="rating_block d-flex">
+            <p class="mb-0">{{ $averageRating }}</p>
             <div class="rating-result" data-rating="{{ $averageRating }}">
               <span class="star"></span>
               <span class="star"></span>
@@ -57,7 +57,7 @@
 </section>
 <section class="container">
 
-  <h1 class="text-center mb-4">Оставьте свой отзыв</h1>
+  <h1 class="text-center mb-4" style="color:#A408A7;">Оставьте свой отзыв</h1>
   @auth
   <form method="post" action="/{{$cafes->id}}/comment_cafes" id="comment-form">
     @csrf
@@ -79,7 +79,7 @@
       <textarea class="form-control" id="comment" rows="3" name="comment" required></textarea>
       <div class="invalid-feedback"></div>
     </div>
-    <button type="submit" class="btn btn-primary">Отправить</button>
+    <button type="submit" class="btn btn-primary btn_comment">Отправить</button>
   </form>
   @endauth
   @guest
