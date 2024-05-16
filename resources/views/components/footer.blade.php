@@ -11,6 +11,7 @@
     <p class="text-center  color_footer">© 2024 Smak</p>
   </div>
 </footer>
+<script src="script/script.js"></script>
 </body>
 
 </html>

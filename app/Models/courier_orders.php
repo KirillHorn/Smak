@@ -16,5 +16,10 @@ class courier_orders extends Model
     public function order_user() {
         return $this->belongsTo(orders::class,'id_orders','id');
     }
+    public function completedOrdersCount()
+    {
+        return $this->order_user()->where('id_status', 3)->count(); // Предполагаем, что статус "2" означает выполненный заказ
+        
+    }
  
 }

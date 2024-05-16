@@ -76,7 +76,9 @@
     <div class="invalid-feedback"></div>
     <div class="form-group mb-3">
       <label for="comment">Ваш отзыв</label>
-      <textarea class="form-control" id="comment" rows="3" name="comment" required></textarea>
+      <textarea class="form-control comment" id="comment" rows="3" name="comment" required></textarea>
+      <div id="charCount"></div>
+      <div class="error" id="error" style="display: none;">Комментарий не должен превышать 100 символов</div>
       <div class="invalid-feedback"></div>
     </div>
     <button type="submit" class="btn btn-primary btn_comment">Отправить</button>
@@ -87,11 +89,11 @@
   @endguest
   </div>
 
-  <div id="comments-container" class="container mt-5">
+  <div id="comments-container" class="container mt-5 ">
     <h2 class="text-center mb-4">Отзывы</h2>
     <script type="text/template" id="comment-template">
       <div class="card mb-3">
-      <div class="card-body">
+      <div class="card-body comments-container">
         <h5 class="card-title">__USERNAME__</h5>
         <div class="star-rating">
           __RATING__
@@ -104,7 +106,7 @@
 </script>
     @foreach ( $comments as $comment )
     <div class="card mb-3">
-      <div class="card-body">
+      <div class="card-body comments-container">
         <h5 class="card-title">{{$comment->user_comment->name}}</h5>
         <div class="star-rating">
           @for ($i = 1; $i <= 5; $i++) @if ($i <=$comment->rating)
@@ -127,71 +129,3 @@
 
 <x-footer />
 <script src="script/script.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var ratingResults = document.querySelectorAll('.rating-result');
-
-    for (var i = 0; i < ratingResults.length; i++) {
-      var ratingResult = ratingResults[i];
-      var rating = ratingResult.getAttribute('data-rating');
-      var spans = ratingResult.querySelectorAll('span');
-
-      for (var j = 0; j < spans.length; j++) {
-        var span = spans[j];
-
-        if (j < rating) {
-          span.classList.add('active');
-        } else {
-          span.classList.remove('active');
-        }
-      }
-    }
-  });
-
-
-  document.getElementById('comment-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    var form = this;
-    var url = form.action;
-    var data = new FormData(form);
-
-    fetch(url, {
-        method: 'POST',
-        body: data,
-        headers: {
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          addCommentToPage(data.comment);
-          form.reset();
-        }
-      })
-      .catch(error => console.error(error));
-  });
-
-  function addCommentToPage(comment) {
-    var template = document.getElementById('comment-template').innerHTML;
-    var ratingStars = '';
-
-    for (var i = 1; i <= 5; i++) {
-      if (i <= comment.rating) {
-        ratingStars += '⭐';
-      } else {
-        ratingStars += '☆';
-      }
-    }
-
-    var commentHtml = template
-      .replace('__USERNAME__', comment.username)
-      .replace('__RATING__', ratingStars)
-      .replace('__COMMENT__', comment.comment);
-
-    var commentsContainer = document.getElementById('comments-container');
-    commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
-  }
-
-</script>

@@ -152,24 +152,20 @@
       <td>{{$orders_current->order_user->comment}}</td>
       <td>{{$orders_current->order_user->user->name}}</td>
       <td>{{$orders_current->created_at}}</td>
-      <td><a href="{{ route('courier.order', ['id' => $orders_current->id]) }}">Завершить заказ</a></td>
+      <td><a href="{{ route('courier.order', ['id' => $orders_current->id_orders]) }}">Завершить заказ</a></td>
     </tr>
 </table>
          
             
         </div>
-    </div>
-    @endif
-
-        
-        <div class="d-flex flex-column user_orders">
+        @endif
+        <div class="d-flex flex-column user_orders orders_for_courier">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
             <a href="/orders_pdf" class="btn pdf_button" >Сформировать отчёт</a>
             <table class="table table-borderless table_product table_">
   <thead style="border-bottom: 1px solid #A408A7;">
     <tr class="table_product_tr">
       <th scope="col">Номер</th>
-      <th scope="col">Цена</th>
       <th scope="col">Адрес</th>
       <th scope="col">Комментарий</th>
       <th scope="col">Клиент</th>
@@ -181,11 +177,10 @@
   @foreach ($orders as $orderss)
     <tr class="table_product_tr">
       <th scope="row">{{$orderss->order_user->id}}</th>
-      <td>{{$orderss->order_user->amount}}₽</td>
       <td>{{$orderss->order_user->location}}</td>
       <td>{{$orderss->order_user->comment}}</td>
       <td>{{$orderss->order_user->user->name}}</td>
-      <td>{{$orderss->order_user->created_at}}</td>
+      <td>{{$orderss->order_user->created_at->format('d.m.Y')}}</td>
       <td><a href="{{ route('courier.order', ['id' => $orderss->id]) }}">Поподробнее</a></td>
     </tr>
     @endforeach
@@ -194,6 +189,11 @@
             
         </div>
     </div>
+    </div>
+ 
+
+        
+        
 </section>
 
 <x-footer />

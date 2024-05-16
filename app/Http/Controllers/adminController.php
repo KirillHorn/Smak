@@ -56,14 +56,66 @@ class adminController extends Controller
             'rating_cafe' => 0,
         ]);
         if ($userAdd) {
-            $to  =  $userAdd['email'];
-            $subject = "Ваше заведение" . $userAdd['title']. 'добавлено!';
+            $to = $userAdd['email'];
+            $subject = "Ваше заведение " . $userAdd['title'] . " добавлено!";
             $message = '
-            Вот ваши данные по входу в панель модератора!
-            Электронная почта:' . $userAdd['email'] .'
-            Пароль: ' . $password . '
+            <html>
+            <head>
+              <title>Ваше заведение добавлено!</title>
+              <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                }
+                .container {
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }
+                .header {
+                    background-color: #A408A7;
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 5px 5px 0 0;
+                }
+                .content {
+                    margin-top: 20px;
+                }
+                .footer {
+                    margin-top: 20px;
+                    font-size: 0.8em;
+                    color: #777;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">
+                  <h1>Ваше заведение добавлено!</h1>
+                </div>
+                <div class="content">
+                  <p>Вот ваши данные по входу в панель модератора!</p>
+                  <p><strong>Электронная почта:</strong> ' . $userAdd['email'] . '</p>
+                  <p><strong>Пароль:</strong> ' . $password . '</p>
+                </div>
+                <div class="footer">
+                  <p>Если у вас возникли вопросы, пожалуйста, свяжитесь с нашей поддержкой.</p>
+                </div>
+              </div>
+            </body>
+            </html>
             ';
-            mail($to, $subject, $message);
+        
+            // Заголовки для отправки HTML-письма
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        
+            // Дополнительные заголовки
+            $headers .= 'From: no-reply@example.com' . "\r\n";
+        
+            mail($to, $subject, $message, $headers);
         }
         return redirect()->back()->with('success', 'Вы добавили Заведение ');
     }
@@ -101,14 +153,66 @@ class adminController extends Controller
             'password' => Hash::make($password),
         ]);
         if ($userAdd) {
-            $to  =  $userAdd['email'];
-            $subject = "Вы приняты как курьер" . $userAdd['name']. 'добавлено!';
+            $to = $userAdd['email'];
+            $subject = "Вы приняты на работу курьера " . $userAdd['name'] . "!";
             $message = '
-            Вот ваши данные для входа!
-            Электронная почта:' . $userAdd['email'] .'
-            Пароль: ' . $password . '
+            <html>
+            <head>
+              <title>Ваше заведение добавлено!</title>
+              <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                }
+                .container {
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }
+                .header {
+                    background-color: #A408A7;
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 5px 5px 0 0;
+                }
+                .content {
+                    margin-top: 20px;
+                }
+                .footer {
+                    margin-top: 20px;
+                    font-size: 0.8em;
+                    color: #777;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">
+                  <h1>Вы приняты!</h1>
+                </div>
+                <div class="content">
+                  <p>Вот ваши данные по входу в личный кабинет!</p>
+                  <p><strong>Электронная почта:</strong> ' . $userAdd['email'] . '</p>
+                  <p><strong>Пароль:</strong> ' . $password . '</p>
+                </div>
+                <div class="footer">
+                  <p>Если у вас возникли вопросы, пожалуйста, свяжитесь с нашей поддержкой.</p>
+                </div>
+              </div>
+            </body>
+            </html>
             ';
-            mail($to, $subject, $message);
+        
+           
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        
+        
+            $headers .= 'From: no-reply@example.com' . "\r\n";
+        
+            mail($to, $subject, $message, $headers);
         }
         return redirect()->back()->with('success', 'Вы добавили нового курьера ');
     }

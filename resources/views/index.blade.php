@@ -58,9 +58,9 @@
                 <h2 class="fw-bold">Самые популярные блюда</h2>
                 <a href="{{ route('products', ['sort_order' => '0']) }}">Перейти к блюдам <img src="/img/bxs_dish.png"></a>
             </div>
-                <div class="d-flex flex-wrap grid gap-4">
+                <div class="d-flex flex-wrap grid">
                     @foreach ($product as $products)
-                    <div class="cart_cafe cart_product g-col-4">
+                    <div class="cart_cafe  g-col-2">
                     <a href="{{route ('goods.r', ['id'=>$products->id])}}">
                         <img src="/storage/img/{{$products->img}}" alt="картинка заведения"> 
                         <p>{{$products->Categories->title}}</p>

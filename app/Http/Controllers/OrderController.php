@@ -101,15 +101,74 @@ class OrderController extends Controller
             'id_status' => 1,
             'paymant' => $infoOrder['very']
         ]);
-        $to  =  Auth::user()->email;
-        $subject = "Чек по заказу№" . $orderAdd['id'];
+        $to = Auth::user()->email;
+        $subject = "Чек по заказу №" . $orderAdd['id'];
+        
         $message = '
-        Чек по заказу:
-        Цена заказа:' . $orderAdd['amount'] . 'руб '.'
-        Комментарий заказа: ' . $orderAdd['comment'] . '
-        Адрес доставки:' . $orderAdd['location'] . '
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Чек по заказу</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                }
+                .container {
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }
+                .header {
+                    background-color: #A408A7;
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 5px 5px 0 0;
+                }
+                .content {
+                    margin-top: 20px;
+                }
+                .footer {
+                    margin-top: 20px;
+                    font-size: 0.8em;
+                    color: #777;
+                }
+                .order-details {
+                    margin-top: 10px;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #fff;
+                }
+              </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>Чек по заказу №' . $orderAdd['id'] . '</h1>
+                </div>
+                <div class="content">
+                    <p>Спасибо за ваш заказ! Вот детали вашего заказа:</p>
+                    <div class="order-details">
+                        <p><strong>Цена заказа:</strong> ' . $orderAdd['amount'] . ' руб.</p>
+                        <p><strong>Комментарий заказа:</strong> ' . $orderAdd['comment'] . '</p>
+                        <p><strong>Адрес доставки:</strong> ' . $orderAdd['location'] . '</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <p>Если у вас возникли вопросы, пожалуйста, свяжитесь с нашей поддержкой.</p>
+                </div>
+            </div>
+        </body>
+        </html>
         ';
-        mail($to, $subject, $message);
+        
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: no-reply@example.com' . "\r\n";
+        mail($to, $subject, $message, $headers);
         if ($orderAdd) {
             $productUser = baskets::where('id_users', $userID)->get();
             foreach ($productUser as $product) {

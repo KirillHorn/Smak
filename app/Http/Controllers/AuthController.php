@@ -133,8 +133,6 @@ class AuthController extends Controller
       if (!Hash::check($userInfo['password_old'], $user->password)) {
          return redirect()->back()->withErrors(['password_old' => 'Старый пароль введен неправильно']);
      }
-
-
       $id->fill(
          [
             'name' => $userInfo['name'],

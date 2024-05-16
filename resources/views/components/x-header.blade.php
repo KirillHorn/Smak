@@ -19,6 +19,11 @@
   <script src="/script/bootstrap.min.js" ></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+  <style>
+ #charCount.red {
+    color: red;
+  }
+</style>
 </head>
 <body style="min-height: 100vh;" class="d-flex flex-column">
   <nav class="navbar navbar-expand-lg header">

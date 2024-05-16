@@ -63,3 +63,99 @@
 // });
 // });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var ratingResults = document.querySelectorAll('.rating-result');
+  
+    for (var i = 0; i < ratingResults.length; i++) {
+      var ratingResult = ratingResults[i];
+      var rating = ratingResult.getAttribute('data-rating');
+      var spans = ratingResult.querySelectorAll('span');
+  
+      for (var j = 0; j < spans.length; j++) {
+        var span = spans[j];
+  
+        if (j < rating) {
+          span.classList.add('active');
+        } else {
+          span.classList.remove('active');
+        }
+      }
+    }
+  
+    document.getElementById('comment').addEventListener('input', function() {
+      const maxLength = 100;
+      const remaining = maxLength - this.value.length;
+      const charCount = document.getElementById('charCount');
+      
+      charCount.textContent = "Осталось символов: " + remaining;
+      
+      if (this.value.length > maxLength) {
+        charCount.classList.add('red');
+      } else {
+        charCount.classList.remove('red');
+      }
+    });
+  
+    document.getElementById('comment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      var form = this;
+      var url = form.action;
+      var data = new FormData(form);
+      var comment = document.getElementById('comment').value;
+      var errorDiv = document.getElementById('error');
+  
+      if (comment.length > 100) {
+        errorDiv.textContent = "Комментарий не должен превышать 100 символов";
+        errorDiv.style.display = 'block';
+        return; // Prevent form submission if comment length exceeds 100
+      } else {
+        errorDiv.style.display = 'none';
+      }
+  
+      fetch(url, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          addCommentToPage(data.comment);
+          form.reset();
+          document.getElementById('charCount').textContent = "Осталось символов: 100";
+        } else {
+          errorDiv.textContent = data.error;
+          errorDiv.style.display = 'block';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        errorDiv.textContent = 'Произошла ошибка при отправке комментария';
+        errorDiv.style.display = 'block';
+      });
+    });
+  
+    function addCommentToPage(comment) {
+      var template = document.getElementById('comment-template').innerHTML;
+      var ratingStars = '';
+  
+      for (var i = 1; i <= 5; i++) {
+        if (i <= comment.rating) {
+          ratingStars += '⭐';
+        } else {
+          ratingStars += '☆';
+        }
+      }
+  
+      var commentHtml = template
+        .replace('__USERNAME__', comment.username)
+        .replace(/__RATING__/, ratingStars)
+        .replace('__COMMENT__', comment.comment);
+  
+      var commentsContainer = document.getElementById('comments-container');
+      commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
+    }
+  });

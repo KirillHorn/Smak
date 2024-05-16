@@ -20,7 +20,7 @@
             <tbody>
                 @forelse ($basket as $item)
                 @php
-                $count_sum=0;
+                $count_sum=$item->count;
                 $count_sum++;
                 @endphp
                 <tr class="product_basket_one">
@@ -75,7 +75,7 @@
 </div>
 </form>
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
   $('.product_delete').on('click', function(e) {
     e.preventDefault();
     
@@ -91,86 +91,102 @@
       success: function(response) {
         $row.remove(); 
         alert('Элемент успешно удален.');
+        updateSum();
+        updateTotalCount();
       },
       error: function(xhr) {
         alert('Произошла ошибка при удалении элемента.');
       }
     });
   });
-});
+  function updateSum() {
+    let sum = 0;
+    const secretCosts = document.querySelectorAll('.secret_cost');
+    secretCosts.forEach(function(element) {
+      const value = parseFloat(element.textContent);
+      if (!isNaN(value)) {
+        sum += value;
+      }
+    });
+    document.getElementById('sum').textContent = sum;
+    document.getElementById('total_sum').value = sum;
+  }
 
-    const numberInputs = document.querySelectorAll('.secret_cost');
-    const resultElement = document.getElementById('sum');
-    function updateSum() {
-        let sum = 0;
-        numberInputs.forEach(function(element) {
-            const value = parseFloat(element.textContent);
-            if (!isNaN(value)) {
-                sum += value;
-            }
-        });
-        resultElement.textContent = sum;
-        document.getElementById('total_sum').value = sum;
-    }
+  function updateTotalCount() {
+    let totalCount = 0;
+    const countInputs = document.querySelectorAll('.count');
+    countInputs.forEach(function(input) {
+      const quantity = parseInt(input.value);
+      if (!isNaN(quantity)) {
+        totalCount += quantity;
+      }
+    });
+    document.getElementById('total_count').textContent = totalCount;
+  }
+
+  document.querySelectorAll('.count').forEach(input => {
+    input.addEventListener('change', function() {
+      const productDiv = this.closest('.product_basket_one');
+      const priceElement = productDiv.querySelector('.hidden_cost');
+      const priceCount = productDiv.querySelector('.secret_cost');
+      const price = parseFloat(priceElement.textContent);
+      const quantity = parseInt(this.value);
+      const totalPrice = price * quantity;
+      priceCount.textContent = totalPrice;
+      updateSum();
+      updateTotalCount();
+    });
+  });
+
+  document.querySelectorAll('.plus').forEach(plusBtn => {
+    plusBtn.addEventListener('click', function() {
+      const productDiv = this.closest('.product_basket_one');
+      const countInput = productDiv.querySelector('.count');
+      const priceElement = productDiv.querySelector('.hidden_cost');
+      const priceCount = productDiv.querySelector('.secret_cost');
+      let quantity = parseInt(countInput.value);
+      quantity++;
+      const price = parseFloat(priceElement.textContent);
+      const totalPrice = price * quantity;
+      countInput.value = quantity;
+      priceCount.textContent = totalPrice;
+      updateSum();
+      updateTotalCount();
+    });
+  });
+
+  document.querySelectorAll('.minus').forEach(minusBtn => {
+    minusBtn.addEventListener('click', function() {
+      const productDiv = this.closest('.product_basket_one');
+      const countInput = productDiv.querySelector('.count');
+      const priceElement = productDiv.querySelector('.hidden_cost');
+      const priceCount = productDiv.querySelector('.secret_cost');
+      let quantity = parseInt(countInput.value);
+      if (quantity > 1) {
+        quantity--;
+      }
+      const price = parseFloat(priceElement.textContent);
+      const totalPrice = price * quantity;
+      countInput.value = quantity;
+      priceCount.textContent = totalPrice;
+      updateSum();
+      updateTotalCount();
+    });
+  });
+  function initializePrices() {
+    document.querySelectorAll('.product_basket_one').forEach(productDiv => {
+      const priceElement = productDiv.querySelector('.hidden_cost');
+      const countInput = productDiv.querySelector('.count');
+      const priceCount = productDiv.querySelector('.secret_cost');
+      const price = parseFloat(priceElement.textContent);
+      const quantity = parseInt(countInput.value);
+      const totalPrice = price * quantity;
+      priceCount.textContent = totalPrice;
+    });
     updateSum();
-    function updateTotalCount() {
-        let totalCount = 0;
-        const countInputs = document.querySelectorAll('.count');
-        countInputs.forEach(function(input) {
-            const quantity = parseInt(input.value);
-            if (!isNaN(quantity)) {
-                totalCount += quantity;
-            }
-        });
-        document.getElementById('total_count').textContent = totalCount;
-    }
     updateTotalCount();
-    document.querySelectorAll('.count').forEach(input => {
-        input.addEventListener('change', function() {
-            const productDiv = this.closest('.product_basket_one');
-            const priceCount = productDiv.querySelector('.secret_cost');
-            const priceElement = productDiv.querySelector('.hidden_cost');
-            const price = parseFloat(priceElement.textContent);
-            const quantity = parseInt(this.value);
-            const totalPrice = price * quantity;
-            priceCount.textContent = totalPrice;
-            updateSum();
-            updateTotalCount();
-        });
-    });
-    document.querySelectorAll('.plus').forEach(plusBtn => {
-        plusBtn.addEventListener('click', function() {
-            const productDiv = this.closest('.product_basket_one');
-            const countInput = productDiv.querySelector('.count');
-            const priceElement = productDiv.querySelector('.hidden_cost');
-            const priceCount = productDiv.querySelector('.secret_cost');
-            let quantity = parseInt(countInput.value);
-            quantity++;
-            const price = parseFloat(priceElement.textContent);
-            const totalPrice = price * quantity;
-            countInput.value = quantity;
-            priceCount.textContent = totalPrice;
-            updateSum();
-            updateTotalCount();
-        });
-    });
-    document.querySelectorAll('.minus').forEach(minusBtn => {
-        minusBtn.addEventListener('click', function() {
-            const productDiv = this.closest('.product_basket_one');
-            const countInput = productDiv.querySelector('.count');
-            const priceElement = productDiv.querySelector('.hidden_cost');
-            const priceCount = productDiv.querySelector('.secret_cost');
-            let quantity = parseInt(countInput.value);
-            if (quantity > 1) {
-                quantity--;
-            }
-            const price = parseFloat(priceElement.textContent);
-            const totalPrice = price * quantity;
-            countInput.value = quantity;
-            priceCount.textContent = totalPrice;
-            updateSum();
-            updateTotalCount();
-        });
-    });
+  }
+  initializePrices();
+});
 </script>
 <x-footer/>

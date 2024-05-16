@@ -47,7 +47,6 @@
                     <th scope="col">Номер заказа</th>
                     <th scope="col">Имя клиента</th>
                     <th scope="col">Адрес доставки</th>
-                    <th scope="col">Заведение</th>
                     <th scope="col">Способ оплаты</th>
                     <th scope="col"></th>
                 </tr>
@@ -58,7 +57,6 @@
                     <td>{{$order_user->id}}</td>
                     <td>{{$order_user->user->name}}.{{$order_user->user->name}}</td>
                     <td>{{$order_user->location}}</td>
-                    <td></td>
                     <td>{{$order_user->paymant}}</td>
                     <td><a href="{{ route('courier.order', ['id' => $order_user->id]) }}" class="courier_button    ">Принять</a></td>
                 </tr>

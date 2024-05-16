@@ -25,18 +25,20 @@
     </section>
     <section class="product_section ">
         <div class="container">
-            
-                <div class="d-flex flex-wrap grid gap-4">
+
+                  <div class="d-flex d-flex  flex-wrap gap-3 cafe">
                 @foreach ($cafe as $cafe_info)
-                    <div class="cart_cafe g-col-4 cart_product_text">
+                <div class="cart_cafe cart_product cart_product_text">
                     <a href=" {{route('show.r', ['id_cafe'=>$cafe_info->id])}}">
                         <img src="/storage/img/{{$cafe_info->img}}" alt="картинка заведения"> 
                         <p class="capitalize">{{$cafe_info->categoriesCafe->title_categories}} • ₽</p>
-                        <a style="color: #A408A7;">{{$cafe_info->title}}</a>
+                        <p style="color: #A408A7;">{{$cafe_info->title}} {{$cafe_info->rating_cafe}}</p>
+        
                         </a>
                     </div>
                     @endforeach
                 </div>
+                
                 {{ $cafe->withQueryString()->links('pagination::bootstrap-5') }}
         </div>
     </section>

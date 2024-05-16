@@ -106,10 +106,21 @@ main {
   background-color:#A408A7 ;
   border: 1px solid #A408A7;
 }
+.btn_buttom:hover {
+  background-color: #ffffff;
+  color: #A408A7;
+  border: 1px solid #A408A7;
+}
 .button_redact {
   background-color:#A408A7 ;
   border: 1px solid #A408A7;
-} .button_change {
+} 
+.button_redact:hover {
+  background-color:#ffffff ;
+  border: 1px solid #A408A7;
+  color: #A408A7;
+} 
+.button_change {
   color: #ffffff;
   background-color: #A408A7;
   border-radius: 7px;

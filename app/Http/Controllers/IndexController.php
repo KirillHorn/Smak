@@ -131,7 +131,6 @@ class IndexController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('search');
-
         $cafe = Cafe::with("categoriesCafe")->get();
         $product = Products::with("Categories")->get();
         $cafeJson = json_encode($cafe->pluck('title')->toArray());
@@ -140,14 +139,11 @@ class IndexController extends Controller
                 ->orWhere('description', 'like', "%{$query}%")
                 ->limit(10)
                 ->get();
-        
             $cafes = Cafe::where('title', 'like', "%{$query}%")
                 ->orWhere('location', 'like', "%{$query}%")
                 ->limit(10)
                 ->get();
-        
             $results = $cafes->merge($products)->unique('title')->values()->all();
-   
         return view('search', compact('results'), [
             "cafeJson" => $cafeJson,
             "productJson" => $productJson,

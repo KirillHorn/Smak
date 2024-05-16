@@ -67,7 +67,6 @@ class courierController extends Controller
       ->with(['order_user.status'])
       ->with('order_user')
       ->first();
-      // $orders=courier_orders::where('id_courier', Auth::id())->get();
       $orders=courier_orders::where('id_courier', Auth::id())
       ->whereHas('order_user.status', function ($query) {
           $query->where('id', '3');
