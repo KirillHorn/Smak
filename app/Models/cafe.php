@@ -38,5 +38,19 @@ class Cafe extends Model
 public function count_product() {
     return $this->product()->count();
 }
+public function user()
+{
+    return $this->belongsTo(User::class, 'id_user');
+}
+protected static function boot()
+{
+    parent::boot();
 
+    static::deleting(function($cafe) {
+        $user = User::find($cafe->id_user);
+        if ($user) {
+            $user->delete();
+        }
+    });
+}
 }

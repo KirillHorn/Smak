@@ -166,7 +166,7 @@
   <thead style="border-bottom: 1px solid #A408A7;">
     <tr class="table_product_tr">
       <th scope="col">Номер</th>
-      <th scope="col">Адрес</th>
+      <th scope="col">Адрес доставки</th>
       <th scope="col">Комментарий</th>
       <th scope="col">Клиент</th>
       <th scope="col">Дата</th>

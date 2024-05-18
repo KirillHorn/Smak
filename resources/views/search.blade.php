@@ -2,16 +2,12 @@
 
 <x-x-header/>
     <section class="section_product_nav">
-        <div class="container d-flex flex-column gap-3" style="padding-bottom: 60px;">
-            <div class="directory_nav">
-                <a>Уфа</a>
-                <span>→</span>
-            </div>
+        <div class="container d-flex flex-column gap-3">
+      
                 <div class="navigation d-flex flex-column gap-3">
-                        <div>
-                            <span>42 точки</span>
-                            <h2> Доставка еды из заведений Уфы</h2>
-                        </div>
+        
+                            <h2>Найдите всё что вам нужно!</h2>
+                 
                         <div><div class="ui-widget">
 
                             <form role="search" method="GET" action="/search">
@@ -30,8 +26,8 @@
                 <div class="d-flex flex-wrap grid gap-4">
                 <div class="container">
     <h1>Результаты поиска</h1>
-    <ul class="list-group d-flex flex-wrap">
-    <div id="search-results" class="search-results d-flex ">
+    <ul class="list-group d-flex ">
+    <div id="search-results" class="search-results d-flex flex-wrap ">
 
 @forelse ($results as $result )
 @if ($result instanceof App\Models\Cafe)
@@ -39,7 +35,7 @@
      
                 <img src="/storage/img/{{ $result->img }}" alt="картинка заведения">
                 <p class="capitalize">{{ $result->categoriesCafe->title_categories }} • ₽</p>
-                <a style="color: #A408A7;">{{ $result->title }}</a>
+                <p style="color: #A408A7;">{{ $result->title }}</>
 
         </div>
     @elseif ($result instanceof App\Models\Products)
@@ -48,7 +44,7 @@
                     <a href=" {{route('show.r', ['id_cafe'=>$result->id])}}">
                         <img src="/storage/img/{{$result->img}}" alt="картинка заведения"> 
                         <p class="capitalize">{{$result->Categories->title}} • ₽</p>
-                        <a style="color: #A408A7;">{{$result->title}}</a>
+                        <p style="color: #A408A7;">{{$result->title}}</p>
                         </a>
                     </div>
         

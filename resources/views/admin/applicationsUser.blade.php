@@ -4,11 +4,10 @@
 <div class="container">
   <h2 class="text-center">Заявки на добавление заведения</h2>
   <div>
-    <p>Фильтр</p>
-    <div>
-        <a href="/admin/1/applicationsUser">Новые</a>
-        <a href="/admin/2/applicationsUser">Принято</a>
-        <a href="/admin/3/applicationsUser">Отклоненно</a>
+    <div class="d-flex justify-content-center gap-1 filtr">
+        <a href="/admin/1/applicationsUser" class="btn">Новые</a>
+        <a href="/admin/2/applicationsUser"  class="btn">Принято</a>
+        <a href="/admin/3/applicationsUser"  class="btn">Отклоненно</a>
     </div>
   </div>
   <table class="table table-striped">

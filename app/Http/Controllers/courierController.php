@@ -93,7 +93,7 @@ class courierController extends Controller
       $orders_products=orderCustoms::where('order',$id)->with('product_order')->get();
        return view('courier.specific_order',['order' => $orders_personal, 'orders_products' => $orders_products]);
     }
-    public function courier_order ($id) {
+    public function courier_order($id) {
       $orders_personal=orders::find($id);
          $orders_personal->id_status = 2;
          if ($orders_personal->save()) {

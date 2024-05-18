@@ -18,6 +18,9 @@ main {
   overflow-y: hidden;
 }
 
+h2 {
+  color: #A408A7;
+}
 .b-example-divider {
   flex-shrink: 0;
   width: 1.5rem;
@@ -100,6 +103,10 @@ main {
 }
 .wrapper {
   margin: 10px auto;
+}
+.filtr a {
+  background-color: #A408A7;
+  color: #ffffff;
 }
 .btn_buttom {
   width: 100%;

@@ -265,7 +265,13 @@ class adminController extends Controller
 
     public function delete_cafe(Cafe $id)
     {
+        $moderator = User::find($id->id_moder);
         $id->delete();
+        if ($moderator) {
+            $moderator->delete();
+           
+        }
+       
         return redirect()->back()->with("success", "удаление прошло успешно");
 
     }
@@ -297,11 +303,11 @@ class adminController extends Controller
         $Categories = Categories::paginate(6);
         return view('admin.CategoriesEdit', compact('Categories'));
     }
-    public function Categories_one($id)
-    {
-        $Categories = Categories::find($id);
-        return view('admin.CategoriesEdit_redact', ['categories' => $Categories]);
-    }
+    // public function Categories_one($id)
+    // {
+    //     $Categories = Categories::find($id);
+    //     return view('admin.CategoriesEdit_redact', ['categories' => $Categories]);
+    // }
     public function categories_update(Request $request,Categories $id) {
         $request->validate([
             'title' => 'required',

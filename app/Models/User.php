@@ -71,4 +71,8 @@ class User extends Authenticatable
     function comment() {
         return $this->hasMany(comments::class,"id_user");
     }
+
+    function cafe() {
+        return $this->hasMany(Cafe::class,"id_users");
+    }
 }

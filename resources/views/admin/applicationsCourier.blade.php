@@ -4,11 +4,10 @@
 <div class="container">
   <h2 class="text-center">Заявки на добавление курьера</h2>
   <div>
-    <p>Фильтр</p>
-    <div>
-        <a href="/admin/1/applicationsCourier">Новые</a>
-        <a href="/admin/2/applicationsCourier">Принято</a>
-        <a href="/admin/3/applicationsCourier">Отклоненно</a>
+    <div class="d-flex justify-content-center gap-1 filtr">
+        <a href="/admin/1/applicationsCourier" class="btn">Новые</a>
+        <a href="/admin/2/applicationsCourier" class="btn">Принято</a>
+        <a href="/admin/3/applicationsCourier" class="btn">Отклоненно</a>
     </div>
   </div>
   <table class="table table-striped">
@@ -17,7 +16,6 @@
       <th scope="col">#</th>
       <th scope="col">ФИО</th>
       <th scope="col">Телефон</th>
-      <th scope="col">Название</th>
       <th scope="col">Электронная</th>
       <th scope="col"></th>
       <th scope="col"></th>
@@ -29,7 +27,6 @@
       <td class="align-middle fw-bold">{{$application->id}}</td>
       <td class="align-middle fw-bolder">{{$application->name}}.{{$application->surname}}.{{$application->patronymic}}</td>
       <td class="align-middle">{{$application->phone}}</td>
-      <td class="align-middle">{{$application->title}}</td>
       <td class="align-middle">{{$application->email}}</td>
       @if ($application->id_status == 1)
       <td class="align-middle"><a class="btn btn-success" href="/{{$application->id}}/applicationAcceptedCourier">Принять</a></td>

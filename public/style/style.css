@@ -145,16 +145,16 @@ input[type=number] {
 }
 .banner_text {
    padding-top: 10% ;
-   width: 350px;
-   height: 225px;
+   width: 50%;
+   height: 30%;
 }
 .banner_text h1 {
    color: #A408A7;
    font-size: 50px;
    font-weight: bold;
    text-align: center;
-   width: 460px;
-   height: 180px;
+   width: 70%;
+   height: 30%;
 }
 .banner_text h1 span {
    text-align: center;
@@ -177,7 +177,6 @@ input[type=number] {
    color: rgb(255, 255, 255);
   margin: 0 140px;
    height: 45px;
-
    text-align: center   ;
    border-radius: 20px;
    box-shadow: 0px 1px 20px 1px #A408A7;
@@ -271,11 +270,6 @@ input[type=number] {
    border-radius: 20px;
    
 }
-
-
-
-
-
 .categories_link a {
 color: #A408A7;
 background-color: #ffffff;
@@ -284,6 +278,9 @@ padding: 7px 14px;
 box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.35);
 transition: 0.2s;
 
+}
+.all_categories {
+   width: 25%;
 }
 .all_categories:hover,
 .all_categories:active {
@@ -389,7 +386,8 @@ margin: 0 auto;
    font-size: 14px;
 }
 .navigation {
-   padding-bottom: 60px;
+   padding-bottom: 40px;
+   padding-top: 20px;
 }
 .navigation h2 {
  font-size: 32px;
@@ -1276,6 +1274,150 @@ input::-webkit-inner-spin-button {
    .option_categories {
      width: 20px;
    }
+   .banner {
+      width: 100%;
+      height: 250px;
+      max-height: none;
+      background-image: none;
+      background-repeat: no-repeat;
+      background-position: 30% 100%;
+      flex-wrap: wrap;
+   }
+   .banner_text {
+      padding-top: 10% ;
+      width: 100%;
+      height: 30%;
+   }
+   .banner_text h1 {
+      color: #A408A7;
+      font-size: 32px;
+      font-weight: bold;
+      width: 75%;
+      height: 30%;
+      margin: 0 auto ;
+      
+   }
+   .banner_text h1 span {
+      text-align: center;
+      color: #A408A7;
+      font-weight: 900;
+      font-size: 30  px;
+    
+   
+   }
+   .section_header_two  {
+      background-color: #ffffff;
+   }
+   .aaaa {
+      color: aliceblue;
+      ;
+      text-decoration: none;
+   }
+   .banner_text a {
+      width: 30%;
+      font-size: 14px;
+      padding-top: 5px;
+      margin-top: 10px;
+      background: linear-gradient( #A408A7, #0040BC);
+      color: rgb(255, 255, 255);
+      height: 30px;
+      text-align: center   ;
+      border-radius: 20px;
+      box-shadow: 0px 1px 20px 1px #A408A7;
+      
+   
+   }
+   .cafe_text {
+      padding-bottom: 20px;
+      flex-wrap: wrap;
+      margin: 0 auto;
+   
+   }
+   .cafe_text h2 {
+      font-weight: 900;
+      font-size: 24px;
+      margin: 0 auto;
+   }
+   .cafe_text a {
+      width: 220px;
+      height: 30px;
+      font-size: 16px;
+      text-align: center;
+      border-radius: 20px;
+   
+      border: 1px solid #ffffff;
+      margin: 2px auto;
+   
+   }
+   .We {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .information_cart {
+      margin-bottom: 3rem;
+    }
+   .information_cart img {
+      margin: 0 auto;
+      width: 50%;
+   }
+   .information_cart h2 {
+      margin-bottom: 0rem;
+      font-size: 18px;
+   }
+   .information_cart p {
+      margin-bottom: 0rem;
+      width: 300px;
+      text-align: center  ;
+   }
+
+
+    .all_categories {
+      width: 45%;
+      padding: 5px 5px;
+      text-align: center;
+    }
+    .categories_block {
+      background-color: #C86BCA;
+      width: 100%;
+      height: 30%;
+      color: #ffffff;
+      border-radius: 20px;
+      margin-bottom: 20px;
+   }
+   .categories_block a {
+      color: #ffffff;
+      background-color: #A408A7;
+      padding: 10px 10px;
+      border-radius: 20px;
+      
+   }
+   .categories_link a {
+   color: #A408A7;
+   background-color: #ffffff;
+   border-radius: 20px;
+   padding: 7px 8px;
+   box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.35);
+   transition: 0.2s;
+   font-size: 14px;
+   
+   }
+   .all_categories:hover,
+   .all_categories:active {
+      color: #A408A7;
+      background-color: #ffffff;
+      border: 1px solid #fff;
+      transition: 0.4s;
+   }
+   .categories_link a:active,
+   .categories_link a:hover {
+      color: #ffffff;
+      background-color: #A408A7;
+   }
+
+   .cafe_text a img {
+    width: 16px;
+    height: 16px;
+   }
    .user_name img {
       border-radius: 50%;
       width: 40px;
@@ -1463,6 +1605,19 @@ input::-webkit-inner-spin-button {
 }
 .cart_cafe  {
    font-size: 0.9rem;
+}
+.search-results  {
+   gap: 10px;
+}
+.navigation h2 {
+margin-top: 30px;
+align-items: center;
+}
+.section_product_nav div {
+   background-color: #A408A7;
+   width: 100%;
+   color: #ffffff;
+   padding-bottom: 10px;
 }
 
 }
