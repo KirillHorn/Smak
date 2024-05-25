@@ -28,12 +28,12 @@
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#product-collapse" aria-expanded="true">
-          Продукты
+          Блюда
         </button>
         <div class="collapse show" id="product-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/moder/serviceRedactProduct" class="link-dark rounded">Добавить продукт</a></li>
-            <li><a href="/moder/serviceEditProduct" class="link-dark rounded">Редактирование продукт</a></li>
+            <li><a href="/moder/serviceRedactProduct" class="link-dark rounded">Добавить блюдо</a></li>
+            <li><a href="/moder/serviceEditProduct" class="link-dark rounded">Редактирование блюд</a></li>
           </ul>
         </div>
       </li>

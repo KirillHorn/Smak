@@ -62,6 +62,9 @@
 // return false;
 // });
 // });
+$(function(){
+  $("#phone").mask("8(999) 999-9999");
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     var ratingResults = document.querySelectorAll('.rating-result');
@@ -106,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var errorDiv = document.getElementById('error');
   
       if (comment.length > 100) {
-        errorDiv.textContent = "Комментарий не должен превышать 100 символов";
+        errorDiv.textContent = "Отзыв не должен превышать 100 символов";
         errorDiv.style.display = 'block';
         return; // Prevent form submission if comment length exceeds 100
       } else {
@@ -133,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .catch(error => {
         console.error('Error:', error);
-        errorDiv.textContent = 'Произошла ошибка при отправке комментария';
+        errorDiv.textContent = 'Произошла ошибка при отправке отзыва';
         errorDiv.style.display = 'block';
       });
     });
@@ -143,13 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
       var ratingStars = '';
   
       for (var i = 1; i <= 5; i++) {
-        if (i <= comment.rating) {
-          ratingStars += '⭐';
+        if (i == 1) {
+          ratingStars += i <= comment.rating ? '<i class="fas fa-star purple-star"></i>' : '<i class="far fa-star purple-star"></i>';
         } else {
-          ratingStars += '☆';
+          ratingStars += i <= comment.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
         }
       }
-  
       var commentHtml = template
         .replace('__USERNAME__', comment.username)
         .replace(/__RATING__/, ratingStars)

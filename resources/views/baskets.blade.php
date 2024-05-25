@@ -26,10 +26,10 @@
                 <tr class="product_basket_one">
                     <td style="vertical-align: middle; text-align: center;"><img src="/storage/img/{{$item->img}}" alt="Фото товара"></td>
                     <td style="vertical-align: middle;">{{$item->title}}</td>
-                    <td style="vertical-align: middle; font-size:16px;" class="hidden_cost d-none">
+                    <td style="vertical-align: middle; font-size:16px;" class="hidden_cost">
                         {{$item->cost}}
                     </td>
-                    <td style="vertical-align: middle; font-size:16px;" class="secret_cost">{{$item->cost}}</td>
+                    <td style="vertical-align: middle; font-size:16px;" class="secret_cost d-none">{{$item->cost}}</td>
                     <td style="vertical-align: middle; text-align: center;">
                         <form method="POST" action="/baskets_order">
                             @csrf
@@ -76,12 +76,11 @@
 </form>
 <script>
 $(document).ready(function() {
+  initializeCart();
   $('.product_delete').on('click', function(e) {
     e.preventDefault();
-    
     var id = $(this).data('id');
-    var $row = $(this).closest('tr'); 
-
+    var $row = $(this).closest('tr');
     $.ajax({
       url: '/' + id + '/baskets_delete',
       type: 'GET',
@@ -89,16 +88,18 @@ $(document).ready(function() {
         _token: '{{ csrf_token() }}'
       },
       success: function(response) {
-        $row.remove(); 
+        $row.remove();
         alert('Элемент успешно удален.');
         updateSum();
         updateTotalCount();
+        saveCart();
       },
       error: function(xhr) {
         alert('Произошла ошибка при удалении элемента.');
       }
     });
   });
+
   function updateSum() {
     let sum = 0;
     const secretCosts = document.querySelectorAll('.secret_cost');
@@ -135,6 +136,7 @@ $(document).ready(function() {
       priceCount.textContent = totalPrice;
       updateSum();
       updateTotalCount();
+      saveCart();
     });
   });
 
@@ -152,6 +154,7 @@ $(document).ready(function() {
       priceCount.textContent = totalPrice;
       updateSum();
       updateTotalCount();
+      saveCart();
     });
   });
 
@@ -171,8 +174,32 @@ $(document).ready(function() {
       priceCount.textContent = totalPrice;
       updateSum();
       updateTotalCount();
+      saveCart();
     });
   });
+
+  function saveCart() {
+    const cartData = [];
+    document.querySelectorAll('.product_basket_one').forEach(productDiv => {
+      const id = productDiv.querySelector('.count').name.match(/\d+/)[0];
+      const quantity = parseInt(productDiv.querySelector('.count').value);
+      cartData.push({ id: id, quantity: quantity });
+    });
+    localStorage.setItem('cart', JSON.stringify(cartData));
+  }
+
+  function loadCart() {
+    const cartData = JSON.parse(localStorage.getItem('cart'));
+    if (cartData) {
+      cartData.forEach(item => {
+        const countInput = document.querySelector(`input[name="products[${item.id}][count]"]`);
+        if (countInput) {
+          countInput.value = item.quantity;
+        }
+      });
+    }
+  }
+
   function initializePrices() {
     document.querySelectorAll('.product_basket_one').forEach(productDiv => {
       const priceElement = productDiv.querySelector('.hidden_cost');
@@ -186,7 +213,11 @@ $(document).ready(function() {
     updateSum();
     updateTotalCount();
   }
-  initializePrices();
+
+  function initializeCart() {
+    loadCart();
+    initializePrices();
+  }
 });
 </script>
 <x-footer/>

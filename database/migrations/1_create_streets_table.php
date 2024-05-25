@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cafes', function (Blueprint $table) { 
+        Schema::create('streets', function (Blueprint $table) {
             $table->id();
-            $table->string('title',100);
-            $table->string('img',100);
-            $table->foreignId('id_categoriesCafe')->references('id')->on('categories_cafe')->onDelete('cascade');
-            $table->foreignId('id_moder')->references('id')->on('users');
-            $table->integer('rating_cafe'); 
-            $table->text('location');
+            $table->string('title_street');
+            $table->foreignId('id_area')->references('id')->on('areas');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cafes');
+        Schema::dropIfExists('streets');
     }
 };

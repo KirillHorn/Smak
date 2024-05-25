@@ -98,7 +98,7 @@
     
 <script>
       $( function() {
-        var availableTags = {!! $cafeJson !!}.concat({!! $productJson !!});
+        var availableTags = {!! $categoriesJson !!}.concat({!! $productJson !!});
   $( "#tags" ).autocomplete({
     source: availableTags
   });

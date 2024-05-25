@@ -18,7 +18,7 @@ class Products extends Model
         'weight',
         'cost',
         'img',
-        'id_cafe',
+        'rating_product',
         'id_categories',
     ];
 
@@ -28,10 +28,9 @@ class Products extends Model
 
         // return $this->hasMany(Categories::class, 'id_categories', 'id');
     }
-
-    public function Cafe()
+    public function comments()
     {
-        return $this->belongsTo(Cafe::class, 'id_cafe', 'id');
+        return $this->hasMany(comments::class, 'rating_product');
     }
 
     public function basket() {

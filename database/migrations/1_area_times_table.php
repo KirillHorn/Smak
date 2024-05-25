@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('area_times', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->references('id')->on('users');
-            $table->foreignId('id_product')->references('id')->on('products')->onDelete('cascade');
-            $table->string('comments_text',120);
-            $table->integer('rating'); 
+            $table->foreignId('id_area_one')->references('id')->on('areas');
+            $table->foreignId('id_area_two')->references('id')->on('areas');
+            $table->time('time');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('area_times');
     }
 };

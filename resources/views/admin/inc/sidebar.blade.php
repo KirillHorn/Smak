@@ -5,9 +5,18 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
      <meta name="csrf-token" content="{{ csrf_token() }}">
-     <meta name="edit-update-categories-url-base" content="{{ route('edit.update.categories', ['id' => ':id']) }}">
+     <meta name="edit-update-categories-url-base" content="{{ route('edit.update.categories', ['id' => 'id']) }}">
+
 <link href="/style/sidebars.css" rel="stylesheet">
+<style>
+  
+
+</style>
 <section class="sidebar ">
     <div class="flex-shrink-0 p-3 bg-white sidebar_bacg" style="width: 280px;">
     <div class="d-flex align-items-center pb-1 mb-1 link-dark text-decoration-none">
@@ -23,19 +32,30 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/admin/1/applicationsUser" class="link-dark rounded">Заявки модератора</a></li>
             <li><a href="/admin/1/applicationsCourier" class="link-dark rounded">Заявки курьера</a></li>
           </ul>
         </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#brench-collapse" aria-expanded="true">
+          Филиал
+        </button>
+        <div class="collapse show" id="brench-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="/admin/serviceBrech" class="link-dark rounded">Добавить филиал</a></li>
+            <li><a href="/admin/serviceEdit" class="link-dark rounded">Редактирование филиала</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#product-collapse" aria-expanded="true">
-          Заведения
+          Блюда
         </button>
         <div class="collapse show" id="product-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/admin/serviceEdit" class="link-dark rounded">Редактирование заведения</a></li>
+            <li><a href="/admin/serviceRedactProduct" class="link-dark rounded">Добавить блюдо</a></li>
+            <li><a href="/admin/serviceEditProduct" class="link-dark rounded">Редактирование блюд</a></li>
           </ul>
         </div>
       </li>

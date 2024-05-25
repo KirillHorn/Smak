@@ -2,12 +2,12 @@
 <x-alerts/>
 <div class="wrapper">
     <div class="container">
-        <h2 class="text-center">Категории продукты</h2>
+        <h2 class="text-center">Категории блюд</h2>
         <form action="/categories_Add" method="POST" class="addservice">
            
             @csrf
 
-            <h2 class="text-center">Добавить категорию продукта</h2>
+            <h2 class="text-center">Добавить категорию блюд</h2>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Название категории</label>
                 <input type="title" class="form-control" name="title" 

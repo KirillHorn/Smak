@@ -23,18 +23,19 @@
     <style>
         .table {
           height: 50%;
+          width: 100%;
         }
         h2 {
           font-family: DejaVu Sans;
-          color: #A408A7;
+  
         }
         .table_product_tr_br {
-          background-color: #A408A7;
+          background-color: #000;
           color: #fff;
           font-size: 10px;
         }
         .table_product_tr {
-          color: #A408A7;
+  
         }
         .table th, .table td {
             font-family: DejaVu Sans;
@@ -44,18 +45,18 @@
         }
 
         .thead_pdf {
-            background-color: #A408A7;
+            background-color: #000;
             color: #fff;
         }
         .info_courier_table {
-          border: 1px solid #A408A7;
           width: 40%;
-          margin: 0 auto;
           border-radius: 20px;
-          color: #A408A7;
           font-size: 14px;
-          text-align: center;
           margin-bottom: 10px;
+          color: ;
+        }
+        .table_widt {
+         
         }
     </style>
   
@@ -64,13 +65,13 @@
 <body>
 <div class="container mt-5">
 <div class="d-flex flex-column" style="margin-bottom: 0px;">
-            <h2 style="text-align: center; margin-bottom: 0;">Ваши заказы</h2>
-            <div class="d-flex justify-content-center info_courier_table">
+            <h2 style="">Ваши заказы</h2>
+            <div class="d-flex info_courier_table">
               <p style="font-family: DejaVu Sans;">Всего выполнено заказов:<span>{{ $orders->count() }}</span></p>
               <p style="font-family: DejaVu Sans;">Вы заработали: <span>{{ $orders->count() * 100 }}₽</span></p>
             </div>
             <table class="table table-borderless table_product table_">
-  <thead style="border-bottom: 1px solid #A408A7;">
+  <thead style="border-bottom: 1px solid #000;">
     <tr class="table_product_tr_br">
       <th scope="col">Номер</th>
       <th scope="col">Адрес</th>
@@ -84,8 +85,13 @@
   @foreach ($orders as $orderss)
     <tr class="table_product_tr">
       <th scope="row">{{$orderss->order_user->id}}</th>
-      <td>{{$orderss->order_user->location}}</td>
-      <td>{{$orderss->order_user->comment}}</td>
+      <td>{{$orderss->order_user->street->title_street}}</td>
+      <td>
+      @if (!empty($orderss->order_user->comment))
+    {{$orderss->order_user->comment}}
+@else
+    Отсуствует
+@endif
       <td>{{$orderss->order_user->user->name}}</td>
       <td>{{$orderss->order_user->created_at->format('d.m.Y')}}</td>
       <td>100₽</td>

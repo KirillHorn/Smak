@@ -12,7 +12,7 @@ class comments extends Model
     
     protected $fillable = [
         'id_user',
-        'id_cafe',
+        'id_product',
         'comments_text',
         'rating',
     ];
@@ -24,8 +24,8 @@ class comments extends Model
     {
         return $this->belongsTo(Orders::class, 'id_orders');
     }
-    public function cafe()
+    public function product()
 {
-    return $this->belongsTo(Cafe::class, 'id_cafe');
+    return $this->belongsTo(Products::class, 'id_product');
 }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_orders')->references('id')->on('orders');
             $table->foreignId('id_courier')->references('id')->on('users');
+            $table->time('time_order_courier')->nullable();
             $table->timestamps();
         });
     }

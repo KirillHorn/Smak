@@ -14,39 +14,31 @@ Route::get('/sitemap', function(){
     return view('sitemap');
 });
 
+Route::get('/auth/auth', [AuthController::class, 'auth_page']);
+
+Route::get('/signout', [AuthController::class, 'signout']);
+
+Route::post('/auth_valid', [AuthController::class, 'auth_valid']);
+
 Route::get('/product', [IndexController::class, 'product_blade'])->name('products');
 
-Route::get('/cafe', [IndexController::class, 'cafe_blade'])->name("cafe");
+Route::get('/cafe', [IndexController::class, 'branch_blade'])->name("cafe");
 
 Route::get('/search', [IndexController::class, 'search']);
 
-Route::get('/goods/{id}', [IndexController::class, 'goods_blade'])->name('goods.r');
-
 Route::get('/information/{id_cafe}', [IndexController::class, 'show'])->name('show.r');
 
-Route::post('/{id}/comment_cafes', [IndexController::class, 'comment_cafes']);
-
 Route::get('/baskets',[OrderController::class, 'getBaskets']);
-
-Route::get('/baskets/{id}', [OrderController::class, 'baskets'])->name('basket.r');
-
-Route::get('/{id}/baskets_delete', [OrderController::class, 'baskets_delete'])->name('delete_basket.r');
 
 Route::get('/application', [ModerController::class, 'application_add']);
 
 Route::post('/application_add_validate', [ModerController::class, 'application_add_validate']);
 
-Route::get('/admin/{id}/applicationsUser', [adminController::class, 'applicationModer']);
+Route::get('/goods/{id}', [IndexController::class, 'goods_blade'])->name('goods.r');
 
-Route::get('/{id}/applicationAccepted', [adminController::class, 'applicationAccepted']);
+Route::get('/application_courier', [courierController::class, 'courier_blade']);
 
-Route::get('/{id}/applicationDeviation', [adminController::class, 'applicationDeviation']);
-
-Route::get('/admin/{id}/applicationsCourier', [adminController::class, 'allCourier_blade']);
-
-Route::get('/{id}/applicationAcceptedCourier', [adminController::class, 'applicationAcceptedCourier']);
-
-Route::get('/{id}/applicationDeviationCourier', [adminController::class, 'applicationDeviationCourier']);
+Route::post('/registration_courier', [courierController::class, 'registration_courier']);
 
 
 Route::middleware('checkRole:Клиент')->group(function () {
@@ -55,100 +47,116 @@ Route::middleware('checkRole:Клиент')->group(function () {
 
     Route::get('/users/order_user/{id}', [IndexController::class, 'personal_orders']);
 
+    Route::post('/{id}/comment_cafes', [IndexController::class, 'comment_cafes']);
 
+    
+
+    Route::get('/baskets/{id}', [OrderController::class, 'baskets'])->name('basket.r');
+
+    Route::get('/{id}/baskets_delete', [OrderController::class, 'baskets_delete'])->name('delete_basket.r');
 
     Route::post('/baskets_order', [OrderController::class, 'baskets_order']);
 
-Route::post('/order_create', [OrderController::class, 'orderCreate']);
+    Route::post('/order_create', [OrderController::class, 'orderCreate']);
 
-Route::get('/order', [OrderController::class, 'OrderController']);
+    Route::get('/order', [OrderController::class, 'OrderController']);
+
 });
 
 Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class, 'registration_redact'])->name('r.update');
 
 
-Route::middleware('checkRole:Модератор')->group(function () {
 
 
 
-    Route::get('/moder/serviceRedactProduct', [ModerController::class, 'serviceRedactProduct_blade']);
-
-    Route::post('/edit_product', [ModerController::class, 'edit_product']);
-
-    Route::get('/moder/serviceEditProduct', [ModerController::class, 'serviceProduct_blade']);
-
-    Route::get('/moder/cafesModer', [ModerController::class, 'cafesModer']);
-
-    Route::get('/moder/{id}/EditProduct', [ModerController::class, 'serviceEditproduct_blade']);
-
-    Route::post('/moder/{id}/updateProduct', [ModerController::class, 'updateProduct'])->name('products.update');
-
-    Route::delete('/moder/{id}/delete_product', [ModerController::class, 'delete_product'])->name('delete.product');
 
 
 
   
 
+    Route::get('/moder/cafesModer', [ModerController::class, 'cafesModer']);
 
-    Route::post('/edit_product', [ModerController::class, 'edit_product']);
 
- 
 
-    Route::get('/moder/serviceRedactProduct', [ModerController::class, 'serviceRedactProduct_blade']);
+
+
+
+
+Route::middleware('checkRole:Курьер')->group(function () {
+
+  
+    
+    Route::get('/courier/personal_Area', [courierController::class, 'personal_courier'])->name('personal_courier');
+    
+    Route::get('/courier/{area_id}/orders_for_courier', [courierController::class, 'orders_courier']);
+    
+    Route::get('/courier/{id}/specific_order', [courierController::class, 'specific_order'])->name('courier.order');
+    
+    Route::get('/{id}/courier_order', [courierController::class, 'courier_order'])->name('courier');
+    
+    Route::get('/{id}/courier_order_completed', [courierController::class, 'courier_order_completed'])->name('courier.completed');
+    
+    Route::get('/orders_pdf', [courierController::class, 'orders_pdf'])->name('orders_pdf');
 
 });
 
-Route::get('/admin/serviceRedact', [adminController::class, 'serviceRedact_blade']);
+Route::middleware('checkRole:Администратор')->group(function () {
 
-Route::get('/admin/serviceEdit', [adminController::class, 'serviceEdit_blade']);
+    Route::get('/admin/serviceRedact', [adminController::class, 'serviceRedact_blade']);
 
-Route::get('/admin/{id}/EditCafes', [adminController::class, 'Edit']);
+    Route::get('/admin/serviceEdit', [adminController::class, 'serviceEdit_blade'])->name('serviceEdit_blade');
+    
+    Route::get('/admin/{id}/EditCafes', [adminController::class, 'Edit']);
+    
+    Route::post('/admin/{id}/update_cafe', [adminController::class, 'update_cafe'])->name('edit.update');
+    
+    Route::delete('/admin/{id}/delete_cafe', [adminController::class, 'delete_cafe'])->name('delete.cafes');
+    
+    Route::post('/edit_cafe', [adminController::class, 'edit_cafe']);
+    
+    Route::get('/admin/EditCategories', [adminController::class, 'EditCategories']);
+    
+    Route::post('/categories_Add', [adminController::class, 'categories_Add']);
+    
+    Route::get('/admin/CategoriesEdit', [adminController::class, 'Categories']);
+    
+    Route::get('/admin/CategoriesEdit_redact', [adminController::class, 'Categories_one']);
+    
+    Route::post('/admin/{id}/update_cafe', [adminController::class, 'update_cafe'])->name('edit.update');
 
-Route::post('/admin/{id}/update_cafe', [adminController::class, 'update_cafe'])->name('edit.update');
+    Route::get('/admin/{id}/applicationsCourier', [adminController::class, 'allCourier_blade']);
 
-Route::delete('/admin/{id}/delete_cafe', [adminController::class, 'delete_cafe'])->name('delete.cafes');
+    Route::get('/{id}/applicationAcceptedCourier', [adminController::class, 'applicationAcceptedCourier']);
 
-Route::post('/edit_cafe', [adminController::class, 'edit_cafe']);
+    Route::get('/{id}/applicationDeviationCourier', [adminController::class, 'applicationDeviationCourier']);
 
-Route::get('/admin/EditCategories', [adminController::class, 'EditCategories']);
+    Route::get('/admin/serviceBrech', [adminController::class, 'add_branch_blade']); // добавить филиал
 
-Route::post('/categories_Add', [adminController::class, 'categories_Add']);
+    Route::post('/add_branch', [adminController::class, 'add_branch']);
 
-Route::get('/admin/CategoriesEdit', [adminController::class, 'Categories']);
+    Route::get('/admin/serviceRedactProduct', [adminController::class, 'serviceRedactProduct_blade']); // добавить продукт
 
-Route::get('/admin/CategoriesEdit_redact', [adminController::class, 'Categories_one']);
+    Route::delete('/admin/{id}/delete_product', [adminController::class, 'delete_product'])->name('delete.product'); //удаление продукта
 
-Route::post('/admin/{id}/update_cafe', [adminController::class, 'update_cafe'])->name('edit.update');
+
+    Route::post('/edit_product', [adminController::class, 'edit_product']);
+
+    Route::get('/admin/serviceEditProduct', [adminController::class, 'serviceProduct_blade']); // все продукты
+
+    Route::get('/admin/{id}/EditProduct', [adminController::class, 'serviceEditproduct_blade']); 
+
+    Route::post('/admin/{id}/updateProduct', [adminController::class, 'updateProduct'])->name('products.update');
+
+});
 
 Route::get('/auth/registration', [AuthController::class, 'registration_page']);
-
 
 Route::post('/registration_valid', [AuthController::class, 'registration_valid']);
 
 Route::PATCH('/admin/categories_update/{id}', [adminController::class, 'categories_update'])->name('edit.update.categories');
 
 
-Route::get('/auth/auth', [AuthController::class, 'auth_page']);
 
-Route::get('/signout', [AuthController::class, 'signout']);
-
-Route::post('/auth_valid', [AuthController::class, 'auth_valid']);
-
-Route::get('/application_courier', [courierController::class, 'courier_blade']);
-
-Route::post('/registration_courier', [courierController::class, 'registration_courier']);
-
-Route::get('/courier/personal_Area', [courierController::class, 'personal_courier']);
-
-Route::get('/courier/orders_for_courier', [courierController::class, 'orders_courier']);
-
-Route::get('/{id}/specific_order', [courierController::class, 'specific_order'])->name('courier.order');
-
-Route::get('/{id}/courier_order', [courierController::class, 'courier_order'])->name('courier');
-
-Route::get('/{id}/courier_order_completed', [courierController::class, 'courier_order_completed'])->name('courier.completed');
-
-Route::get('/orders_pdf', [courierController::class, 'orders_pdf'])->name('courier.orders_pdf');
 
 
 

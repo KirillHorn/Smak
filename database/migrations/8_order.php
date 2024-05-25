@@ -17,9 +17,12 @@ return new class extends Migration
             $table->id();
             $table->integer('amount');
             $table->foreignId('id_users')->references('id')->on('users');
-            $table->string('comment', 80);
-            $table->string('location', 100);
+            $table->string('comment', 80)->nullable();
             $table->string('paymant', 100);
+            $table->foreignId('id_street')->references('id')->on('streets');
+            $table->foreignId('id_brach')->references('id')->on('branchs');
+            $table->string('location_details',100);
+            $table->time('time_order')->nullable();
             $table->foreignId('id_status')->references('id')->on('statuses');
             $table->timestamps();
         });

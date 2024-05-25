@@ -127,6 +127,15 @@ h2 {
   border: 1px solid #A408A7;
   color: #A408A7;
 } 
+.button_redact_filt {
+  background-color:#A408A7 ;
+  border: 1px solid #A408A7;
+} 
+.button_redact_filt:hover,:active {
+  background-color:#ffffff ;
+  border: 1px solid #A408A7;
+  color: #A408A7;
+} 
 .button_change {
   color: #ffffff;
   background-color: #A408A7;
@@ -143,4 +152,11 @@ h2 {
 }
 .information_cafe_moder p {
   margin-left: 10px;
+}
+.search_content {
+  width: 320px;
+}
+.ui-autocomplete {
+  max-height: 200px; /* Максимальная высота списка */
+  overflow-y: auto; /* Добавляем вертикальную полосу прокрутки */
 }

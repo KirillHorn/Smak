@@ -3,83 +3,77 @@
 
 
 
-        <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
- <form method="POST" action='order_create ' class="d-flex justify-content-around flex-wrap">
-    @csrf
-                <div class="Delivery">
-                                <div class="d-flex flex-column gap-3 Delivery_info">
-
-                          <h2 class="fw-bold">Условия доставки</h2>
-                     
-                                <div class="d-flex flex-column gap-3">
-                                    <div class="d-flex gap-1">
-                                        <img src="/img/home.svg">
-                         <input type="text" placeholder="Адрес" class="input_adress" name="location">
-                         @error('location') {{$message}}  @enderror
-                                 </div>
-                         <input type="text" class="input_commen" placeholder="Комментарий курьеру" type="text" name="comment">
-                         @error('comment') {{$message}}  @enderror
-                             </div>
-                                 <div>
-                                     <div class="d-flex align-items-center gap-1">
-                                        <img src="/img/clock.svg"><h2 class="fw-bold" style="margin-top: 8px;">Время доставки</h2>
-                                    </div>
-                                        <p class="fw-bold">Доставка за 20-30 минут</p>
-
-                                 </div>
-                        </div>
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+    <form method="POST" action='order_create' class="d-flex justify-content-around flex-wrap">
+        @csrf
+        <div class="Delivery">
+            <div class="d-flex flex-column gap-3 Delivery_info">
+                <h2 class="fw-bold">Условия доставки</h2>
+                <div class="d-flex flex-column gap-3">
+                    <div class="d-flex gap-1">
+                        <img src="/img/fluent-mdl2_street.svg">
+                        <input type="search" name="id_street" placeholder="Выберите улицу" class="input_adress" id="tags">
+                        <div id="tags_results" class="search-results" style="max-height: 200px; overflow-y: auto;"></div>
+                        @error('location') {{$message}} @enderror
+                    </div>
+                    <div>
+                        <img src="/img/home.svg">
+                        <input type="text" name="location_details_home" placeholder="Введите дом" class="input_adress" id="location_details">
+                    </div>
+                    <div>
+                        <img src="/img/home.svg">
+                        <input type="text" name="location_details_appart" placeholder="Введите квартиру" class="input_adress">
+                    </div>
+                    <input type="text" class="input_commen" placeholder="Комментарий курьеру" id="comment" name="comment">
+                    @error('comment') {{$message}} @enderror
                 </div>
+                <div>
+                    <div class="d-flex align-items-center gap-1">
+                        <img src="/img/clock.svg">
+                        <h2 class="fw-bold" style="margin-top: 8px;">Время доставки</h2>
+                    </div>
+                    <p class="fw-bold">Доставка за 20-30 минут</p>
+                </div>
+            </div>
+        </div>
 
-
-                <div class="Delivery">
-                <div class="d-flex flex-column gap-2 Delivery_info">
-                        <h2>Способ оплаты</h2>
-                        <div class="d-flex flex-column">
-                                <div class="d-flex gap-4 align-items-center"> Наличные
-                                    <label class="switch" style="margin-left: 3px;">
-                                      <input type="radio" checked name="very"  value="Наличные">
-                                    <span class="slider round"></span>
-                                    </label>
-                                </div>
-                                            <div class="d-flex gap-1 align-items-center"> Безналичные
-                                    <label class="switch">
-                                    <input type="radio" name="very" value="Безналичные">
-                                     <span class="slider round"></span>
-                                    </label>
-                                            </div>
-                        </div>
-                        <hr class="fw-bold">
-                            <div class="total d-flex flex-column gap-4">
-                                <p class="fw-bold">Итого: {{ $totalSum }}₽</p>
-                                <input type="hidden" value="{{ $totalSum }}" name="amount">
-                                <input type="submit" class="order_button" value="Оформить заказ">
-                            </div>
-                        </div>
+        <div class="Delivery">
+            <div class="d-flex flex-column gap-2 Delivery_info">
+                <h2>Способ оплаты</h2>
+                <div class="d-flex flex-column">
+                    <div class="d-flex gap-4 align-items-center"> Наличные
+                        <label class="switch" style="margin-left: 3px;">
+                            <input type="radio" checked name="very" value="Наличные" id="cash_radio">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="d-flex gap-1 align-items-center"> Безналичные
+                        <label class="switch">
+                            <input type="radio" name="very" value="Безналичные" id="non_cash_radio">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <hr class="fw-bold">
+                <div class="total d-flex flex-column gap-4">
+                    <p class="fw-bold">Итого: {{ $totalSum }}₽</p>
+                    <input type="hidden" value="{{ $totalSum }}" name="amount">
+                    <input type="submit" id="submitOrder" class="order_button" value="Оформить заказ">
                 </div>
             </div>
         </div>
     </form>
+</div>
 
 
-    <script>
-        // let price = document.getElementById("price");
-        // let sum = document.getElementById("sum");
-        // let numericUpDown = document.getElementById("numericUpDown");
-        // let up = document.getElementById("up");
-        // let down = document.getElementById("down");
-        // up.onclick = () => {
-        //     numericUpDown.value = (isNaN(numericUpDown.value)) ? 1 : +numericUpDown.value + 1;
-        //     setSum();
-        // };
-        // down.onclick = () =>{
-        //     numericUpDown.value = (numericUpDown.value) > 0 ? +numericUpDown.value - 1 : 0;
-        //     setSum();
-        // }
+<script>
+$(function() {
+    var availableTags = {!! $streetJson !!}; // массив всех улиц
+    $("#tags").autocomplete({
+        source: availableTags
+    });
+} ) ;
+</script>
 
-        // numericUpDown.oninput = setSum;
 
-        // function setSum() {
-        //     sum.innerText = (price.innerText * numericUpDown.value)
-        // }
-    </script>
 <x-footer/>

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Blade;
 use App\Http\Controllers\Alert;
+use App\Models\area;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator; // Возвращаем эту строку
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\baskets;
+use App\Models\branchs;
 use App\Models\Cafe;
 use App\Models\Products;
 use App\Models\CategoriesCafes;
@@ -17,40 +19,27 @@ use App\Models\Categories;
 use App\Models\comments;
 use App\Models\orderCustoms;
 use App\Models\orders;
+use App\Models\street;
 use Illuminate\Auth\Events\Validated;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        $cafe = Cafe::with("categoriesCafe")->take(8)->get();
         $product = Products::with("Categories")->take(8)->get();
-        $categoria = Categories::all()->take(8);
-        $categoria_cafe = CategoriesCafes::all()->take(6);
-        $cafeJson = json_encode($cafe->pluck('title')->toArray());
+        $categoria = Categories::all()->take(12);
+        $area= area::all();
         $productJson = json_encode($product->pluck('title')->toArray());
-        return view('index', [
-            "cafe" => $cafe, "categorcafe" => $categoria_cafe, "product" => $product, "categoria" => $categoria, "cafeJson" => $cafeJson,
-            "productJson" => $productJson,
-        ]);
+        return view('index', [ "product" => $product, "categoria" => $categoria,"productJson" => $productJson,
+        'areas' => $area
+        ]); 
     }
     public function product_blade_cate()
     {
         $product = Products::with("Categories")->paginate(8);
         $Allcategories = Categories::all();
+   
         return view('product', compact('product'), ["categories" => $Allcategories]);
-    }
-    public function show($id_cafe)
-    {
-        $cafe = Cafe::find($id_cafe);
-        $product_cafe = Products::where('id_cafe', $id_cafe)->get();
-        $comment = comments::where('id_cafe', $id_cafe)->get();
-        $averageRating = DB::table('comments')
-            ->where('id_cafe', $id_cafe)
-            ->avg('rating');
-        $averageRating = number_format($averageRating, 1);
-
-        return view('information', ['cafes' => $cafe, 'product_cafe' => $product_cafe, 'comments' => $comment, 'averageRating' => $averageRating,]);
     }
     public function comment_cafes(Request $request, $id)
     {
@@ -68,7 +57,7 @@ class IndexController extends Controller
         $comment = $request->all();
         $comment_add = comments::create([
             'comments_text' => $comment['comment'],
-            'id_cafe' => $id,
+            'id_product' => $id,
             'id_user' => Auth::id(),
             'rating' => $comment['rating'],
         ]);
@@ -100,21 +89,35 @@ class IndexController extends Controller
         $Allcategories = Categories::all();
         return view('product', compact('product'), ["categories" => $Allcategories]);
     }
-    public function cafe_blade(Request $request)
+    public function branch_blade(Request $request)
     {
+        $area = area::all();
         $sortOrder = $request->get('sort_order');
-        if ($sortOrder == 0) {
-            $cafe = Cafe::with("categoriesCafe")->paginate(8);
-        } else {
-            $cafe = Cafe::where('id_categoriesCafe', $sortOrder)->paginate(8);
+        $branch_query = branchs::query();
+
+        if ($sortOrder) {
+            $branch_query->whereHas('street', function($q) use ($sortOrder) {
+                $q->where('id_area', $sortOrder);
+            });
         }
-        $categoriesCafe = CategoriesCafes::all();
-        return view('cafe', compact('cafe'), ['categorcafe' => $categoriesCafe]);
+        $branchs_first=branchs::first();
+        $branchs = $branch_query->where('id', "!=", $branchs_first->id)->paginate(8);
+        
+    
+        return view('cafe', compact('branchs', 'area','branchs_first'));
     }
     public function goods_blade($id)
     {
         $product = Products::find($id);
-        return view('goods', ['product' => $product]);
+        $currentTime = now()->setTimezone('Asia/Yekaterinburg');
+        $comment = comments::where('id_product', $id)->get();
+        $averageRating = DB::table('comments')
+            ->where('id_product', $id)
+            ->avg('rating');
+            
+        $averageRating = number_format($averageRating, 1);
+
+        return view('goods', ['product' => $product, 'comments' => $comment,'averageRating' => $averageRating,'currentTime' => $currentTime]);
     }
     public function personal_blade()
     {
@@ -131,21 +134,23 @@ class IndexController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('search');
-        $cafe = Cafe::with("categoriesCafe")->get();
+        $categories = Categories::all();
         $product = Products::with("Categories")->get();
-        $cafeJson = json_encode($cafe->pluck('title')->toArray());
+        $categoriesJson = json_encode($categories->pluck('title')->toArray());
         $productJson = json_encode($product->pluck('title')->toArray());
             $products = Products::where('title', 'like', "%{$query}%")
                 ->orWhere('description', 'like', "%{$query}%")
                 ->limit(10)
                 ->get();
-            $cafes = Cafe::where('title', 'like', "%{$query}%")
-                ->orWhere('location', 'like', "%{$query}%")
-                ->limit(10)
-                ->get();
-            $results = $cafes->merge($products)->unique('title')->values()->all();
+                $category = Categories::where('title', 'like', "%{$query}%")->first();
+
+    // Если категория найдена, получаем продукты из этой категории
+    if ($category) {
+        $products = $category->product()->limit(10)->get();
+    }
+            $results = $products->unique('title')->values()->all();
         return view('search', compact('results'), [
-            "cafeJson" => $cafeJson,
+            "categoriesJson" => $categoriesJson,
             "productJson" => $productJson,
         ]);
     }

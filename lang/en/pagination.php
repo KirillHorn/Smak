@@ -16,5 +16,10 @@ return [
     'previous' => '&laquo; Предыдущий',
     'next' => 'Следующий &raquo;',
     'Showing'=>'Следующий',
+    
+    "Showing" => "Показано",
+    "to"=>"до",
+    "results"=> "результатов"
+
 
 ];

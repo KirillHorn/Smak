@@ -1,8 +1,8 @@
-@include('moder.inc.sidebar')
+@include('admin.inc.sidebar')
 <x-alerts/>
 <div class="wrapper">
 <div class="container">
-  <h2 class="text-center">Продукты: удаление|редактирование</h2>
+  <h2 class="text-center">Блюда: удаление|редактирование</h2>
   <table class="table table-striped">
   <thead>
     <tr>
@@ -12,7 +12,6 @@
       <th scope="col">Описание</th>
       <th scope="col">Вес</th>
       <th scope="col">Цена</th>
-      <th scope="col">Заведение</th>
       <th scope="col">Категория</th>
 
     </tr>
@@ -26,9 +25,8 @@
       <td class="align-middle">{{$product->description}}</td>
       <td class="align-middle">{{$product->weight}}</td>
       <td class="align-middle">{{$product->cost}}</td>
-      <td class="align-middle" style="text-transform:capitalize;">{{$product->Cafe->title}}</td>
       <td class="align-middle">{{$product->Categories->title}}</td>
-      <td class="align-middle"><a href="/moder/{{$product->id}}/EditProduct"><button type="submit" class="btn btn-primary button_redact">Редактировать</button></a></td>
+      <td class="align-middle"><a href="/admin/{{$product->id}}/EditProduct"><button type="submit" class="btn btn-primary button_redact">Редактировать</button></a></td>
       <td class="align-middle">
       <form action="{{route ('delete.product' , ['id' => $product->id])}}" method="POST">
                         @csrf

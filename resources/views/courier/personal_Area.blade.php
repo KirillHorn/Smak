@@ -35,11 +35,11 @@
     <div class="container d-flex flex-column gap-3">
         <div class="d-flex gap-3 user_name align-items-center">
             <img alt="иконка пользователя" src="/img/user_cub.svg">
-            <h2 class="">Привет {{Auth::user()->name}}</h2>
+            <h2 class="">Ваш личный кабинет {{Auth::user()->name}}</h2>
         </div>
         <div class="d-flex justify-content-between  nav_personal">
              <a style="color: aliceblue;" id="personal-info" href="/courier/personal_Area">Личная информация</a>
-            <a style="color: aliceblue;" id="available-orders" href="/courier/orders_for_courier">Доступные заказы</a>
+            <a style="color: aliceblue;" id="available-orders" href="/courier/0/orders_for_courier">Доступные заказы</a>
         </div>
         <div class="d-flex flex-column ">
             <div class="d-flex gap-4 information_personal_text">
@@ -76,15 +76,15 @@
                     <form method="POST" action="{{ route('r.update', ['id' => Auth::user()->id]) }}" class=" forma_register d-flex justify-content-center flex-column align-items-center">
                     @csrf
                      @method('PATCH')
+                     <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Фамилия</label>
+                                <input type="text" name="surname" value="{{Auth::user()->surname}}" placeholder=" @error('surname') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <span> @error('surname') {{$message}} @enderror</span>
+                            </div>
                     <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label text_label">Имя</label>
                                 <input type="text" name="name" value="{{Auth::user()->name}}" placeholder=" @error('name') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <span> @error('name') {{$message}} @enderror</span>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Фамилия</label>
-                                <input type="text" name="surname" value="{{Auth::user()->surname}}" placeholder=" @error('surname') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <span> @error('surname') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Отчество</label>
@@ -98,22 +98,22 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Номер телефона</label>
-                                <input type="text" name="phone" value="{{Auth::user()->phone}}" placeholder="  @error('phone') {{$message}}  @enderror" class="form-control" id="tel" aria-describedby="emailHelp" placeholder="+ _ (_ _ _) _ _ _ - _ _ - _ _">
+                                <input type="text" name="phone" value="{{Auth::user()->phone}}" placeholder="8(___) ___-____" class="form-control" id="tel" aria-describedby="emailHelp" placeholder="+ _ (_ _ _) _ _ _ - _ _ - _ _">
                                 <span> @error('phone') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                                <label for="exampleInputPassword1" class="form-label">Старый пароль</label>
                                 <input type="password" name="password" value="" placeholder="  " class="form-control" id="exampleInputPassword1">
                                 @error('password') 
-                                <p> Пароли не совподают
+                                <p> 
                                 {{$message}} 
                                 </p>
                                  @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" name="confirm_password" class="form-label">Повторите пароль</label>
-                                <input type="password" name="confirm_password" value="{{old('confirm_password')}}" placeholder="  " class="form-control" id="exampleInputPassword1">
-                                @error('confirm_password') 
+                                <label for="exampleInputPassword1" name="password_old" class="form-label">Новый пароль</label>
+                                <input type="password" name="password_old" value="{{old('confirm_password')}}" placeholder="  " class="form-control" id="exampleInputPassword1">
+                                @error('password_old') 
                                 {{$message}} 
                                  @enderror
                             </div>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <input type="submit" value="Изменить данные" class="btn btn-primary ">
+                        <input type="submit" value="Изменить данные" class="btn button_update_modal ">
                     </div>
                     </form>
                 </div>
@@ -148,8 +148,14 @@
         <tr class="table_product_tr">
       <th scope="row">{{$orders_current->order_user->id}}</th>
       <td>100₽</td>
-      <td>{{$orders_current->order_user->location}}</td>
-      <td>{{$orders_current->order_user->comment}}</td>
+      <td>{{$orders_current->order_user->street->title_street}}</td>
+      <td>
+      @if (!empty($orders_current->order_user->comment))
+    {{$orders_current->order_user->comment}}
+@else
+    Отсуствует
+@endif
+      </td>
       <td>{{$orders_current->order_user->user->name}}</td>
       <td>{{$orders_current->created_at}}</td>
       <td><a href="{{ route('courier.order', ['id' => $orders_current->id_orders]) }}">Завершить заказ</a></td>
@@ -161,7 +167,21 @@
         @endif
         <div class="d-flex flex-column user_orders orders_for_courier">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
-            <a href="/orders_pdf" class="btn pdf_button" >Сформировать отчёт</a>
+            <a href="#" id="pdf_button" class="btn pdf_button" >Сформировать отчёт</a>
+            <form method="GET" action="{{ route('personal_courier') }}" class="form_date d-flex gap-2">
+       
+        <div class="form-group">
+            <label for="start_date">Начальная дата:</label>
+            <input type="date" id="start_date" name="start_date" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Фильтровать</button>
+        <div class="form-group">
+            <label for="end_date">Конечная дата:</label>
+            <input type="date" id="end_date" name="end_date" class="form-control">
+        </div>
+
+    </form>
+  
             <table class="table table-borderless table_product table_">
   <thead style="border-bottom: 1px solid #A408A7;">
     <tr class="table_product_tr">
@@ -169,6 +189,7 @@
       <th scope="col">Адрес доставки</th>
       <th scope="col">Комментарий</th>
       <th scope="col">Клиент</th>
+      <th scope="col">Время выполнения</th>
       <th scope="col">Дата</th>
       <th scope="col"></th>
     </tr>
@@ -177,11 +198,18 @@
   @foreach ($orders as $orderss)
     <tr class="table_product_tr">
       <th scope="row">{{$orderss->order_user->id}}</th>
-      <td>{{$orderss->order_user->location}}</td>
-      <td>{{$orderss->order_user->comment}}</td>
+      <td>{{$orderss->order_user->street->title_street}}</td>
+      <td>
+      @if (!empty($orderss->order_user->comment))
+    {{$orderss->order_user->comment}}
+@else
+    Отсуствует
+@endif
+      </td>
       <td>{{$orderss->order_user->user->name}}</td>
+      <td>{{ $orderss->difference }}</td>
       <td>{{$orderss->order_user->created_at->format('d.m.Y')}}</td>
-      <td><a href="{{ route('courier.order', ['id' => $orderss->id]) }}">Поподробнее</a></td>
+      <td><a href="/courier/{{$orderss->order_user->id}}/specific_order">Подробнее</a></td>
     </tr>
     @endforeach
 </table>
@@ -216,6 +244,14 @@
 @endif
 
 <script>
+
+    document.getElementById('pdf_button').addEventListener('click', function() {
+        const start_date = document.getElementById('start_date').value;
+        const end_date = document.getElementById('end_date').value;
+        let url = `/orders_pdf?start_date=${start_date}&end_date=${end_date}`;
+        window.location.href = url;
+    });
+
 function readURL(input) { //
     if (input.files && input.files[0]) {
      var reader = new FileReader(); //позволяет читать асинхронно содержимое файлов, хранящийся на пк
@@ -237,5 +273,12 @@ function readURL(input) { //
     //   ('message').classList.remove("d-flex");
    }, 10000);
    
-   
+
+//Код jQuery, установливающий маску для ввода телефона элементу input
+//1. После загрузки страницы,  когда все элементы будут доступны выполнить...
+$(function(){
+  //2. Получить элемент, к которому необходимо добавить маску
+  $("#phone").mask("8(999) 999-9999");
+});
+
 </script>

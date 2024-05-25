@@ -21,22 +21,23 @@ class AuthController extends Controller
          "surname" => "required|alpha",
          "patronymic" => "required|alpha",
          "email" => "required|unique:users|email",
-         "phone" => "required|numeric|min:11",
-         "password" => "required",
+         "phone" => "required|min:11",
+         "password" => "required|min:8",
          "confirm_password" => "required|same:password"],
          [
             "email.required" => "Поле обязательно для заполнения!",
             "email.email" => "Введите корректный email",
             "email.unique" => "Данный email уже занят",
             "name.required" => "Поле обязательно для заполнения!",
-            "name.alpha" => "Имя должно состоять только из букв!",
+            "name.alpha" => "Имя должна состоять только из букв!",
             "surname.required" => "Поле обязательно для заполнения!",
-            "surname.alpha" => "Фамилия должно состоять только из букв!",
+            "surname.alpha" => "Фамилия должна состоять только из букв!",
             "patronymic.required" => "Поле обязательно для заполнения!",
-            "patronymic.alpha" => "Отчество должно состоять только из букв!",
+            "patronymic.alpha" => "Отчество должна состоять только из букв!",
             "phone.required" => "Поле обязательно для заполнения!",
-            "phone.numeric" => "Номер только из цифр!",
+            "phone.min" => "Поле должно состоять из 11 символов!",
             "password.required" => "Поле обязательно для заполнения!",
+            "confirm_password.same" => "Пароли должны совпадать!",
             "confirm_password.required" => "Поле обязательно для заполнения!",
          ]);
       $userInfo = $request->all();
@@ -79,12 +80,10 @@ class AuthController extends Controller
             "password" => $user_auth['password']
          ])
       ) {
-         if (Auth::user()->id_role == 2) {
-            return redirect("/moder/cafesModer")->with("success", "Вы вошли модер! ");
-         } elseif(Auth::user()->id_role == 1) {
+         if (Auth::user()->id_role == 1) {
             return redirect("/users/personal_Area")->with("success", "Вы вошли " . Auth::user()->name . "!");
          } elseif (Auth::user()->id_role == 4) {
-            return redirect("/admin/1/applicationsUser")->with("success", "Вы вошли как администратор!");
+            return redirect("/admin/{id}/applicationsCourier")->with("success", "Вы вошли как администратор!");
          } else {
             return redirect("/courier/personal_Area")->with("success", "Вы вошли как курьер " . Auth::user()->name . "!");
          }
@@ -93,6 +92,11 @@ class AuthController extends Controller
          return redirect()->back()->with("error", "Неверный логин или пароль");
       }
    }
+   // Route::get('/admin/{id}/applicationsUser', [adminController::class, 'applicationModer']);
+
+   // Route::get('/{id}/applicationAccepted', [adminController::class, 'applicationAccepted']);
+
+   // Route::get('/{id}/applicationDeviation', [adminController::class, 'applicationDeviation']);
 
    public function signout()
    { //выход из аутентификация
@@ -108,7 +112,7 @@ class AuthController extends Controller
          "surname" => "required|alpha",
          "patronymic" => "required|alpha",
          "email" => "required",
-         "phone" => "required|numeric",
+         "phone" => "required|min:11",
          "password" => "required|min:8",
          "password_old" => "required"],
          [
@@ -122,7 +126,7 @@ class AuthController extends Controller
             "patronymic.required" => "Поле обязательно для заполнения!",
             "patronymic.alpha" => "Отчество должно состоять только из букв!",
             "phone.required" => "Поле обязательно для заполнения!",
-            "phone.numeric" => "Номер только из цифр!",
+            "phone.min" => "Не меньше 11 символов!",
             "password.required" => "Поле обязательно для заполнения!",
             "password.min" => "Новый пароль должен быть не короче 8 символов!",
             "password_old.required" => "Поле обязательно для заполнения!",

@@ -12,7 +12,6 @@
                 <h2> Доставка еды из заведений Уфы</h2>
             </div>
             <div class="d-flex flex-column gap-4">
-                <!-- <input type="search" class="search_content"> -->
                 <div class="d-flex flex-wrap gap-4  a_content_categories">
                     <a href="{{ route ('products',  ['sort_order' => '0']) }}" style=" color:#A408A7;">Все категории</a>
                     @foreach ($categories as $categories_product)
@@ -39,10 +38,15 @@
             </div>
             @endforeach
         </div>
-        {{ $product->withQueryString()->links('pagination::bootstrap-5') }}
+        <div id="pagination-container">
+            {{ $product->withQueryString()->links('pagination::bootstrap-5') }}
+        </div>
     </div>
 
     </div>
 </section>
 
 <x-footer />
+<script>
+    
+</script>

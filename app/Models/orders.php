@@ -16,7 +16,11 @@ class orders extends Model
         'comment',
         'paymant',
         'id_status',
-        'location',
+        'id_street',
+        'id_brach',
+        'location_details',
+        'start_order',
+        'end_order',
         'created_at',
     ];
 
@@ -34,5 +38,10 @@ class orders extends Model
     {
         return $this->belongsTo(statuses::class, 'id_status');
     }
-    
+    public function street() {
+        return $this->belongsTo(street::class,'id_street');
+    }
+    function brach_order() {
+        return $this->belongsTo(branchs::class,"id_brach","id");
+    }
 }

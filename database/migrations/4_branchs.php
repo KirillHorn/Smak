@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('branchs', function (Blueprint $table) { 
             $table->id();
-            $table->foreignId('id_user')->references('id')->on('users');
-            $table->foreignId('id_product')->references('id')->on('products')->onDelete('cascade');
-            $table->string('comments_text',120);
-            $table->integer('rating'); 
+            $table->string('title',100);
+            $table->string('img',100);
+            $table->foreignId('id_street')->references('id')->on('streets');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('cafes');
     }
 };

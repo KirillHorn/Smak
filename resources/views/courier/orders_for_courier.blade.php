@@ -29,24 +29,33 @@
     </div>
   @endif
 
-
-<section>
-
-    <div class="container d-flex flex-column gap-5">
+  <section class="mb-5">
+    <div class="container d-flex flex-column gap-4  ">
         <div class="d-flex gap-3 user_name align-items-center">
             <img alt="иконка пользователя" src="/img/user_cub.svg">
-            <h2 class="">Привет, Пользователь</h2>
+            <h2 class="">Доступные заказы</h2>
         </div>
-        <div class="d-flex justify-content-between  nav_personal">
+        <div class="d-flex justify-content-between nav_personal">
             <a style="color: aliceblue;" id="get" href="/courier/personal_Area">Личная информация</a>
             <a style="color: aliceblue;" id="get" href="/courier/orders_for_courier">Доступные заказы</a>
         </div>
-        <table class="table  table_courier">
+        <div class="d-flex flex-column gap-4">
+                                    <div class="d-flex flex-wrap gap-4 justify-content-between  a_content_categories courier_order_area">
+                                        <a href="/courier/0/orders_for_courier" >Все районы</a>
+                                            @foreach ($area as $areas)
+                                        <a  href= "/courier/{{$areas->id}}/orders_for_courier" >{{$areas->title_area}}</a>
+                                        @endforeach
+                                     </div>
+                             </div>
+        <table class="table table_courier mb-0">
             <thead>
                 <tr>
                     <th scope="col">Номер заказа</th>
                     <th scope="col">Имя клиента</th>
-                    <th scope="col">Адрес доставки</th>
+                    <th scope="col">Филиал</th>
+                    <th scope="col">Улица филиала</th>
+                    <th scope="col">Район филиала</th>
+                    <th scope="col">Улица заказа</th>
                     <th scope="col">Способ оплаты</th>
                     <th scope="col"></th>
                 </tr>
@@ -54,22 +63,25 @@
             <tbody>
                 @forelse ($orders as $order_user)
                 <tr>
-                    <td>{{$order_user->id}}</td>
-                    <td>{{$order_user->user->name}}.{{$order_user->user->name}}</td>
-                    <td>{{$order_user->location}}</td>
-                    <td>{{$order_user->paymant}}</td>
-                    <td><a href="{{ route('courier.order', ['id' => $order_user->id]) }}" class="courier_button    ">Принять</a></td>
+                    <td>{{ $order_user->id }}</td>
+                    <td>{{ $order_user->user->name }}</td>
+                    <td>№{{ $order_user->branch_title }}</td>
+                    <td>{{ $order_user->branch_street }}</td>
+                    <td>{{ $order_user->branch_area }}</td>
+                    <td>{{ $order_user->order_street }}</td>
+                    <td>{{ $order_user->paymant }}</td>
+                    <td><a href="{{ route('courier.order', ['id' => $order_user->id]) }}" class="courier_button">Принять</a></td>
                 </tr>
                 @empty
+                <tr>
+                    <td colspan="8">Нет доступных заказов</td>
+                </tr>
                 @endforelse
-                {{ $orders->links() }}
-                <!-- Добавьте более строк, если требуется -->
             </tbody>
         </table>
+        {{ $orders->withQueryString()->links('pagination::bootstrap-5') }}
     </div>
-
-    </section>
-
+</section>
 <x-footer />
 
 <script>

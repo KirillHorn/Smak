@@ -35,7 +35,7 @@
     <div class="container d-flex flex-column gap-3">
         <div class="d-flex gap-3 user_name align-items-center">
             <img alt="иконка пользователя" src="/img/user_cub.svg">
-            <h2 class="">Привет {{Auth::user()->name}}</h2>
+            <h2 class="">Ваш личный кабинет {{Auth::user()->name}}</h2>
         </div>
         <div class="d-flex justify-content-between  nav_personal">
             <a style="color: aliceblue;" id="get">Личная информация</a>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <input type="submit" value="Изменить данные" class="btn button_update_modal">
+                        <input type="submit" value="Изменить данные" class="btn button_update_modal" style="background-color: #A408A7;">
                     </div>
                     </form>
                 </div>
@@ -147,7 +147,7 @@
                 <tr class="table_product_tr">
                     <th scope="row">{{$orderss->id}}</th>
                     <td>{{$orderss->amount}}₽</td>
-                    <td>{{$orderss->location}}</td>
+                    <td>{{$orderss->street->title_street}}</td>
                     <td>{{ $orderss->created_at->format('d.m.Y') }}</td>
                     <td><a href="order_user/{{$orderss->id}}">Подробнее</a></td>
                 </tr>
@@ -201,4 +201,6 @@ function readURL(input) { //
        document.getElementById('message').style.display = 'none';
     //   ('message').classList.remove("d-flex");
    }, 10000);
+
+
 </script>

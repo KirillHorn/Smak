@@ -75,4 +75,6 @@ class User extends Authenticatable
     function cafe() {
         return $this->hasMany(Cafe::class,"id_users");
     }
+
+   
 }

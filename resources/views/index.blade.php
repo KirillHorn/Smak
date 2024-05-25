@@ -7,31 +7,8 @@
             <div class="banner_text d-flex flex-column "> 
             <h1>АППЕТИТНЫЕ ЦЕНЫ ЖДУТ ВАС!<span>И не только!</span></h1>
           
-            <a class="aaaa">Поподробнее</a>
+            <a class="aaaa" href="{{ route('products', ['sort_order' => '0']) }}">Поподробнее</a>
             </div>
-        </div>
-    </section>
-    <section class="section_cafe">
-        <div class="container">
-            <div class="d-flex justify-content-between cafe_text">
-                <h2 class="fw-bold">Самые популярные заведения</h2>
-                <a href="cafe">Перейти к заведениям <img src="/img/devices.png"></a>
-            </div>
-              
-                
-        
-                <div class="d-flex d-flex  flex-wrap gap-3 cafe">
-            @foreach ($cafe as $cafe_info)
-            <div class="cart_cafe cart_product cart_product_text">
-                 <a href=" {{route('show.r', ['id_cafe'=>$cafe_info->id])}}">
-                    <img src="/storage/img/{{$cafe_info->img}}" alt="картинка заведения">
-                    <p style="color: #ffffff;" class="fw-bolder">{{$cafe_info->categoriesCafe->title_categories}} • ₽</p>
-                    <p style="color: #ffffff;" class="fw-bold">{{$cafe_info->title}}</p>
-                </a>
-            </div>
-            @endforeach
-        </div>
-                    
         </div>
     </section>
     <section>
@@ -80,7 +57,7 @@
                 <div class="d-flex align-items-center justify-content-between flex-wrap text-around mt-5 categories_container">
                     <div class="categories_block p-5 d-flex flex-column ">
                         <h3>Любые категории блюд</h3>
-                        <p>Привезём блюда из кафе и ресторанов</p>
+                        <p>Привезём блюда из любого филиала</p>
                             <div class="categories_link d-flex flex-wrap gap-3 mb-3">
                                 @foreach($categoria as $categories_product)
                                 <a href="{{ route ('products',  ['sort_order' => $categories_product->id]) }}" >{{$categories_product->title}}</a>   
@@ -89,14 +66,14 @@
                             <a href="{{ route('products', ['sort_order' => '0']) }}" class="mt-1 all_categories"  >Все блюда</a>
                     </div>
                     <div  class="categories_block p-5 d-flex flex-column">
-                        <h3>Многообразие вкусов</h3>
-                        <p>Выберите свою любимую кухню!</p>
+                        <h3>Филиалы по всему городу</h3>
+                        <p>Выберите свой район!</p>
                             <div class="categories_link d-flex flex-wrap gap-3 mb-3">
-                            @foreach ($categorcafe as $categorcafes)
-    <a href= "{{route ('cafe',['sort_order' => $categorcafes->id ]) }}" class="">{{$categorcafes->title_categories}}</a>
+                            @foreach ($areas as $area)
+    <a href= "{{route ('cafe',['sort_order' => $area->id ]) }}" class="">{{$area->title_area}}</a>
 @endforeach
                             </div>
-                            <a href="{{ route('cafe', ['sort_order' => '0']) }}" class="mt-1 all_categories"  >Все кухня</a>
+                            <a href="{{ route('cafe', ['sort_order' => '0']) }}" class="mt-1 all_categories"  style="width: 28%;">Все районы</a>
                     </div>
                 </div>
                 
