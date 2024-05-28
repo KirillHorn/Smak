@@ -94,10 +94,12 @@ class OrderController extends Controller
         $request->validate([
             'id_street' => 'required',
             'location_details_home' => 'required',
+            'location_details_appart' => 'required',
         ], [
-            'location.required' => 'Это обязательное поле!',
             'id_street.required' => 'Это обязательное поле!',
+            'location.required' => 'Это обязательное поле!',
             'location_details_home.required' => 'Это обязательное поле!',
+            'location_details_appart.required' => 'Это обязательное поле!',
         ]);
         $infoOrder = $request->all();
         $location = $request->location_details_home." ". $request->location_details_appart;

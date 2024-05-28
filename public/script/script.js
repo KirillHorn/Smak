@@ -66,24 +66,7 @@ $(function(){
   $("#phone").mask("8(999) 999-9999");
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var ratingResults = document.querySelectorAll('.rating-result');
-  
-    for (var i = 0; i < ratingResults.length; i++) {
-      var ratingResult = ratingResults[i];
-      var rating = ratingResult.getAttribute('data-rating');
-      var spans = ratingResult.querySelectorAll('span');
-  
-      for (var j = 0; j < spans.length; j++) {
-        var span = spans[j];
-  
-        if (j < rating) {
-          span.classList.add('active');
-        } else {
-          span.classList.remove('active');
-        }
-      }
-    }
+
   
     document.getElementById('comment').addEventListener('input', function() {
       const maxLength = 100;

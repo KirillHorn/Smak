@@ -26,13 +26,7 @@ Route::get('/cafe', [IndexController::class, 'branch_blade'])->name("cafe");
 
 Route::get('/search', [IndexController::class, 'search']);
 
-Route::get('/information/{id_cafe}', [IndexController::class, 'show'])->name('show.r');
-
 Route::get('/baskets',[OrderController::class, 'getBaskets']);
-
-Route::get('/application', [ModerController::class, 'application_add']);
-
-Route::post('/application_add_validate', [ModerController::class, 'application_add_validate']);
 
 Route::get('/goods/{id}', [IndexController::class, 'goods_blade'])->name('goods.r');
 
@@ -40,6 +34,9 @@ Route::get('/application_courier', [courierController::class, 'courier_blade']);
 
 Route::post('/registration_courier', [courierController::class, 'registration_courier']);
 
+Route::get('/auth/registration', [AuthController::class, 'registration_page']);
+
+Route::post('/registration_valid', [AuthController::class, 'registration_valid']);
 
 Route::middleware('checkRole:Клиент')->group(function () {
 
@@ -48,8 +45,6 @@ Route::middleware('checkRole:Клиент')->group(function () {
     Route::get('/users/order_user/{id}', [IndexController::class, 'personal_orders']);
 
     Route::post('/{id}/comment_cafes', [IndexController::class, 'comment_cafes']);
-
-    
 
     Route::get('/baskets/{id}', [OrderController::class, 'baskets'])->name('basket.r');
 
@@ -65,27 +60,8 @@ Route::middleware('checkRole:Клиент')->group(function () {
 
 Route::patch('users/personal_Area/{id}/registration_redact', [AuthController::class, 'registration_redact'])->name('r.update');
 
-
-
-
-
-
-
-
-  
-
-    Route::get('/moder/cafesModer', [ModerController::class, 'cafesModer']);
-
-
-
-
-
-
-
 Route::middleware('checkRole:Курьер')->group(function () {
 
-  
-    
     Route::get('/courier/personal_Area', [courierController::class, 'personal_courier'])->name('personal_courier');
     
     Route::get('/courier/{area_id}/orders_for_courier', [courierController::class, 'orders_courier']);
@@ -138,7 +114,6 @@ Route::middleware('checkRole:Администратор')->group(function () {
 
     Route::delete('/admin/{id}/delete_product', [adminController::class, 'delete_product'])->name('delete.product'); //удаление продукта
 
-
     Route::post('/edit_product', [adminController::class, 'edit_product']);
 
     Route::get('/admin/serviceEditProduct', [adminController::class, 'serviceProduct_blade']); // все продукты
@@ -147,13 +122,12 @@ Route::middleware('checkRole:Администратор')->group(function () {
 
     Route::post('/admin/{id}/updateProduct', [adminController::class, 'updateProduct'])->name('products.update');
 
+    Route::PATCH('/admin/categories_update/{id}', [adminController::class, 'categories_update'])->name('edit.update.categories');
+
 });
 
-Route::get('/auth/registration', [AuthController::class, 'registration_page']);
 
-Route::post('/registration_valid', [AuthController::class, 'registration_valid']);
 
-Route::PATCH('/admin/categories_update/{id}', [adminController::class, 'categories_update'])->name('edit.update.categories');
 
 
 

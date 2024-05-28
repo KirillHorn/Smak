@@ -29,15 +29,8 @@ public function order()
 {
     return $this->hasMany(orders::class, 'id');
 }
-protected static function boot()
+public static function getBranchCount()
 {
-    parent::boot();
-
-    static::deleting(function($cafe) {
-        $user = User::find($cafe->id_user);
-        if ($user) {
-            $user->delete();
-        }
-    });
+    return self::count();
 }
 }

@@ -33,7 +33,7 @@
 
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Номер телефона</label>
-        <input type="text" name="phone" value="{{old('phone')}}" placeholder="8(___) ___-____" class="form-control" id="phone" aria-describedby="emailHelp">
+        <input type="text" name="phone" value="{{old('phone')}}" class="form-control" aria-describedby="emailHelp">
         <span> @error('phone') {{$message}} @enderror</span>
       </div>
 
@@ -43,11 +43,3 @@
 </section>
 
 <x-footer />
-<script>
-//Код jQuery, установливающий маску для ввода телефона элементу input
-//1. После загрузки страницы,  когда все элементы будут доступны выполнить...
-$(function(){
-  //2. Получить элемент, к которому необходимо добавить маску
-  $("#phone").mask("8(999) 999-9999");
-});
-</script>

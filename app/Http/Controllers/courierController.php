@@ -107,17 +107,17 @@ public function orders_pdf(Request $request)
     $order_query = courier_orders::where('id_courier', Auth::id());
 
     if ($start_date && $end_date) {
-        $order_query->whereHas('order_user', function ($query) use ($start_date, $end_date) {
-            $query->whereBetween('created_at', [$start_date, $end_date]);
-        });
+        $start_date = Carbon::parse($start_date)->startOfDay();
+        $end_date = Carbon::parse($end_date)->endOfDay();
+        $order_query->whereBetween('created_at', [$start_date, $end_date]);
     }
 
     $orders = $order_query->get();
-
-    // Используем компонент Pdf для обработки заказов и генерации PDF
+  
     $pdfComponent = new Pdf_order($orders);
+   
 
-    $pdf = PDF::loadView('components.pdf', ['orders' => $pdfComponent->orders])
+    $pdf = PDF::loadView('components.pdf', ['orders' => $pdfComponent->orders, 'start_date' => $start_date, 'end_date' => $end_date])
         ->setPaper('a4')
         ->setOptions(['defaultFont' => 'Arial'])
         ->setOption('charset', 'utf-8');
@@ -191,7 +191,7 @@ public function orders_pdf(Request $request)
           courier_orders::create([
               'id_orders' => $orders_personal->id,
               'id_courier' => Auth::id(),
-              'time_order_courier' => Carbon::now() // Установка времени начала
+              
           ]);
       }
   
@@ -207,7 +207,6 @@ public function orders_pdf(Request $request)
       $orders_personal->id_status = 3;
       $orders_personal->end_order = Carbon::now(); 
       $order_courier = courier_orders::where('id_orders', $id)->first();
-      $order_courier->time_order_courier = $orders_personal->end_order; 
       $order_courier->save();
   
       if ($orders_personal->save()) {

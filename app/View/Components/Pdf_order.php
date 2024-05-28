@@ -13,19 +13,10 @@ class Pdf_order extends Component
      *
      * @param $orders
      */
-    public function completedOrdersCount()
-    {
-        // Логика для подсчета завершенных заказов
-        $completedOrders = $this->orders->filter(function ($order) {
-            return $order->status == 'completed';
-        });
-
-        return $completedOrders->count();
-    }
+ 
     public function __construct($orders)
     {
         $this->orders = $orders;
-        $this->completedOrdersCount();
     }
 
  

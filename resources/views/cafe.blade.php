@@ -1,24 +1,17 @@
 <x-x-header />
-<section class="section_product_nav">
+<section class="section_product_nav" style="height: 300px;">
     <div class="container d-flex flex-column gap-3">
-        <div class="directory_nav">
+        <div class="directory_nav directory_nav_cafe">
             <a>О нас</a>
             <span>→</span>
             <a>Филиалы</a>
         </div>
-        <div class="navigation d-flex flex-column gap-3">
+        <div class="navigation navigation_cafe d-flex flex-column gap-3">
             <div>
-                <span>42 точки</span>
-                <h2> Доставка еды в любой район</h2>
+                <span>{{$branchCount}} точек</span>
+                <h2>Филиалы по всей уфе!</h2>
             </div>
-            <div class="d-flex flex-column gap-4">
-                <div class="d-flex flex-wrap gap-3  a_content_categories ">
-                    <a href="{{ route('cafe', ['sort_order' => '0']) }}">Все районы</a>
-                    @foreach ($area as $areas)
-                    <a href="{{route ('cafe',['sort_order' => $areas->id ]) }}">{{$areas->title_area}}</a>
-                    @endforeach
-                </div>
-            </div>
+           
         </div>
     </div>
     <section style="background-color: #fff; padding-bottom:40px;">

@@ -218,7 +218,7 @@ class adminController extends Controller
     public function delete_product(Products $id)
     {
         $id->delete();
-        return redirect()->back()->with("success", "Удаление продукта прошло успешно");
+        return redirect()->back()->with("success", "Удаление блюда прошло успешно");
 
     }
     public function edit_product(Request $request)
@@ -295,7 +295,7 @@ class adminController extends Controller
                 'id_categories'=>$infoproduct['id_categories'],
                 ]);
             if ($id->save()) {
-                return redirect("/admin/serviceEditProduct")->with("success", "Редактирование блюдо прошло успешно");
+                return redirect("/admin/serviceEditProduct")->with("success", "Редактирование блюда прошло успешно");
             } else {
                 return redirect()->back()->with("error", "Ошибка в редактирование!");
             }

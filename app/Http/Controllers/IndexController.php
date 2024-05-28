@@ -91,20 +91,13 @@ class IndexController extends Controller
     }
     public function branch_blade(Request $request)
     {
-        $area = area::all();
         $sortOrder = $request->get('sort_order');
         $branch_query = branchs::query();
-
-        if ($sortOrder) {
-            $branch_query->whereHas('street', function($q) use ($sortOrder) {
-                $q->where('id_area', $sortOrder);
-            });
-        }
+        $branchCount = branchs::getBranchCount();
         $branchs_first=branchs::first();
         $branchs = $branch_query->where('id', "!=", $branchs_first->id)->paginate(8);
-        
-    
-        return view('cafe', compact('branchs', 'area','branchs_first'));
+
+        return view('cafe', compact('branchs', 'branchs_first','branchCount'));
     }
     public function goods_blade($id)
     {

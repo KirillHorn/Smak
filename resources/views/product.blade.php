@@ -26,7 +26,7 @@
 
 <section class="product_section">
     <div class="container">
-        <div class="d-flex d-flex  flex-wrap gap-3 cafe">
+        <div class="d-flex d-flex justify-content-between  flex-wrap gap-3 cafe">
             @foreach ($product as $products)
             <div class="cart_cafe cart_product cart_product_text">
                 <a href="{{route ('goods.r', ['id'=>$products->id])}}">
@@ -50,3 +50,6 @@
 <script>
     
 </script>
+
+
+

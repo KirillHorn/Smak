@@ -37,7 +37,7 @@
                 <h2 class="fw-bold">Самые популярные блюда</h2>
                 <a href="{{ route('products', ['sort_order' => '0']) }}">Перейти к блюдам <img src="/img/bxs_dish.png"></a>
             </div>
-            <div class="d-flex d-flex  flex-wrap gap-3 cafe">
+            <div class="d-flex d-flex  justify-content-between flex-wrap gap-3 cafe">
             @foreach ($product as $products)
             <div class="cart_cafe cart_product cart_product_text">
                 <a href="{{route ('goods.r', ['id'=>$products->id])}}">
@@ -65,16 +65,11 @@
                             </div>
                             <a href="{{ route('products', ['sort_order' => '0']) }}" class="mt-1 all_categories"  >Все блюда</a>
                     </div>
-                    <div  class="categories_block p-5 d-flex flex-column">
-                        <h3>Филиалы по всему городу</h3>
-                        <p>Выберите свой район!</p>
-                            <div class="categories_link d-flex flex-wrap gap-3 mb-3">
-                            @foreach ($areas as $area)
-    <a href= "{{route ('cafe',['sort_order' => $area->id ]) }}" class="">{{$area->title_area}}</a>
-@endforeach
-                            </div>
-                            <a href="{{ route('cafe', ['sort_order' => '0']) }}" class="mt-1 all_categories"  style="width: 28%;">Все районы</a>
-                    </div>
+          
+
+                <div style="position:relative;overflow:hidden;" class="map_main"><a href="https://yandex.ru/maps/172/ufa/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Уфа</a><a href="https://yandex.ru/maps/172/ufa/house/ulitsa_tsyurupy_97k3/YUwYfwJnT0MAQFtufXtyd3lnYQ==/?indoorLevel=1&ll=55.960964%2C54.736354&utm_medium=mapframe&utm_source=maps&z=16.83" style="color:#eee;font-size:12px;position:absolute;top:14px;">Улица Цюрупы, 97к3 — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=55.960964%2C54.736354&mode=poi&poi%5Bpoint%5D=55.957936%2C54.736379&z=16.83" width="500" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+          
+                    
                 </div>
                 
 

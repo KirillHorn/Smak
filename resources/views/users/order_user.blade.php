@@ -21,6 +21,7 @@
 @endif
         </p>
             <p><span>Адрес доставки:</span> {{$orders_user->street->title_street}}.</p>
+            <p><span>Дом/Квартира:</span> {{$orders_user->location_details}}.</p>
             <p><span>Способ оплаты:</span> {{$orders_user->paymant}}.</p>
             <p><span>Статус заказа:</span> {{$orders_user->status->title}}.</p>
         </div>

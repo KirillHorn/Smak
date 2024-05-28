@@ -208,12 +208,11 @@ input[type=number] {
    color: aliceblue;
 }
 .cart_cafe {
-   width: 24%;
+   width: 20%;
    height: 30%;
-   justify-content: space-between;
 }
 .cart_cafe img {
-   width: 80%;
+   width: 100%;
    height: 215px;
    border-radius: 25px;
 
@@ -293,6 +292,12 @@ transition: 0.2s;
 .categories_link a:hover {
    color: #ffffff;
    background-color: #A408A7;
+}
+.map_main iframe  {
+   margin: 0 auto;
+   width: 600px;
+   height: 400px;
+   margin-bottom: 30px;
 }
 
 /* Подвал сайта  */
@@ -382,15 +387,22 @@ margin: 0 auto;
    margin-top: 50px;
 
 }
+.directory_nav_cafe {
+   margin-top: 30px;
+}
 .directory_nav a {
    font-size: 14px;
 }
 .navigation {
-   padding-bottom: 40px;
-   padding-top: 20px;
+   padding-bottom: 20px;
+   padding-top: 40px;
 }
 .navigation h2 {
  font-size: 32px;
+}
+.navigation_cafe {
+   padding-top:   0px;
+   padding-bottom: 30px;
 }
 .search_content {
    width: 100%;
@@ -479,7 +491,7 @@ input::-webkit-search-results-decoration { display: none; }
 }
 .main_goods {
    width:80%;
-   gap: 200px;
+   gap: 300px;
    color: #A408A7;
   margin-bottom: 40px;
 }
@@ -913,7 +925,6 @@ margin-top: 20px;
    font-weight: 600;
  }
  .form_date {
-   margin: 0 auto;
    color: #ffffff;
    text-align: center;
  }
@@ -926,8 +937,9 @@ margin-top: 20px;
  .pdf_button {
    border: 1px solid #ffffff;
    color: #ffffff;
-   width: 200px;
-   margin: 0 auto;
+   width: 17%;
+   height: 20%;
+   margin-top: 2%;
  }
  .pdf_button:hover {
    background-color: #ffffff;

@@ -17,9 +17,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
   @endif
-
   @if (session ("update"))
-
   <div id="message"  class="alert alert-success alert-dismissible mt-3 position-absolute bottom-0 end-0" role="alert"
         style="max-width:20 rem;">
         <div class="alert-text">
@@ -28,10 +26,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
   @endif
-
-
 <section>
-
     <div class="container d-flex flex-column gap-3">
         <div class="d-flex gap-3 user_name align-items-center">
             <img alt="иконка пользователя" src="/img/user_cub.svg">
@@ -62,9 +57,6 @@
             </div>
                <button type="button" class="button_update" data-bs-toggle="modal" data-bs-target="#signUp" data-bs-whatever="@mdo">Изменить</button>
             </div>
-
-
-
             <div class="modal fade" id="signUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -117,7 +109,6 @@
                                 {{$message}} 
                                  @enderror
                             </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -128,7 +119,6 @@
             </div>
         </div>
         @if ($orders_current)
-
         <div class="d-flex flex-column user_orders">
             <h2 style="text-align: center; color:aliceblue">Текущий заказ</h2>
             <table class="table table-borderless table_product table_">
@@ -144,7 +134,6 @@
     </tr>
   </thead>
   <tbody>
-
         <tr class="table_product_tr">
       <th scope="row">{{$orders_current->order_user->id}}</th>
       <td>100₽</td>
@@ -160,28 +149,26 @@
       <td>{{$orders_current->created_at}}</td>
       <td><a href="{{ route('courier.order', ['id' => $orders_current->id_orders]) }}">Завершить заказ</a></td>
     </tr>
-</table>
-         
-            
+</table> 
         </div>
         @endif
         <div class="d-flex flex-column user_orders orders_for_courier">
             <h2 style="text-align: center; color:aliceblue">Ваши заказы</h2>
+                <div class="d-flex justify-content-between flex-wrap" style="margin:0px 10px;">
             <a href="#" id="pdf_button" class="btn pdf_button" >Сформировать отчёт</a>
             <form method="GET" action="{{ route('personal_courier') }}" class="form_date d-flex gap-2">
-       
         <div class="form-group">
             <label for="start_date">Начальная дата:</label>
             <input type="date" id="start_date" name="start_date" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Фильтровать</button>
+ 
         <div class="form-group">
             <label for="end_date">Конечная дата:</label>
             <input type="date" id="end_date" name="end_date" class="form-control">
         </div>
-
+        <button type="submit" class="btn btn-primary">Фильтровать</button>
     </form>
-  
+            </div>
             <table class="table table-borderless table_product table_">
   <thead style="border-bottom: 1px solid #A408A7;">
     <tr class="table_product_tr">
@@ -208,7 +195,7 @@
       </td>
       <td>{{$orderss->order_user->user->name}}</td>
       <td>{{ $orderss->difference }}</td>
-      <td>{{$orderss->order_user->created_at->format('d.m.Y')}}</td>
+      <td>{{$orderss->created_at->format('d.m.Y')}}</td>
       <td><a href="/courier/{{$orderss->order_user->id}}/specific_order">Подробнее</a></td>
     </tr>
     @endforeach
@@ -245,12 +232,16 @@
 
 <script>
 
-    document.getElementById('pdf_button').addEventListener('click', function() {
-        const start_date = document.getElementById('start_date').value;
-        const end_date = document.getElementById('end_date').value;
-        let url = `/orders_pdf?start_date=${start_date}&end_date=${end_date}`;
+document.getElementById('pdf_button').addEventListener('click', function() {
+    const start_date = document.getElementById('start_date').value;
+    const end_date = document.getElementById('end_date').value;
+    if (start_date && end_date) {
+        let url = `/orders_pdf?start_date=${encodeURIComponent(start_date)}&end_date=${encodeURIComponent(end_date)}`;
         window.location.href = url;
-    });
+    } else {
+        alert('Пожалуйста, выберите даты.');
+    }
+});
 
 function readURL(input) { //
     if (input.files && input.files[0]) {

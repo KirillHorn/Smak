@@ -14,15 +14,17 @@
                         <img src="/img/fluent-mdl2_street.svg">
                         <input type="search" name="id_street" placeholder="Выберите улицу" class="input_adress" id="tags">
                         <div id="tags_results" class="search-results" style="max-height: 200px; overflow-y: auto;"></div>
-                        @error('location') {{$message}} @enderror
+                        <p>@error('id_street') {{$message}} @enderror</p>  
                     </div>
-                    <div>
+                    <div class="d-flex">
                         <img src="/img/home.svg">
                         <input type="text" name="location_details_home" placeholder="Введите дом" class="input_adress" id="location_details">
+                        <p>@error('location_details_home') {{$message}} @enderror</p>  
                     </div>
-                    <div>
+                    <div class="d-flex">
                         <img src="/img/home.svg">
                         <input type="text" name="location_details_appart" placeholder="Введите квартиру" class="input_adress">
+                        <p>@error('location_details_appart') {{$message}} @enderror</p> 
                     </div>
                     <input type="text" class="input_commen" placeholder="Комментарий курьеру" id="comment" name="comment">
                     @error('comment') {{$message}} @enderror

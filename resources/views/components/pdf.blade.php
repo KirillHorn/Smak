@@ -53,7 +53,6 @@
           border-radius: 20px;
           font-size: 14px;
           margin-bottom: 10px;
-          color: ;
         }
         .table_widt {
          
@@ -65,10 +64,12 @@
 <body>
 <div class="container mt-5">
 <div class="d-flex flex-column" style="margin-bottom: 0px;">
-            <h2 style="">Ваши заказы</h2>
+            <h2 style="">Ваши заказы {{Auth::user()->name}} </h2>
             <div class="d-flex info_courier_table">
-              <p style="font-family: DejaVu Sans;">Всего выполнено заказов:<span>{{ $orders->count() }}</span></p>
+            <p style="font-family: DejaVu Sans;">за период: <span>{{ $start_date->format('d.m.Y')}}-{{$end_date->format('d.m.Y')}}</span></p>
+            <p style="font-family: DejaVu Sans;">Всего выполнено заказов:<span>{{ $orders->count() }}</span></p>
               <p style="font-family: DejaVu Sans;">Вы заработали: <span>{{ $orders->count() * 100 }}₽</span></p>
+
             </div>
             <table class="table table-borderless table_product table_">
   <thead style="border-bottom: 1px solid #000;">
