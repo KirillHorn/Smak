@@ -24,7 +24,7 @@
                   <p><span>Категория:</span> {{$product->Categories->title}} </p>
                   <p style="width:400px;"><span>Описание:</span> {{$product->description}} </p>
                 
-                  <p><span>Вес:</span> {{$product->weight}}</p>
+                  <p><span>Вес:</span> {{$product->weight}}грам</p>
                   <hr>
                 </div>
                 @auth
@@ -143,4 +143,68 @@
       }
     }
   });
+  
+    document.getElementById('comment').addEventListener('input', function() {
+      const maxLength = 100;
+      const remaining = maxLength - this.value.length;
+      const charCount = document.getElementById('charCount');
+      
+      charCount.textContent = "Осталось символов: " + remaining;
+      
+      if (this.value.length > maxLength) {
+        charCount.classList.add('red');
+      } else {
+        charCount.classList.remove('red');
+      }
+    });
+  
+    document.getElementById('comment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const data = new FormData(this);
+            const errorDiv = document.getElementById('error-message');
+            const productId = "{{$product->id}}"; // Получите ID продукта
+
+            fetch('/' + productId + '/comment_cafes', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    addCommentToPage(data.comment);
+                    this.reset();
+                    document.getElementById('charCount').textContent = "Осталось символов: 100";
+                } else {
+                    errorDiv.textContent = data.error;
+                    errorDiv.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorDiv.textContent = 'Произошла ошибка при отправке отзыва';
+                errorDiv.style.display = 'block';
+            });
+        });
+
+        function addCommentToPage(comment) {
+            var template = document.getElementById('comment-template').innerHTML;
+            var ratingStars = '';
+
+            for (var i = 1; i <= 5; i++) {
+                ratingStars += i <= comment.rating ? '<i class="fas fa-star purple-star"></i>' : '<i class="far fa-star purple-star"></i>';
+            }
+
+            var commentHtml = template
+                .replace('__USERNAME__', comment.username)
+                .replace(/__RATING__/, ratingStars)
+                .replace('__COMMENT__', comment.comment);
+
+            var commentsContainer = document.getElementById('comments-container');
+            commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
+        }
+
 </script>

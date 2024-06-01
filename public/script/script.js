@@ -65,82 +65,23 @@
 $(function(){
   $("#phone").mask("8(999) 999-9999");
 });
+document.addEventListener('DOMContentLoaded', function() {
+  // Получаем все элементы input
+  const inputs = document.querySelectorAll('input');
 
+  // Для каждого input добавляем обработчик события focus
+  inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+          // Удаляем класс is-invalid
+          this.classList.remove('is-invalid');
 
-  
-    document.getElementById('comment').addEventListener('input', function() {
-      const maxLength = 100;
-      const remaining = maxLength - this.value.length;
-      const charCount = document.getElementById('charCount');
-      
-      charCount.textContent = "Осталось символов: " + remaining;
-      
-      if (this.value.length > maxLength) {
-        charCount.classList.add('red');
-      } else {
-        charCount.classList.remove('red');
-      }
-    });
-  
-    document.getElementById('comment-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-  
-      var form = this;
-      var url = form.action;
-      var data = new FormData(form);
-      var comment = document.getElementById('comment').value;
-      var errorDiv = document.getElementById('error');
-  
-      if (comment.length > 100) {
-        errorDiv.textContent = "Отзыв не должен превышать 100 символов";
-        errorDiv.style.display = 'block';
-        return; // Prevent form submission if comment length exceeds 100
-      } else {
-        errorDiv.style.display = 'none';
-      }
-  
-      fetch(url, {
-        method: 'POST',
-        body: data,
-        headers: {
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          addCommentToPage(data.comment);
-          form.reset();
-          document.getElementById('charCount').textContent = "Осталось символов: 100";
-        } else {
-          errorDiv.textContent = data.error;
-          errorDiv.style.display = 'block';
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        errorDiv.textContent = 'Произошла ошибка при отправке отзыва';
-        errorDiv.style.display = 'block';
+          // Удаляем текст ошибки, если он есть
+          const errorSpan = this.nextElementSibling;
+          if (errorSpan && errorSpan.classList.contains('text-danger')) {
+              errorSpan.style.display = 'none';
+          }
       });
-    });
-  
-    function addCommentToPage(comment) {
-      var template = document.getElementById('comment-template').innerHTML;
-      var ratingStars = '';
-  
-      for (var i = 1; i <= 5; i++) {
-        if (i == 1) {
-          ratingStars += i <= comment.rating ? '<i class="fas fa-star purple-star"></i>' : '<i class="far fa-star purple-star"></i>';
-        } else {
-          ratingStars += i <= comment.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-        }
-      }
-      var commentHtml = template
-        .replace('__USERNAME__', comment.username)
-        .replace(/__RATING__/, ratingStars)
-        .replace('__COMMENT__', comment.comment);
-  
-      var commentsContainer = document.getElementById('comments-container');
-      commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
-    }
   });
+});
+
+  

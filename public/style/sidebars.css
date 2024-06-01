@@ -160,3 +160,11 @@ h2 {
   max-height: 200px; /* Максимальная высота списка */
   overflow-y: auto; /* Добавляем вертикальную полосу прокрутки */
 }
+.categories_add_products {
+  width: 100%;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  border: 1px solid #b3b3b3;
+  color: #000000;
+  font-size: 16px;
+}

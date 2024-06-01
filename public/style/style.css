@@ -696,9 +696,7 @@ gap: 80px;
 }
 .cafe_product_info {
    color: #A408A7;
-
    gap: 10px;
-
 }
 .cafe_product_info a {
    font-size: 20px;
@@ -746,15 +744,12 @@ margin-top: 20px;
 }
  .heart {
    position: relative;
-
    width: 40px;
    height: 40px;
    border-radius: 50%;
    background-color: #ffffff;
    border: none;
    margin-bottom: 24px;
-
-
  }
  .btn_comment {
    background-color: #A408A7;
@@ -764,9 +759,6 @@ margin-top: 20px;
    background-color: #f423f8;
    border: 1px solid #f423f8;
  }
- /* .rating_block  {
-   margin-left: 80px;
- } */
 .rating_block p {
    font-size: 24px;
  
@@ -1777,4 +1769,4 @@ align-items: center;
    padding-bottom: 10px;
 }
 
-}
+ }

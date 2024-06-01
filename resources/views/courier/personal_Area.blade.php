@@ -39,16 +39,16 @@
         <div class="d-flex flex-column ">
             <div class="d-flex gap-4 information_personal_text">
                 <div class="d-flex flex-column fw-bold">
-                    <span>Имя</span>
                     <span>Фамилия</span>
+                    <span>Имя</span>
                     <span>Отчество</span>
                     <span>Номер телефона</span>
                     <span>Электронная почта</span>
                     
                 </div>
                 <div class="d-flex flex-column">
-                    <span>{{Auth::user()->name}}</span>
                     <span>{{Auth::user()->surname}}</span>
+                    <span>{{Auth::user()->name}}</span>
                     <span>{{Auth::user()->patronymic}}</span>
                     <span>{{Auth::user()->phone}}</span>
                     <span>{{Auth::user()->email}}</span>
@@ -68,15 +68,15 @@
                     <form method="POST" action="{{ route('r.update', ['id' => Auth::user()->id]) }}" class=" forma_register d-flex justify-content-center flex-column align-items-center">
                     @csrf
                      @method('PATCH')
-                     <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Фамилия</label>
-                                <input type="text" name="surname" value="{{Auth::user()->surname}}" placeholder=" @error('surname') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <span> @error('surname') {{$message}} @enderror</span>
-                            </div>
-                    <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label text_label">Имя</label>
                                 <input type="text" name="name" value="{{Auth::user()->name}}" placeholder=" @error('name') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <span> @error('name') {{$message}} @enderror</span>
+                            </div>
+                             <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Фамилия</label>
+                                <input type="text" name="surname" value="{{Auth::user()->surname}}" placeholder=" @error('surname') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <span> @error('surname') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Отчество</label>

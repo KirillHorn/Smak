@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 // use Illuminate\Support\Facades\Auth;
 
 class CheckRole
@@ -17,10 +19,15 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role)
     {   
-        if ($request->user()->role()->where('title', '=', $role)->exists()) {
-            return $next($request);         
+        // if ($request->user()->role()->where('title', '=', $role)->exists() || Auth::check()) {
+        //     return $next($request);         
+        // } 
+        if (Auth::check()) {
+            if ($request->user()->role()->where('title', '=', $role)->exists()) {
+                return $next($request);
+            }    abort(403, 'Недостаточно прав.');
         }
-        abort(403, 'Недостаточно прав.');
+        return redirect()->back();
     
     }
 }

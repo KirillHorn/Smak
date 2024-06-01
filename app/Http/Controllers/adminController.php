@@ -183,14 +183,11 @@ class adminController extends Controller
     }
     public function Categories()
     {
-        $Categories = Categories::paginate(6);
+        $Categories = Categories::with('product')->paginate(6);
+        dd($Categories);
         return view('admin.CategoriesEdit', compact('Categories'));
     }
-    // public function Categories_one($id)
-    // {
-    //     $Categories = Categories::find($id);
-    //     return view('admin.CategoriesEdit_redact', ['categories' => $Categories]);
-    // }
+
     public function categories_update(Request $request,Categories $id) {
         $request->validate([
             'title' => 'required',
@@ -226,13 +223,15 @@ class adminController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'weight'=> 'required',
+            'weight'=> 'required|numeric',
             'cost'=> 'required|numeric',
             'img' => 'required',
             'id_categories'=> 'required'
         ], [
             'title.required' => 'Это обязательное поле!',
+            'description.required' => 'Это обязательное поле!',
             'weight.required' => 'Это обязательное поле!',
+            'weight.numeric' => 'Это поле должно состоять только из чисел',
             'cost.required' => 'Это обязательное поле!',
             'cost.numeric' => 'Это поле должно состоять только из чисел',
             'img.required' => 'Это обязательное поле!',

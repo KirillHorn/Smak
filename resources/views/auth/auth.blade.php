@@ -14,15 +14,25 @@
     <form method="POST" action="/auth_valid" class="forma_auth d-flex justify-content-center flex-column ">
       @csrf
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-        <input type="email" name="email" placeholder=" @error('email') {{$message}}  @enderror" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Пароль</label>
-        <input type="password" name="password" placeholder=" @error('password') {{$message}}  @enderror" class="form-control" id="exampleInputPassword1">
-      </div>
+                <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
+                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ old('email') }}">
+                @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1">
+                @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
       <input type="submit" value="Войти" class="btn btn-primary input_auth">
     </form>
   </div>
 </section>
+<script>
+       
+    </script>
 <x-footer />

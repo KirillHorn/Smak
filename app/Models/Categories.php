@@ -16,7 +16,7 @@ class Categories extends Model
 
     public function product()
     {
-        return $this->hasMany(Products::class,'id', 'id_categories' );
+        return $this->hasMany(Products::class,'id');
     }
     public function count_product() {
         return $this->product()->count();

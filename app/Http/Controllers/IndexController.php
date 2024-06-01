@@ -47,13 +47,14 @@ class IndexController extends Controller
             "comment" => "required",
             'rating' => "required",
         ]);
-
+    
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'error' => $validator->error()
+                'error' => $validator->errors()
             ]);
         }
+    
         $comment = $request->all();
         $comment_add = comments::create([
             'comments_text' => $comment['comment'],
@@ -61,8 +62,15 @@ class IndexController extends Controller
             'id_user' => Auth::id(),
             'rating' => $comment['rating'],
         ]);
-        $username = Auth::user()->name; // Добавьте это, если хотите получить имя пользователя, оставившего комментарий
+        $username = Auth::user()->name;
+    
         if ($comment_add) {
+            $product=Products::find($id);
+            $averageRating = DB::table('comments')
+            ->where('id_product', $id)
+            ->avg('rating');
+            $product->rating_product = $averageRating;
+            $product->save();
             return response()->json([
                 'success' => true,
                 'comment' => [
@@ -102,15 +110,16 @@ class IndexController extends Controller
     public function goods_blade($id)
     {
         $product = Products::find($id);
-        $currentTime = now()->setTimezone('Asia/Yekaterinburg');
-        $comment = comments::where('id_product', $id)->get();
-        $averageRating = DB::table('comments')
-            ->where('id_product', $id)
-            ->avg('rating');
-            
-        $averageRating = number_format($averageRating, 1);
+    $currentTime = now()->setTimezone('Asia/Yekaterinburg');
+    $comments = Comments::where('id_product', $id)->get();
+    
+    $averageRating = DB::table('comments')
+        ->where('id_product', $id)
+        ->avg('rating');
 
-        return view('goods', ['product' => $product, 'comments' => $comment,'averageRating' => $averageRating,'currentTime' => $currentTime]);
+    $averageRating = number_format($averageRating, 1);
+
+        return view('goods', ['product' => $product, 'comments' => $comments,'averageRating' => $averageRating,'currentTime' => $currentTime]);
     }
     public function personal_blade()
     {

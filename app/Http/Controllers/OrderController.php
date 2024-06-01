@@ -139,11 +139,11 @@ class OrderController extends Controller
                 ]);
             }
             $order_product = orderCustoms::where('order', $orderAdd['id'])->get();
-            $productListHTML = '<ul>';
+            $productListHTML = '<div>';
             foreach ($order_product as $product) {
-                $productListHTML .= '<li><strong>Товар:</strong> ' . $product->product_order->title . ', <strong>Количество:</strong> ' . $product->count . '</li>';
+                $productListHTML .= '  <p>' . $product->product_order->title . '- ' . $product->count . '</p>';
             }
-            $productListHTML .= '</ul>';
+            $productListHTML .= '</div>';
             $to = Auth::user()->email;
             $subject = "Чек по заказу №" . $orderAdd->id;
             $message = '
