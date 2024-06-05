@@ -102,9 +102,8 @@ Route::middleware('checkRole:Администратор')->group(function () {
 
     Route::get('/admin/{id}/applicationsCourier', [adminController::class, 'allCourier_blade']);
 
-    Route::get('/{id}/applicationAcceptedCourier', [adminController::class, 'applicationAcceptedCourier']);
+    Route::post('/applicationAcceptedCourier', [adminController::class, 'applicationAcceptedCourier']);
 
-    Route::get('/{id}/applicationDeviationCourier', [adminController::class, 'applicationDeviationCourier']);
 
     Route::get('/admin/serviceBrech', [adminController::class, 'add_branch_blade']); // добавить филиал
 

@@ -20,15 +20,9 @@ class adminController extends Controller
 
     public function allCourier_blade($id)
     {
-        if ($id == 1) {
-            $application = application_courier::where('id_status', '=', 1)->get();
-        } elseif ($id == 2 ) {
-            $application = application_courier::where('id_status', '=', 2)->get();
-        } else {
-            $application = application_courier::where('id_status', '=', 3)->get();
-        }
+
      
-        return view('admin.applicationsCourier', ['application_courier' => $application ]);
+        return view('admin.applicationsCourier');
     }
 
     public function serviceProduct_blade()
@@ -43,17 +37,37 @@ class adminController extends Controller
         return view('admin.EditProduct', ["product" => $products,"categories" => $categories]);
     }
     
-    public function applicationAcceptedCourier($id) {
-        $applicationAccepted=application_courier::find($id);
-        $applicationAccepted->id_status = 2;
-        $applicationAccepted->save();
+    public function applicationAcceptedCourier(Request $request) {
+        $request->validate([
+            "name" => "required|alpha",
+            "surname" => "required|alpha",
+            "patronymic" => "required|alpha",
+            "email" => "required|unique:users|email",
+            "phone" => "required|min:11"],
+            [
+               "email.required" => "Поле обязательно для заполнения!",
+               "email.email" => "Введите корректный email",
+               "email.unique" => "Данный email уже занят",
+               "name.required" => "Поле обязательно для заполнения!",
+               "name.alpha" => "Имя должна состоять только из букв!",
+               "surname.required" => "Поле обязательно для заполнения!",
+               "surname.alpha" => "Фамилия должна состоять только из букв!",
+               "patronymic.required" => "Поле обязательно для заполнения!",
+               "patronymic.alpha" => "Отчество должна состоять только из букв!",
+               "phone.required" => "Поле обязательно для заполнения!",
+               "phone.min" => "Поле должно состоять из 11 символов!",
+               "password.required" => "Поле обязательно для заполнения!",
+               "confirm_password.same" => "Пароли должны совпадать!",
+               "confirm_password.required" => "Поле обязательно для заполнения!",
+            ]);
+        $userInfo = $request->all();
         $password=Str::random(10);
         $userAdd=User::create([
-            'name' => $applicationAccepted->name,
-            'surname' => $applicationAccepted->surname,
-            'patronymic' => $applicationAccepted->patronymic,
-            'email' => $applicationAccepted->email,
-            'phone' => $applicationAccepted->phone,
+            'name' => $userInfo['name'],
+            'surname' => $userInfo['surname'],
+            'patronymic' => $userInfo['patronymic'],
+            'email' => $userInfo['email'],
+            'phone' => $userInfo['phone'],
             'id_role' => 3  ,
             'password' => Hash::make($password),
         ]);
@@ -63,7 +77,7 @@ class adminController extends Controller
             $message = '
             <html>
             <head>
-              <title>Ваше заведение добавлено!</title>
+              <title>Ваш аккаунт был создан!</title>
               <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -120,12 +134,6 @@ class adminController extends Controller
             mail($to, $subject, $message, $headers);
         }
         return redirect()->back()->with('success', 'Вы добавили нового курьера ');
-    }
-    public function applicationDeviationCourier($id) {
-        $applicationAccepted=application_courier::find($id);
-        $applicationAccepted->id_status = 3;
-        $applicationAccepted->save();
-        return redirect()->back()->with('success', 'Заявка не принята ');
     }
     public function serviceEdit_blade(Request $request)
     {

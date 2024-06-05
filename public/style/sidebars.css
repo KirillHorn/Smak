@@ -168,3 +168,10 @@ h2 {
   color: #000000;
   font-size: 16px;
 }
+.input_application {
+  background-color: #A408A7;
+  color: #ffffff;
+}
+.input_application:hover {
+  border: 1px solid #A408A7;
+}

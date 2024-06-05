@@ -49,14 +49,14 @@
           <li class="nav-item">
             <a class="nav-link" href="/cafe">Филиалы</a>
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle nav-link-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Сотрудничество
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/application_courier">Стать курьером</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
         <form class="d-flex search_form" role="search" method="GET" action="/search">
           <input class="form-control me-2 search" type="search" name="search" placeholder="Поиск..." aria-label="Search">
