@@ -99,12 +99,11 @@ class IndexController extends Controller
     }
     public function branch_blade(Request $request)
     {
-        $sortOrder = $request->get('sort_order');
+
         $branch_query = branchs::query();
         $branchCount = branchs::getBranchCount();
         $branchs_first=branchs::first();
         $branchs = $branch_query->where('id', "!=", $branchs_first->id)->paginate(8);
-
         return view('cafe', compact('branchs', 'branchs_first','branchCount'));
     }
     public function goods_blade($id)

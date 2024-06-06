@@ -121,16 +121,10 @@ class adminController extends Controller
                 </div>
               </div>
             </body>
-            </html>
-            ';
-        
-           
+            </html>';
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        
-        
             $headers .= 'From: no-reply@example.com' . "\r\n";
-        
             mail($to, $subject, $message, $headers);
         }
         return redirect()->back()->with('success', 'Вы добавили нового курьера ');
@@ -162,10 +156,8 @@ class adminController extends Controller
 
     public function delete_cafe(branchs $id)
     {
-
         $id->delete();
         return redirect()->back()->with("success", "Удаление прошло успешно");
-
     }
     public function EditCategories()
     {
@@ -181,18 +173,15 @@ class adminController extends Controller
         $cafeAdd = Categories::create([
             'title' => $infocategories['title'],
         ]);
-
         if ($cafeAdd) {
             return redirect()->back()->with('success', 'Вы добавили категорию');
         } else {
             return redirect('/')->with('error', 'Не удалось добавить категорию ');
         }
-      
     }
     public function Categories()
     {
         $Categories = Categories::with('product')->paginate(6);
-        dd($Categories);
         return view('admin.CategoriesEdit', compact('Categories'));
     }
 
@@ -213,7 +202,6 @@ class adminController extends Controller
         } else {
             return redirect()->back()->with('error','Вы не смогли изменить категорию!');
         }
-      
     }
     public function serviceRedactProduct_blade()
     {
@@ -248,8 +236,6 @@ class adminController extends Controller
         $infoproduct = $request->all();
         $img_info = $request->file('img')->hashName();
         $path_img = $request->file('img')->store('/public/img');
-
-        
         $cafeAdd = Products::create([
             'title' => $infoproduct['title'],
             'description' => $infoproduct['description'],
@@ -258,17 +244,13 @@ class adminController extends Controller
             'img' => $img_info,
             'rating_product' => 0,
             'id_categories'=>$infoproduct['id_categories'],
-           
-
         ]);
-
         if ($cafeAdd) {
             return redirect()->back()->with('success', 'Вы добавили блюдо ');
         } else {
             return redirect('/')->with('error', 'Не удалось добавить блюдо ');
         }
-
-        }
+    }
 
         public function updateProduct(Request $request, Products $id ) {
             $request->validate([
@@ -317,7 +299,6 @@ class adminController extends Controller
         }
         public function add_branch(Request $request)
         {
-        
             $request->validate([
                 'title' => 'required',
                 'phone' => 'required',
@@ -333,11 +314,8 @@ class adminController extends Controller
             ]);
             $infoBranch = $request->all();
             $street = street::where('title_street', $infoBranch['id_street'])->first();
-   
             $img_info = $request->file('img')->hashName();
             $path_img = $request->file('img')->store('/public/img');
-    
-            
             $branchAdd = branchs::create([
                 'title' => $infoBranch['title'],
                 'img' =>$img_info,
@@ -345,17 +323,14 @@ class adminController extends Controller
                 'phone' => $infoBranch['phone'],
                 'location_detalis' => $infoBranch['location_detalis'],
             ]);
-    
             if ($branchAdd) {
                 return redirect()->back()->with('success', 'Вы добавили филиал ');
             } else {
                 return redirect('/')->with('error', 'Не удалось добавить филиал ');
             }
-    
             }
             public function update_cafe(Request $request, branchs $id)
             {
-              
                 $request->validate([
                     'title' => 'required',
                         'phone' => 'required',
@@ -368,14 +343,11 @@ class adminController extends Controller
                     'img.required' => 'Это обязательное поле!',
                     'id_street.required' => 'Это обязательное поле!',
                     'location_detalis.required' => 'Это обязательное поле!',
-                ]);
-        
-                
+                ]); 
                 $cafeInfo = $request->all();
                 $street = street::where('title_street', $cafeInfo['id_street'])->first();
                 $img_info = $request->file('img')->hashName();
                 $path_img = $request->file('img')->store('/public/img');
-        
                 $id->fill(
                     [
                         'title' => $cafeInfo['title'],
@@ -386,6 +358,5 @@ class adminController extends Controller
                     ]);
                 $id->save();
                 return redirect("/admin/serviceEdit")->with("success", "Редактирование филиала прошла успешна");
-        
             }
 }

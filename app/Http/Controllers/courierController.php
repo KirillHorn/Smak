@@ -21,47 +21,8 @@ class courierController extends Controller
     {
        return view('application_courier');
     }
-    public function registration_courier(Request $request)
-    {
-       $request->validate([
-          "name" => "required|alpha",
-          "surname" => "required|alpha",
-          "patronymic" => "required|alpha",
-          "email" => "required|email",
-          "phone" => "required|min:11",
-         ],
-          [
-             "email.required" => "Поле обязательно для заполнения!",
-             "email.email" => "Введите корректный email",
-             "name.required" => "Поле обязательно для заполнения!",
-             "name.alpha" => "Имя должно состоять только из букв!",
-             "surname.required" => "Поле обязательно для заполнения!",
-             "surname.alpha" => "Фамилия должно состоять только из букв!",
-             "patronymic.required" => "Поле обязательно для заполнения!",
-             "patronymic.alpha" => "Отчество должно состоять только из букв!",
-             "phone.required" => "Поле обязательно для заполнения!",
-             "phone.min" => "Введите полный номер телефона!",
-          ]);
-       $courierInfo = $request->all();
- 
-       $courierCreate= application_courier::create([
-             'name' => $courierInfo['name'],
-             'surname' => $courierInfo['surname'],
-             'patronymic' => $courierInfo['patronymic'],
-             'email' => $courierInfo['email'],
-             'phone' => $courierInfo['phone'],
-             'id_status' => 1,
-      
-          ]);
-       if ( $courierCreate) {
-          return redirect()->back()->with("sussess", "Заявка отправлена!");
-       } else {
-          return redirect()->back()->with("error", "Проверьте данные!");
-       }
-     
-     }
      public function personal_courier(Request $request)
-{
+    {
     $start_date = $request->input('start_date');
     $end_date = $request->input('end_date');
 
@@ -105,56 +66,50 @@ public function orders_pdf(Request $request)
     $start_date = $request->input('start_date');
     $end_date = $request->input('end_date');
     $order_query = courier_orders::where('id_courier', Auth::id());
-
     if ($start_date && $end_date) {
         $start_date = Carbon::parse($start_date)->startOfDay();
         $end_date = Carbon::parse($end_date)->endOfDay();
         $order_query->whereBetween('created_at', [$start_date, $end_date]);
     }
-
     $orders = $order_query->get();
-  
     $pdfComponent = new Pdf_order($orders);
-   
-
     $pdf = PDF::loadView('components.pdf', ['orders' => $pdfComponent->orders, 'start_date' => $start_date, 'end_date' => $end_date])
         ->setPaper('a4')
         ->setOptions(['defaultFont' => 'Arial'])
         ->setOption('charset', 'utf-8');
-
     return $pdf->download('orders.pdf');
 }
 
-    public function orders_courier($area_id)
-    {
-        $area = area::all();
-        if ($area_id == 0) {
-            $orders = orders::where('id_status', 1)
-            ->join('branchs', 'orders.id_brach', '=', 'branchs.id')
-            ->join('streets as branch_streets', 'branchs.id_street', '=', 'branch_streets.id')
-            ->join('areas as branch_areas', 'branch_streets.id_area', '=', 'branch_areas.id')
-            ->join('streets as order_streets', 'orders.id_street', '=', 'order_streets.id')
-            ->select('orders.*', 'order_streets.title_street as order_street', 'branch_areas.title_area as branch_area', 'branch_streets.title_street as branch_street', 'branchs.title as branch_title')
-            ->orderBy('branchs.title')
-            ->orderBy('order_streets.title_street')
-            ->orderBy('branch_areas.title_area')
-            ->paginate(8);
-        } else {
-            $orders = orders::where('id_status', 1)
-            ->join('branchs', 'orders.id_brach', '=', 'branchs.id')
-            ->join('streets as branch_streets', 'branchs.id_street', '=', 'branch_streets.id')
-            ->join('areas as branch_areas', 'branch_streets.id_area', '=', 'branch_areas.id')
-            ->join('streets as order_streets', 'orders.id_street', '=', 'order_streets.id')
-            ->where('branch_areas.id', $area_id)  
-            ->select('orders.*', 'order_streets.title_street as order_street', 'branch_areas.title_area as branch_area', 'branch_streets.title_street as branch_street', 'branchs.title as branch_title')
-            ->orderBy('branchs.title')
-            ->orderBy('order_streets.title_street')
-            ->orderBy('branch_areas.title_area')
-            ->paginate(8);
+        public function orders_courier($area_id)
+        {
+            $area = area::all();
+            if ($area_id == 0) {
+                $orders = orders::where('id_status', 1)
+                ->join('branchs', 'orders.id_brach', '=', 'branchs.id')
+                ->join('streets as branch_streets', 'branchs.id_street', '=', 'branch_streets.id')
+                ->join('areas as branch_areas', 'branch_streets.id_area', '=', 'branch_areas.id')
+                ->join('streets as order_streets', 'orders.id_street', '=', 'order_streets.id')
+                ->select('orders.*', 'order_streets.title_street as order_street', 'branch_areas.title_area as branch_area', 'branch_streets.title_street as branch_street', 'branchs.title as branch_title')
+                ->orderBy('branchs.title')
+                ->orderBy('order_streets.title_street')
+                ->orderBy('branch_areas.title_area')
+                ->paginate(8);
+            } else {
+                $orders = orders::where('id_status', 1)
+                ->join('branchs', 'orders.id_brach', '=', 'branchs.id')
+                ->join('streets as branch_streets', 'branchs.id_street', '=', 'branch_streets.id')
+                ->join('areas as branch_areas', 'branch_streets.id_area', '=', 'branch_areas.id')
+                ->join('streets as order_streets', 'orders.id_street', '=', 'order_streets.id')
+                ->where('branch_areas.id', $area_id)  
+                ->select('orders.*', 'order_streets.title_street as order_street', 'branch_areas.title_area as branch_area', 'branch_streets.title_street as branch_street', 'branchs.title as branch_title')
+                ->orderBy('branchs.title')
+                ->orderBy('order_streets.title_street')
+                ->orderBy('branch_areas.title_area')
+                ->paginate(8);
+            }
+    
+        return view('courier.orders_for_courier', compact('orders'),['area' => $area]);
         }
-   
-    return view('courier.orders_for_courier', compact('orders'),['area' => $area]);
-    }
     public function specific_order($id)
     {
       $orders_personal = orders::where('orders.id', $id)
@@ -184,7 +139,6 @@ public function orders_pdf(Request $request)
       if (!$orders_personal) {
           return redirect()->back()->with('error', 'Заказ не найден!');
       }
-  
       $orders_personal->id_status = 2;
       $orders_personal->start_order = Carbon::now(); // Установка времени начала
       if ($orders_personal->save()) {
@@ -194,26 +148,21 @@ public function orders_pdf(Request $request)
               
           ]);
       }
-  
       return redirect()->back()->with('success', 'Вы приняли заказ!');
   }
-  
   public function courier_order_completed($id) {
       $orders_personal = orders::find($id);
       if (!$orders_personal) {
           return redirect()->back()->with('error', 'Заказ не найден!');
       }
-  
       $orders_personal->id_status = 3;
       $orders_personal->end_order = Carbon::now(); 
       $order_courier = courier_orders::where('id_orders', $id)->first();
       $order_courier->save();
-  
       if ($orders_personal->save()) {
           $startTime = Carbon::parse($orders_personal->start_order);
           $endTime = Carbon::parse($orders_personal->end_order);
           $duration = $endTime->diffForHumans($startTime, true); 
-  
           return redirect('/courier/personal_Area')->with('success', "Вы завершили заказ! Время выполнения: $duration");
       } else {
           return redirect()->back()->with('error', 'Вы не завершили заказ!');

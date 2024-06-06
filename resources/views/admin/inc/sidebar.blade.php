@@ -28,11 +28,11 @@
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-        Заявки
+        Курьер
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/admin/1/applicationsCourier" class="link-dark rounded">Заявки курьера</a></li>
+            <li><a href="/admin/1/applicationsCourier" class="link-dark rounded">Добавить курьера</a></li>
           </ul>
         </div>
       </li>

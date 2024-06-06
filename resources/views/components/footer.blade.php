@@ -5,7 +5,6 @@
       <li class="nav-item"><a href="/" class="nav-link px-2  color_footer">О нас</a></li>
       <li class="nav-item"><a href="/product" class="nav-link px-2  color_footer">Меню</a></li>
       <li class="nav-item"><a href="/cafe" class="nav-link px-2  color_footer">Филиалы</a></li>
-      <li class="nav-item"><a href="/application_courier" class="nav-link px-2 color_footer" >Стать курьером</a></li>
     </ul>
     <p class="text-center  color_footer">© 2024 Smak</p>
   </div>

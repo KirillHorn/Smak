@@ -151,30 +151,4 @@
                 map.addChild(marker);
             }
         });
-
-
-
-
-
-
-
-
-
-        //   function onResizeMap() {
-        //     if (window.innerWidth <= 720) {
-        //       map.setLocation({
-        //         center: [55.95763677413744, 54.721993431428174],
-        //         zoom: 18,
-        //       });
-        //     }
-        //     if (window.innerWidth > 720) {
-        //       map.setLocation({
-        //         center: [55.956093418515174, 54.721436734286755],
-        //         zoom: 18,
-        //       });
-        //     }
-        //   }
-
-        //   window.addEventListener("resize", onResizeMap);
-        //   onResizeMap();
     </script>

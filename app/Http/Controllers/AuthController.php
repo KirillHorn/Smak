@@ -152,6 +152,5 @@ class AuthController extends Controller
       } else {
          return redirect()->back()->with("error_signIn", "Проверьте данные!");
       }
-    
    }
 }

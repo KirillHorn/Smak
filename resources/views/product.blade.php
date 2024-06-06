@@ -9,7 +9,7 @@
         <div class="navigation d-flex flex-column gap-3">
             <div>
                 <span>42 точки</span>
-                <h2> Доставка еды из заведений Уфы</h2>
+                <h2> Доставка еды из филиалах Уфы</h2>
             </div>
             <div class="d-flex flex-column gap-4">
                 <div class="d-flex flex-wrap gap-4  a_content_categories">

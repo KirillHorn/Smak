@@ -62,26 +62,26 @@
 // return false;
 // });
 // });
-$(function(){
-  $("#phone").mask("8(999) 999-9999");
-});
-document.addEventListener('DOMContentLoaded', function() {
-  // Получаем все элементы input
-  const inputs = document.querySelectorAll('input');
+// $(function(){
+//   $("#phone").mask("8(999) 999-9999");
+// });
+// document.addEventListener('DOMContentLoaded', function() {
+//   // Получаем все элементы input
+//   const inputs = document.querySelectorAll('input');
 
-  // Для каждого input добавляем обработчик события focus
-  inputs.forEach(input => {
-      input.addEventListener('focus', function() {
-          // Удаляем класс is-invalid
-          this.classList.remove('is-invalid');
+//   // Для каждого input добавляем обработчик события focus
+//   inputs.forEach(input => {
+//       input.addEventListener('focus', function() {
+//           // Удаляем класс is-invalid
+//           this.classList.remove('is-invalid');
 
-          // Удаляем текст ошибки, если он есть
-          const errorSpan = this.nextElementSibling;
-          if (errorSpan && errorSpan.classList.contains('text-danger')) {
-              errorSpan.style.display = 'none';
-          }
-      });
-  });
-});
+//           // Удаляем текст ошибки, если он есть
+//           const errorSpan = this.nextElementSibling;
+//           if (errorSpan && errorSpan.classList.contains('text-danger')) {
+//               errorSpan.style.display = 'none';
+//           }
+//       });
+//   });
+// });
 
   

@@ -56,7 +56,6 @@ class OrderController extends Controller
                 'count' => 1,
             ]);
         }
-
         return redirect()->back()->with('success', 'Вы добавили товар');
     }
     public function baskets_delete($id)
@@ -128,7 +127,6 @@ class OrderController extends Controller
             'paymant' => $infoOrder['very'],
         ]);
         $order_product = orderCustoms::where('order', $orderAdd['id'])->get();
-
         if ($orderAdd) {
             $productUser = baskets::where('id_users', $userID)->get();
             foreach ($productUser as $product) {

@@ -52,71 +52,66 @@
 </section>
 <script>
     let timerInterval;
-    А =
 
-        function startTimer(orderId) {
-            const startTime = new Date();
-            localStorage.setItem('startTime_' + orderId, startTime);
-            updateTimer(orderId);
-            timerInterval = setInterval(() => updateTimer(orderId), 1000);
+function startTimer(orderId) {
+    const startTime = new Date();
+    localStorage.setItem('startTime_' + orderId, startTime);
+    updateTimer(orderId);
+    timerInterval = setInterval(() => updateTimer(orderId), 1000);
+}
+
+function stopTimer(orderId) {
+    clearInterval(timerInterval);
+    localStorage.removeItem('startTime_' + orderId);
+    let endTime = new Date();
+
+    fetch(`/${orderId}/courier_order_completed`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            end_time: endTime
+        })
+    }).then(response => {
+        if (response.ok) {
+            window.location.reload();
         }
-
-    function stopTimer(orderId) {
-        clearInterval(timerInterval);
-        localStorage.removeItem('startTime_' + orderId);
-        let endTime = new Date();
-
-        fetch(`/${orderId}/courier_order_completed`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({
-                end_time: endTime
-            })
-        }).then(response => {
-            if (response.ok) {
-                window.location.reload();
-            }
-        }).catch(error => {
-            console.error('Ошибка:', error);
-            alert('Ошибка завершения заказа');
-        });
-    }
-
-    function updateTimer(orderId) {
-        const startTime = new Date(localStorage.getItem('startTime_' + orderId));
-        if (!startTime) return;
-
-        const now = new Date();
-        const elapsedTime = new Date(now - startTime);
-        const hours = String(elapsedTime.getUTCHours()).padStart(2, '0');
-        const minutes = String(elapsedTime.getUTCMinutes()).padStart(2, '0');
-        const seconds = String(elapsedTime.getUTCSeconds()).padStart(2, '0');
-        document.getElementById('timer').innerText = `${hours}:${minutes}:${seconds}`;
-    }
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const orderId = {
-            {
-                $order -> id
-            }
-        };
-        if (localStorage.getItem('startTime_' + orderId)) {
-            timerInterval = setInterval(() => updateTimer(orderId), 1000);
-        }
+    }).catch(error => {
+        console.error('Ошибка:', error);
+        alert('Ошибка завершения заказа');
     });
-    @if($order -> id_status == 2)
-    document.addEventListener('DOMContentLoaded', () => {
-        const orderId = {
-            {
-                $order -> id
-            }
-        };
-        if (!localStorage.getItem('startTime_' + orderId)) {
-            startTimer(orderId);
-        }
-    });
-    @endif
+}
+
+function updateTimer(orderId) {
+    const startTime = new Date(localStorage.getItem('startTime_' + orderId));
+    if (!startTime) return;
+
+    const now = new Date();
+    const elapsedTime = new Date(now - startTime);
+    const hours = String(elapsedTime.getUTCHours()).padStart(2, '0');
+    const minutes = String(elapsedTime.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(elapsedTime.getUTCSeconds()).padStart(2, '0');
+    console.log(`Обновление таймера: ${hours}:${minutes}:${seconds}`); // Лог для проверки
+    document.getElementById('timer').innerText = `${hours}:${minutes}:${seconds}`;
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const orderId = {{ $order->id }};
+    console.log(`Order ID: ${orderId}`); // Лог для проверки
+    if (localStorage.getItem('startTime_' + orderId)) {
+        timerInterval = setInterval(() => updateTimer(orderId), 1000);
+    }
+});
+
+@if($order->id_status == 2)
+document.addEventListener('DOMContentLoaded', () => {
+    const orderId = {{ $order->id }};
+    if (!localStorage.getItem('startTime_' + orderId)) {
+        startTimer(orderId);
+    }
+});
+@endif
 </script>
 <x-footer />
